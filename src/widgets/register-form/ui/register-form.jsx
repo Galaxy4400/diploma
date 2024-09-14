@@ -1,10 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useServer } from '../../app/providers/server-provider';
-import { ErrorList } from '../../shared/ui';
-import { useDispatch } from 'react-redux';
-import { userAction } from '../../app/store';
-import { registerFormRules } from './rules';
+import { ErrorList } from '../../../shared/ui';
+import { registerFormRules } from '../lib/rules';
+import { useOnRegister } from '../hooks';
 
 
 export const RegisterForm = () => {
@@ -12,21 +10,7 @@ export const RegisterForm = () => {
 		register, handleSubmit, formState: { errors }
 	} = useForm({ resolver: yupResolver(registerFormRules) });
 
-	const dispatch = useDispatch();
-
-	const { requestServer, serverError } = useServer();
-
-	const onSubmit = async ({ login, password }) => {
-		const createdUser = await requestServer.register(login, password);
-		
-		if (!createdUser) return;
-
-		const authUser = await requestServer.authorize(login, password);
-
-		if (!authUser) return;
-
-		dispatch(userAction.setUser(authUser));
-	};
+	const { onSubmit, registerError } = useOnRegister();
 
 	return (
 		<div>
@@ -37,7 +21,7 @@ export const RegisterForm = () => {
 				<button type='submit'>Зарегистрироваться</button>
 			</form>
 			<ErrorList formErrors={errors} />
-			{serverError && <div>{serverError}</div>}
+			{registerError && <div>{registerError}</div>}
 		</div>
 	)
 };

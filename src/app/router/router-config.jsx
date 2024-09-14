@@ -4,6 +4,7 @@ import { MainPage } from "../../pages/main";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
 import { MainLayout } from "../../layouts/main-layout";
+import { SettingsPage } from "../../pages/settings";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -18,10 +19,10 @@ export const routerConfig = createBrowserRouter([
 			// 	path: 'history',
 			// 	element: <HistoryPage />,
 			// },
-			// {
-			// 	path: 'settings',
-			// 	element: <SettingsPage />,
-			// },
+			{
+				path: 'settings',
+				element: <SettingsPage />,
+			},
 			// {
 			// 	path: 'account',
 			// 	element: <AccountCreatePage />,

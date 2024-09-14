@@ -11,6 +11,12 @@
       "password": "1111",
       "registed_at": "2052-07-26 17:49",
       "id": "ys9eeOU"
+    },
+    {
+      "login": "2222",
+      "password": "2222",
+      "registed_at": "2046-05-22 19:42",
+      "id": "zpsOBoW"
     }
   ],
   "accounts": [
@@ -90,5 +96,11 @@
       "created_at": "2023-01-01"
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "hash": "0.28290353257660916241889026423450559377670288085938",
+      "user_id": "ys9eeOU",
+      "id": 1
+    }
+  ]
 }

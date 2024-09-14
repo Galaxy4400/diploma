@@ -1,10 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useServer } from '../../app/providers/server-provider';
-import { authFormRules } from './rules';
-import { ErrorList } from '../../shared/ui';
-import { useDispatch } from 'react-redux';
-import { userAction } from '../../app/store';
+import { authFormRules } from '../lib/rules';
+import { ErrorList } from '../../../shared/ui';
+import { useOnLogin } from '../hooks';
 
 
 export const LoginForm = () => {
@@ -12,17 +10,7 @@ export const LoginForm = () => {
 		register, handleSubmit, formState: { errors }
 	} = useForm({ resolver: yupResolver(authFormRules) });
 
-	const dispatch = useDispatch();
-
-	const { requestServer, serverError } = useServer();
-
-	const onSubmit = async ({ login, password }) => {
-		const authUser = await requestServer.authorize(login, password);
-
-		if (!authUser) return;
-
-		dispatch(userAction.setUser(authUser));
-	};
+	const { onSubmit, loginError } = useOnLogin();
 
 	return (
 		<div>
@@ -32,7 +20,7 @@ export const LoginForm = () => {
 				<button type='submit'>Войти</button>
 			</form>
 			<ErrorList formErrors={errors} />
-			{serverError && <div>{serverError}</div>}
+			{loginError && <div>{loginError}</div>}
 		</div>
 	)
 };
