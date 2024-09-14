@@ -13,11 +13,11 @@ export const RegisterForm = () => {
 	const { onSubmit, registerError } = useOnRegister();
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit(onSubmit)}>
+		<div style={{maxWidth: "300px"}}>
+			<form onSubmit={handleSubmit(onSubmit)} style={{display: "grid", gap: "10px"}}>
 				<input {...register('login')} type="text" placeholder='Логин...' />
-				<input {...register('password')} type="text" placeholder='Пароль...' />
-				<input {...register('passcheck')} type="text" placeholder='Проверка паролья...' />
+				<input {...register('password')} type="password" placeholder='Пароль...' />
+				<input {...register('passcheck')} type="password" placeholder='Проверка паролья...' />
 				<button type='submit'>Зарегистрироваться</button>
 			</form>
 			<ErrorList formErrors={errors} />

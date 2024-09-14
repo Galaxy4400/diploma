@@ -1,10 +1,7 @@
 import { deleteUser } from "../api"
-import { sessions } from "../sessions";
 
-export const removeUser = async (hash, userId) => {
-	const access = await sessions.access(hash);
-
-	if (!access) {
+export const removeUser = async (session, userId) => {
+	if (!session) {
 		return {
 			error: 'Доступ запрещен',
 			res: null,

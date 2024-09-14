@@ -9,9 +9,9 @@ export const useOnLogin = () => {
 
 	const onSubmit = async ({ login, password }) => {
 		const authUser = await requestServer.authorize(login, password);
-
+		
 		if (!authUser) return;
-
+		
 		dispatch(userAction.setUser(authUser));
 	};
 

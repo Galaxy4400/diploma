@@ -1,5 +1,4 @@
 import { createUser, findUser } from "../api";
-import { sessions } from "../sessions";
 
 export const register = async (session, regLogin, regPassword) => {
 

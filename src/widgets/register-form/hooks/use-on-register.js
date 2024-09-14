@@ -11,11 +11,11 @@ export const useOnRegister = () => {
 		const createdUser = await requestServer.register(login, password);
 		
 		if (!createdUser) return;
-
+		
 		const authUser = await requestServer.authorize(login, password);
-
+		
 		if (!authUser) return;
-
+		
 		dispatch(userAction.setUser(authUser));
 	};
 

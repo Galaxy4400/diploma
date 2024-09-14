@@ -6,3 +6,4 @@ export * from './get-session';
 export * from './create-session';
 export * from './delete-session';
 export * from './find-session';
+export * from './patch-user';

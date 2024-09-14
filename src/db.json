@@ -4,35 +4,47 @@
       "id": "001",
       "login": "1234",
       "password": "1234",
-      "registed_at": "2023-01-01"
+      "registedAt": "2023-01-01"
     },
     {
       "login": "1111",
       "password": "1111",
-      "registed_at": "2052-07-26 17:49",
+      "registedAt": "2052-07-26 17:49",
       "id": "ys9eeOU"
     },
     {
       "login": "2222",
       "password": "2222",
-      "registed_at": "2046-05-22 19:42",
+      "registedAt": "2046-05-22 19:42",
       "id": "zpsOBoW"
+    },
+    {
+      "login": "4444",
+      "password": "4444",
+      "registedAt": "2054-11-14 12:56",
+      "id": "_mjJ-6X"
+    },
+    {
+      "login": "111111",
+      "password": "111111",
+      "registedAt": "2056-10-07 16:41",
+      "id": "kQLVGsE"
     }
   ],
   "accounts": [
     {
       "id": "001",
-      "user_id": "001",
+      "userId": "001",
       "type_id": "001",
       "name": "Название счета 1",
-      "created_at": "2023-01-01"
+      "createdAt": "2023-01-01"
     },
     {
       "id": "002",
-      "user_id": "001",
+      "userId": "001",
       "type_id": "002",
       "name": "Название счета 2",
-      "created_at": "2023-01-01"
+      "createdAt": "2023-01-01"
     }
   ],
   "account_types": [
@@ -62,45 +74,80 @@
   "operations": [
     {
       "id": "001",
-      "user_id": "001",
-      "account_id": "001",
-      "category_id": "001",
-      "created_at": "2023-01-01"
+      "userId": "001",
+      "accountId": "001",
+      "categoryId": "001",
+      "createdAt": "2023-01-01"
     },
     {
       "id": "002",
-      "user_id": "001",
-      "account_id": "001",
-      "category_id": "001",
-      "created_at": "2023-01-01"
+      "userId": "001",
+      "accountId": "001",
+      "categoryId": "001",
+      "createdAt": "2023-01-01"
     },
     {
       "id": "003",
-      "user_id": "001",
-      "account_id": "001",
-      "category_id": "001",
-      "created_at": "2023-01-01"
+      "userId": "001",
+      "accountId": "001",
+      "categoryId": "001",
+      "createdAt": "2023-01-01"
     },
     {
       "id": "004",
-      "user_id": "001",
-      "account_id": "001",
-      "category_id": "001",
-      "created_at": "2023-01-01"
+      "userId": "001",
+      "accountId": "001",
+      "categoryId": "001",
+      "createdAt": "2023-01-01"
     },
     {
       "id": "005",
-      "user_id": "001",
-      "account_id": "001",
-      "category_id": "001",
-      "created_at": "2023-01-01"
+      "userId": "001",
+      "accountId": "001",
+      "categoryId": "001",
+      "createdAt": "2023-01-01"
     }
   ],
   "sessions": [
     {
-      "hash": "0.28290353257660916241889026423450559377670288085938",
-      "user_id": "ys9eeOU",
+      "hash": "0.53547974110249563217678314686054363846778869628906",
+      "userId": "_mjJ-6X",
       "id": 1
+    },
+    {
+      "hash": "0.94030372854830801543357665650546550750732421875000",
+      "userId": "ys9eeOU",
+      "id": 2
+    },
+    {
+      "hash": "0.75370269669834777381822732422733679413795471191406",
+      "userId": "ys9eeOU",
+      "id": 3
+    },
+    {
+      "hash": "0.40256416871589539852038797107525169849395751953125",
+      "userId": "ys9eeOU",
+      "id": 4
+    },
+    {
+      "hash": "0.90662697697596805745945403032237663865089416503906",
+      "userId": "ys9eeOU",
+      "id": 5
+    },
+    {
+      "hash": "0.94332772419771382388375968730542808771133422851563",
+      "userId": "ys9eeOU",
+      "id": 6
+    },
+    {
+      "hash": "0.19041456740949569415022324392339214682579040527344",
+      "userId": "ys9eeOU",
+      "id": 7
+    },
+    {
+      "hash": "0.23008472412429603615180440101539716124534606933594",
+      "userId": "kQLVGsE",
+      "id": 8
     }
   ]
 }

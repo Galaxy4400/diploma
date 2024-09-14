@@ -10,7 +10,7 @@ export const createUser = (login, password) =>
 		body: JSON.stringify({
 			login,
 			password,
-			registed_at: generateData(),
+			registedAt: generateData(),
 		}),
 	})
 	.then(createdUser => createdUser.json());

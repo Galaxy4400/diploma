@@ -6,8 +6,5 @@ export const createSession = (hash, userId) =>
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
 		},
-		body: JSON.stringify({
-			hash,
-			user_id: userId,
-		}),
+		body: JSON.stringify({ hash, userId }),
 	});
