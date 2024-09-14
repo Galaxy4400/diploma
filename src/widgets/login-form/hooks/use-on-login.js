@@ -1,9 +1,8 @@
-import { useDispatch } from "react-redux";
 import { useServer } from "../../../app/providers/server-provider";
-import { userAction } from "../../../app/store";
+import { useAuth } from "../../../app/providers/auth-provider";
 
 export const useOnLogin = () => {
-	const dispatch = useDispatch();
+	const { authorize } = useAuth();
 
 	const { requestServer, serverError: loginError } = useServer();
 
@@ -11,8 +10,8 @@ export const useOnLogin = () => {
 		const authUser = await requestServer.authorize(login, password);
 		
 		if (!authUser) return;
-		
-		dispatch(userAction.setUser(authUser));
+
+		authorize(authUser);
 	};
 
 	return { onSubmit, loginError };

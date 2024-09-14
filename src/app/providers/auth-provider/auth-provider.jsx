@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
 	const { requestServer } = useServer();
 
-	const login = useCallback((user) => {
+	const authorize = useCallback((user) => {
 		dispatch(userAction.setUser(user));
 	}, [dispatch]);
 	
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
 	useLayoutEffect(() => {
 		const storageSession = sessionStorage.getItem(SESSION_KEY_NAME);
-		
+
 		if (!storageSession) {
 			logout();
 			setIsAuthInitialize(true);
@@ -30,12 +30,12 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then(login)
+			.then((user) => user && authorize(user))
 			.then(() => setIsAuthInitialize(true));
-	}, [login, logout, requestServer]);
+	}, [authorize, logout, requestServer]);
 
 	return (
-		<AuthContext.Provider value={{ login, logout }}>
+		<AuthContext.Provider value={{ authorize, logout }}>
 			{isAuthInitialize && children}
 		</AuthContext.Provider>
 	);

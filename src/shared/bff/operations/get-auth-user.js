@@ -1,4 +1,4 @@
-import { findSession, findUser, getUser } from "../api";
+import { findSession, getUser } from "../api";
 
 export const getAuthUser = async (session, storageSession) => {
 
