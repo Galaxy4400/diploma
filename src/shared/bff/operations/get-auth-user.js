@@ -1,4 +1,4 @@
-import { findSession, getUser } from "../api";
+import { findSessionFetch, getUserFetch } from "../api";
 
 export const getAuthUser = async (session, storageSession) => {
 
@@ -10,7 +10,7 @@ export const getAuthUser = async (session, storageSession) => {
 		}
 	}
 
-	const dbSession = await findSession(`hash=${storageSession}`);
+	const dbSession = await findSessionFetch(`hash=${storageSession}`);
 
 	if (!dbSession) {
 		return {
@@ -20,7 +20,7 @@ export const getAuthUser = async (session, storageSession) => {
 		}
 	}
 
-	const authUser = await getUser(dbSession.userId);
+	const authUser = await getUserFetch(dbSession.userId);
 
 	if (!authUser) {
 		return {

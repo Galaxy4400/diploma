@@ -1,4 +1,4 @@
-import { createUser, findUser } from "../api";
+import { createUserFetch, findUserFetch } from "../api";
 
 export const register = async (session, regLogin, regPassword) => {
 
@@ -10,7 +10,7 @@ export const register = async (session, regLogin, regPassword) => {
 		}
 	}
 	
-	const existedUser = await findUser(`login=${regLogin}`);
+	const existedUser = await findUserFetch(`login=${regLogin}`);
 
 	if (existedUser) {
 		return {
@@ -20,7 +20,7 @@ export const register = async (session, regLogin, regPassword) => {
 		}
 	}
 	
-	const user = await createUser(regLogin, regPassword);
+	const user = await createUserFetch(regLogin, regPassword);
 	
 	return {
 		ok: true,

@@ -1,6 +1,6 @@
 import { API_HOST } from "../constants";
 
-export const createSession = (hash, userId) =>
+export const createSessionFetch = (hash, userId) =>
 	fetch(`${API_HOST}/sessions`, {
 		method: 'POST',
 		headers: {

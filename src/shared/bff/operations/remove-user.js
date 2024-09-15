@@ -1,4 +1,4 @@
-import { deleteUser } from "../api"
+import { deleteUserFetch } from "../api"
 
 export const removeUser = async (session, userId) => {
 	if (!session) {
@@ -9,7 +9,7 @@ export const removeUser = async (session, userId) => {
 		}
 	}
 
-	deleteUser(userId);
+	deleteUserFetch(userId);
 
 	return {
 		ok: true,

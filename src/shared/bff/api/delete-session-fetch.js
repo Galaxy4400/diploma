@@ -1,6 +1,6 @@
 import { API_HOST } from "../constants";
 
-export const deleteSession = (sessionId) =>
+export const deleteSessionFetch = (sessionId) =>
 	fetch(`${API_HOST}/sessions/${sessionId}`, {
 		method: 'DELETE',
 	});

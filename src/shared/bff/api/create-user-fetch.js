@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { API_HOST } from "../constants";
 
-export const createUser = (login, password) =>
+export const createUserFetch = (login, password) =>
 	fetch(`${API_HOST}/users`, {
 		method: 'POST',
 		headers: {

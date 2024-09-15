@@ -1,6 +1,6 @@
 import { API_HOST } from "../constants";
 
-export const patchUser = (userId, updatingData) =>
+export const patchUserFetch = (userId, updatingData) =>
 	fetch(`${API_HOST}/users/${userId}`, {
 		method: 'PATCH',
 		headers: {

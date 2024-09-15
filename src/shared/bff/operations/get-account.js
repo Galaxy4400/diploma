@@ -1,0 +1,32 @@
+import { findSession, getUser } from "../api";
+
+export const getAccount = async (session, accountId) => {
+
+	if (!session) {
+		return {
+			ok: false,
+			error: 'Вы не аутентифицированы',
+			data: null,
+		}
+	}
+
+	// const authUser = await getUser(dbSession.userId);
+
+	// if (!authUser) {
+	// 	return {
+	// 		ok: false,
+	// 		error: 'Пользователь с такой сессией не найден',
+	// 		data: null,
+	// 	}
+	// }
+
+	return {
+		ok: true,
+		error: null,
+		data: {
+			// id: authUser.id,
+			// login: authUser.login,
+			// session: storageSession,
+		},
+	}
+};
