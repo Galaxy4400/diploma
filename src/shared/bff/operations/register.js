@@ -4,8 +4,9 @@ export const register = async (session, regLogin, regPassword) => {
 
 	if (session) {
 		return {
+			ok: false,
 			error: 'Вы уже в системе',
-			res: null,
+			data: null,
 		}
 	}
 	
@@ -13,16 +14,18 @@ export const register = async (session, regLogin, regPassword) => {
 
 	if (existedUser) {
 		return {
+			ok: false,
 			error: 'Такой логин уже занят',
-			res: null,
+			data: null,
 		}
 	}
 	
 	const user = await createUser(regLogin, regPassword);
 	
 	return {
+		ok: true,
 		error: null,
-		res: {
+		data: {
 			id: user.id,
 			login: user.login,
 		},

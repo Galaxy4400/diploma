@@ -5,8 +5,9 @@ export const authorize = async (session, authLogin, authPassword) => {
 
 	if (session) {
 		return {
+			ok: false,
 			error: 'Вы уже в системе',
-			res: null,
+			data: null,
 		}
 	}
 
@@ -14,8 +15,9 @@ export const authorize = async (session, authLogin, authPassword) => {
 
 	if (!user) {
 		return {
+			ok: false,
 			error: 'Такой пользователь не найден',
-			res: null,
+			data: null,
 		}
 	}
 
@@ -23,14 +25,16 @@ export const authorize = async (session, authLogin, authPassword) => {
 
 	if (authPassword !== password) {
 		return {
+			ok: false,
 			error: 'Неверный пароль',
-			res: null,
+			data: null,
 		}
 	}
 
 	return {
+		ok: true,
 		error: null,
-		res: {
+		data: {
 			id,
 			login,
 			session: sessions.create(user),

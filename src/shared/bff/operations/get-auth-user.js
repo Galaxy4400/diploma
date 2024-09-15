@@ -4,8 +4,9 @@ export const getAuthUser = async (session, storageSession) => {
 
 	if (!storageSession) {
 		return {
+			ok: false,
 			error: 'Вы не аутентифицированы',
-			res: null,
+			data: null,
 		}
 	}
 
@@ -13,8 +14,9 @@ export const getAuthUser = async (session, storageSession) => {
 
 	if (!dbSession) {
 		return {
+			ok: false,
 			error: 'Такой сессии не существует',
-			res: null,
+			data: null,
 		}
 	}
 
@@ -22,14 +24,16 @@ export const getAuthUser = async (session, storageSession) => {
 
 	if (!authUser) {
 		return {
+			ok: false,
 			error: 'Пользователь с такой сессией не найден',
-			res: null,
+			data: null,
 		}
 	}
 
 	return {
+		ok: true,
 		error: null,
-		res: {
+		data: {
 			id: authUser.id,
 			login: authUser.login,
 			session: storageSession,

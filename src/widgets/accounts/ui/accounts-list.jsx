@@ -15,6 +15,9 @@ export const AccountsList = () => {
 			<div>
 				<Link to="/account/1">Ссылка на конкретный счет</Link>
 			</div>
+			<div>
+				<Link to="/account-create">Добавить новый счет</Link>
+			</div>
 		</div>
 	)
 };

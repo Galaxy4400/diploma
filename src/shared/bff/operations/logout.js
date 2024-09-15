@@ -4,7 +4,8 @@ export const logout = async (session) => {
 	sessions.remove(session);
 
 	return {
+		ok: true,
 		error: null,
-		res: null,
+		data: null,
 	}
 };

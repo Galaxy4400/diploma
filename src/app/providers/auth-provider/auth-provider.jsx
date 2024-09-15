@@ -6,24 +6,31 @@ import { useServer } from "../server-provider";
 import { SESSION_KEY_NAME } from "../../../shared/constants";
 
 export const AuthProvider = ({ children }) => {
-	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
-
+	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
+	const [registrationError, setRegistrationError] = useState(null);
+	const [authorizeError, setAuthorizeError] = useState(null);
 
 	const authorize = useCallback(async (login, password) => {
-		const authUser = await requestServer.authorize(login, password);
+		const response = await requestServer.authorize(login, password);
 
-		if (!authUser) return;
+		if (!response.ok) {
+			setAuthorizeError(response.error);
+			return
+		};
 
-		dispatch(userAction.setUser(authUser));
+		dispatch(userAction.setUser(response.data));
 	}, [dispatch, requestServer]);
 
 
-	const register = useCallback(async (login, password) => {
-		const createdUser = await requestServer.register(login, password);
+	const registration = useCallback(async (login, password) => {
+		const response = await requestServer.register(login, password);
 		
-		if (!createdUser) return;
+		if (!response.ok) {
+			setRegistrationError(response.error);
+			return;
+		};
 
 		authorize(login, password);
 	}, [authorize, requestServer]);
@@ -31,6 +38,9 @@ export const AuthProvider = ({ children }) => {
 
 	const logout = useCallback(async () => {
 		await requestServer.logout();
+
+		setAuthorizeError(null);
+		setRegistrationError(null);
 
 		dispatch(userAction.logout());
 	}, [dispatch, requestServer]);
@@ -46,14 +56,13 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then((user) => user && dispatch(userAction.setUser(user)))
+			.then(({data}) => data && dispatch(userAction.setUser(data)))
 			.then(() => setIsAuthInitialize(true));
 			
 	}, [dispatch, logout, requestServer]);
 
-
 	return (
-		<AuthContext.Provider value={{ authorize, register, logout }}>
+		<AuthContext.Provider value={{ authorize, registration, logout, authorizeError, registrationError }}>
 			{isAuthInitialize && children}
 		</AuthContext.Provider>
 	);

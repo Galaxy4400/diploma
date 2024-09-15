@@ -1,19 +1,15 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { ErrorList } from '../../../shared/ui';
-import { registerFormRules } from '../lib/rules';
-import { useAuth } from '../../../app/providers/auth-provider';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ErrorList } from "../../../shared/ui";
+import { useForm } from "react-hook-form";
+import { createAccountFormRules } from "../lib";
 
-
-export const RegisterForm = () => {
+export const CreateAccountForm = () => {
 	const {
 		register, handleSubmit, formState: { errors }
-	} = useForm({ resolver: yupResolver(registerFormRules) });
+	} = useForm({ resolver: yupResolver(createAccountFormRules) });
 
-	const { registration, registrationError } = useAuth();
-
-	const onSubmit = async ({ login, password }) => {
-		registration(login, password);
+	const onSubmit = async (data) => {
+		console.log('create account:', data);
 	};
 
 	return (
@@ -25,7 +21,6 @@ export const RegisterForm = () => {
 				<button type='submit'>Зарегистрироваться</button>
 			</form>
 			<ErrorList formErrors={errors} />
-			{registrationError && <div>{registrationError}</div>}
 		</div>
-	)
+	);
 };

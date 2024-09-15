@@ -17,6 +17,18 @@
       "password": "2222",
       "registedAt": "2052-03-08 12:02",
       "id": "ZaCytfE"
+    },
+    {
+      "login": "3333",
+      "password": "3333",
+      "registedAt": "2034-10-12 16:06",
+      "id": "3KbIEEP"
+    },
+    {
+      "login": "1111",
+      "password": "1111",
+      "registedAt": "2037-09-29 09:58",
+      "id": "A-epHVR"
     }
   ],
   "accounts": [
@@ -96,5 +108,11 @@
       "createdAt": "2023-01-01"
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "hash": "0.62259043762501975471934656525263562798500061035156",
+      "userId": "A-epHVR",
+      "id": 1
+    }
+  ]
 }
