@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { AuthContext } from "./auth-context";
-import { userAction } from "../../store/reducers/user-reducer";
 import { useCallback, useLayoutEffect, useState } from "react";
 import { useServer } from "../server-provider";
 import { SESSION_KEY_NAME } from "../../../shared/constants";
+import { resetAuthUser, setAuthUser } from "../../../entities/auth-user";
 
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 			return;
 		};
 
-		dispatch(userAction.setUser(authUser));
+		dispatch(setAuthUser(authUser));
 
 		sessionStorage.setItem(SESSION_KEY_NAME, authUser.session);
 	}, [dispatch, requestServer]);
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 		setAuthorizeError(null);
 		setRegistrationError(null);
 
-		dispatch(userAction.logout());
+		dispatch(resetAuthUser());
 
 		sessionStorage.removeItem(SESSION_KEY_NAME);
 	}, [dispatch, requestServer]);
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then(({data: user}) => user && dispatch(userAction.setUser(user)))
+			.then(({data: user}) => user && dispatch(setAuthUser(user)))
 			.then(() => setIsAuthInitialize(true));
 			
 	}, [dispatch, logout, requestServer]);

@@ -2,11 +2,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { useForm } from "react-hook-form";
 import { accountCreateFormRules } from "../lib";
-import { userSelector } from "../../../app/store";
 import { useSelector } from "react-redux";
+import { authUserIdSelector } from "../../../entities/auth-user";
 
 export const AccountCreateForm = () => {
-	const userId = useSelector(userSelector.userId);
+	const userId = useSelector(authUserIdSelector);
 	
 	const {
 		register, handleSubmit, formState: { errors }

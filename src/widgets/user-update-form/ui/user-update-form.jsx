@@ -3,15 +3,16 @@ import { useForm } from "react-hook-form";
 import { ErrorList } from "../../../shared/ui";
 import { userUpdateFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
-import { userAction, userSelector } from "../../../app/store";
 import { useServer } from "../../../app/providers/server-provider";
 import { removeEmptyValues } from "../../../shared/utils";
+import { authUserSelector } from "../../../entities/auth-user";
+import { updateAuthUser } from "../../../entities/auth-user";
 
 export const UserUpdateForm = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 
-	const authUser = useSelector(userSelector.user);
+	const authUser = useSelector(authUserSelector);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
 		resolver: yupResolver(userUpdateFormRules),
@@ -26,7 +27,7 @@ export const UserUpdateForm = () => {
 
 		const filledUserData = removeEmptyValues(userData);
 
-		dispatch(userAction.updateUser(requestServer, authUser.id, filledUserData));
+		dispatch(updateAuthUser(requestServer, authUser.id, filledUserData));
 	};
 
 

@@ -7,40 +7,10 @@
       "id": "001"
     },
     {
-      "login": "1212",
-      "password": "qqqqq",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "CenWejY"
-    },
-    {
       "login": "2222",
       "password": "2222",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "ZaCytfE"
-    },
-    {
-      "login": "3333",
-      "password": "3333",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "3KbIEEP"
-    },
-    {
-      "login": "1111",
-      "password": "1111",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "A-epHVR"
-    },
-    {
-      "login": "4444",
-      "password": "4444",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "AQ834aB"
-    },
-    {
-      "login": "5555",
-      "password": "5555",
-      "createdAt": "15.09.2024 22:12:45",
-      "id": "X4D9oLI"
+      "createdAt": "16.09.2024 00:30:03",
+      "id": "56gxruF"
     }
   ],
   "accounts": [
@@ -122,8 +92,8 @@
   ],
   "sessions": [
     {
-      "hash": "0.46785691531261042186429222056176513433456420898438",
-      "userId": "X4D9oLI",
+      "hash": "0.71953405159049532713311236875597387552261352539063",
+      "userId": "56gxruF",
       "id": 1
     }
   ]
