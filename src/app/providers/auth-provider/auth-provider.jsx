@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
 		requestServer.getAuthUser(storageSession)
 			.then((user) => user && authorize(user))
 			.then(() => setIsAuthInitialize(true));
+			
 	}, [authorize, logout, requestServer]);
 
 	return (

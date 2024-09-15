@@ -1,16 +1,16 @@
-import { useAuth } from "../../app/providers/auth-provider"
-import { useServer } from "../../app/providers/server-provider";
+import { AccountsList } from "../../widgets/accounts";
 
 export const MainPage = () => {
 	return (
-		<>
-			<h1>MainPage</h1>
-
-			<div>Аналитика (графики);</div>
-			<div>Отображение счетов;</div>
-			<div>Отображение категорий расходов/доходов;</div>
-			<div>Возможность открыть страницу добавления/редактирования счета или категории;</div>
-			<div>Возможность открыть страницу добавления операции.</div>
-		</>
+		<div>
+			<h1>ГЛАВНАЯ СТРАНИЦА</h1>
+			<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px'}}>
+				<AccountsList />
+				<div>Отображение категорий расходов/доходов;</div>
+				<div>Возможность открыть страницу добавления/редактирования счета или категории;</div>
+				<div>Возможность открыть страницу добавления операции.</div>
+				<div>Аналитика (графики);</div>
+			</div>
+		</div>
 	)
 }

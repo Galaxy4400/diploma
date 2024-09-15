@@ -3,8 +3,8 @@ import { AuthenticateRoute, ProtectedRoute } from "./utils";
 import { MainPage } from "../../pages/main";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
-import { MainLayout } from "../../layouts/main-layout";
 import { SettingsPage } from "../../pages/settings";
+import { MainLayout } from "../layouts/main-layout";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -15,14 +15,14 @@ export const routerConfig = createBrowserRouter([
 				index: true,
 				element: <MainPage />,
 			},
-			// {
-			// 	path: 'history',
-			// 	element: <HistoryPage />,
-			// },
 			{
 				path: 'settings',
 				element: <SettingsPage />,
 			},
+			// {
+			// 	path: 'history',
+			// 	element: <HistoryPage />,
+			// },
 			// {
 			// 	path: 'account',
 			// 	element: <AccountCreatePage />,

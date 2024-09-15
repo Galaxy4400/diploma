@@ -18,7 +18,7 @@ export const Header = () => {
 	return (
 		<div style={{display: "flex", justifyContent: "space-between"}}>
 			<div>
-				<Link to="/">Header</Link>
+				<Link to="/">ЛОГОТИП САЙТА</Link>
 			</div>
 			<div>
 				Юзер: <Link to="/settings">{authUser.login}</Link>
