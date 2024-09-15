@@ -5,6 +5,7 @@ import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
 import { SettingsPage } from "../../pages/settings";
 import { MainLayout } from "../layouts/main-layout";
+import { AccountPage } from "../../pages/account";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -27,10 +28,10 @@ export const routerConfig = createBrowserRouter([
 			// 	path: 'account',
 			// 	element: <AccountCreatePage />,
 			// },
-			// {
-			// 	path: 'account/:id',
-			// 	element: <AccountDetailsPage />,
-			// },
+			{
+				path: 'account/:id',
+				element: <AccountPage />,
+			},
 			// {
 			// 	path: 'category',
 			// 	element: <CategoryCreatePage />,

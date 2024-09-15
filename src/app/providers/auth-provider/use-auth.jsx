@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import { userSelector } from "../../store/reducers/user-reducer";
 
 export const useAuth = () => {
-	const { authorize, logout } = useContext(AuthContext);
+	const { ...authFuncions } = useContext(AuthContext);
 
 	const session = useSelector(userSelector.userSession);
 
 	const isAuth = !!session;
 
-	return { isAuth, authorize, logout };
+	return { ...authFuncions, isAuth };
 };

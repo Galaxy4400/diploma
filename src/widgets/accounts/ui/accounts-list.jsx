@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useServer } from "../../../app/providers/server-provider";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../app/store";
+import { Link } from "react-router-dom";
 
 export const AccountsList = () => {
 	// const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export const AccountsList = () => {
 		<div style={{padding: '10px', border: '1px solid black', maxWidth: '300px'}}>
 			<h2>СПИСОК СЧЕТОВ</h2>
 			<div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, dolore.
+				<Link to="/account/1">Ссылка на конкретный счет</Link>
 			</div>
 		</div>
 	)

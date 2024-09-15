@@ -7,18 +7,34 @@ import { SESSION_KEY_NAME } from "../../../shared/constants";
 
 export const AuthProvider = ({ children }) => {
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
-
 	const dispatch = useDispatch();
-
 	const { requestServer } = useServer();
 
-	const authorize = useCallback((user) => {
-		dispatch(userAction.setUser(user));
-	}, [dispatch]);
+
+	const authorize = useCallback(async (login, password) => {
+		const authUser = await requestServer.authorize(login, password);
+
+		if (!authUser) return;
+
+		dispatch(userAction.setUser(authUser));
+	}, [dispatch, requestServer]);
+
+
+	const register = useCallback(async (login, password) => {
+		const createdUser = await requestServer.register(login, password);
+		
+		if (!createdUser) return;
+
+		authorize(login, password);
+	}, [authorize, requestServer]);
 	
-	const logout = useCallback(() => {
+
+	const logout = useCallback(async () => {
+		await requestServer.logout();
+
 		dispatch(userAction.logout());
-	}, [dispatch]);
+	}, [dispatch, requestServer]);
+
 
 	useLayoutEffect(() => {
 		const storageSession = sessionStorage.getItem(SESSION_KEY_NAME);
@@ -30,13 +46,14 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then((user) => user && authorize(user))
+			.then((user) => user && dispatch(userAction.setUser(user)))
 			.then(() => setIsAuthInitialize(true));
 			
-	}, [authorize, logout, requestServer]);
+	}, [dispatch, logout, requestServer]);
+
 
 	return (
-		<AuthContext.Provider value={{ authorize, logout }}>
+		<AuthContext.Provider value={{ authorize, register, logout }}>
 			{isAuthInitialize && children}
 		</AuthContext.Provider>
 	);

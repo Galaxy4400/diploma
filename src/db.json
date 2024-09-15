@@ -11,6 +11,12 @@
       "password": "qqqqq",
       "registedAt": "2057-12-14 18:14",
       "id": "CenWejY"
+    },
+    {
+      "login": "2222",
+      "password": "2222",
+      "registedAt": "2052-03-08 12:02",
+      "id": "ZaCytfE"
     }
   ],
   "accounts": [
@@ -90,11 +96,5 @@
       "createdAt": "2023-01-01"
     }
   ],
-  "sessions": [
-    {
-      "hash": "0.48756672715289428587936981784878298640251159667969",
-      "userId": "001",
-      "id": 1
-    }
-  ]
+  "sessions": []
 }

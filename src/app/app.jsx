@@ -1,3 +1,4 @@
+import './assets/styles.scss';
 import { AppRouter } from "./router/app-router";
 import { Providers } from './providers/providers';
 
