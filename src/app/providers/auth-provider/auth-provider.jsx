@@ -13,14 +13,16 @@ export const AuthProvider = ({ children }) => {
 	const [authorizeError, setAuthorizeError] = useState(null);
 
 	const authorize = useCallback(async (login, password) => {
-		const response = await requestServer.authorize(login, password);
+		const { data: authUser, ok, error} = await requestServer.authorize(login, password);
 
-		if (!response.ok) {
-			setAuthorizeError(response.error);
-			return
+		if (!ok) {
+			setAuthorizeError(error);
+			return;
 		};
 
-		dispatch(userAction.setUser(response.data));
+		dispatch(userAction.setUser(authUser));
+
+		sessionStorage.setItem(SESSION_KEY_NAME, authUser.session);
 	}, [dispatch, requestServer]);
 
 
@@ -43,6 +45,8 @@ export const AuthProvider = ({ children }) => {
 		setRegistrationError(null);
 
 		dispatch(userAction.logout());
+
+		sessionStorage.removeItem(SESSION_KEY_NAME);
 	}, [dispatch, requestServer]);
 
 
@@ -56,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then(({data}) => data && dispatch(userAction.setUser(data)))
+			.then(({data: user}) => user && dispatch(userAction.setUser(user)))
 			.then(() => setIsAuthInitialize(true));
 			
 	}, [dispatch, logout, requestServer]);

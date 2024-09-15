@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const settingsFormRules = yup.object().shape({
+export const userUpdateFormRules = yup.object().shape({
 	login: yup.string().required().min(3).max(15),
 	password: yup.string().when('password', {
 		is: (value) => value?.length,

@@ -3,11 +3,11 @@ import { AuthenticateRoute, ProtectedRoute } from "./utils";
 import { MainPage } from "../../pages/main";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
-import { SettingsPage } from "../../pages/settings";
 import { MainLayout } from "../layouts/main-layout";
 import { AccountPage } from "../../pages/account";
 import { AuthLayout } from "../layouts/auth-layout";
 import { AccountCreatePage } from "../../pages/account-create";
+import { UserUpdatePage } from "../../pages/user-update";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -19,8 +19,8 @@ export const routerConfig = createBrowserRouter([
 				element: <MainPage />,
 			},
 			{
-				path: 'settings',
-				element: <SettingsPage />,
+				path: 'user-update',
+				element: <UserUpdatePage />
 			},
 			// {
 			// 	path: 'history',

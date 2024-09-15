@@ -1,5 +1,5 @@
+import { format } from "date-fns";
 import { API_HOST } from "../constants";
-import { generateData } from "../utils";
 
 export const createUser = (login, password) =>
 	fetch(`${API_HOST}/users`, {
@@ -10,7 +10,7 @@ export const createUser = (login, password) =>
 		body: JSON.stringify({
 			login,
 			password,
-			registedAt: generateData(),
+			createdAt: format(new Date(), 'dd.MM.yyyy HH:mm:ss'),
 		}),
 	})
 	.then(createdUser => createdUser.json());

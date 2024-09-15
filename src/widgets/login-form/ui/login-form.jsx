@@ -7,9 +7,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export const LoginForm = () => {
-	const {
-		register, handleSubmit, formState: { errors }
-	} = useForm({ resolver: yupResolver(authFormRules) });
+	const { register, handleSubmit, formState: { errors } } = useForm({ 
+		resolver: yupResolver(authFormRules) 
+	});
 
 	const location = useLocation();
 	const navigate = useNavigate();

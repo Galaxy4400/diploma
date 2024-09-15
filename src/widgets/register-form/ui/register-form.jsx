@@ -6,9 +6,9 @@ import { useAuth } from '../../../app/providers/auth-provider';
 
 
 export const RegisterForm = () => {
-	const {
-		register, handleSubmit, formState: { errors }
-	} = useForm({ resolver: yupResolver(registerFormRules) });
+	const { register, handleSubmit, formState: { errors } } = useForm({ 
+		resolver: yupResolver(registerFormRules)
+	});
 
 	const { registration, registrationError } = useAuth();
 

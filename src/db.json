@@ -1,34 +1,46 @@
 {
   "users": [
     {
-      "id": "001",
       "login": "1234",
       "password": "1234",
-      "registedAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14",
+      "id": "001"
     },
     {
       "login": "1212",
       "password": "qqqqq",
-      "registedAt": "2057-12-14 18:14",
+      "createdAt": "15.09.2024 19:30:14",
       "id": "CenWejY"
     },
     {
       "login": "2222",
       "password": "2222",
-      "registedAt": "2052-03-08 12:02",
+      "createdAt": "15.09.2024 19:30:14",
       "id": "ZaCytfE"
     },
     {
       "login": "3333",
       "password": "3333",
-      "registedAt": "2034-10-12 16:06",
+      "createdAt": "15.09.2024 19:30:14",
       "id": "3KbIEEP"
     },
     {
       "login": "1111",
       "password": "1111",
-      "registedAt": "2037-09-29 09:58",
+      "createdAt": "15.09.2024 19:30:14",
       "id": "A-epHVR"
+    },
+    {
+      "login": "4444",
+      "password": "4444",
+      "createdAt": "15.09.2024 19:30:14",
+      "id": "AQ834aB"
+    },
+    {
+      "login": "5555",
+      "password": "5555",
+      "createdAt": "15.09.2024 22:12:45",
+      "id": "X4D9oLI"
     }
   ],
   "accounts": [
@@ -37,14 +49,14 @@
       "userId": "001",
       "typeId": "001",
       "name": "Название счета 1",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     },
     {
       "id": "002",
       "userId": "001",
       "typeId": "002",
       "name": "Название счета 2",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     }
   ],
   "accountTypes": [
@@ -77,41 +89,41 @@
       "userId": "001",
       "accountId": "001",
       "categoryId": "001",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     },
     {
       "id": "002",
       "userId": "001",
       "accountId": "001",
       "categoryId": "001",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     },
     {
       "id": "003",
       "userId": "001",
       "accountId": "001",
       "categoryId": "001",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     },
     {
       "id": "004",
       "userId": "001",
       "accountId": "001",
       "categoryId": "001",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     },
     {
       "id": "005",
       "userId": "001",
       "accountId": "001",
       "categoryId": "001",
-      "createdAt": "2023-01-01"
+      "createdAt": "15.09.2024 19:30:14"
     }
   ],
   "sessions": [
     {
-      "hash": "0.62259043762501975471934656525263562798500061035156",
-      "userId": "A-epHVR",
+      "hash": "0.46785691531261042186429222056176513433456420898438",
+      "userId": "X4D9oLI",
       "id": 1
     }
   ]

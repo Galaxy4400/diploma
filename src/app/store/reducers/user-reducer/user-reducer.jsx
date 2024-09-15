@@ -11,7 +11,7 @@ export const userReducer = (state = initialUserState, { type, payload }) => {
 		case ACTION_TYPE.SET_USER: {
 			return { ...state, ...payload }
 		}
-		case ACTION_TYPE.LOGOUT: {
+		case ACTION_TYPE.RESET_USER: {
 			return initialUserState;
 		}
 		default:

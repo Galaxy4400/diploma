@@ -14,7 +14,7 @@ export const Header = () => {
 				<Link to="/">ЛОГОТИП САЙТА</Link>
 			</div>
 			<div>
-				Юзер: <Link to="/settings">{authUser.login}</Link>
+				Юзер: <Link to="/user-update">{authUser.login}</Link>
 			</div>
 			<div>
 				<button onClick={() => logout()}>Выйти</button>
