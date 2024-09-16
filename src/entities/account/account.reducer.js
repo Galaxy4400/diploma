@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from "../../../shared/constants";
+import { ACTION_TYPE } from "../../shared/constants";
 
 const initialAccountState = {
 	id: null,
