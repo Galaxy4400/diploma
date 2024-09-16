@@ -1,6 +1,6 @@
 import './assets/styles.scss';
-import { AppRouter } from "./router/app-router";
-import { Providers } from './providers/providers';
+import { Providers } from './providers';
+import { AppRouter } from './router';
 
 export const App = () => {
 	return (

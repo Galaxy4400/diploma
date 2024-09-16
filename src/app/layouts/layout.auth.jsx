@@ -5,5 +5,5 @@ export const AuthLayout = () => {
 		<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', padding: '20px'}}>
 			<Outlet />
 		</div>
-	)
+	);
 };
