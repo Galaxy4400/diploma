@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectAuth } from "../../entities/auth";
 import { LogoutButton } from "../../features/session";
+import { pathKey } from "../../shared/lib/router";
 
 
 export const Header = () => {
@@ -10,10 +11,10 @@ export const Header = () => {
 	return (
 		<div style={{display: "flex", justifyContent: "space-between", marginBottom: '30px'}}>
 			<div>
-				<Link to="/">ЛОГОТИП САЙТА</Link>
+				<Link to={pathKey.home()}>ЛОГОТИП САЙТА</Link>
 			</div>
 			<div>
-				Юзер: <Link to="/user/edit">{authUser.login}</Link>
+				Юзер: <Link to={pathKey.settings()}>{authUser.login}</Link>
 			</div>
 			<div>
 				<LogoutButton />

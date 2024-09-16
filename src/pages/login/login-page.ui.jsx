@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { LoginForm } from "../../features/session";
+import { pathKey } from "../../shared/lib/router";
 
 
 export const LoginPage = () => {
@@ -7,7 +8,7 @@ export const LoginPage = () => {
 		<div style={{display: 'grid', justifyItems: 'center'}}>
 			<h1>СТРАНИЦА АВТОРИЗАЦИИ</h1>
 			<LoginForm />
-			<Link to="/register">Регистрация</Link>
+			<Link to={pathKey.register()}>Регистрация</Link>
 		</div>
 	)
 };

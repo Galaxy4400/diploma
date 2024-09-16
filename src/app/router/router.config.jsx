@@ -8,11 +8,12 @@ import { AccountCreatePage } from "../../pages/account-create";
 import { AccountEditPage } from "../../pages/account-edit";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
+import { pathKey } from "../../shared/lib/router";
 
 
 export const routerConfig = createBrowserRouter([
 	{
-		path: '/',
+		path: pathKey.home(),
 		element: <ProtectedRoute element={<MainLayout />} />,
 		children: [
 			{
@@ -20,23 +21,23 @@ export const routerConfig = createBrowserRouter([
 				element: <MainPage />,
 			},
 			{
-				path: 'user/edit',
+				path: pathKey.settings(),
 				element: <UserEditPage />
 			},
 			{
-				path: 'account',
-				element: <Navigate to="/account/create" replace />,
+				path: pathKey.account.root(),
+				element: <Navigate to={pathKey.account.create()} replace />,
 			},
 			{
-				path: 'account/:id',
+				path: pathKey.account.id(),
 				element: <AccountPage />,
 			},
 			{
-				path: 'account/create',
+				path: pathKey.account.create(),
 				element: <AccountCreatePage />,
 			},
 			{
-				path: 'account/:id/edit',
+				path: pathKey.account.edit(),
 				element: <AccountEditPage />,
 			},
 			// {
@@ -62,15 +63,15 @@ export const routerConfig = createBrowserRouter([
 		],
 	},
 	{
-		path: '/',
+		path: pathKey.home(),
 		element: <AuthenticateRoute element={<AuthLayout />}/>,
 		children: [
 			{
-				path: 'login',
+				path: pathKey.login(),
 				element: <LoginPage />,
 			},
 			{
-				path: 'register',
+				path: pathKey.register(),
 				element: <RegisterPage />,
 			},
 		],

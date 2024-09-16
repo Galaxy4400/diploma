@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { pathKey } from "../../../shared/lib/router";
 
 export const AccountsList = () => {
 	return (
@@ -7,12 +8,12 @@ export const AccountsList = () => {
 			<div>
 				<ul>
 					<li>
-						<Link to="/account/1">Ссылка на конкретный счет</Link>
+						<Link to={pathKey.account.id(1)}>Ссылка на конкретный счет</Link>
 					</li>
 				</ul>
 			</div>
 			<div>
-				<Link to="/account/create">Добавить новый счет</Link>
+				<Link to={pathKey.account.create()}>Добавить новый счет</Link>
 			</div>
 		</div>
 	)
