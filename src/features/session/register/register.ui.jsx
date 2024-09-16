@@ -1,8 +1,8 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { ErrorList } from '../../../shared/ui';
-import { registerFormRules } from '../lib/rules';
-import { useAuth } from '../../../app/providers/auth';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { registerFormRules } from "./register.rules";
+import { useAuth } from "../../../app/providers/auth";
+import { ErrorList } from "../../../shared/ui";
 
 
 export const RegisterForm = () => {
