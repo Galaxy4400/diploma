@@ -1,12 +1,10 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../app/providers/auth";
 import { selectAuth } from "../../entities/auth";
+import { LogoutButton } from "../../features/session";
 
 
 export const Header = () => {
-	const { logout } = useAuth();
-
 	const authUser = useSelector(selectAuth);
 
 	return (
@@ -18,7 +16,7 @@ export const Header = () => {
 				Юзер: <Link to="/user/edit">{authUser.login}</Link>
 			</div>
 			<div>
-				<button onClick={() => logout()}>Выйти</button>
+				<LogoutButton />
 			</div>
 		</div>
 	)
