@@ -1,10 +1,10 @@
-import { AccountForm } from "../../widgets/account-form";
+import { CreateAccountForm } from "../../features/account";
 
 export const AccountCreatePage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА СОЗДАНИЯ СЧЕТА</h1>
-			<AccountForm />
+			<CreateAccountForm />
 		</div>
 	)
 };

@@ -75,6 +75,13 @@
       "userId": 1,
       "createdAt": "16.09.2024 23:21:48",
       "id": 8
+    },
+    {
+      "typeId": 3,
+      "name": "test",
+      "userId": 3,
+      "createdAt": "17.09.2024 01:24:32",
+      "id": 9
     }
   ],
   "accountTypes": [

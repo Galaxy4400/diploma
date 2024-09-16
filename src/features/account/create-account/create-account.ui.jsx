@@ -1,14 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { createAccountFormRules } from "./create-account.rules";
+import { useServer } from "../../../app/providers/server";
+import { useSelector } from "react-redux";
+import { selectAuthId } from "../../../entities/auth";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
-import { useForm } from "react-hook-form";
-import { accountCreateFormRules } from "../lib";
-import { useSelector } from "react-redux";
-import { useServer } from "../../../app/providers/server";
-import { useNavigate } from "react-router-dom";
-import { selectAuthId } from "../../../entities/auth";
 
-
-export const AccountForm = () => {
+export const CreateAccountForm = () => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 
@@ -16,7 +15,7 @@ export const AccountForm = () => {
 
 	const { register, handleSubmit, formState: { errors } } = useForm(
 		{
-			resolver: yupResolver(accountCreateFormRules),
+			resolver: yupResolver(createAccountFormRules),
 			defaultValues: {
 				userId,
 				typeId: '',
