@@ -1,11 +1,15 @@
 import * as yup from 'yup';
 
-export const userUpdateFormRules = yup.object().shape({
+export const userEditFormRules = yup.object().shape({
 	login: yup.string().required().min(3).max(15),
-	password: yup.string().when('password', {
-		is: (value) => value?.length,
-		then: (schema) => schema.min(3).max(15),
-		otherwise: (schema) => schema.nullable(),
-	}),
-	passcheck: yup.string().oneOf([yup.ref('password'), null]),
+	password: yup.string()
+		.transform((value) => !value ? undefined : value)
+		.when('password', {
+			is: (value) => value?.length,
+			then: (schema) => schema.min(3).max(15),
+			otherwise: (schema) => schema.notRequired(),
+		}),
+	passcheck: yup.string()
+		.transform((value) => !value ? undefined : value)
+		.oneOf([yup.ref('password'), null]),
 }, [['password', 'password']]);

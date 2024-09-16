@@ -21,7 +21,7 @@ export const Account = () => {
 			<div>Название: {account.name}</div>
 			<div>Тип: {account.typeId}</div>
 			<div>Дада: {account.createdAt}</div>
-			<Link to="update">Редактировать</Link>
+			<Link to="edit">Редактировать</Link>
 		</div>
 	)
 };

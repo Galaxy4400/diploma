@@ -1,10 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { ErrorList } from "../../../shared/ui";
-import { userUpdateFormRules } from "../lib";
+import { userEditFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server-provider";
-import { removeEmptyValues } from "../../../shared/utils";
 import { selectAuthUser, updateAuthUser } from "../../../entities/auth-user";
 
 export const UserForm = () => {
@@ -14,19 +13,17 @@ export const UserForm = () => {
 	const authUser = useSelector(selectAuthUser);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
-		resolver: yupResolver(userUpdateFormRules),
+		resolver: yupResolver(userEditFormRules),
 		defaultValues: {
 			login: authUser.login,
 		}
 	});
 
 
-	const onSubmit = async (userData) => {
+	const onSubmit = (userData) => {
 		delete userData.passcheck;
 
-		const filledUserData = removeEmptyValues(userData);
-
-		dispatch(updateAuthUser(requestServer, authUser.id, filledUserData));
+		dispatch(updateAuthUser(requestServer, authUser.id, userData));
 	};
 
 
@@ -39,7 +36,6 @@ export const UserForm = () => {
 				<button type='submit'>Внести изменения</button>
 			</form>
 			<ErrorList formErrors={errors} />
-			{/* {userUpdateError && <div>{userUpdateError}</div>} */}
 		</div>
 	)
 };

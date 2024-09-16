@@ -1,6 +1,6 @@
 import { UserForm } from "../../widgets/user-form";
 
-export const UserUpdatePage = () => {
+export const UserEditPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА РЕДАКТИРОВАНИЯ ПОЛЬЗОВАТЕЛЯ</h1>

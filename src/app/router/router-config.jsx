@@ -7,8 +7,8 @@ import { MainLayout } from "../layouts/main-layout";
 import { AccountPage } from "../../pages/account";
 import { AuthLayout } from "../layouts/auth-layout";
 import { AccountCreatePage } from "../../pages/account-create";
-import { UserUpdatePage } from "../../pages/user-update";
-import { AccountUpdatePage } from "../../pages/account-update";
+import { UserEditPage } from "../../pages/user-edit";
+import { AccountEditPage } from "../../pages/account-edit";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -20,8 +20,8 @@ export const routerConfig = createBrowserRouter([
 				element: <MainPage />,
 			},
 			{
-				path: 'user-update',
-				element: <UserUpdatePage />
+				path: 'user/edit',
+				element: <UserEditPage />
 			},
 			// {
 			// 	path: 'history',
@@ -40,8 +40,8 @@ export const routerConfig = createBrowserRouter([
 				element: <AccountCreatePage />,
 			},
 			{
-				path: 'account/:id/update',
-				element: <AccountUpdatePage />,
+				path: 'account/:id/edit',
+				element: <AccountEditPage />,
 			},
 			// {
 			// 	path: 'category',
