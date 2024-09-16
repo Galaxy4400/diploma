@@ -1,1 +1,0 @@
-export const selectAuthUserSession = ({user}) => user.session;

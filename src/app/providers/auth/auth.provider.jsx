@@ -3,7 +3,7 @@ import { AuthContext } from "./auth.context";
 import { useCallback, useLayoutEffect, useState } from "react";
 import { useServer } from "../server";
 import { SESSION_KEY_NAME } from "../../../shared/constants";
-import { resetAuthUser, setAuthUser } from "../../../entities/auth-user";
+import { resetAuth, setAuth } from "../../../entities";
 
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 			return;
 		};
 
-		dispatch(setAuthUser(authUser));
+		dispatch(setAuth(authUser));
 
 		sessionStorage.setItem(SESSION_KEY_NAME, authUser.session);
 	}, [dispatch, requestServer]);
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 		setAuthorizeError(null);
 		setRegistrationError(null);
 
-		dispatch(resetAuthUser());
+		dispatch(resetAuth());
 
 		sessionStorage.removeItem(SESSION_KEY_NAME);
 	}, [dispatch, requestServer]);
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 		}
 		
 		requestServer.getAuthUser(storageSession)
-			.then(({data: user}) => user && dispatch(setAuthUser(user)))
+			.then(({data: user}) => user && dispatch(setAuth(user)))
 			.then(() => setIsAuthInitialize(true));
 			
 	}, [dispatch, logout, requestServer]);

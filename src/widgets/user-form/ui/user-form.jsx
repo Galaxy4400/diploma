@@ -4,13 +4,14 @@ import { ErrorList } from "../../../shared/ui";
 import { userEditFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
-import { selectAuthUser, updateAuthUser } from "../../../entities/auth-user";
+import { selectAuth, updateAuth } from "../../../entities";
+
 
 export const UserForm = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 
-	const authUser = useSelector(selectAuthUser);
+	const authUser = useSelector(selectAuth);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
 		resolver: yupResolver(userEditFormRules),
@@ -19,13 +20,11 @@ export const UserForm = () => {
 		}
 	});
 
-
 	const onSubmit = (userData) => {
 		delete userData.passcheck;
 
-		dispatch(updateAuthUser(requestServer, authUser.id, userData));
+		dispatch(updateAuth(requestServer, authUser.id, userData));
 	};
-
 
 	return (
 		<div style={{maxWidth: "300px"}}>

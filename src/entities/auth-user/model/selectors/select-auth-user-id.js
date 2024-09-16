@@ -1,1 +1,0 @@
-export const selectAuthUserId = ({user}) => user.id;

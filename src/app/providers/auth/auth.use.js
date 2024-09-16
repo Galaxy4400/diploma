@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "./auth.context";
 import { useSelector } from "react-redux";
-import { selectAuthUserSession } from "../../../entities/auth-user";
+import { selectAuthSession } from "../../../entities";
 
 export const useAuth = () => {
 	const { ...contextData } = useContext(AuthContext);
 
-	const session = useSelector(selectAuthUserSession);
+	const session = useSelector(selectAuthSession);
 
 	const isAuth = !!session;
 

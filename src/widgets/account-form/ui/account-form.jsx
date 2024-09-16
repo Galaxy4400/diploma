@@ -5,13 +5,13 @@ import { accountCreateFormRules } from "../lib";
 import { useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
 import { useNavigate } from "react-router-dom";
-import { selectAuthUserId } from "../../../entities/auth-user";
+import { selectAuthId } from "../../../entities";
 
 export const AccountForm = () => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 
-	const userId = useSelector(selectAuthUserId);
+	const userId = useSelector(selectAuthId);
 
 	const { register, handleSubmit, formState: { errors } } = useForm(
 		{

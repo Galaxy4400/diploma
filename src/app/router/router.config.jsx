@@ -1,13 +1,15 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { MainPage } from "../../pages/main";
-import { LoginPage } from "../../pages/login";
-import { RegisterPage } from "../../pages/register";
-import { AccountPage } from "../../pages/account";
-import { AccountCreatePage } from "../../pages/account-create";
-import { UserEditPage } from "../../pages/user-edit";
-import { AccountEditPage } from "../../pages/account-edit";
 import { AuthLayout, MainLayout } from "../layouts";
 import { AuthenticateRoute, ProtectedRoute } from "./router.hocs";
+import { 
+	AccountCreatePage,
+	AccountEditPage,
+	AccountPage,
+	LoginPage,
+	MainPage,
+	RegisterPage,
+	UserEditPage
+} from "../../pages";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -22,10 +24,6 @@ export const routerConfig = createBrowserRouter([
 				path: 'user/edit',
 				element: <UserEditPage />
 			},
-			// {
-			// 	path: 'history',
-			// 	element: <HistoryPage />,
-			// },
 			{
 				path: 'account',
 				element: <Navigate to="/account/create" replace />,
@@ -57,6 +55,10 @@ export const routerConfig = createBrowserRouter([
 			// {
 			// 	path: 'operation/:id',
 			// 	element: <OperationDetailsPage />,
+			// },
+			// {
+			// 	path: 'history',
+			// 	element: <HistoryPage />,
 			// },
 		],
 	},

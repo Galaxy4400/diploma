@@ -1,1 +1,0 @@
-export * from './update-auth-user';

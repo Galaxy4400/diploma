@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../app/providers/auth";
-import { selectAuthUser } from "../../entities/auth-user";
+import { selectAuth } from "../../entities";
 
 export const Header = () => {
 	const { logout } = useAuth();
 
-	const authUser = useSelector(selectAuthUser);
+	const authUser = useSelector(selectAuth);
 
 	return (
 		<div style={{display: "flex", justifyContent: "space-between", marginBottom: '30px'}}>

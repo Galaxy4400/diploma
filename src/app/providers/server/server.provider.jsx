@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { ServerContext } from "./server.context";
 import { useMemo } from "react";
 import { server } from "../../../shared/bff";
-import { selectAuthUserSession } from "../../../entities/auth-user";
+import { selectAuthSession } from "../../../entities";
 
 export const ServerProvider = ({ children }) => {
-	const session = useSelector(selectAuthUserSession);
+	const session = useSelector(selectAuthSession);
 
 	const requestServer = useMemo(() => {
 		const enhancedServerMethods = {};
