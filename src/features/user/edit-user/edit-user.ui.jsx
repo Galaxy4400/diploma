@@ -1,20 +1,20 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { ErrorList } from "../../../shared/ui";
-import { userEditFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
 import { selectAuth, updateAuth } from "../../../entities/auth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { editUserFormRules } from "./edit-user.rules";
+import { ErrorList } from "../../../shared/ui";
 
 
-export const UserForm = () => {
+export const EditUserForm = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 
 	const authUser = useSelector(selectAuth);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
-		resolver: yupResolver(userEditFormRules),
+		resolver: yupResolver(editUserFormRules),
 		defaultValues: {
 			login: authUser.login,
 		}
