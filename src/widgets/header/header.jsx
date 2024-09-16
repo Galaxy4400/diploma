@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../app/providers/auth-provider";
+import { useAuth } from "../../app/providers/auth";
 import { selectAuthUser } from "../../entities/auth-user";
 
 export const Header = () => {

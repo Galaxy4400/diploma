@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { AuthContext } from "./auth-context";
+import { AuthContext } from "./auth.context";
 import { useCallback, useLayoutEffect, useState } from "react";
-import { useServer } from "../server-provider";
+import { useServer } from "../server";
 import { SESSION_KEY_NAME } from "../../../shared/constants";
 import { resetAuthUser, setAuthUser } from "../../../entities/auth-user";
 

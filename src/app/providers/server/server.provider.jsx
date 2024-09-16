@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { ServerContext } from "./server-context";
+import { ServerContext } from "./server.context";
 import { useMemo } from "react";
 import { server } from "../../../shared/bff";
 import { selectAuthUserSession } from "../../../entities/auth-user";

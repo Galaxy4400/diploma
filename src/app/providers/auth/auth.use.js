@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "./auth-context";
+import { AuthContext } from "./auth.context";
 import { useSelector } from "react-redux";
 import { selectAuthUserSession } from "../../../entities/auth-user";
 

@@ -1,6 +1,6 @@
-import { AuthProvider } from "./auth-provider"
-import { ServerProvider } from "./server-provider";
-import { StoreProvider } from "./store-provider";
+import { AuthProvider } from "./auth";
+import { ServerProvider } from "./server";
+import { StoreProvider } from "./store";
 
 export const Providers = ({ children }) => {
 	return (

@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { ErrorList } from '../../../shared/ui';
 import { registerFormRules } from '../lib/rules';
-import { useAuth } from '../../../app/providers/auth-provider';
+import { useAuth } from '../../../app/providers/auth';
 
 
 export const RegisterForm = () => {

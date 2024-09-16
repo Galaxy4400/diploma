@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { ErrorList } from "../../../shared/ui";
 import { userEditFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
-import { useServer } from "../../../app/providers/server-provider";
+import { useServer } from "../../../app/providers/server";
 import { selectAuthUser, updateAuthUser } from "../../../entities/auth-user";
 
 export const UserForm = () => {

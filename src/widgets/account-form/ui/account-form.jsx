@@ -3,7 +3,7 @@ import { ErrorList } from "../../../shared/ui";
 import { useForm } from "react-hook-form";
 import { accountCreateFormRules } from "../lib";
 import { useSelector } from "react-redux";
-import { useServer } from "../../../app/providers/server-provider";
+import { useServer } from "../../../app/providers/server";
 import { useNavigate } from "react-router-dom";
 import { selectAuthUserId } from "../../../entities/auth-user";
 

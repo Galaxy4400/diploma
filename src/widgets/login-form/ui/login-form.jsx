@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { authFormRules } from '../lib/rules';
 import { ErrorList } from '../../../shared/ui';
-import { useAuth } from '../../../app/providers/auth-provider';
+import { useAuth } from '../../../app/providers/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { useServer } from "../../../app/providers/server-provider";
+import { useServer } from "../../../app/providers/server";
 import { loadAccount, selectAccount } from "../../../entities/account";
 
 export const Account = () => {
