@@ -1,1 +1,1 @@
-export * from './account-create-page';
+export * from './account-create-page.ui';

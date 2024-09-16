@@ -1,1 +1,1 @@
-export * from './user-edit-page';
+export * from './user-edit-page.ui';

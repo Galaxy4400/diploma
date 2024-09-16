@@ -3,7 +3,8 @@ import { AuthContext } from "./auth.context";
 import { useCallback, useLayoutEffect, useState } from "react";
 import { useServer } from "../server";
 import { SESSION_KEY_NAME } from "../../../shared/constants";
-import { resetAuth, setAuth } from "../../../entities";
+import { resetAuth, setAuth } from "../../../entities/auth";
+
 
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();

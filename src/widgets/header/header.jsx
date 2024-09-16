@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../app/providers/auth";
-import { selectAuth } from "../../entities";
+import { selectAuth } from "../../entities/auth";
+
 
 export const Header = () => {
 	const { logout } = useAuth();

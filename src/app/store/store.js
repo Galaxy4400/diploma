@@ -1,6 +1,8 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { thunk } from "redux-thunk";
-import { authReducer, accountReducer } from "../../entities";
+import { authReducer } from "../../entities/auth";
+import { accountReducer } from "../../entities/account";
+
 
 const rootReducer = combineReducers({
 	auth: authReducer,

@@ -4,7 +4,7 @@ import { ErrorList } from "../../../shared/ui";
 import { userEditFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
-import { selectAuth, updateAuth } from "../../../entities";
+import { selectAuth, updateAuth } from "../../../entities/auth";
 
 
 export const UserForm = () => {

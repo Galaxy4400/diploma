@@ -5,7 +5,8 @@ import { accountCreateFormRules } from "../lib";
 import { useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
 import { useNavigate } from "react-router-dom";
-import { selectAuthId } from "../../../entities";
+import { selectAuthId } from "../../../entities/auth";
+
 
 export const AccountForm = () => {
 	const navigate = useNavigate();

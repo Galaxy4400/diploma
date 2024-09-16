@@ -1,15 +1,14 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, MainLayout } from "../layouts";
 import { AuthenticateRoute, ProtectedRoute } from "./router.hocs";
-import { 
-	AccountCreatePage,
-	AccountEditPage,
-	AccountPage,
-	LoginPage,
-	MainPage,
-	RegisterPage,
-	UserEditPage
-} from "../../pages";
+import { MainPage } from "../../pages/main";
+import { UserEditPage } from "../../pages/user-edit";
+import { AccountPage } from "../../pages/account";
+import { AccountCreatePage } from "../../pages/account-create";
+import { AccountEditPage } from "../../pages/account-edit";
+import { LoginPage } from "../../pages/login";
+import { RegisterPage } from "../../pages/register";
+
 
 export const routerConfig = createBrowserRouter([
 	{
