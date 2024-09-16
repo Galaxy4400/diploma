@@ -1,4 +1,4 @@
-import { patchUserFetch } from "../api";
+import { api } from "../api";
 
 export const updateUser = async (session, id, updatingUserData) => {
 	if (!session) {
@@ -9,7 +9,7 @@ export const updateUser = async (session, id, updatingUserData) => {
 		}
 	}
 
-	const updatedUser = await patchUserFetch(id, updatingUserData);
+	const updatedUser = await api.updateUser(id, updatingUserData);
 
 	return {
 		ok: true,

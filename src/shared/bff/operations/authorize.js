@@ -1,4 +1,4 @@
-import { findUserFetch } from "../api";
+import { api } from "../api";
 import { sessions } from "../sessions";
 
 export const authorize = async (session, authLogin, authPassword) => {
@@ -10,8 +10,8 @@ export const authorize = async (session, authLogin, authPassword) => {
 			data: null,
 		}
 	}
-
-	const user = await findUserFetch(`login=${authLogin}`);
+	
+	const user = await api.findUser(`login=${authLogin}`);
 
 	if (!user) {
 		return {

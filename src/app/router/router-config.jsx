@@ -8,6 +8,7 @@ import { AccountPage } from "../../pages/account";
 import { AuthLayout } from "../layouts/auth-layout";
 import { AccountCreatePage } from "../../pages/account-create";
 import { UserUpdatePage } from "../../pages/user-update";
+import { AccountUpdatePage } from "../../pages/account-update";
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -28,15 +29,19 @@ export const routerConfig = createBrowserRouter([
 			// },
 			{
 				path: 'account',
-				element: <Navigate to="/account-create" replace />,
-			},
-			{
-				path: 'account-create',
-				element: <AccountCreatePage />,
+				element: <Navigate to="/account/create" replace />,
 			},
 			{
 				path: 'account/:id',
 				element: <AccountPage />,
+			},
+			{
+				path: 'account/create',
+				element: <AccountCreatePage />,
+			},
+			{
+				path: 'account/:id/update',
+				element: <AccountUpdatePage />,
 			},
 			// {
 			// 	path: 'category',

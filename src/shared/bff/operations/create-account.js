@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const removeUser = async (session, userId) => {
+export const createAccount = async (session, accountData) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,11 +9,11 @@ export const removeUser = async (session, userId) => {
 		}
 	}
 
-	await api.deleteUser(userId);
+	const createdAccount = await api.createAccount(accountData);
 
 	return {
 		ok: true,
 		error: null,
-		data: null,
+		data: createdAccount,
 	}
 }

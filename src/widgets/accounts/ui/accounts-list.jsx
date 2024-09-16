@@ -12,7 +12,7 @@ export const AccountsList = () => {
 				</ul>
 			</div>
 			<div>
-				<Link to="/account-create">Добавить новый счет</Link>
+				<Link to="/account/create">Добавить новый счет</Link>
 			</div>
 		</div>
 	)

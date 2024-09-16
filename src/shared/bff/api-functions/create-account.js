@@ -1,16 +1,15 @@
 import { format } from "date-fns";
 import { API_HOST } from "../constants";
 
-export const createUserFetch = (login, password) =>
-	fetch(`${API_HOST}/users`, {
+export const createAccount = (accountData) =>
+	fetch(`${API_HOST}/accounts`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
 		},
 		body: JSON.stringify({
-			login,
-			password,
+			...accountData,
 			createdAt: format(new Date(), 'dd.MM.yyyy HH:mm:ss'),
 		}),
 	})
-	.then(createdUser => createdUser.json());
+	.then(response => response.json());

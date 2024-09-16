@@ -5,14 +5,13 @@ import { userUpdateFormRules } from "../lib";
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server-provider";
 import { removeEmptyValues } from "../../../shared/utils";
-import { authUserSelector } from "../../../entities/auth-user";
-import { updateAuthUser } from "../../../entities/auth-user";
+import { selectAuthUser, updateAuthUser } from "../../../entities/auth-user";
 
-export const UserUpdateForm = () => {
+export const UserForm = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 
-	const authUser = useSelector(authUserSelector);
+	const authUser = useSelector(selectAuthUser);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
 		resolver: yupResolver(userUpdateFormRules),

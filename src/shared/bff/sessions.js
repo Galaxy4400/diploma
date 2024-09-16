@@ -1,28 +1,28 @@
-import { createSessionFetch, deleteSessionFetch, getSessionFetch, getUserFetch } from "./api";
+import { api } from "./api";
 
 export const sessions = {
 	create: (user) => {
 		const hash = Math.random().toFixed(50);
 
-		createSessionFetch(hash, user.id);
+		api.createSession(hash, user.id);
 
 		return hash;
 	},
 
 	remove: async (hash) => {
-		const session = await getSessionFetch(hash);
+		const session = await api.getSession(hash);
 
 		if (!session) return;
 
-		deleteSessionFetch(session.id);
+		api.deleteSession(session.id);
 	},
 
 	access: async (hash, accessRoles) => {
-		const session = await getSessionFetch(hash);
+		const session = await api.getSession(hash);
 
 		if (!session) return;
 
-		const user = await getUserFetch(session.userId, true);
+		const user = await api.getUser(session.userId, true);
 
 		return !!user && accessRoles.includes(user.roleId);
 	}

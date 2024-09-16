@@ -1,6 +1,6 @@
 import { API_HOST } from "../constants";
 
-export const findSessionFetch = async (searchParams) => {
+export const findSession = async (searchParams) => {
 	return fetch(`${API_HOST}/sessions?${searchParams}`)
 		.then(response => response.json())
 		.then(([loadedSession]) => loadedSession);

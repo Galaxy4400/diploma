@@ -1,32 +1,54 @@
 {
   "users": [
     {
-      "login": "1234",
-      "password": "1234",
-      "createdAt": "15.09.2024 19:30:14",
-      "id": "001"
-    },
-    {
-      "login": "2222",
-      "password": "2222",
-      "createdAt": "16.09.2024 00:30:03",
-      "id": "56gxruF"
+      "login": "1111",
+      "password": "1111",
+      "createdAt": "16.09.2024 15:25:31",
+      "id": 1
     }
   ],
   "accounts": [
     {
-      "id": "001",
-      "userId": "001",
-      "typeId": "001",
-      "name": "Название счета 1",
-      "createdAt": "15.09.2024 19:30:14"
+      "typeId": 2,
+      "name": "test",
+      "userId": 1,
+      "createdAt": "16.09.2024 15:26:56",
+      "id": 1
     },
     {
-      "id": "002",
-      "userId": "001",
-      "typeId": "002",
-      "name": "Название счета 2",
-      "createdAt": "15.09.2024 19:30:14"
+      "typeId": 2,
+      "name": "test",
+      "userId": 1,
+      "createdAt": "16.09.2024 15:34:30",
+      "id": 2
+    },
+    {
+      "typeId": 3,
+      "name": "testdssdf af sa",
+      "userId": 1,
+      "createdAt": "16.09.2024 15:34:57",
+      "id": 3
+    },
+    {
+      "typeId": 2,
+      "name": "ststgas",
+      "userId": 1,
+      "createdAt": "16.09.2024 16:04:23",
+      "id": 4
+    },
+    {
+      "typeId": 2,
+      "name": "ststgas",
+      "userId": 1,
+      "createdAt": "16.09.2024 16:04:36",
+      "id": 5
+    },
+    {
+      "typeId": 1,
+      "name": "asdgsdfg",
+      "userId": 1,
+      "createdAt": "16.09.2024 17:07:21",
+      "id": 6
     }
   ],
   "accountTypes": [
@@ -53,47 +75,11 @@
       "name": "Продукты"
     }
   ],
-  "operations": [
-    {
-      "id": "001",
-      "userId": "001",
-      "accountId": "001",
-      "categoryId": "001",
-      "createdAt": "15.09.2024 19:30:14"
-    },
-    {
-      "id": "002",
-      "userId": "001",
-      "accountId": "001",
-      "categoryId": "001",
-      "createdAt": "15.09.2024 19:30:14"
-    },
-    {
-      "id": "003",
-      "userId": "001",
-      "accountId": "001",
-      "categoryId": "001",
-      "createdAt": "15.09.2024 19:30:14"
-    },
-    {
-      "id": "004",
-      "userId": "001",
-      "accountId": "001",
-      "categoryId": "001",
-      "createdAt": "15.09.2024 19:30:14"
-    },
-    {
-      "id": "005",
-      "userId": "001",
-      "accountId": "001",
-      "categoryId": "001",
-      "createdAt": "15.09.2024 19:30:14"
-    }
-  ],
+  "operations": [],
   "sessions": [
     {
-      "hash": "0.71953405159049532713311236875597387552261352539063",
-      "userId": "56gxruF",
+      "hash": "0.90555114670431735568456588225672021508216857910156",
+      "userId": 1,
       "id": 1
     }
   ]

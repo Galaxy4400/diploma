@@ -1,4 +1,4 @@
-import { findSession, getUser } from "../api";
+import { api } from "../api";
 
 export const getAccount = async (session, accountId) => {
 
@@ -10,23 +10,19 @@ export const getAccount = async (session, accountId) => {
 		}
 	}
 
-	// const authUser = await getUser(dbSession.userId);
+	const account = await api.getAccount(accountId);
 
-	// if (!authUser) {
-	// 	return {
-	// 		ok: false,
-	// 		error: 'Пользователь с такой сессией не найден',
-	// 		data: null,
-	// 	}
-	// }
+	if (!account) {
+		return {
+			ok: false,
+			error: 'Счет не найден',
+			data: null,
+		}
+	}
 
 	return {
 		ok: true,
 		error: null,
-		data: {
-			// id: authUser.id,
-			// login: authUser.login,
-			// session: storageSession,
-		},
+		data: account,
 	}
 };
