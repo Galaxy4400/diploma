@@ -1,32 +1,32 @@
-export const pathKey = {
+export const path = {
 	root: '/',
 	home() {
-		return pathKey.root;
+		return path.root;
 	},
 	login() {
-		return pathKey.root.concat('login');
+		return path.root.concat('login');
 	},
 	register() {
-		return pathKey.root.concat('register');
+		return path.root.concat('register');
 	},
 	settings() {
-		return pathKey.root.concat('user/edit');
+		return path.root.concat('user/edit');
 	},
 	page404() {
-		return pathKey.root.concat('404');
+		return path.root.concat('404');
 	},
 	account: {
 		root() {
-			return pathKey.root.concat('account');
+			return path.root.concat('account');
 		},
 		id(id = ':id') {
-			return pathKey.account.root().concat('/', id);
+			return path.account.root().concat('/', id);
 		},
 		create() {
-			return pathKey.account.root().concat('/create');
+			return path.account.root().concat('/create');
 		},
 		edit(id = ':id') {
-			return pathKey.account.root().concat('/', id, '/edit');
+			return path.account.root().concat('/', id, '/edit');
 		},
 	},
 }
