@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { path } from "../../../shared/lib/router";
+import { path } from "../../shared/lib/router";
 
 export const AccountsList = () => {
 	return (

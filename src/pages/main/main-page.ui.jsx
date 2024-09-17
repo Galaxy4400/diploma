@@ -1,4 +1,4 @@
-import { AccountsList } from "../../widgets/accounts";
+import { AccountsList } from "../../widgets/accounts-list"
 
 export const MainPage = () => {
 	return (
