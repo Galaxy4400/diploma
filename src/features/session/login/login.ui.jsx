@@ -7,12 +7,12 @@ import { loginFormRules } from "./login.rules";
 
 
 export const LoginForm = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(loginFormRules)
 	});
-
-	const location = useLocation();
-	const navigate = useNavigate();
 
 	const { authorize, authorizeError } = useAuth();
 

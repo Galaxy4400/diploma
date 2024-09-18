@@ -12,4 +12,4 @@ export const updateAccount = (requestServer, accountId, accountData) => async (d
 	const { data: account } = await requestServer.updateAccount(accountId, accountData);
 
 	dispatch(setAccount(account));
-}
+};

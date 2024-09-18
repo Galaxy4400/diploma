@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const removeUser = async (session, userId) => {
+export const deleteAccount = async (session, accountId) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,7 +9,7 @@ export const removeUser = async (session, userId) => {
 		}
 	}
 
-	await api.deleteUser(userId);
+	await api.deleteAccount(accountId);
 
 	return {
 		ok: true,
