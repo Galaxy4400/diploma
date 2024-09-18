@@ -1,1 +1,1 @@
-export * from './edit-user';
+export * from './user-edit';

@@ -3,7 +3,7 @@ import { useServer } from "../../../app/providers/server";
 import { updateAuth } from "../../../entities/auth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { editUserFormRules } from "./edit-user.rules";
+import { editUserFormRules } from "./user-edit.rules";
 import { ErrorList } from "../../../shared/ui";
 import { useEffect } from "react";
 
