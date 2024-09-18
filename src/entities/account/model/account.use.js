@@ -4,16 +4,18 @@ import { useParams } from "react-router-dom";
 import { selectAccount } from "./account.selectors";
 import { useEffect } from "react";
 import { loadAccount } from "./account.thunks";
+import { useAuth } from "../../../app/providers/auth";
 
 export const useLoadAccount = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 	const { id: accountId } = useParams();
+	const { authUser } = useAuth();
 	const account = useSelector(selectAccount);
 
 	useEffect(() => {
-		dispatch(loadAccount(requestServer, accountId ));
-	}, [accountId, dispatch, requestServer]);
+		dispatch(loadAccount(requestServer, accountId, authUser.id ));
+	}, [accountId, dispatch, requestServer, authUser.id]);
 
-	return account;
+	return account.id ? account : null;
 }

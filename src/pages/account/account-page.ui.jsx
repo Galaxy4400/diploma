@@ -1,4 +1,5 @@
 import { useLoadAccount } from "../../entities/account";
+import { ErrorHandler } from "../../shared/ui";
 import { Account } from "../../widgets/account";
 
 
@@ -8,8 +9,11 @@ export const AccountPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА СЧЕТА</h1>
-
-			<Account accountData={account} />
+			{account ? (
+				<Account accountData={account} />
+			) : (
+				<ErrorHandler message="Такой счет не найден" />
+			)}
 		</div>
 	)
 };

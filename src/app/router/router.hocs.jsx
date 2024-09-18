@@ -5,14 +5,14 @@ import { useAuth } from "../providers/auth";
 export const ProtectedRoute = ({ element }) => {
 	const location = useLocation();
 	
-	const { isAuth } = useAuth();
+	const { authUser } = useAuth();
 
-	return isAuth ? element : <Navigate to="/login" replace state={{from: location}} />;
+	return authUser ? element : <Navigate to="/login" replace state={{from: location}} />;
 };
 
 
 export const AuthenticateRoute = ({ element }) => {
-  const { isAuth } = useAuth();
+  const { authUser } = useAuth();
 
-  return isAuth ? <Navigate to="/" replace /> : element;
+  return authUser ? <Navigate to="/" replace /> : element;
 };

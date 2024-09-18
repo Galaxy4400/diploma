@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectAuth } from "../../entities/auth";
 import { EditUserForm } from "../../features/user";
+import { useAuth } from "../../app/providers/auth";
 
 export const UserEditPage = () => {
-	const authUser = useSelector(selectAuth);
+	const { authUser } = useAuth();
 
 	return (
 		<div>
