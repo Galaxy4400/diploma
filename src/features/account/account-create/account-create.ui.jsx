@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { accountCreateFormRules } from "./account-create.rules";
+import { path } from "../../../shared/lib/router";
 
 export const AccountCreateForm = () => {
 	const navigate = useNavigate();
@@ -26,7 +27,7 @@ export const AccountCreateForm = () => {
 	const onSubmit = async (accountData) => {
 		const { data: createdAccount } = await requestServer.createAccount(accountData);
 
-		navigate(`/account/${createdAccount.id}`);
+		navigate(path.account.id(createdAccount.id));
 	};
 
 	return (

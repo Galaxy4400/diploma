@@ -21,15 +21,8 @@
   ],
   "accounts": [
     {
-      "typeId": 2,
-      "name": "test",
-      "userId": 1,
-      "createdAt": "16.09.2024 15:26:56",
-      "id": 1
-    },
-    {
-      "typeId": 2,
-      "name": "test",
+      "typeId": 3,
+      "name": "testas   112937",
       "userId": 1,
       "createdAt": "16.09.2024 15:34:30",
       "id": 2

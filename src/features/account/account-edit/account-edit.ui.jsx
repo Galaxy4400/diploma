@@ -1,4 +1,4 @@
-import { editAccountFormRules } from "./edit-account.rules";
+import { accountEditFormRules } from "./account-edit.rules";
 import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ export const EditAccountForm = ({ accountData }) => {
 	const { requestServer } = useServer();
 	
 	const { register, handleSubmit, reset, formState: { errors } } = useForm({
-		resolver: yupResolver(editAccountFormRules),
+		resolver: yupResolver(accountEditFormRules),
 	});
 
 	useEffect(() => {
