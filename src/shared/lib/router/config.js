@@ -26,7 +26,7 @@ export const path = {
 			return path.account.root().concat('/create');
 		},
 		edit(id = ':id') {
-			return path.account.root().concat('/', id, '/edit');
+			return path.account.id(id).concat('/edit');
 		},
 	},
 }

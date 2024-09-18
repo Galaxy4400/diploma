@@ -17,14 +17,14 @@ export const LoginForm = () => {
 	const { authorize, authorizeError } = useAuth();
 
 	const onSubmit = async ({ login, password }) => {
-		await authorize(login, password)
+		await authorize(login, password);
 
 		navigate(location.state?.from?.pathname);
 	};
 
 	return (
-		<div style={{width: "300px"}}>
-			<form onSubmit={handleSubmit(onSubmit)} style={{display: "grid", gap: "10px"}}>
+		<div style={{ width: "300px" }}>
+			<form onSubmit={handleSubmit(onSubmit)} style={{ display: "grid", gap: "10px" }}>
 				<input {...register('login')} type="text" placeholder='Логин...' />
 				<input {...register('password')} type="password" placeholder='Пароль...' />
 				<button type='submit'>Войти</button>
