@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const getAccounts = async (session) => {
+export const getAccounts = async (session, userId) => {
 
 	if (!session) {
 		return {
@@ -10,7 +10,7 @@ export const getAccounts = async (session) => {
 		}
 	}
 
-	const accounts = await api.getAccounts();
+	const accounts = await api.getAccounts(`userId_like=${userId}`);
 
 	return {
 		ok: true,
