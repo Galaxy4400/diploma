@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useServer } from "../../app/providers/server";
+import { useServer } from "../../../app/providers/server";
 import { useParams } from "react-router-dom";
 import { selectAccount } from "./account.selectors";
 import { useEffect } from "react";

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { path } from "../../shared/lib/router";
+import { AccountItem } from "../../entities/account";
+import { AccountDelete } from "../../features/account";
 
 export const AccountsList = ({ accounts = [] }) => {
 	return (
@@ -8,9 +10,11 @@ export const AccountsList = ({ accounts = [] }) => {
 			<div>
 				<ul>
 					{accounts.map(account => (
-						<li key={account.id}>
-							<Link to={path.account.id(account.id)}>{account.name}</Link>
-						</li>
+						<AccountItem 
+							key={account.id} 
+							accountData={account}
+							deleteSlot={<AccountDelete accountId={account.id}/>}
+						/>
 					))}
 				</ul>
 			</div>

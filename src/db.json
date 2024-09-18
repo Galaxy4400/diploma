@@ -28,20 +28,6 @@
       "id": 2
     },
     {
-      "typeId": 3,
-      "name": "testdssdf af sa",
-      "userId": 1,
-      "createdAt": "16.09.2024 15:34:57",
-      "id": 3
-    },
-    {
-      "typeId": 2,
-      "name": "ststgas",
-      "userId": 1,
-      "createdAt": "16.09.2024 16:04:23",
-      "id": 4
-    },
-    {
       "typeId": 2,
       "name": "ststgas",
       "userId": 1,
@@ -49,32 +35,18 @@
       "id": 5
     },
     {
-      "typeId": 1,
-      "name": "asdgsdfg",
-      "userId": 1,
-      "createdAt": "16.09.2024 17:07:21",
+      "typeId": 3,
+      "name": "sgsdhsd",
+      "userId": 3,
+      "createdAt": "18.09.2024 21:49:55",
       "id": 6
     },
     {
       "typeId": 1,
-      "name": "sdfsdfb",
-      "userId": 1,
-      "createdAt": "16.09.2024 23:21:48",
-      "id": 8
-    },
-    {
-      "typeId": 3,
-      "name": "test",
+      "name": "fghdf",
       "userId": 3,
-      "createdAt": "17.09.2024 01:24:32",
-      "id": 9
-    },
-    {
-      "typeId": 2,
-      "name": ",khkvhj",
-      "userId": 3,
-      "createdAt": "18.09.2024 19:45:15",
-      "id": 10
+      "createdAt": "18.09.2024 21:50:03",
+      "id": 7
     }
   ],
   "accountTypes": [
@@ -104,7 +76,7 @@
   "operations": [],
   "sessions": [
     {
-      "hash": "0.78058797652429978697341539373155683279037475585938",
+      "hash": "0.82499119072451221335029458714416250586509704589844",
       "userId": 3,
       "id": 1
     }
