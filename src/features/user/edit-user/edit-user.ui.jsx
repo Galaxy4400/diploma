@@ -14,10 +14,7 @@ export const EditUserForm = () => {
 	const authUser = useSelector(selectAuth);
 	
 	const { register, handleSubmit, formState: { errors } } = useForm({ 
-		resolver: yupResolver(editUserFormRules),
-		defaultValues: {
-			login: authUser.login,
-		}
+		resolver: yupResolver(editUserFormRules)
 	});
 
 	const onSubmit = (userData) => {
@@ -29,7 +26,7 @@ export const EditUserForm = () => {
 	return (
 		<div style={{maxWidth: "300px"}}>
 			<form onSubmit={handleSubmit(onSubmit)} style={{display: "grid", gap: "10px"}}>
-				<input {...register('login')} type="text" placeholder='Логин...' />
+				<input {...register('login')} defaultValue={authUser.login} type="text" placeholder='Логин...' />
 				<input {...register('password')} type="password" placeholder='Пароль...' />
 				<input {...register('passcheck')} type="password" placeholder='Проверка паролья...' />
 				<button type='submit'>Внести изменения</button>

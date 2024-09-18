@@ -6,3 +6,4 @@ export * from './get-auth-user';
 export * from './update-user';
 export * from './get-account';
 export * from './create-account';
+export * from './update-account';
