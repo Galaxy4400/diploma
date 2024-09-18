@@ -1,5 +1,5 @@
 import { useLoadAccount } from "../../entities/account";
-import { EditAccountForm } from "../../features/account";
+import { AccountEditForm } from "../../features/account";
 
 export const AccountEditPage = () => {
 	const account = useLoadAccount();
@@ -7,7 +7,7 @@ export const AccountEditPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА РЕДАКТИРОВАНИЯ СЧЕТА</h1>
-			<EditAccountForm accountData={account} />
+			<AccountEditForm accountData={account} />
 		</div>
 	)
 };

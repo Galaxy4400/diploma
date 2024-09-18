@@ -8,7 +8,7 @@ import { updateAccount } from "../../../entities/account";
 import { useEffect } from "react";
 
 
-export const EditAccountForm = ({ accountData }) => {
+export const AccountEditForm = ({ accountData }) => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 	
