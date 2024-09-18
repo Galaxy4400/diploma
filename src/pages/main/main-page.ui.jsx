@@ -1,5 +1,7 @@
 import { AccountsList } from "../../widgets/accounts-list"
 import { useLoadAccounts } from "../../entities/accounts"
+import { Link } from "react-router-dom";
+import { path } from "../../shared/lib/router";
 
 
 export const MainPage = () => {
@@ -12,7 +14,7 @@ export const MainPage = () => {
 				<AccountsList accounts={accounts} />
 				<div>Отображение категорий расходов/доходов;</div>
 				<div>Возможность открыть страницу добавления/редактирования счета или категории;</div>
-				<div>Возможность открыть страницу добавления операции.</div>
+				<Link to={path.operation.create()}>Добавить операцию</Link>
 				<div>Аналитика (графики);</div>
 			</div>
 		</div>

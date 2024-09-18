@@ -5,6 +5,7 @@ const initialAccountState = {
 	typeId: null,
 	name: null,
 	createdAt: null,
+	amount: null,
 };
 
 export const accountReducer = (state = initialAccountState, { type, payload }) => {

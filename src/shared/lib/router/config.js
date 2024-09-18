@@ -9,6 +9,9 @@ export const path = {
 	register() {
 		return path.root.concat('register');
 	},
+	history() {
+		return path.root.concat('history');
+	},
 	settings() {
 		return path.root.concat('user/edit');
 	},
@@ -27,6 +30,17 @@ export const path = {
 		},
 		edit(id = ':id') {
 			return path.account.id(id).concat('/edit');
+		},
+	},
+	operation: {
+		root() {
+			return path.root.concat('operation');
+		},
+		id(id = ':id') {
+			return path.operation.root().concat('/', id);
+		},
+		create() {
+			return path.operation.root().concat('/create');
 		},
 	},
 }

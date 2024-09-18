@@ -9,6 +9,9 @@ import { AccountEditPage } from "../../pages/account-edit";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
 import { path } from "../../shared/lib/router";
+import { OperationPage } from "../../pages/operation";
+import { HistoryPage } from "../../pages/history";
+import { OperationCreatePage } from "../../pages/operation-create";
 
 
 export const routerConfig = createBrowserRouter([
@@ -23,6 +26,10 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.settings(),
 				element: <UserEditPage />
+			},
+			{
+				path: path.history(),
+				element: <HistoryPage />
 			},
 			{
 				path: path.account.root(),
@@ -40,6 +47,18 @@ export const routerConfig = createBrowserRouter([
 				path: path.account.edit(),
 				element: <AccountEditPage />,
 			},
+			{
+				path: path.operation.root(),
+				element: <Navigate to={path.operation.create()} replace />,
+			},
+			{
+				path: path.operation.id(),
+				element: <OperationPage />,
+			},
+			{
+				path: path.account.create(),
+				element: <OperationCreatePage />,
+			},
 			// {
 			// 	path: 'category',
 			// 	element: <CategoryCreatePage />,
@@ -51,10 +70,6 @@ export const routerConfig = createBrowserRouter([
 			// {
 			// 	path: 'operation',
 			// 	element: <OperationCreatePage />,
-			// },
-			// {
-			// 	path: 'operation/:id',
-			// 	element: <OperationDetailsPage />,
 			// },
 			// {
 			// 	path: 'history',

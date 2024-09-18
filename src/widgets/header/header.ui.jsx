@@ -13,6 +13,9 @@ export const Header = () => {
 				<Link to={path.home()}>ЛОГОТИП САЙТА</Link>
 			</div>
 			<div>
+				<Link to={path.history()}>История</Link>
+			</div>
+			<div>
 				Юзер: <Link to={path.settings()}>{authUser.login}</Link>
 			</div>
 			<div>
