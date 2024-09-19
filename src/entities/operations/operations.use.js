@@ -7,10 +7,9 @@ export const useLoadOperations = (accountId = null) => {
 	const { authUser } = useAuth();
 	const [operations, setOperations] = useState([]);
 
-	useEffect(() => async () => {
-		const { data: operations} = await requestServer.getOperations(authUser.id, accountId);
-
-		setOperations(operations);
+	useEffect(() => {
+		requestServer.getOperations(authUser.id, accountId)
+			.then(({data: operations}) => setOperations(operations));
 	}, [requestServer, authUser, accountId]);
 
 	return operations;
