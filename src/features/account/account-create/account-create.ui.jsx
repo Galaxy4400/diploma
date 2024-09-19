@@ -13,11 +13,6 @@ export const AccountCreateForm = ({ userId }) => {
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(categoryCreateFormRules),
-		defaultValues: {
-			userId: userId,
-			typeId: '',
-			amount: 0,
-		}
 	});
 
 	const submitHandler = async (accountData) => {
@@ -27,18 +22,24 @@ export const AccountCreateForm = ({ userId }) => {
 	};
 
 	return (
-		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-				<input {...register('name')} type="text" placeholder='Название счета...' />
-				<select {...register('typeId')}>
-					<option value="" disabled>Тип счета...</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
-				<button type='submit'>Создать счет</button>
-			</form>
-			<ErrorList formErrors={errors} />
-		</div>
+		<>
+		 {userId && 
+			<div style={{ width: "300px" }}>
+				<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
+					<input {...register('userId')} type="hidden" defaultValue={userId} />
+					<input {...register('amount')} type="hidden" defaultValue="0" />
+					<input {...register('name')} type="text" placeholder='Название счета...' />
+					<select {...register('typeId')} defaultValue="">
+						<option value="" disabled>Тип счета...</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<button type='submit'>Создать счет</button>
+				</form>
+				<ErrorList formErrors={errors} />
+			</div>
+		 }
+		</>
 	);
 };

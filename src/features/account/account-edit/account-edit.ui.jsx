@@ -15,16 +15,9 @@ export const AccountEditForm = ({ accountData }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 	
-	const { register, handleSubmit, reset, formState: { errors } } = useForm({
+	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(accountEditFormRules),
 	});
-
-	useEffect(() => {
-		reset({
-			name: accountData?.name,
-			typeId: accountData?.typeId,
-		});
-	}, [accountData, reset]);
 
 	const submitHandler = async (editData) => {
 		dispatch(updateAccount(requestServer, accountData.id, editData));
@@ -33,19 +26,23 @@ export const AccountEditForm = ({ accountData }) => {
 	};
 
 	return (
-		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-				<input {...register('name')} type="text" placeholder='Название счета...' />
-				<select {...register('typeId')}>
-					<option value="" disabled>Тип счета...</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
-				<button type='submit'>Внести изменения</button>
-			</form>
-			<ErrorList formErrors={errors} />
-		</div>
+		<>
+		 {accountData &&
+			<div style={{ width: "300px" }}>
+				<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
+					<input {...register('name')} type="text" defaultValue={accountData.name} placeholder='Название счета...' />
+					<select {...register('typeId')} defaultValue={accountData.typeId}>
+						<option value="" disabled>Тип счета...</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<button type='submit'>Внести изменения</button>
+				</form>
+				<ErrorList formErrors={errors} />
+			</div>
+		 }
+		</>
 	);
 };
 
