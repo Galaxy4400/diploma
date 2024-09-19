@@ -14,6 +14,7 @@ import { HistoryPage } from "../../pages/history";
 import { OperationCreatePage } from "../../pages/operation-create";
 import { CategoryPage } from "../../pages/category";
 import { CategoryCreatePage } from "../../pages/category-create";
+import { CategoryEditPage } from "../../pages/category-edit";
 
 
 export const routerConfig = createBrowserRouter([
@@ -73,10 +74,10 @@ export const routerConfig = createBrowserRouter([
 				path: path.category.create(),
 				element: <CategoryCreatePage />,
 			},
-			// {
-			// 	path: path.category.edit(),
-			// 	element: <CategoryEditPage />,
-			// },
+			{
+				path: path.category.edit(),
+				element: <CategoryEditPage />,
+			},
 		],
 	},
 	{
