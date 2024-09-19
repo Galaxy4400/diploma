@@ -5,12 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { path } from "../../../shared/lib/router";
-
-
-const CATEGORY_TYPES = [
-	{ id: 1, name: 'Расход' },
-	{ id: 2, name: 'Доход' },
-];
+import { CATEGORY_TYPES } from "../../../entities/category";
 
 
 export const CategoryCreateForm = ({ userId }) => {
