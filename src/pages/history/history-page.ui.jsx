@@ -1,19 +1,19 @@
-import { useLoadAccount } from "../../entities/account";
+import { useLoadOperations } from "../../entities/operations";
 import { ErrorHandler } from "../../shared/ui";
-import { Account } from "../../widgets/account";
+import { OperationsList } from "../../widgets/operations-list";
 
 
 export const HistoryPage = () => {
-	// const account = useLoadAccount();
+	const operations = useLoadOperations();
 
 	return (
 		<div>
 			<h1>СТРАНИЦА ИСТОРИИ</h1>
-			{/* {account ? (
-				<Account accountData={account} />
+			{operations.length ? (
+				<OperationsList operations={operations} />
 			) : (
-				<ErrorHandler message="Такой счет не найден" />
-			)} */}
+				<ErrorHandler message="Вы не совершили ни одной операции" />
+			)}
 		</div>
 	)
 };

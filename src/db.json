@@ -81,15 +81,6 @@
     }
   ],
   "operations": [
-    {
-      "accountId": 10,
-      "categoryId": 3,
-      "amount": 3243,
-      "name": "agrsed",
-      "userId": 1,
-      "createdAt": "19.09.2024 15:03:46",
-      "id": 1
-    }
   ],
   "sessions": [
     {
