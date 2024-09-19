@@ -1,1 +1,1 @@
-export * from './account-edit.ui';
+export * from './category-edit.ui';
