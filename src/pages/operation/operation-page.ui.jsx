@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom";
 import { useLoadOperation } from "../../entities/operation";
 import { ErrorHandler } from "../../shared/ui";
 import { Operation } from "../../widgets/operation";
 
 
 export const OperationPage = () => {
-	const operation = useLoadOperation();
+	const { id: operationId } = useParams();
+
+	const operation = useLoadOperation(operationId);
 	
 	return (
 		<div>
@@ -12,7 +15,7 @@ export const OperationPage = () => {
 			{operation ? (
 				<Operation operationData={operation} />
 			) : (
-				<ErrorHandler message="Такой счет не найден" />
+				<ErrorHandler message="Такая операция не найдена" />
 			)}
 		</div>
 	)

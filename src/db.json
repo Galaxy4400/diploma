@@ -22,20 +22,6 @@
   "accounts": [
     {
       "typeId": 3,
-      "name": "testas 112937",
-      "userId": 1,
-      "createdAt": "16.09.2024 15:34:30",
-      "id": 2
-    },
-    {
-      "typeId": 2,
-      "name": "ststgas",
-      "userId": 1,
-      "createdAt": "16.09.2024 16:04:36",
-      "id": 5
-    },
-    {
-      "typeId": 3,
       "name": "sgsdhsd",
       "userId": 3,
       "createdAt": "18.09.2024 21:49:55",
@@ -49,20 +35,25 @@
       "id": 7
     },
     {
-      "userId": 1,
-      "accountId": "5",
-      "categoryId": "1",
-      "name": "sdfs",
-      "amount": "3243",
-      "createdAt": "19.09.2024 03:44:57",
-      "id": 8
-    },
-    {
       "typeId": 2,
       "name": "Счет второго юзера",
       "userId": 2,
       "createdAt": "19.09.2024 12:16:05",
       "id": 9
+    },
+    {
+      "typeId": 3,
+      "name": "shsdfhsd",
+      "userId": 1,
+      "createdAt": "19.09.2024 13:48:38",
+      "id": 10
+    },
+    {
+      "typeId": 2,
+      "name": "вапыекр",
+      "userId": 1,
+      "createdAt": "19.09.2024 13:50:09",
+      "id": 11
     }
   ],
   "accountTypes": [
@@ -91,30 +82,30 @@
   ],
   "operations": [
     {
-      "accountId": 2,
-      "categoryId": 1,
-      "amount": 1234,
-      "name": "test",
+      "accountId": 10,
+      "categoryId": 3,
+      "amount": 23325,
+      "name": "gasdgas",
       "userId": 1,
-      "createdAt": "19.09.2024 03:31:43",
+      "createdAt": "19.09.2024 13:58:27",
       "id": 1
     },
     {
-      "accountId": 5,
+      "accountId": 10,
       "categoryId": 2,
-      "amount": 324,
-      "name": "sdgsdg",
+      "amount": 2,
+      "name": "ags",
       "userId": 1,
-      "createdAt": "19.09.2024 03:32:43",
+      "createdAt": "19.09.2024 14:00:29",
       "id": 2
     },
     {
-      "accountId": 2,
-      "categoryId": 3,
-      "amount": 324,
-      "name": "asfa",
+      "accountId": 10,
+      "categoryId": 1,
+      "amount": 896,
+      "name": "jgfhjd",
       "userId": 1,
-      "createdAt": "19.09.2024 03:46:35",
+      "createdAt": "19.09.2024 14:13:34",
       "id": 3
     }
   ],

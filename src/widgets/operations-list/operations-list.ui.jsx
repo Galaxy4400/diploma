@@ -8,7 +8,7 @@ export const OperationsList = ({ operations = [] }) => {
 			<div>
 				<ul style={{display: 'grid', gap: '10px'}}>
 					{operations.map(operation => (
-						<li key={operation.id}>{operation.name}</li>
+						<li key={operation.id}><Link to={path.operation.id(operation.id)}>{operation.name}</Link></li>
 					))}
 					{/* {accounts.map(account => (
 						<AccountItem 

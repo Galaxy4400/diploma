@@ -19,6 +19,6 @@ export const OperationDelete = ({ accountId }) => {
 	}
 
 	return (
-		<button type="button" onClick={() => deleteHandler(accountId)}>Закрыть счет</button>
+		<button type="button" onClick={() => deleteHandler(accountId)}>Удалить</button>
 	)
 };
