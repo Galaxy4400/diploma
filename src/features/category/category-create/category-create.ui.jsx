@@ -14,9 +14,6 @@ export const CategoryCreateForm = ({ userId }) => {
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(categoryCreateFormRules),
-		defaultValues: {
-			userId: userId,
-		}
 	});
 
 	const submitHandler = async (categoryData) => {
@@ -26,26 +23,31 @@ export const CategoryCreateForm = ({ userId }) => {
 	};
 
 	return (
-		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-				<input {...register('name')} type="text" placeholder='Название категории...' />
-				<div>
-					{CATEGORY_TYPES.map((type, i) => (
-						<label key={type.id}>
-							<input {...register('typeId')} value={type.id} type="radio" defaultChecked={!i}/>
-							<span>{type.name}</span>
-						</label>
-					))}
+		<>
+			{userId && 
+				<div style={{ width: "300px" }}>
+					<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
+						<input {...register('userId')} type="hidden" defaultValue={userId}/>
+						<input {...register('name')} type="text" placeholder='Название категории...' />
+						<div>
+							{CATEGORY_TYPES.map((type, i) => (
+								<label key={type.id}>
+									<input {...register('typeId')} value={type.id} type="radio" defaultChecked={!i}/>
+									<span>{type.name}</span>
+								</label>
+							))}
+						</div>
+						<select {...register('iconId')}>
+							<option value="" disabled>Иконка категории...</option>
+							<option value="1">Иконка 1</option>
+							<option value="2">Иконка 2</option>
+							<option value="3">Иконка 3</option>
+						</select>
+						<button type='submit'>Создать категорию</button>
+					</form>
+					<ErrorList formErrors={errors} />
 				</div>
-				<select {...register('iconId')}>
-					<option value="" disabled>Иконка категории...</option>
-					<option value="1">Иконка 1</option>
-					<option value="2">Иконка 2</option>
-					<option value="3">Иконка 3</option>
-				</select>
-				<button type='submit'>Создать категорию</button>
-			</form>
-			<ErrorList formErrors={errors} />
-		</div>
+			}
+		</>
 	);
 };
