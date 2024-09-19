@@ -73,16 +73,12 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "Коммуналка"
-    },
-    {
-      "id": 2,
-      "name": "Транспорт"
-    },
-    {
-      "id": 3,
-      "name": "Продукты"
+      "name": "sdf",
+      "iconId": 1,
+      "typeId": 1,
+      "userId": 1,
+      "createdAt": "19.09.2024 23:42:35",
+      "id": 1
     }
   ],
   "operations": [

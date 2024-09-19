@@ -1,29 +1,30 @@
-import { useNavigate } from "react-router-dom";
+import { accountEditFormRules } from "./account-edit.rules";
 import { useServer } from "../../../app/providers/server";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
-import { categoryCreateFormRules } from "./account-create.rules";
-import { path } from "../../../shared/lib/router";
+import { updateAccount } from "../../../entities/account";
+import { useEffect } from "react";
 
 
-export const AccountCreateForm = ({ userId }) => {
-	const navigate = useNavigate();
+export const AccountEditForm = ({ accountData }) => {
+	const dispatch = useDispatch();
 	const { requestServer } = useServer();
-
-	const { register, handleSubmit, formState: { errors } } = useForm({
-		resolver: yupResolver(categoryCreateFormRules),
-		defaultValues: {
-			userId: userId,
-			typeId: '',
-			amount: 0,
-		}
+	
+	const { register, handleSubmit, reset, formState: { errors } } = useForm({
+		resolver: yupResolver(accountEditFormRules),
 	});
 
-	const submitHandler = async (accountData) => {
-		const { data: createdAccount } = await requestServer.createAccount(accountData);
+	useEffect(() => {
+		reset({
+			name: accountData?.name,
+			typeId: accountData?.typeId,
+		});
+	}, [accountData, reset]);
 
-		navigate(path.account.id(createdAccount.id));
+	const submitHandler = async (editData) => {
+		dispatch(updateAccount(requestServer, accountData.id, editData));
 	};
 
 	return (
@@ -36,9 +37,12 @@ export const AccountCreateForm = ({ userId }) => {
 					<option value="2">2</option>
 					<option value="3">3</option>
 				</select>
-				<button type='submit'>Создать счет</button>
+				<button type='submit'>Внести изменения</button>
 			</form>
 			<ErrorList formErrors={errors} />
 		</div>
 	);
 };
+
+
+

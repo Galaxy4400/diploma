@@ -12,6 +12,8 @@ import { path } from "../../shared/lib/router";
 import { OperationPage } from "../../pages/operation";
 import { HistoryPage } from "../../pages/history";
 import { OperationCreatePage } from "../../pages/operation-create";
+import { CategoryPage } from "../../pages/category";
+import { CategoryCreatePage } from "../../pages/category-create";
 
 
 export const routerConfig = createBrowserRouter([
@@ -59,17 +61,21 @@ export const routerConfig = createBrowserRouter([
 				path: path.operation.create(),
 				element: <OperationCreatePage />,
 			},
+			{
+				path: path.category.root(),
+				element: <Navigate to={path.category.create()} replace />,
+			},
+			{
+				path: path.category.id(),
+				element: <CategoryPage />,
+			},
+			{
+				path: path.category.create(),
+				element: <CategoryCreatePage />,
+			},
 			// {
-			// 	path: 'category',
-			// 	element: <CategoryCreatePage />,
-			// },
-			// {
-			// 	path: 'category/:id',
-			// 	element: <CategoryDetailsPage />,
-			// },
-			// {
-			// 	path: 'history',
-			// 	element: <HistoryPage />,
+			// 	path: path.category.edit(),
+			// 	element: <CategoryEditPage />,
 			// },
 		],
 	},

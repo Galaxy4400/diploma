@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
-import { selectAccount } from "./category.selectors";
 import { useEffect } from "react";
-import { loadAccount } from "./category.thunks";
 import { useAuth } from "../../../app/providers/auth";
+import { selectCategory } from "./category.selectors";
+import { loadCategory } from "./category.thunks";
 
-export const useLoadAccount = (accountId) => {
+export const useLoadCategory = (categoryId) => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
 	const { authUser } = useAuth();
-	const account = useSelector(selectAccount);
+	const category = useSelector(selectCategory);
 
 	useEffect(() => {
-		dispatch(loadAccount(requestServer, accountId, authUser.id ));
-	}, [accountId, dispatch, requestServer, authUser.id]);
+		dispatch(loadCategory(requestServer, categoryId, authUser.id ));
+	}, [categoryId, dispatch, requestServer, authUser]);
 
-	return account.id ? account : null;
+	return category.id ? category : null;
 }

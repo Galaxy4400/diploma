@@ -1,19 +1,19 @@
-import { resetAccount, setAccount } from "./category.actions";
+import { resetCategory, setCategory } from "./category.actions";
 
 
-export const loadAccount = (requestServer, accountId, userId) => async (dispatch) => {
-	const { data: account } = await requestServer.getAccount(accountId, userId);
+export const loadCategory = (requestServer, categoryId, userId) => async (dispatch) => {
+	const { data: category } = await requestServer.getCategory(categoryId, userId);
 
-	if (account) {
-		dispatch(setAccount(account));
+	if (category) {
+		dispatch(setCategory(category));
 	} else {
-		dispatch(resetAccount());
+		dispatch(resetCategory());
 	}
 };
 
 
-export const updateAccount = (requestServer, accountId, accountData) => async (dispatch) => {
-	const { data: account } = await requestServer.updateAccount(accountId, accountData);
+export const updateCategory = (requestServer, categoryId, categoryData) => async (dispatch) => {
+	const { data: category } = await requestServer.updateCategory(categoryId, categoryData);
 
-	dispatch(setAccount(account));
+	dispatch(setCategory(category));
 };

@@ -1,10 +1,10 @@
 import { ACTION_TYPE } from "../../../shared/lib/store";
 
 
-export const setAccount = (account) => {
-	return { type: ACTION_TYPE.SET_ACCOUNT, payload: account };
+export const setCategory = (category) => {
+	return { type: ACTION_TYPE.SET_CATEGORY, payload: category };
 }
 
-export const resetAccount = () => {
-	return { type: ACTION_TYPE.RESET_ACCOUNT };
+export const resetCategory = () => {
+	return { type: ACTION_TYPE.RESET_CATEGORY };
 }

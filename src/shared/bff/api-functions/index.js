@@ -15,4 +15,6 @@ export * from './create-operation';
 export * from './get-operation';
 export * from './get-operations';
 export * from './delete-operation';
+export * from './create-category';
+export * from './get-category';
 

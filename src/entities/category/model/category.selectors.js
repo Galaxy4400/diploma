@@ -1,3 +1,3 @@
-export const selectAccount = ({account}) => account;
+export const selectCategory = ({category}) => category;
 
-export const selectAccountId = ({account}) => account.id;
+export const selectCategoryId = ({category}) => category.id;

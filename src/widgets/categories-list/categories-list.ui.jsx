@@ -19,7 +19,7 @@ export const CategoriesList = ({ categories = [] }) => {
 				</ul> */}
 			</div>
 			<div>
-				<Link to={path.account.create()}>Добавить новую категорию</Link>
+				<Link to={path.category.create()}>Добавить новую категорию</Link>
 			</div>
 		</div>
 	)

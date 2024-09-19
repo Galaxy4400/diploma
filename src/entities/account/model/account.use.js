@@ -13,7 +13,7 @@ export const useLoadAccount = (accountId) => {
 
 	useEffect(() => {
 		dispatch(loadAccount(requestServer, accountId, authUser.id ));
-	}, [accountId, dispatch, requestServer, authUser.id]);
+	}, [accountId, dispatch, requestServer, authUser]);
 
 	return account.id ? account : null;
 }
