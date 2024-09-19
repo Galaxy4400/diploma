@@ -8,7 +8,7 @@ export const CategoryView = ({ categoryData, deleteSlot }) => {
 			<div>Название: {categoryData.name}</div>
 			<div>Тип: {categoryData.typeId}</div>
 			<div>Дата: {categoryData.createdAt}</div>
-			<Link to={path.account.edit(categoryData.id)}>Редактировать</Link>
+			<Link to={path.category.edit(categoryData.id)}>Редактировать</Link>
 			{deleteSlot}
 		</div>
 	)
