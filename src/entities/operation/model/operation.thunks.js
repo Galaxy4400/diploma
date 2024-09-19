@@ -7,7 +7,6 @@ export const loadOperation = (requestServer, operationId, userId) => async (disp
 	if (operation) {
 		dispatch(setOperation(operation));
 	} else {
-		console.log('get2');
 		dispatch(resetOperation());
 	}
 };
