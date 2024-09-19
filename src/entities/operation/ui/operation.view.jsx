@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-
-export const AccountView = ({ accountData, deleteSlot }) => {
+export const OperationView = ({ operationData, deleteSlot }) => {
 	return (
 		<div>
-			<div>Идентификатор: {accountData.id}</div>
-			<div>Название: {accountData.name}</div>
-			<div>Тип: {accountData.typeId}</div>
-			<div>Дада: {accountData.createdAt}</div>
-			<Link to="edit">Редактировать</Link>
+			<div>Идентификатор: {operationData.id}</div>
+			<div>Идентификатор счета: {operationData.accountId}</div>
+			<div>Идентификатор категории: {operationData.categoryId}</div>
+			<div>Название: {operationData.name}</div>
+			<div>Сумма: {operationData.amount}</div>
+			<div>Дада: {operationData.createdAt}</div>
 			{deleteSlot}
 		</div>
 	)

@@ -56,7 +56,7 @@ export const routerConfig = createBrowserRouter([
 				element: <OperationPage />,
 			},
 			{
-				path: path.account.create(),
+				path: path.operation.create(),
 				element: <OperationCreatePage />,
 			},
 			// {
@@ -66,10 +66,6 @@ export const routerConfig = createBrowserRouter([
 			// {
 			// 	path: 'category/:id',
 			// 	element: <CategoryDetailsPage />,
-			// },
-			// {
-			// 	path: 'operation',
-			// 	element: <OperationCreatePage />,
 			// },
 			// {
 			// 	path: 'history',

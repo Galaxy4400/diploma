@@ -1,3 +1,3 @@
-export const selectAccount = ({account}) => account;
+export const selectOperation = ({operation}) => operation;
 
-export const selectAccountId = ({account}) => account.id;
+export const selectOperationId = ({operation}) => operation.id;

@@ -5,10 +5,10 @@ import { AccountDelete } from "../../features/account";
 
 export const AccountsList = ({ accounts = [] }) => {
 	return (
-		<div style={{padding: '10px', border: '1px solid black', maxWidth: '300px'}}>
+		<div style={{padding: '10px', border: '1px solid #fff', maxWidth: '300px'}}>
 			<h2>СПИСОК СЧЕТОВ</h2>
 			<div>
-				<ul>
+				<ul style={{display: 'grid', gap: '10px'}}>
 					{accounts.map(account => (
 						<AccountItem 
 							key={account.id} 

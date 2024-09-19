@@ -1,19 +1,12 @@
-import { resetAccount, setAccount } from "./operation.actions";
+import { resetOperation, setOperation } from "./operation.actions";
 
 
-export const loadAccount = (requestServer, accountId, userId) => async (dispatch) => {
-	const { data: account } = await requestServer.getAccount(accountId, userId);
+export const loadOperation = (requestServer, operationId, userId) => async (dispatch) => {
+	const { data: operation } = await requestServer.getOperation(operationId, userId);
 
-	if (account) {
-		dispatch(setAccount(account));
+	if (operation) {
+		dispatch(setOperation(operation));
 	} else {
-		dispatch(resetAccount());
+		dispatch(resetOperation());
 	}
-};
-
-
-export const updateAccount = (requestServer, accountId, accountData) => async (dispatch) => {
-	const { data: account } = await requestServer.updateAccount(accountId, accountData);
-
-	dispatch(setAccount(account));
 };

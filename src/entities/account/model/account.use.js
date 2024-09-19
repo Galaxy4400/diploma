@@ -1,15 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
-import { useParams } from "react-router-dom";
 import { selectAccount } from "./account.selectors";
 import { useEffect } from "react";
 import { loadAccount } from "./account.thunks";
 import { useAuth } from "../../../app/providers/auth";
 
-export const useLoadAccount = () => {
+export const useLoadAccount = (accountId) => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
-	const { id: accountId } = useParams();
 	const { authUser } = useAuth();
 	const account = useSelector(selectAccount);
 

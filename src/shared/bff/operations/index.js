@@ -8,3 +8,6 @@ export * from './get-account';
 export * from './create-account';
 export * from './update-account';
 export * from './get-accounts';
+export * from './create-operation';
+export * from './get-operation';
+export * from './get-operations';

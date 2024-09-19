@@ -47,6 +47,15 @@
       "userId": 3,
       "createdAt": "18.09.2024 21:50:03",
       "id": 7
+    },
+    {
+      "userId": 1,
+      "accountId": "5",
+      "categoryId": "1",
+      "name": "sdfs",
+      "amount": "3243",
+      "createdAt": "19.09.2024 03:44:57",
+      "id": 8
     }
   ],
   "accountTypes": [
@@ -74,20 +83,38 @@
     }
   ],
   "operations": [
-		{
+    {
+      "accountId": 2,
+      "categoryId": 1,
+      "amount": 1234,
+      "name": "test",
       "userId": 1,
-			"accountId": 1,
-			"categoryId": 1,
-      "name": "testas 112937",
-			"amount": 100,
-      "createdAt": "16.09.2024 15:34:30",
+      "createdAt": "19.09.2024 03:31:43",
       "id": 1
-		}
-	],
+    },
+    {
+      "accountId": 5,
+      "categoryId": 2,
+      "amount": 324,
+      "name": "sdgsdg",
+      "userId": 1,
+      "createdAt": "19.09.2024 03:32:43",
+      "id": 2
+    },
+    {
+      "accountId": 2,
+      "categoryId": 3,
+      "amount": 324,
+      "name": "asfa",
+      "userId": 1,
+      "createdAt": "19.09.2024 03:46:35",
+      "id": 3
+    }
+  ],
   "sessions": [
     {
-      "hash": "0.94275266619787689847953515709377825260162353515625",
-      "userId": 2,
+      "hash": "0.66253178862297246176638054748764261603355407714844",
+      "userId": 1,
       "id": 1
     }
   ]

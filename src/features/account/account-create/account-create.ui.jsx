@@ -12,15 +12,13 @@ export const AccountCreateForm = () => {
 	const { requestServer } = useServer();
 	const { authUser } = useAuth()
 
-	const { register, handleSubmit, formState: { errors } } = useForm(
-		{
-			resolver: yupResolver(accountCreateFormRules),
-			defaultValues: {
-				userId: authUser.id,
-				typeId: '',
-			}
+	const { register, handleSubmit, formState: { errors } } = useForm({
+		resolver: yupResolver(accountCreateFormRules),
+		defaultValues: {
+			userId: authUser.id,
+			typeId: '',
 		}
-	);
+	});
 
 	const onSubmit = async (accountData) => {
 		const { data: createdAccount } = await requestServer.createAccount(accountData);

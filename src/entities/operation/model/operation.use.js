@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useServer } from "../../../app/providers/server";
 import { useParams } from "react-router-dom";
-import { selectAccount } from "./operation.selectors";
+import { selectOperation } from "./operation.selectors";
 import { useEffect } from "react";
-import { loadAccount } from "./operation.thunks";
 import { useAuth } from "../../../app/providers/auth";
+import { loadOperation } from "./operation.thunks";
 
-export const useLoadAccount = () => {
+export const useLoadOperation = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
-	const { id: accountId } = useParams();
+	const { id: operationId } = useParams();
 	const { authUser } = useAuth();
-	const account = useSelector(selectAccount);
+	const operation = useSelector(selectOperation);
 
 	useEffect(() => {
-		dispatch(loadAccount(requestServer, accountId, authUser.id ));
-	}, [accountId, dispatch, requestServer, authUser.id]);
+		dispatch(loadOperation(requestServer, operationId, authUser.id ));
+	}, [operationId, dispatch, requestServer, authUser.id]);
 
-	return account.id ? account : null;
+	return operation.id ? operation : null;
 }

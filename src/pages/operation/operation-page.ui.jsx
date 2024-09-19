@@ -1,19 +1,19 @@
-import { useLoadAccount } from "../../entities/account";
+import { useLoadOperation } from "../../entities/operation";
 import { ErrorHandler } from "../../shared/ui";
-import { Account } from "../../widgets/account";
+import { Operation } from "../../widgets/operation";
 
 
 export const OperationPage = () => {
-	// const account = useLoadAccount();
-
+	const operation = useLoadOperation();
+	
 	return (
 		<div>
 			<h1>СТРАНИЦА ОПЕРАЦИИ</h1>
-			{/* {account ? (
-				<Account accountData={account} />
+			{operation ? (
+				<Operation operationData={operation} />
 			) : (
 				<ErrorHandler message="Такой счет не найден" />
-			)} */}
+			)}
 		</div>
 	)
 };
