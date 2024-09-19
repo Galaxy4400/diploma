@@ -14,4 +14,5 @@ export * from './get-accounts';
 export * from './create-operation';
 export * from './get-operation';
 export * from './get-operations';
+export * from './delete-operation';
 

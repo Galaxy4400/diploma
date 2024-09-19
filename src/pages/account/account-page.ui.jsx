@@ -18,7 +18,7 @@ export const AccountPage = () => {
 			{account ? (
 				<div>
 					<Account accountData={account} />
-					<OperationsList operations={operations} />
+					<OperationsList operations={operations} accountId={accountId} />
 				</div>
 			) : (
 				<ErrorHandler message="Такой счет не найден" />

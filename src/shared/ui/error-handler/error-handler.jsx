@@ -5,7 +5,6 @@ export const ErrorHandler = ({ message }) => {
 
 	return (
 		<>
-			<div>Что-то пошло не так :(</div>
 			<p>{message}</p>
 			<button type="button" onClick={() => navigate(-1)}>Вернуться</button>
 		</>

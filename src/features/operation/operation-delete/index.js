@@ -1,1 +1,1 @@
-export * from './operation-delete';
+export * from './operation-delete.ui';

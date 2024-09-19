@@ -1,1 +1,1 @@
-export * from './account-delete';
+export * from './account-delete.ui';

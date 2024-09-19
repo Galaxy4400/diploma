@@ -1,21 +1,23 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useServer } from "../../../app/providers/server";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
+import { useFrom } from "../../../shared/lib/location";
 
 
-export const OperationCreateForm = ({ userId, accounts }) => {
+export const OperationCreateForm = ({ userId, accounts = [] }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
+	const from = useFrom();
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(operationCreateFormRules),
 		defaultValues: {
 			userId: userId,
-			accountId: '',
+			accountId: from?.accountId || '',
 			categoryId: '',
 		}
 	});

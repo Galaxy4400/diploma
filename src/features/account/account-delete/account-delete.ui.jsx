@@ -1,24 +1,24 @@
 import { useServer } from "../../../app/providers/server";
-import { useMatch, useNavigate } from "react-router-dom";
-import { path } from "../../../shared/lib/router";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loadAccounts } from "../../../entities/accounts";
 import { useAuth } from "../../../app/providers/auth";
+import { useFrom } from "../../../shared/lib/location";
 
 
 export const AccountDelete = ({ accountId }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const routeMatch = useMatch(path.account.id());
 	const { requestServer } = useServer();
 	const { authUser } = useAuth();
+	const from = useFrom();
 
 	const deleteHandler = async (id) => {
-		await requestServer.deleteAccount(id);
+		await requestServer.deleteAccount(id, authUser.id);
 
 		dispatch(loadAccounts(requestServer, authUser.id));
 
-		if (routeMatch) navigate(path.home(), { replace: true });
+		navigate(from?.pathname, { replace: true });
 	}
 
 	return (
