@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useServer } from "../../app/providers/server";
 import { useAuth } from "../../app/providers/auth";
 
-export const useLoadAccountOperations = (accountId) => {
+export const useLoadOperations = (accountId = null) => {
 	const { requestServer } = useServer();
 	const { authUser } = useAuth();
 	const [operations, setOperations] = useState([]);

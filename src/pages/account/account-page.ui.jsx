@@ -3,14 +3,14 @@ import { useLoadAccount } from "../../entities/account";
 import { ErrorHandler } from "../../shared/ui";
 import { Account } from "../../widgets/account";
 import { OperationsList } from "../../widgets/operations-list";
-import { useLoadAccountOperations } from "../../entities/operations";
+import { useLoadOperations } from "../../entities/operations";
 
 
 export const AccountPage = () => {
 	const { id } = useParams();
 
 	const account = useLoadAccount(id);
-	const operations = useLoadAccountOperations(id);
+	const operations = useLoadOperations(id);
 
 	return (
 		<div>
