@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const updateUser = async (session, id, updatingUserData) => {
+export const updateUser = async (session, userId, updatingUserData) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,7 +9,7 @@ export const updateUser = async (session, id, updatingUserData) => {
 		}
 	}
 
-	const updatedUser = await api.updateUser(id, updatingUserData);
+	const updatedUser = await api.updateUser(userId, updatingUserData);
 
 	return {
 		ok: true,

@@ -6,10 +6,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { useEffect } from "react";
 import { CATEGORY_TYPES, updateCategory } from "../../../entities/category";
+import { useNavigate } from "react-router-dom";
+import { path } from "../../../shared/lib/router";
 
 
 export const CategoryEditForm = ({ categoryData }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { requestServer } = useServer();
 	
 	const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -23,7 +26,9 @@ export const CategoryEditForm = ({ categoryData }) => {
 	}, [categoryData, reset]);
 
 	const submitHandler = async (editData) => {
-		// dispatch(updateCategory(requestServer, categoryData.id, editData));
+		dispatch(updateCategory(requestServer, categoryData.id, editData));
+
+		navigate(path.category.id(categoryData.id));
 	};
 
 	if (!categoryData) return (<div></div>);
@@ -48,7 +53,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 					<option value="2">Иконка 2</option>
 					<option value="3">Иконка 3</option>
 				</select>
-				<button type='submit'>Создать категорию</button>
+				<button type='submit'>Внести изменения</button>
 			</form>
 			<ErrorList formErrors={errors} />
 		</div>

@@ -6,10 +6,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { updateAccount } from "../../../entities/account";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { path } from "../../../shared/lib/router";
 
 
 export const AccountEditForm = ({ accountData }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { requestServer } = useServer();
 	
 	const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -25,6 +28,8 @@ export const AccountEditForm = ({ accountData }) => {
 
 	const submitHandler = async (editData) => {
 		dispatch(updateAccount(requestServer, accountData.id, editData));
+
+		navigate(path.account.id(accountData.id));
 	};
 
 	return (
