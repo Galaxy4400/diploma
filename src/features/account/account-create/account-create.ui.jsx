@@ -16,6 +16,7 @@ export const AccountCreateForm = ({ userId }) => {
 		defaultValues: {
 			userId: userId,
 			typeId: '',
+			amount: 0,
 		}
 	});
 

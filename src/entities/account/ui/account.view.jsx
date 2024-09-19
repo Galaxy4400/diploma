@@ -6,8 +6,9 @@ export const AccountView = ({ accountData, deleteSlot }) => {
 		<div>
 			<div>Идентификатор: {accountData.id}</div>
 			<div>Название: {accountData.name}</div>
+			<div>Сумма: {accountData.amount} руб.</div>
 			<div>Тип: {accountData.typeId}</div>
-			<div>Дада: {accountData.createdAt}</div>
+			<div>Дата: {accountData.createdAt}</div>
 			<Link to={path.account.edit(accountData.id)}>Редактировать</Link>
 			{deleteSlot}
 		</div>

@@ -23,6 +23,7 @@
     {
       "typeId": 3,
       "name": "sgsdhsd",
+			"amount": 0,
       "userId": 3,
       "createdAt": "18.09.2024 21:49:55",
       "id": 6
@@ -30,6 +31,7 @@
     {
       "typeId": 1,
       "name": "fghdf",
+			"amount": 0,
       "userId": 3,
       "createdAt": "18.09.2024 21:50:03",
       "id": 7
@@ -37,6 +39,7 @@
     {
       "typeId": 2,
       "name": "Счет второго юзера",
+			"amount": 0,
       "userId": 2,
       "createdAt": "19.09.2024 12:16:05",
       "id": 9
@@ -44,6 +47,7 @@
     {
       "typeId": 2,
       "name": "Второй счет",
+			"amount": 0,
       "userId": 1,
       "createdAt": "19.09.2024 15:03:05",
       "id": 11
@@ -51,6 +55,7 @@
     {
       "typeId": 1,
       "name": "Третий счет",
+			"amount": 0,
       "userId": 1,
       "createdAt": "19.09.2024 18:12:43",
       "id": 12

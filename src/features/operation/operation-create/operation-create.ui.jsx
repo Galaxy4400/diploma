@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useServer } from "../../../app/providers/server";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
