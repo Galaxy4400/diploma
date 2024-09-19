@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 
-export const AccountItem = ({ accountData, deleteSlot }) => {
+export const OperationItem = ({ operationData, deleteSlot }) => {
 	return (
 		<li>
-			<Link to={path.account.id(accountData.id)}>{accountData.name}</Link>
+			<Link to={path.operation.id(operationData.id)}>{operationData.name}</Link>
 			{deleteSlot}
 		</li>
 	)

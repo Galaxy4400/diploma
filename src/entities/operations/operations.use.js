@@ -12,7 +12,7 @@ export const useLoadOperations = (accountId = null) => {
 	const operations = useSelector(selectOperations);
 
 	useEffect(() => {
-		dispatch(loadOperations(requestServer, authUser.id));
+		dispatch(loadOperations(requestServer, authUser.id, accountId));
 	}, [accountId, dispatch, requestServer, authUser.id]);
 
 	return operations;

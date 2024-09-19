@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { path } from "../../shared/lib/router";
+import { OperationItem } from "../../entities/operation";
+import { OperationDelete } from "../../features/operation";
 
 export const OperationsList = ({ operations = [] }) => {
 	return (
@@ -8,15 +8,12 @@ export const OperationsList = ({ operations = [] }) => {
 			<div>
 				<ul style={{display: 'grid', gap: '10px'}}>
 					{operations.map(operation => (
-						<li key={operation.id}><Link to={path.operation.id(operation.id)}>{operation.name}</Link></li>
-					))}
-					{/* {accounts.map(account => (
-						<AccountItem 
-							key={account.id} 
-							accountData={account}
-							deleteSlot={<AccountDelete accountId={account.id}/>}
+						<OperationItem 
+							key={operation.id} 
+							operationData={operation}
+							deleteSlot={<OperationDelete accountId={operation.id}/>}
 						/>
-					))} */}
+					))}
 				</ul>
 			</div>
 		</div>

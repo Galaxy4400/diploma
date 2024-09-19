@@ -42,17 +42,17 @@
       "id": 9
     },
     {
-      "typeId": 3,
-      "name": "shsdfhsd",
+      "typeId": 2,
+      "name": "zdfsd",
       "userId": 1,
-      "createdAt": "19.09.2024 13:48:38",
+      "createdAt": "19.09.2024 15:02:45",
       "id": 10
     },
     {
       "typeId": 2,
-      "name": "вапыекр",
+      "name": "sdfhdfgj",
       "userId": 1,
-      "createdAt": "19.09.2024 13:50:09",
+      "createdAt": "19.09.2024 15:03:05",
       "id": 11
     }
   ],
@@ -84,29 +84,11 @@
     {
       "accountId": 10,
       "categoryId": 3,
-      "amount": 23325,
-      "name": "gasdgas",
+      "amount": 3243,
+      "name": "agrsed",
       "userId": 1,
-      "createdAt": "19.09.2024 13:58:27",
+      "createdAt": "19.09.2024 15:03:46",
       "id": 1
-    },
-    {
-      "accountId": 10,
-      "categoryId": 2,
-      "amount": 2,
-      "name": "ags",
-      "userId": 1,
-      "createdAt": "19.09.2024 14:00:29",
-      "id": 2
-    },
-    {
-      "accountId": 10,
-      "categoryId": 1,
-      "amount": 896,
-      "name": "jgfhjd",
-      "userId": 1,
-      "createdAt": "19.09.2024 14:13:34",
-      "id": 3
     }
   ],
   "sessions": [

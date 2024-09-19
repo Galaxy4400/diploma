@@ -1,10 +1,11 @@
 import { OperationView } from "../../entities/operation";
+import { OperationDelete } from "../../features/operation";
 
 export const Operation = ({ operationData }) => {
 	return (
 		<OperationView 
 			operationData={operationData} 
-			// deleteSlot={<AccountDelete accountId={operationData.id}/>}
+			deleteSlot={<OperationDelete operationId={operationData.id}/>}
 		/>
 	)
 };
