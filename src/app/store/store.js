@@ -5,6 +5,7 @@ import { accountReducer } from "../../entities/account";
 import { accountsReducer } from "../../entities/accounts";
 import { operationReducer } from "../../entities/operation";
 import { operationsReducer } from "../../entities/operations";
+import { categoryReducer } from "../../entities/category";
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	accounts: accountsReducer,
 	operation: operationReducer,
 	operations: operationsReducer,
+	category: categoryReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

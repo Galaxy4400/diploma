@@ -43,4 +43,18 @@ export const path = {
 			return path.operation.root().concat('/create');
 		},
 	},
+	category: {
+		root() {
+			return path.root.concat('category');
+		},
+		id(id = ':id') {
+			return path.category.root().concat('/', id);
+		},
+		create() {
+			return path.category.root().concat('/create');
+		},
+		edit(id = ':id') {
+			return path.category.id(id).concat('/edit');
+		},
+	},
 }
