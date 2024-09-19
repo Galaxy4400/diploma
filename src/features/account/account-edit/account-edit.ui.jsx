@@ -23,13 +23,13 @@ export const AccountEditForm = ({ accountData }) => {
 		});
 	}, [accountData, reset]);
 
-	const onSubmit = async (editData) => {
+	const submitHandler = async (editData) => {
 		dispatch(updateAccount(requestServer, accountData.id, editData));
 	};
 
 	return (
 		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(onSubmit)} style={{ display: "grid", gap: "10px" }}>
+			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
 				<input {...register('name')} type="text" placeholder='Название счета...' />
 				<select {...register('typeId')}>
 					<option value="" disabled>Тип счета...</option>

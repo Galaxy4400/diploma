@@ -5,22 +5,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { accountCreateFormRules } from "./account-create.rules";
 import { path } from "../../../shared/lib/router";
-import { useAuth } from "../../../app/providers/auth";
 
-export const AccountCreateForm = () => {
+
+export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
-	const { authUser } = useAuth()
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(accountCreateFormRules),
 		defaultValues: {
-			userId: authUser.id,
+			userId: userId,
 			typeId: '',
 		}
 	});
 
-	const onSubmit = async (accountData) => {
+	const submitHandler = async (accountData) => {
 		const { data: createdAccount } = await requestServer.createAccount(accountData);
 
 		navigate(path.account.id(createdAccount.id));
@@ -28,7 +27,7 @@ export const AccountCreateForm = () => {
 
 	return (
 		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(onSubmit)} style={{ display: "grid", gap: "10px" }}>
+			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
 				<input {...register('name')} type="text" placeholder='Название счета...' />
 				<select {...register('typeId')}>
 					<option value="" disabled>Тип счета...</option>

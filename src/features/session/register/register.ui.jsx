@@ -12,13 +12,13 @@ export const RegisterForm = () => {
 
 	const { registration, registrationError } = useAuth();
 
-	const onSubmit = async ({ login, password }) => {
+	const submitHandler = async ({ login, password }) => {
 		registration(login, password);
 	};
 
 	return (
 		<div style={{width: "300px"}}>
-			<form onSubmit={handleSubmit(onSubmit)} style={{display: "grid", gap: "10px"}}>
+			<form onSubmit={handleSubmit(submitHandler)} style={{display: "grid", gap: "10px"}}>
 				<input {...register('login')} type="text" placeholder='Логин...' />
 				<input {...register('password')} type="password" placeholder='Пароль...' />
 				<input {...register('passcheck')} type="password" placeholder='Проверка паролья...' />

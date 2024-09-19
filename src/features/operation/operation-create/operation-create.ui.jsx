@@ -5,23 +5,22 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
-import { useAuth } from "../../../app/providers/auth";
 
-export const OperationCreateForm = ({ accounts }) => {
+
+export const OperationCreateForm = ({ userId, accounts }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
-	const { authUser } = useAuth();
 
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(operationCreateFormRules),
 		defaultValues: {
-			userId: authUser.id,
+			userId: userId,
 			accountId: '',
 			categoryId: '',
 		}
 	});
 
-	const onSubmit = async (operationData) => {
+	const submitHandler = async (operationData) => {
 		const { data: createdOperation } = await requestServer.createOperation(operationData);
 
 		navigate(path.operation.id(createdOperation.id));
@@ -29,7 +28,7 @@ export const OperationCreateForm = ({ accounts }) => {
 
 	return (
 		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(onSubmit)} style={{ display: "grid", gap: "10px" }}>
+			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
 				<input {...register('name')} type="text" placeholder='Название операции...' />
 				<input {...register('amount')} type="number" placeholder='Сумма операции...' />
 				<select {...register('accountId')}>
