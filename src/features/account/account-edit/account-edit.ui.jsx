@@ -18,8 +18,8 @@ export const AccountEditForm = ({ accountData }) => {
 
 	useEffect(() => {
 		reset({
-			name: accountData.name,
-			typeId: accountData.typeId,
+			name: accountData?.name,
+			typeId: accountData?.typeId,
 		});
 	}, [accountData, reset]);
 

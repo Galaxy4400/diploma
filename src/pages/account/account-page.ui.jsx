@@ -7,10 +7,10 @@ import { useLoadOperations } from "../../entities/operations";
 
 
 export const AccountPage = () => {
-	const { id } = useParams();
+	const { id: accountId } = useParams();
 
-	const account = useLoadAccount(id);
-	const operations = useLoadOperations(id);
+	const account = useLoadAccount(accountId);
+	const operations = useLoadOperations(accountId);
 
 	return (
 		<div>

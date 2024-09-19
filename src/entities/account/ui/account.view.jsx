@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { path } from "../../../shared/lib/router";
 
 export const AccountView = ({ accountData, deleteSlot }) => {
 	return (
@@ -7,7 +8,7 @@ export const AccountView = ({ accountData, deleteSlot }) => {
 			<div>Название: {accountData.name}</div>
 			<div>Тип: {accountData.typeId}</div>
 			<div>Дада: {accountData.createdAt}</div>
-			<Link to="edit">Редактировать</Link>
+			<Link to={path.account.edit(accountData.id)}>Редактировать</Link>
 			{deleteSlot}
 		</div>
 	)
