@@ -13,10 +13,10 @@ export const EditUserForm = ({ userData }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 
-	const submitHandler = (updatedData) => {
-		delete updatedData.passcheck;
+	const submitHandler = (submittedData) => {
+		delete submittedData.passcheck;
 
-		dispatch(updateAuth(requestServer, updatedData));
+		dispatch(updateAuth(requestServer, submittedData));
 
 		navigate(path.home());
 	};

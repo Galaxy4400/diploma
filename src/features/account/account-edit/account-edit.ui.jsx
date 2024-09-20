@@ -1,13 +1,20 @@
 import { accountEditFormRules } from "./account-edit.rules";
 import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ErrorList } from "../../../shared/ui";
 import { updateAccount } from "../../../entities/account";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
+import { Form, Input, Select } from "../../../shared/ui/react-hook-form";
+
+
+
+const options = [
+	{ value: '', label: 'Тип счета...'},
+	{ value: '1', label: 'Тип 1'},
+	{ value: '2', label: 'Тип 2'},
+	{ value: '3', label: 'Тип 3'},
+];
 
 
 export const AccountEditForm = ({ accountData }) => {
@@ -15,10 +22,6 @@ export const AccountEditForm = ({ accountData }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 	
-	const { register, handleSubmit, formState: { errors } } = useForm({
-		resolver: yupResolver(accountEditFormRules),
-	});
-
 	const submitHandler = async (editData) => {
 		dispatch(updateAccount(requestServer, accountData.id, editData));
 
@@ -29,17 +32,11 @@ export const AccountEditForm = ({ accountData }) => {
 		<>
 		 {accountData &&
 			<div style={{ width: "300px" }}>
-				<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-					<input {...register('name')} type="text" defaultValue={accountData.name} placeholder='Название счета...' />
-					<select {...register('typeId')} defaultValue={accountData.typeId}>
-						<option value="" disabled>Тип счета...</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-					</select>
+				<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
+					<Input name="name" defaultValue={accountData.name} placeholder='Название счета...' />
+					<Select name="typeId" options={options} defaultValue={accountData.typeId} />
 					<button type='submit'>Внести изменения</button>
-				</form>
-				<ErrorList formErrors={errors} />
+				</Form>
 			</div>
 		 }
 		</>

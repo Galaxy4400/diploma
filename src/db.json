@@ -40,7 +40,7 @@
     },
     {
       "typeId": 3,
-      "name": "Второй счет",
+      "name": "Второй счет sdf",
       "amount": 0,
       "userId": 1,
       "createdAt": "19.09.2024 15:03:05",
@@ -61,6 +61,14 @@
       "userId": 4,
       "createdAt": "20.09.2024 03:13:37",
       "id": 13
+    },
+    {
+      "amount": 0,
+      "name": "Новый счет",
+      "typeId": 3,
+      "userId": 1,
+      "createdAt": "20.09.2024 19:06:12",
+      "id": 14
     }
   ],
   "accountTypes": [
