@@ -4,15 +4,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
 import { ErrorList } from "../../../shared/ui";
 import { loginFormRules } from "./login.rules";
+import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 
 
 export const LoginForm = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const { register, handleSubmit, formState: { errors } } = useForm({
-		resolver: yupResolver(loginFormRules)
-	});
+	// const { register, handleSubmit, formState: { errors } } = useForm({
+	// 	resolver: yupResolver(loginFormRules)
+	// });
 
 	const { authorize, authorizeError } = useAuth();
 
@@ -24,12 +25,11 @@ export const LoginForm = () => {
 
 	return (
 		<div style={{ width: "300px" }}>
-			<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-				<input {...register('login')} type="text" placeholder='Логин...' />
-				<input {...register('password')} type="password" placeholder='Пароль...' />
+			<Form onSubmit={submitHandler} resolver={yupResolver(loginFormRules)} style={{ display: "grid", gap: "10px" }} >
+				<Input name="login" placeholder='Логин...' />
+				<Password name="password" placeholder='Пароль...' />
 				<button type='submit'>Войти</button>
-			</form>
-			<ErrorList formErrors={errors} />
+			</Form>
 			{authorizeError && <div>{authorizeError}</div>}
 		</div>
 	)
