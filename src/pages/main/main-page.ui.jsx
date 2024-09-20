@@ -3,11 +3,12 @@ import { useLoadAccounts } from "../../entities/accounts"
 import { Link } from "react-router-dom";
 import { path } from "../../shared/lib/router";
 import { CategoriesList } from "../../widgets/categories-list";
+import { useLoadCategories } from "../../entities/categories";
 
 
 export const MainPage = () => {
 	const accounts = useLoadAccounts();
-	const categories = [];
+	const categories = useLoadCategories();
 
 	return (
 		<div>

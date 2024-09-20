@@ -15,22 +15,6 @@
   ],
   "accounts": [
     {
-      "typeId": 3,
-      "name": "sgsdhsd",
-      "amount": 0,
-      "userId": 3,
-      "createdAt": "18.09.2024 21:49:55",
-      "id": 6
-    },
-    {
-      "typeId": 1,
-      "name": "fghdf",
-      "amount": 0,
-      "userId": 3,
-      "createdAt": "18.09.2024 21:50:03",
-      "id": 7
-    },
-    {
       "typeId": 2,
       "name": "Счет второго юзера",
       "amount": 0,
@@ -53,14 +37,6 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:12:43",
       "id": 12
-    },
-    {
-      "amount": 0,
-      "name": "wegser 1111",
-      "typeId": 2,
-      "userId": 4,
-      "createdAt": "20.09.2024 03:13:37",
-      "id": 13
     },
     {
       "amount": 0,
@@ -99,12 +75,20 @@
       "id": 2
     },
     {
-      "name": "jhgjh 1435",
+      "name": "Новая категория",
+      "iconId": 2,
+      "typeId": 2,
+      "userId": 1,
+      "createdAt": "20.09.2024 23:36:17",
+      "id": 3
+    },
+    {
+      "name": "ashs",
       "iconId": 1,
       "typeId": 2,
-      "userId": 4,
-      "createdAt": "20.09.2024 03:21:40",
-      "id": 3
+      "userId": 1,
+      "createdAt": "20.09.2024 23:43:43",
+      "id": 4
     }
   ],
   "operations": [
@@ -116,29 +100,11 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:32:27",
       "id": 1
-    },
-    {
-      "accountId": 13,
-      "categoryId": 1,
-      "amount": 12,
-      "name": "asfa",
-      "userId": 4,
-      "createdAt": "20.09.2024 03:16:17",
-      "id": 3
-    },
-    {
-      "accountId": 13,
-      "categoryId": 3,
-      "amount": 1234,
-      "name": "gsedgsdf",
-      "userId": 4,
-      "createdAt": "20.09.2024 03:21:27",
-      "id": 4
     }
   ],
   "sessions": [
     {
-      "hash": "0.00122791542744948856125120073556900024414062500000",
+      "hash": "0.58388815601739052496554904791992157697677612304688",
       "userId": 1,
       "id": 1
     }

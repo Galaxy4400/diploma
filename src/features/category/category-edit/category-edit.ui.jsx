@@ -27,7 +27,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 
 		navigate(path.category.id(categoryData.id));
 	};
-
+console.log(categoryData);
 	return (
 		<>
 			{categoryData &&
@@ -39,7 +39,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === categoryData.typeId} />
 							))}
 						</div>
-						<Select name="iconId" options={options}/>
+						<Select name="iconId" options={options} defaultValue={categoryData.iconId} />
 						<button type='submit'>Внести изменения</button>
 					</Form>
 				</div>
