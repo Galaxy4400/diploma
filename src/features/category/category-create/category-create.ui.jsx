@@ -4,8 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { path } from "../../../shared/lib/router";
 import { CATEGORY_TYPES } from "../../../entities/category";
-import { Form, Hidden, Input, Select } from "../../../shared/ui/react-hook-form";
-import { Radio } from "../../../shared/ui/react-hook-form/radio/radio.ui";
+import { Form, Hidden, Input, Select, Radio } from "../../../shared/ui/react-hook-form";
 
 
 const options = [

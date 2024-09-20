@@ -4,3 +4,4 @@ export * from './password';
 export * from './hidden';
 export * from './select';
 export * from './number';
+export * from './radio';

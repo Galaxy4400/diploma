@@ -31,7 +31,7 @@
       "id": 11
     },
     {
-      "typeId": 1,
+      "typeId": 3,
       "name": "Третий счет",
       "amount": 0,
       "userId": 1,
@@ -45,6 +45,14 @@
       "userId": 1,
       "createdAt": "20.09.2024 19:06:12",
       "id": 14
+    },
+    {
+      "amount": 0,
+      "name": "test",
+      "typeId": 2,
+      "userId": 1,
+      "createdAt": "21.09.2024 01:06:15",
+      "id": 15
     }
   ],
   "accountTypes": [

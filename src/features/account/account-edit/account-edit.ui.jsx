@@ -2,19 +2,10 @@ import { accountEditFormRules } from "./account-edit.rules";
 import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateAccount } from "../../../entities/account";
+import { ACCOUNT_TYPES, updateAccount } from "../../../entities/account";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Form, Input, Select } from "../../../shared/ui/react-hook-form";
-
-
-
-const options = [
-	{ value: '', label: 'Тип счета...'},
-	{ value: '1', label: 'Тип 1'},
-	{ value: '2', label: 'Тип 2'},
-	{ value: '3', label: 'Тип 3'},
-];
+import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
 
 
 export const AccountEditForm = ({ accountData }) => {
@@ -34,7 +25,11 @@ export const AccountEditForm = ({ accountData }) => {
 			<div style={{ width: "300px" }}>
 				<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
 					<Input name="name" defaultValue={accountData.name} placeholder='Название счета...' />
-					<Select name="typeId" options={options} defaultValue={accountData.typeId} />
+					<div style={{display: 'grid', gap: '10px'}}>
+						{ACCOUNT_TYPES.map((type) => (
+							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === accountData?.typeId} />
+						))}
+					</div>
 					<button type='submit'>Внести изменения</button>
 				</Form>
 			</div>

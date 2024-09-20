@@ -5,8 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CATEGORY_TYPES, updateCategory } from "../../../entities/category";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Form, Input, Select } from "../../../shared/ui/react-hook-form";
-import { Radio } from "../../../shared/ui/react-hook-form/radio/radio.ui";
+import { Form, Input, Select, Radio } from "../../../shared/ui/react-hook-form";
 
 
 const options = [
@@ -27,7 +26,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 
 		navigate(path.category.id(categoryData.id));
 	};
-console.log(categoryData);
+
 	return (
 		<>
 			{categoryData &&
