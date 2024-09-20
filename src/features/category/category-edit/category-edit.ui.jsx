@@ -1,9 +1,7 @@
 import { categoryEditFormRules } from "./category-edit.rules";
 import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ErrorList } from "../../../shared/ui";
 import { CATEGORY_TYPES, updateCategory } from "../../../entities/category";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
