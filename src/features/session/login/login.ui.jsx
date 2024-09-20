@@ -1,8 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
-import { ErrorList } from "../../../shared/ui";
 import { loginFormRules } from "./login.rules";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 
@@ -10,10 +8,6 @@ import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 export const LoginForm = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-
-	// const { register, handleSubmit, formState: { errors } } = useForm({
-	// 	resolver: yupResolver(loginFormRules)
-	// });
 
 	const { authorize, authorizeError } = useAuth();
 
