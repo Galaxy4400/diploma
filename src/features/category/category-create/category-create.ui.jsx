@@ -1,23 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import { useServer } from "../../../app/providers/server";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ErrorList } from "../../../shared/ui";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { path } from "../../../shared/lib/router";
 import { CATEGORY_TYPES } from "../../../entities/category";
+import { Form, Hidden, Input, Select } from "../../../shared/ui/react-hook-form";
+import { Radio } from "../../../shared/ui/react-hook-form/radio/radio.ui";
+
+
+const options = [
+	{ value: '', label: 'Иконка категории...'},
+	{ value: '1', label: 'Иконка 1'},
+	{ value: '2', label: 'Иконка 2'},
+	{ value: '3', label: 'Иконка 3'},
+];
 
 
 export const CategoryCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 
-	const { register, handleSubmit, formState: { errors } } = useForm({
-		resolver: yupResolver(categoryCreateFormRules),
-	});
-
-	const submitHandler = async (categoryData) => {
-		const { data: createdCategory } = await requestServer.createCategory(categoryData);
+	const submitHandler = async (submittedData) => {
+		const { data: createdCategory } = await requestServer.createCategory(submittedData);
 
 		navigate(path.category.id(createdCategory.id));
 	};
@@ -26,26 +30,17 @@ export const CategoryCreateForm = ({ userId }) => {
 		<>
 			{userId && 
 				<div style={{ width: "300px" }}>
-					<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-						<input {...register('userId')} type="hidden" defaultValue={userId}/>
-						<input {...register('name')} type="text" placeholder='Название категории...' />
+					<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
+						<Hidden name="userId" defaultValue={userId}/>
+						<Input name="name" placeholder='Название категории...' />
 						<div>
 							{CATEGORY_TYPES.map((type, i) => (
-								<label key={type.id}>
-									<input {...register('typeId')} value={type.id} type="radio" defaultChecked={!i}/>
-									<span>{type.name}</span>
-								</label>
+								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 							))}
 						</div>
-						<select {...register('iconId')}>
-							<option value="" disabled>Иконка категории...</option>
-							<option value="1">Иконка 1</option>
-							<option value="2">Иконка 2</option>
-							<option value="3">Иконка 3</option>
-						</select>
+						<Select name="iconId" options={options}/>
 						<button type='submit'>Создать категорию</button>
-					</form>
-					<ErrorList formErrors={errors} />
+					</Form>
 				</div>
 			}
 		</>

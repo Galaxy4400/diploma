@@ -4,10 +4,19 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ErrorList } from "../../../shared/ui";
-import { useEffect } from "react";
 import { CATEGORY_TYPES, updateCategory } from "../../../entities/category";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
+import { Form, Input, Select } from "../../../shared/ui/react-hook-form";
+import { Radio } from "../../../shared/ui/react-hook-form/radio/radio.ui";
+
+
+const options = [
+	{ value: '', label: 'Иконка категории...'},
+	{ value: '1', label: 'Иконка 1'},
+	{ value: '2', label: 'Иконка 2'},
+	{ value: '3', label: 'Иконка 3'},
+];
 
 
 export const CategoryEditForm = ({ categoryData }) => {
@@ -15,12 +24,8 @@ export const CategoryEditForm = ({ categoryData }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 
-	const { register, handleSubmit, formState: { errors } } = useForm({
-		resolver: yupResolver(categoryEditFormRules),
-	});
-
-	const submitHandler = async (editData) => {
-		dispatch(updateCategory(requestServer, categoryData.id, editData));
+	const submitHandler = async (submittedData) => {
+		dispatch(updateCategory(requestServer, categoryData.id, submittedData));
 
 		navigate(path.category.id(categoryData.id));
 	};
@@ -29,30 +34,18 @@ export const CategoryEditForm = ({ categoryData }) => {
 		<>
 			{categoryData &&
 				<div style={{ width: "300px" }}>
-					<form onSubmit={handleSubmit(submitHandler)} style={{ display: "grid", gap: "10px" }}>
-						<input {...register('name')} type="text" defaultValue={categoryData.name} placeholder='Название категории...' />
+					<Form onSubmit={submitHandler} resolver={yupResolver(categoryEditFormRules)} style={{ display: "grid", gap: "10px" }}>
+						<Input name="name" defaultValue={categoryData.name} placeholder='Название категории...' />
 						<div>
 							{CATEGORY_TYPES.map((type) => (
-								<label key={type.id}>
-									<input {...register('typeId')} value={type.id} type="radio" defaultChecked={type.id === categoryData.typeId}/>
-									<span>{type.name}</span>
-								</label>
+								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === categoryData.typeId} />
 							))}
 						</div>
-						<select {...register('iconId')}>
-							<option value="" disabled>Иконка категории...</option>
-							<option value="1">Иконка 1</option>
-							<option value="2">Иконка 2</option>
-							<option value="3">Иконка 3</option>
-						</select>
+						<Select name="iconId" options={options}/>
 						<button type='submit'>Внести изменения</button>
-					</form>
-					<ErrorList formErrors={errors} />
+					</Form>
 				</div>
 			}
 		</>
 	);
 };
-
-
-
