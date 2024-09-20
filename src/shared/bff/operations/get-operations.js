@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const getOperations = async (session, userId, accountId) => {
+export const getOperations = async (session, accountId) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,8 +9,10 @@ export const getOperations = async (session, userId, accountId) => {
 		}
 	}
 
+	const authSession = await api.getSession(session);
+
 	const searchProps = [];
-	if (userId) searchProps.push(`userId_like=${userId}`);
+	if (authSession?.userId) searchProps.push(`userId_like=${authSession.userId}`);
 	if (accountId) searchProps.push(`accountId_like=${accountId}`);
 
 	const operations = await api.getOperations(searchProps.join('&'));

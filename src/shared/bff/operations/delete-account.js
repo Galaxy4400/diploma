@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const deleteAccount = async (session, accountId, userId) => {
+export const deleteAccount = async (session, accountId) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,9 +9,12 @@ export const deleteAccount = async (session, accountId, userId) => {
 		}
 	}
 
-	const account = await api.getAccount(accountId);
+	const [authSession, account] = await Promise.all([
+		api.getSession(session), 
+		api.getAccount(accountId),
+	]);
 
-	if (!account || account.userId !== userId) {
+	if (!account || account.userId !== authSession.userId) {
 		return {
 			ok: false,
 			error: 'Такого счета не существует',

@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const getAccount = async (session, accountId, userId) => {
+export const getAccount = async (session, accountId) => {
 
 	if (!session) {
 		return {
@@ -10,9 +10,12 @@ export const getAccount = async (session, accountId, userId) => {
 		}
 	}
 
-	const account = await api.getAccount(accountId);
+	const [authSession, account] = await Promise.all([
+		api.getSession(session), 
+		api.getAccount(accountId),
+	]);
 
-	if (!account || account.userId !== userId) {
+	if (!account || account.userId !== authSession.userId) {
 		return {
 			ok: false,
 			error: 'Счет не найден',

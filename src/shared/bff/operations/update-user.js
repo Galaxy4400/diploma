@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const updateUser = async (session, userId, updatingUserData) => {
+export const updateUser = async (session, updatingUserData) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,7 +9,17 @@ export const updateUser = async (session, userId, updatingUserData) => {
 		}
 	}
 
-	const updatedUser = await api.updateUser(userId, updatingUserData);
+	const authSession = await api.getSession(session);
+	
+	if (!authSession?.userId) {
+		return {
+			ok: false,
+			error: 'Такого пользователя не существует',
+			data: null,
+		}
+	}
+
+	const updatedUser = await api.updateUser(authSession.userId, updatingUserData);
 
 	return {
 		ok: true,

@@ -1,6 +1,6 @@
 import { api } from "../api";
 
-export const deleteOperation = async (session, operationId, userId) => {
+export const deleteOperation = async (session, operationId) => {
 	if (!session) {
 		return {
 			ok: false,
@@ -9,9 +9,13 @@ export const deleteOperation = async (session, operationId, userId) => {
 		}
 	}
 
-	const operation = await api.getOperation(operationId);
+	const [authSession, operation] = await Promise.all([
+		api.getSession(session), 
+		api.getOperation(operationId),
+	]);
 
-	if (!operation || operation.userId !== userId) {
+
+	if (!operation || operation.userId !== authSession.userId) {
 		return {
 			ok: false,
 			error: 'Такой операции не существует',

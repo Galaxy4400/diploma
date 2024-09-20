@@ -1,8 +1,8 @@
 import { resetCategory, setCategory } from "./category.actions";
 
 
-export const loadCategory = (requestServer, categoryId, userId) => async (dispatch) => {
-	const { data: category } = await requestServer.getCategory(categoryId, userId);
+export const loadCategory = (requestServer, categoryId) => async (dispatch) => {
+	const { data: category } = await requestServer.getCategory(categoryId);
 
 	if (category) {
 		dispatch(setCategory(category));

@@ -17,6 +17,12 @@
       "password": "3333",
       "createdAt": "17.09.2024 01:06:15",
       "id": 3
+    },
+    {
+      "login": "4444",
+      "password": "4444",
+      "createdAt": "20.09.2024 03:13:25",
+      "id": 4
     }
   ],
   "accounts": [
@@ -59,6 +65,14 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:12:43",
       "id": 12
+    },
+    {
+      "amount": 0,
+      "name": "wegser 1111",
+      "typeId": 2,
+      "userId": 4,
+      "createdAt": "20.09.2024 03:13:37",
+      "id": 13
     }
   ],
   "accountTypes": [
@@ -87,6 +101,14 @@
       "userId": 1,
       "createdAt": "20.09.2024 02:26:50",
       "id": 2
+    },
+    {
+      "name": "jhgjh 1435",
+      "iconId": 1,
+      "typeId": 2,
+      "userId": 4,
+      "createdAt": "20.09.2024 03:21:40",
+      "id": 3
     }
   ],
   "operations": [
@@ -98,11 +120,29 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:32:27",
       "id": 1
+    },
+    {
+      "accountId": 13,
+      "categoryId": 1,
+      "amount": 12,
+      "name": "asfa",
+      "userId": 4,
+      "createdAt": "20.09.2024 03:16:17",
+      "id": 3
+    },
+    {
+      "accountId": 13,
+      "categoryId": 3,
+      "amount": 1234,
+      "name": "gsedgsdf",
+      "userId": 4,
+      "createdAt": "20.09.2024 03:21:27",
+      "id": 4
     }
   ],
   "sessions": [
     {
-      "hash": "0.71162135975615292693419178249314427375793457031250",
+      "hash": "0.74599886003798610012438530247891321778297424316406",
       "userId": 1,
       "id": 1
     }

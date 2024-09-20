@@ -1,8 +1,8 @@
 import { resetOperation, setOperation } from "./operation.actions";
 
 
-export const loadOperation = (requestServer, operationId, userId) => async (dispatch) => {
-	const { data: operation } = await requestServer.getOperation(operationId, userId);
+export const loadOperation = (requestServer, operationId) => async (dispatch) => {
+	const { data: operation } = await requestServer.getOperation(operationId);
 
 	if (operation) {
 		dispatch(setOperation(operation));

@@ -9,6 +9,16 @@ export const updateCategory = async (session, categoryId, updatingCategoryData) 
 		}
 	}
 
+	const authSession = await api.getSession(session);
+	
+	if (!authSession?.userId) {
+		return {
+			ok: false,
+			error: 'Такой категории не существует',
+			data: null,
+		}
+	}
+
 	const updatedCategory = await api.updateCategory(categoryId, updatingCategoryData);
 
 	return {

@@ -8,6 +8,16 @@ export const updateAccount = async (session, accountId, updatingAccountData) => 
 			data: null,
 		}
 	}
+	
+	const authSession = await api.getSession(session);
+	
+	if (!authSession?.userId) {
+		return {
+			ok: false,
+			error: 'Такого счета не существует',
+			data: null,
+		}
+	}
 
 	const updatedAccount = await api.updateAccount(accountId, updatingAccountData);
 
