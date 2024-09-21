@@ -31,7 +31,7 @@ export const CategoryCreateForm = ({ userId }) => {
 								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 							))}
 						</div>
-						<div>
+						<div style={{display: 'flex', gap: '10px'}}>
 							{Object.values(CATEGORY_ICON).map((icon, i) => (
 								<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
 									<CategoryIcon name={icon} />

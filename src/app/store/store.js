@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { thunk } from "redux-thunk";
+import { appReducer } from "../../entities/app";
 import { authReducer } from "../../entities/auth";
 import { accountReducer } from "../../entities/account";
 import { accountsReducer } from "../../entities/accounts";
@@ -10,6 +11,7 @@ import { categoriesReducer } from "../../entities/categories";
 
 
 const rootReducer = combineReducers({
+	app: appReducer,
 	auth: authReducer,
 	account: accountReducer,
 	accounts: accountsReducer,
