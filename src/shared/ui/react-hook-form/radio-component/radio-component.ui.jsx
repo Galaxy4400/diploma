@@ -1,48 +1,37 @@
 import { useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
-export const RadioComponent = ({ name, value, children, ...rest }) => {
-	const { register } = useFormContext();
+export const RadioComponent = ({ className, name, value, children, ...rest }) => {
+	const { register, setValue, watch } = useFormContext();
 
 	const radioWrapperRef = useRef(null);
+	const selectedValue = watch(name);
 
 	useEffect(() => {
 		const radioWrapper = radioWrapperRef.current;
-		const currentRadio = radioWrapper.querySelector('input');
-		const radioGroup = document.querySelectorAll(`input[name="${name}"]`);
+		const input = radioWrapper.querySelector('input');
 
-		const processActiveClass = (radio) => {
-			radio.checked 
-				? radio.parentElement.classList.add('active')
-				: radio.parentElement.classList.remove('active');
-		}
+		const isChecked = selectedValue === value;
+
+		isChecked
+			? input.nextSibling.classList.add('checked')
+			: input.nextSibling.classList.remove('checked');
 
 		const clickHandler = () => {
-			currentRadio.checked = true;
-			radioGroup.forEach(radio => radio.dispatchEvent(new Event("change")));
+			setValue(name, value);
 		};
-
-		const changeHandler = (event) => {
-			const eventRadio = event.target;
-
-			processActiveClass(eventRadio);
-		};
-
-		processActiveClass(currentRadio);
 
 		radioWrapper.addEventListener('mousedown', clickHandler);
-		currentRadio.addEventListener('change', changeHandler);
 
 		return () => {
 			radioWrapper.removeEventListener('mousedown', clickHandler);
-			currentRadio.removeEventListener('change', changeHandler);
 		};
-	}, [name]);
+	}, [name, value, selectedValue, setValue]);
 
 	return (
-		<div ref={radioWrapperRef}>
-			<input {...register(name)} value={value} type="radio" {...rest} />
+		<div className={className} ref={radioWrapperRef}>
+			<input {...register(name)} value={value} type="radio" {...rest} style={{display: 'none'}} />
 			{children}
 		</div>
-	)
+	);
 };

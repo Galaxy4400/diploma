@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useServer } from "../../../app/providers/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
-import { path } from "../../../shared/lib/router";
 import { CATEGORY_TYPES } from "../../../entities/category";
 import { Form, Hidden, Input, Select, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
@@ -14,16 +13,12 @@ export const CategoryCreateForm = ({ userId }) => {
 	const { requestServer } = useServer();
 
 	const submitHandler = async (submittedData) => {
-		const { data: createdCategory } = await requestServer.createCategory(submittedData);
+		console.log(submittedData);
 
-		navigate(path.category.id(createdCategory.id));
+		// const { data: createdCategory } = await requestServer.createCategory(submittedData);
+
+		// navigate(path.category.id(createdCategory.id));
 	};
-
-
-	// const iconOptions = [
-	// 	{ value: "", label: "Счет операции..." },
-	// 	...accounts.map(account => ({ value: account.id, label: account.name }))
-	// ];
 
 	return (
 		<>
@@ -44,7 +39,6 @@ export const CategoryCreateForm = ({ userId }) => {
 								</RadioComponent>
 							))}
 						</div>
-						{/* <Select name="icon" options={options}/> */}
 						<button type='submit'>Создать категорию</button>
 					</Form>
 				</div>
