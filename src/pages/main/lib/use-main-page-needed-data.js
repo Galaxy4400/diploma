@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useServer } from "../../../app/providers/server";
 import { useDispatch, useSelector } from "react-redux";
-import { resetAccounts, selectAccounts, setAccounts } from "../../../entities/accounts";
-import { resetCategories, selectCategories, setCategories } from "../../../entities/categories";
+import { selectAccounts, setAccounts } from "../../../entities/accounts";
+import { selectCategories, setCategories } from "../../../entities/categories";
 
 export const useMainPageNeededData = () => {
 	const dispatch = useDispatch();
@@ -11,9 +11,6 @@ export const useMainPageNeededData = () => {
 	const categories = useSelector(selectCategories);
 
 	useEffect(() => {
-		dispatch(resetAccounts());
-		dispatch(resetCategories());
-
 		const fetchData = async () => {
 			const [
 				accountsResponse,

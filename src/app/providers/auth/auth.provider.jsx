@@ -4,6 +4,9 @@ import { useCallback, useLayoutEffect, useState } from "react";
 import { useServer } from "../server";
 import { resetAuth, setAuth } from "../../../entities/auth";
 import { SESSION_KEY_NAME } from "../../../shared/lib/session";
+import { resetAccounts } from "../../../entities/accounts";
+import { resetCategories } from "../../../entities/categories";
+import { resetOperations } from "../../../entities/operations";
 
 
 export const AuthProvider = ({ children }) => {
@@ -46,6 +49,9 @@ export const AuthProvider = ({ children }) => {
 		setRegistrationError(null);
 
 		dispatch(resetAuth());
+		dispatch(resetAccounts());
+		dispatch(resetCategories());
+		dispatch(resetOperations());
 
 		sessionStorage.removeItem(SESSION_KEY_NAME);
 	}, [dispatch, requestServer]);
