@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { path } from "../../shared/lib/router";
 import { CategoryItem } from "../../entities/category";
 import { CategoryDelete } from "../../features/category";
+import { WithLoader } from "../../shared/ui";
 
 export const CategoriesList = ({ categories }) => {
 	return (
 		<div style={{padding: '10px', border: '1px solid #fff', maxWidth: '300px'}}>
 			<h2>СПИСОК КАТЕГОРИЙ</h2>
-			<div>
+			<WithLoader isLoading={!categories}>
 				<ul style={{display: 'grid', gap: '10px'}}>
 					{categories?.map(category => (
 						<CategoryItem 
@@ -17,7 +18,7 @@ export const CategoriesList = ({ categories }) => {
 						/>
 					))}
 				</ul>
-			</div>
+			</WithLoader>
 			<div>
 				<Link to={path.category.create()}>Добавить новую категорию</Link>
 			</div>

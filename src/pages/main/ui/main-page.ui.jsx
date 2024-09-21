@@ -1,14 +1,12 @@
-import { AccountsList } from "../../widgets/accounts-list"
-import { useLoadAccounts } from "../../entities/accounts"
+import { AccountsList } from "../../../widgets/accounts-list"
 import { Link } from "react-router-dom";
-import { path } from "../../shared/lib/router";
-import { CategoriesList } from "../../widgets/categories-list";
-import { useLoadCategories } from "../../entities/categories";
+import { path } from "../../../shared/lib/router";
+import { CategoriesList } from "../../../widgets/categories-list";
+import { useMainPageNeededData } from "../lib/use-main-page-needed-data";
 
 
 export const MainPage = () => {
-	const accounts = useLoadAccounts();
-	const categories = useLoadCategories();
+	const { accounts, categories } = useMainPageNeededData();
 
 	return (
 		<div>

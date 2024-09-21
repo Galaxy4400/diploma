@@ -1,1 +1,1 @@
-export * from './use-load-data';
+export * from './use-operation-needed-data';
