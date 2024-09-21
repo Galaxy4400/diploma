@@ -10,12 +10,12 @@ export const OperationCreatePage = () => {
 
 	const accountOptions = [
 		{ value: "", label: "Счет операции..." },
-		...accounts.map(account => ({ value: account.id, label: account.name }))
+		...(accounts ? accounts.map(account => ({ value: account.id, label: account.name })) : [])
 	];
 
 	const categoryOptions = [
 		{ value: "", label: "Категория операции..." },
-		...categories.map(category => ({ value: category.id, label: category.name }))
+		...(categories ? categories.map(category => ({ value: category.id, label: category.name })) : [])
 	];
 
 	return (

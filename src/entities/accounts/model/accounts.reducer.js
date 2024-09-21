@@ -1,6 +1,6 @@
 import { ACTION_TYPE } from "../../../shared/lib/store";
 
-const initialAccountsState = [];
+const initialAccountsState = null;
 
 export const accountsReducer = (state = initialAccountsState, { type, payload }) => {
 	switch (type) {

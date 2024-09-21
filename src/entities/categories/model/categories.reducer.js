@@ -1,6 +1,6 @@
 import { ACTION_TYPE } from "../../../shared/lib/store";
 
-const initialCategoriesState = [];
+const initialCategoriesState = null;
 
 export const categoriesReducer = (state = initialCategoriesState, { type, payload }) => {
 	switch (type) {

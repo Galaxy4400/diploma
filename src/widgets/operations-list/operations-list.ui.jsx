@@ -4,15 +4,15 @@ import { OperationDelete } from "../../features/operation";
 import { ErrorHandler } from "../../shared/ui";
 import { path } from "../../shared/lib/router";
 
-export const OperationsList = ({ operations = [], accountId = null }) => {
+export const OperationsList = ({ operations, accountId = null }) => {
 	return (
 		<div>
 			<h2>СПИСОК ОПЕРАЦИЙ СЧЕТА</h2>
 			<Link to={path.operation.create()} state={{from: { accountId }}} >Добавить операцию</Link>
-			{operations.length ? (
+			{operations?.length ? (
 				<div>
 					<ul style={{display: 'grid', gap: '10px'}}>
-						{operations.map(operation => (
+						{operations?.map(operation => (
 							<OperationItem 
 								key={operation.id} 
 								operationData={operation}

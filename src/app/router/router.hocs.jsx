@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../providers/auth";
+import { path } from "../../shared/lib/router";
 
 
 export const ProtectedRoute = ({ element }) => {
@@ -7,12 +8,12 @@ export const ProtectedRoute = ({ element }) => {
 	
 	const { authUser } = useAuth();
 
-	return authUser ? element : <Navigate to="/login" replace state={{from: location}} />;
+	return authUser ? element : <Navigate to={path.login()} replace state={{from: location}} />;
 };
 
 
 export const AuthenticateRoute = ({ element }) => {
   const { authUser } = useAuth();
 
-  return authUser ? <Navigate to="/" replace /> : element;
+  return authUser ? <Navigate to={path.home()} replace /> : element;
 };

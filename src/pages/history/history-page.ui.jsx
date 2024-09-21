@@ -9,7 +9,7 @@ export const HistoryPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА ИСТОРИИ</h1>
-			{operations.length ? (
+			{operations?.length ? (
 				<OperationsList operations={operations} />
 			) : (
 				<ErrorHandler message="Вы не совершили ни одной операции" />
