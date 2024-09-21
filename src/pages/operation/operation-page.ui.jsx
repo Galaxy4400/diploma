@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useLoadOperation } from "../../entities/operation";
 import { ErrorHandler } from "../../shared/ui";
-import { Operation } from "../../widgets/operation";
+import { Operation } from "../../widgets/operation/ui";
 
 
 export const OperationPage = () => {

@@ -7,7 +7,7 @@ import { useFrom } from "../../../shared/lib/location";
 import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/react-hook-form";
 
 
-export const OperationCreateForm = ({ userId, accounts = [] }) => {
+export const OperationCreateForm = ({ userId, accountOptions = [], categoryOptions = [] }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
 	const from = useFrom();
@@ -18,11 +18,6 @@ export const OperationCreateForm = ({ userId, accounts = [] }) => {
 		navigate(path.operation.id(createdOperation.id));
 	};
 
-	const accountOptions = [
-		{ value: "", label: "Счет операции..." },
-		...accounts.map(account => ({ value: account.id, label: account.name }))
-	];
-
 	return (
 		<>
 			{userId && 
@@ -32,6 +27,7 @@ export const OperationCreateForm = ({ userId, accounts = [] }) => {
 						<Input name="name" placeholder='Название операции...' />
 						<Number name="amount" placeholder='Сумма операции...' />
 						<Select name="accountId" options={accountOptions} defaultValue={from?.accountId || ''} />
+						<Select name="categoryId" options={categoryOptions} defaultValue="" />
 						<button type='submit'>Создать операцию</button>
 					</Form>
 				</div>

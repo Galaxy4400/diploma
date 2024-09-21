@@ -7,11 +7,11 @@ import { loadCategories } from "./categories.thunks";
 export const useLoadCategories = () => {
 	const dispatch = useDispatch();
 	const { requestServer } = useServer();
-	const accounts = useSelector(selectCategories);
+	const categories = useSelector(selectCategories);
 
 	useEffect(() => {
 		dispatch(loadCategories(requestServer));
 	}, [dispatch, requestServer]);
 
-	return accounts;
+	return categories;
 }
