@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from "../../shared/lib/store";
+import { ACTION_TYPE } from "../../../shared/lib/store";
 
 const initialOperationsState = [];
 

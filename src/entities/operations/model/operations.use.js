@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useServer } from "../../app/providers/server";
+import { useServer } from "../../../app/providers/server";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOperations } from "./operations.thunks";
 import { selectOperations } from "./operations.selectors";

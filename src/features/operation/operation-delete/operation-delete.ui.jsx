@@ -1,7 +1,7 @@
 import { useServer } from "../../../app/providers/server";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loadOperations } from "../../../entities/operations";
+import { loadOperations } from "../../../entities/operations/model";
 import { useFrom } from "../../../shared/lib/location";
 
 

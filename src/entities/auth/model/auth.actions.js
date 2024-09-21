@@ -1,4 +1,5 @@
-import { ACTION_TYPE } from "../../shared/lib/store";
+import { ACTION_TYPE } from "../../../shared/lib/store";
+
 
 export const resetAuth = () => {
 	return { type: ACTION_TYPE.RESET_AUTH };

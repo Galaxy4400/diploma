@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useServer } from "../../app/providers/server";
+import { useServer } from "../../../app/providers/server";
 import { selectCategories } from "./categories.selectors";
 import { useEffect } from "react";
 import { loadCategories } from "./categories.thunks";

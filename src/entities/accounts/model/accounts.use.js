@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useServer } from "../../app/providers/server";
+import { useServer } from "../../../app/providers/server";
 import { selectAccounts } from "./accounts.selectors";
 import { useEffect } from "react";
 import { loadAccounts } from "./accounts.thunks";
