@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { path } from "../../shared/lib/router";
 import { CategoriesList } from "../../widgets/categories-list";
 import { useLoadCategories } from "../../entities/categories";
+import { Icon } from "../../shared/ui/icon";
 
 
 export const MainPage = () => {
