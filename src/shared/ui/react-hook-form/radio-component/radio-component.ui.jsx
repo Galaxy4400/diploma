@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
-export const RadioComponent = ({ className, name, value, children, ...rest }) => {
+export const RadioComponent = ({ className, name, value, children, defaultChecked, ...rest }) => {
 	const { register, setValue, watch } = useFormContext();
 
 	const radioWrapperRef = useRef(null);
@@ -11,7 +11,7 @@ export const RadioComponent = ({ className, name, value, children, ...rest }) =>
 		const radioWrapper = radioWrapperRef.current;
 		const input = radioWrapper.querySelector('input');
 
-		const isChecked = selectedValue === value;
+		const isChecked = selectedValue ? selectedValue === value : defaultChecked;
 
 		isChecked
 			? input.nextSibling.classList.add('checked')
@@ -26,11 +26,11 @@ export const RadioComponent = ({ className, name, value, children, ...rest }) =>
 		return () => {
 			radioWrapper.removeEventListener('mousedown', clickHandler);
 		};
-	}, [name, value, selectedValue, setValue]);
+	}, [name, value, selectedValue, setValue, defaultChecked]);
 
 	return (
 		<div className={className} ref={radioWrapperRef}>
-			<input {...register(name)} value={value} type="radio" {...rest} style={{display: 'none'}} />
+			<input {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} style={{display: 'none'}} />
 			{children}
 		</div>
 	);

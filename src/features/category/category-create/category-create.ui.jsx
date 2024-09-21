@@ -3,9 +3,10 @@ import { useServer } from "../../../app/providers/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { CATEGORY_TYPES } from "../../../entities/category";
-import { Form, Hidden, Input, Select, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
+import { Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { CategoryIcon } from "../../../shared/ui/icons";
+import { path } from "../../../shared/lib/router";
 
 
 export const CategoryCreateForm = ({ userId }) => {
@@ -13,11 +14,9 @@ export const CategoryCreateForm = ({ userId }) => {
 	const { requestServer } = useServer();
 
 	const submitHandler = async (submittedData) => {
-		console.log(submittedData);
+		const { data: createdCategory } = await requestServer.createCategory(submittedData);
 
-		// const { data: createdCategory } = await requestServer.createCategory(submittedData);
-
-		// navigate(path.category.id(createdCategory.id));
+		navigate(path.category.id(createdCategory.id));
 	};
 
 	return (
