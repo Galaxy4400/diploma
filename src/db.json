@@ -58,7 +58,7 @@
   "categories": [
     {
       "name": "sdfgve g erg",
-      "iconId": 1,
+      "icon": "icon1",
       "typeId": 2,
       "userId": 1,
       "createdAt": "19.09.2024 23:42:35",
@@ -66,7 +66,7 @@
     },
     {
       "name": "sdfasd",
-      "iconId": 1,
+      "icon": "icon1",
       "typeId": 1,
       "userId": 1,
       "createdAt": "20.09.2024 02:26:50",
@@ -74,7 +74,7 @@
     },
     {
       "name": "Новая категория",
-      "iconId": 2,
+      "icon": "icon1",
       "typeId": 2,
       "userId": 1,
       "createdAt": "20.09.2024 23:36:17",
@@ -82,7 +82,7 @@
     },
     {
       "name": "ashs",
-      "iconId": 1,
+      "icon": "icon1",
       "typeId": 2,
       "userId": 1,
       "createdAt": "20.09.2024 23:43:43",

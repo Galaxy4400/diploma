@@ -4,15 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { path } from "../../../shared/lib/router";
 import { CATEGORY_TYPES } from "../../../entities/category";
-import { Form, Hidden, Input, Select, Radio } from "../../../shared/ui/react-hook-form";
-
-
-const options = [
-	{ value: '', label: 'Иконка категории...'},
-	{ value: '1', label: 'Иконка 1'},
-	{ value: '2', label: 'Иконка 2'},
-	{ value: '3', label: 'Иконка 3'},
-];
+import { Form, Hidden, Input, Select, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
+import { CATEGORY_ICON } from "../../../shared/lib/icons";
+import { CategoryIcon } from "../../../shared/ui/icons";
 
 
 export const CategoryCreateForm = ({ userId }) => {
@@ -24,6 +18,12 @@ export const CategoryCreateForm = ({ userId }) => {
 
 		navigate(path.category.id(createdCategory.id));
 	};
+
+
+	// const iconOptions = [
+	// 	{ value: "", label: "Счет операции..." },
+	// 	...accounts.map(account => ({ value: account.id, label: account.name }))
+	// ];
 
 	return (
 		<>
@@ -37,7 +37,14 @@ export const CategoryCreateForm = ({ userId }) => {
 								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 							))}
 						</div>
-						<Select name="iconId" options={options}/>
+						<div>
+							{Object.values(CATEGORY_ICON).map((icon, i) => (
+								<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
+									<CategoryIcon name={icon} />
+								</RadioComponent>
+							))}
+						</div>
+						{/* <Select name="icon" options={options}/> */}
 						<button type='submit'>Создать категорию</button>
 					</Form>
 				</div>

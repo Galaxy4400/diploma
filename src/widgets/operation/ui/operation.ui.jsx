@@ -1,9 +1,9 @@
 import { OperationView } from "../../../entities/operation";
 import { OperationDelete } from "../../../features/operation";
-import { useLoadData } from "../lib";
+import { useOperatinNeededData } from "../lib";
 
 export const Operation = ({ operationData }) => {
-	const { account, category } = useLoadData(operationData);
+	const { account, category } = useOperatinNeededData(operationData);
 
 	return (
 		<OperationView 
