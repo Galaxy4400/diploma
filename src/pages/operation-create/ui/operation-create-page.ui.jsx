@@ -1,30 +1,17 @@
 import { useLoaderData } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
 import { OperationCreateForm } from "../../../features/operation";
+import { AsyncComponent } from "../../../shared/ui";
 
 export const OperationCreatePage = () => {
 	const { authUser } = useAuth();
 
-	const { accounts, categories } = useLoaderData();
-
-	const accountOptions = [
-		{ value: "", label: "Счет операции..." },
-		...(accounts ? accounts.map(account => ({ value: account.id, label: account.name })) : [])
-	];
-
-	const categoryOptions = [
-		{ value: "", label: "Категория операции..." },
-		...(categories ? categories.map(category => ({ value: category.id, label: category.name })) : [])
-	];
+	const { selectorsData } = useLoaderData();
 
 	return (
 		<div>
 			<h1>СТРАНИЦА СОЗДАНИЯ ОПЕРАЦИИ</h1>
-			<OperationCreateForm 
-				userId={authUser.id} 
-				accountOptions={accountOptions} 
-				categoryOptions={categoryOptions} 
-			/>
+			<AsyncComponent resolve={selectorsData} element={<OperationCreateForm userId={authUser.id} />} fallback={<div>Загрузка данных...</div>} />
 		</div>
 	)
 };

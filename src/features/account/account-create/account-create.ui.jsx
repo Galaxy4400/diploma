@@ -24,22 +24,18 @@ export const AccountCreateForm = ({ userId }) => {
 	};
 
 	return (
-		<>
-		 {userId && 
-			<Loader isLoading={isLoading} style={{ width: "300px" }}>
-				<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
-					<Hidden name="userId" defaultValue={userId} />
-					<Hidden name="amount" defaultValue="0" />
-					<Input name="name" placeholder='Название счета...' />
-					<div style={{display: 'grid', gap: '10px'}}>
-						{ACCOUNT_TYPES.map((type, i) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
-						))}
-					</div>
-					<button type='submit'>Создать счет</button>
-				</Form>
-			</Loader>
-		 }
-		</>
+		<Loader isLoading={isLoading} style={{ width: "300px" }}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
+				<Hidden name="userId" defaultValue={userId} />
+				<Hidden name="amount" defaultValue="0" />
+				<Input name="name" placeholder='Название счета...' />
+				<div style={{display: 'grid', gap: '10px'}}>
+					{ACCOUNT_TYPES.map((type, i) => (
+						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
+					))}
+				</div>
+				<button type='submit'>Создать счет</button>
+			</Form>
+		</Loader>
 	);
 };
