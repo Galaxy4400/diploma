@@ -2,14 +2,16 @@ import { accountEditFormRules } from "./account-edit.rules";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ACCOUNT_TYPES, updateAccount } from "../../../entities/account";
-import { useNavigate } from "react-router-dom";
+import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui";
 
 
-export const AccountEditForm = ({ accountData }) => {
+export const AccountEditForm = () => {
+	const account = useAsyncValue();
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
@@ -17,29 +19,25 @@ export const AccountEditForm = ({ accountData }) => {
 	const submitHandler = async (editData) => {
 		setIsLoading(true);
 
-		dispatch(updateAccount(accountData.id, editData))
+		dispatch(updateAccount(account.id, editData))
 			.then(() => {
 				setIsLoading(false);
-				navigate(path.account.id(accountData.id));
+				navigate(path.account.id(account.id));
 			});
 	};
 
 	return (
-		<>
-		 {accountData &&
-			<Loader isLoading={isLoading} style={{ width: "300px" }}>
-				<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
-					<Input name="name" defaultValue={accountData.name} placeholder='Название счета...' />
-					<div style={{display: 'grid', gap: '10px'}}>
-						{ACCOUNT_TYPES.map((type) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === accountData?.typeId} />
-						))}
-					</div>
-					<button type='submit'>Внести изменения</button>
-				</Form>
-			</Loader>
-		 }
-		</>
+		<Loader isLoading={isLoading} style={{ width: "300px" }}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
+				<Input name="name" defaultValue={account.name} placeholder='Название счета...' />
+				<div style={{display: 'grid', gap: '10px'}}>
+					{ACCOUNT_TYPES.map((type) => (
+						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === account?.typeId} />
+					))}
+				</div>
+				<button type='submit'>Внести изменения</button>
+			</Form>
+		</Loader>
 	);
 };
 
