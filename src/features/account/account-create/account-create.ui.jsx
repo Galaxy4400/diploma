@@ -5,14 +5,21 @@ import { categoryCreateFormRules } from "./account-create.rules";
 import { path } from "../../../shared/lib/router";
 import { Form, Hidden, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
+import { useState } from "react";
+import { WithLoader } from "../../../shared/ui/with-loader";
 
 
 export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
+		setIsLoading(true);
+
 		const { data: createdAccount } = await requestServer.createAccount(submittedData);
+
+		setIsLoading(false);
 
 		navigate(path.account.id(createdAccount.id));
 	};
@@ -20,7 +27,7 @@ export const AccountCreateForm = ({ userId }) => {
 	return (
 		<>
 		 {userId && 
-			<div style={{ width: "300px" }}>
+			<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
 				<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
 					<Hidden name="userId" defaultValue={userId} />
 					<Hidden name="amount" defaultValue="0" />
@@ -32,7 +39,7 @@ export const AccountCreateForm = ({ userId }) => {
 					</div>
 					<button type='submit'>Создать счет</button>
 				</Form>
-			</div>
+			</WithLoader>
 		 }
 		</>
 	);

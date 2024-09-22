@@ -6,23 +6,30 @@ import { ACCOUNT_TYPES, updateAccount } from "../../../entities/account";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
+import { useState } from "react";
+import { WithLoader } from "../../../shared/ui/with-loader";
 
 
 export const AccountEditForm = ({ accountData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
+	const [isLoading, setIsLoading] = useState(false);
 	
 	const submitHandler = async (editData) => {
-		dispatch(updateAccount(requestServer, accountData.id, editData));
+		setIsLoading(true);
 
-		navigate(path.account.id(accountData.id));
+		dispatch(updateAccount(requestServer, accountData.id, editData))
+			.then(() => {
+				setIsLoading(false);
+				navigate(path.account.id(accountData.id));
+			});
 	};
 
 	return (
 		<>
 		 {accountData &&
-			<div style={{ width: "300px" }}>
+			<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
 				<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
 					<Input name="name" defaultValue={accountData.name} placeholder='Название счета...' />
 					<div style={{display: 'grid', gap: '10px'}}>
@@ -32,7 +39,7 @@ export const AccountEditForm = ({ accountData }) => {
 					</div>
 					<button type='submit'>Внести изменения</button>
 				</Form>
-			</div>
+			</WithLoader>
 		 }
 		</>
 	);

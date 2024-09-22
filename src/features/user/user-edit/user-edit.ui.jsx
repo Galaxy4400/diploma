@@ -6,32 +6,39 @@ import { editUserFormRules } from "./user-edit.rules";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router/path";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
+import { useState } from "react";
+import { WithLoader } from "../../../shared/ui";
 
 
 export const EditUserForm = ({ userData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = (submittedData) => {
 		delete submittedData.passcheck;
 
-		dispatch(updateAuth(requestServer, submittedData));
+		setIsLoading(true);
 
-		navigate(path.home());
+		dispatch(updateAuth(requestServer, submittedData))
+			.then(() => {
+				setIsLoading(false)
+				navigate(path.home());
+			});
 	};
 
 	return (
 		<>
 			{userData &&
-				<div style={{maxWidth: "300px"}}>
+				<WithLoader isLoading={isLoading} style={{maxWidth: "300px"}}>
 					<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)} style={{display: "grid", gap: "10px"}} >
 						<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
 						<Password name="password" placeholder="Пароль..." />
 						<Password name="passcheck" placeholder="Проверка пароль..." />
 						<button type='submit'>Внести изменения</button>
 					</Form>
-				</div>
+				</WithLoader>
 			}
 		</>
 	)

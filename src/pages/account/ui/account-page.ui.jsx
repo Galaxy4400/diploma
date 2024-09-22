@@ -1,16 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useLoadAccount } from "../../entities/account";
-import { ErrorHandler } from "../../shared/ui";
-import { Account } from "../../widgets/account";
-import { OperationsList } from "../../widgets/operations-list";
-import { useLoadOperations } from "../../entities/operations";
+import { ErrorHandler } from "../../../shared/ui";
+import { Account } from "../../../widgets/account";
+import { OperationsList } from "../../../widgets/operations-list";
+import { useAccountPageNeededData } from "../lib/use-account-page-needed-data";
 
 
 export const AccountPage = () => {
 	const { id: accountId } = useParams();
-
-	const account = useLoadAccount(accountId);
-	const operations = useLoadOperations(accountId);
+	
+	const { account, operations } = useAccountPageNeededData(accountId);
 
 	return (
 		<div>

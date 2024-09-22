@@ -12,9 +12,13 @@ const passwordRules = yup.string()
 
 const passcheckRules = yup.string()
 	.transform((value) => !value ? undefined : value)
-	.oneOf([yup.ref('password'), null]);
+	.when('password', {
+		is: (value) => value?.length,
+		then: (schema) => schema.required().oneOf([yup.ref('password'), null]),
+		otherwise: (schema) => schema.notRequired(),
+	});
 
-	
+
 export const editUserFormRules = yup.object().shape({
 	login: loginRules,
 	password: passwordRules,
