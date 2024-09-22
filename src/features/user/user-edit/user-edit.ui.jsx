@@ -27,17 +27,13 @@ export const EditUserForm = ({ userData }) => {
 	};
 
 	return (
-		<>
-			{userData &&
-				<Loader isLoading={isLoading} style={{maxWidth: "300px"}}>
-					<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)} style={{display: "grid", gap: "10px"}} >
-						<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
-						<Password name="password" placeholder="Пароль..." />
-						<Password name="passcheck" placeholder="Проверка пароль..." />
-						<button type='submit'>Внести изменения</button>
-					</Form>
-				</Loader>
-			}
-		</>
-	)
+		<Loader isLoading={isLoading} style={{maxWidth: "300px"}}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)} style={{display: "grid", gap: "10px"}} >
+				<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
+				<Password name="password" placeholder="Пароль..." />
+				<Password name="passcheck" placeholder="Проверка пароль..." />
+				<button type='submit'>Внести изменения</button>
+			</Form>
+		</Loader>
+	);
 };
