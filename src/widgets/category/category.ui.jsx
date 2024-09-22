@@ -1,11 +1,14 @@
+import { useAsyncValue } from "react-router-dom";
 import { CategoryView } from "../../entities/category";
 import { CategoryDelete } from "../../features/category";
 
-export const Category = ({ categoryData }) => {
+export const Category = () => {
+	const category = useAsyncValue();
+
 	return (
 		<CategoryView 
-			categoryData={categoryData}
-			deleteSlot={<CategoryDelete categoryId={categoryData.id}/>}
+			category={category}
+			deleteSlot={<CategoryDelete categoryId={category.id}/>}
 		/>
 	)
 };
