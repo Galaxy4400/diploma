@@ -1,10 +1,10 @@
+import { useLoaderData } from "react-router-dom";
 import { ErrorHandler, WithLoader } from "../../../shared/ui";
 import { OperationsList } from "../../../widgets/operations-list";
-import { useHistoryPageNeededData } from "../lib/use-history-page-needed-data";
 
 
 export const HistoryPage = () => {
-	const { operations } = useHistoryPageNeededData();
+	const operations = useLoaderData();
 
 	return (
 		<div>

@@ -14,6 +14,14 @@ export const getAccounts = async () => {
 
 	const authSession = await api.getSession(session);
 
+	if (!authSession) {
+		return {
+			ok: false,
+			error: 'Вы не аутентифицированы',
+			data: null,
+		}
+	}
+
 	const accounts = await api.getAccounts(`userId_like=${authSession.userId}`);
 
 	return {

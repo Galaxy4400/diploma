@@ -1,16 +1,16 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, MainLayout } from "../layouts";
 import { AuthenticateRoute, ProtectedRoute } from "./router.hocs";
-import { MainPage } from "../../pages/main";
+import { MainPage, mainPageLoader } from "../../pages/main";
 import { UserEditPage } from "../../pages/user-edit";
-import { AccountPage } from "../../pages/account";
+import { AccountPage, accountPageLoader } from "../../pages/account";
 import { AccountCreatePage } from "../../pages/account-create";
 import { AccountEditPage } from "../../pages/account-edit";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
 import { path } from "../../shared/lib/router";
 import { OperationPage } from "../../pages/operation";
-import { HistoryPage } from "../../pages/history";
+import { HistoryPage, historyPageLoader } from "../../pages/history";
 import { OperationCreatePage } from "../../pages/operation-create";
 import { CategoryPage } from "../../pages/category";
 import { CategoryCreatePage } from "../../pages/category-create";
@@ -25,6 +25,7 @@ export const routerConfig = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+				loader: mainPageLoader,
 			},
 			{
 				path: path.settings(),
@@ -32,7 +33,8 @@ export const routerConfig = createBrowserRouter([
 			},
 			{
 				path: path.history(),
-				element: <HistoryPage />
+				element: <HistoryPage />,
+				loader: historyPageLoader,
 			},
 			{
 				path: path.account.root(),
@@ -41,6 +43,7 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.account.id(),
 				element: <AccountPage />,
+				loader: accountPageLoader,
 			},
 			{
 				path: path.account.create(),

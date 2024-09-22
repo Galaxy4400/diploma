@@ -1,1 +1,1 @@
-export * from './use-main-page-needed-data';
+export * from './main-page.loader';

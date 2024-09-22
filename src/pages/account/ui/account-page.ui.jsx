@@ -1,14 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { ErrorHandler } from "../../../shared/ui";
 import { Account } from "../../../widgets/account";
 import { OperationsList } from "../../../widgets/operations-list";
-import { useAccountPageNeededData } from "../lib/use-account-page-needed-data";
 
 
 export const AccountPage = () => {
-	const { id: accountId } = useParams();
-	
-	const { account, operations } = useAccountPageNeededData(accountId);
+	const { id, account, operations } = useLoaderData();
 
 	return (
 		<div>
@@ -16,7 +13,7 @@ export const AccountPage = () => {
 			{account ? (
 				<div>
 					<Account accountData={account} />
-					<OperationsList operations={operations} accountId={accountId} />
+					<OperationsList operations={operations} accountId={id} />
 				</div>
 			) : (
 				<ErrorHandler message="Такой счет не найден" />

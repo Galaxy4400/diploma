@@ -1,18 +1,11 @@
 import { AccountsList } from "../../../widgets/accounts-list"
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { CategoriesList } from "../../../widgets/categories-list";
-import { useMainPageNeededData } from "../lib/use-main-page-needed-data";
-
-
-// const mainPageLoader = async ({ request, params }) => {
-// 	console.log(request, params);
-
-// }
 
 
 export const MainPage = () => {
-	const { accounts, categories } = useMainPageNeededData();
+	const { accounts, categories } = useLoaderData();
 
 	return (
 		<div>

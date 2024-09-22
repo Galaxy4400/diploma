@@ -1,1 +1,1 @@
-export * from './use-history-page-needed-data';
+export * from './history-page.loader';
