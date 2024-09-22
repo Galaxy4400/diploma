@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { AccountEditForm } from "../../../features/account";
-import { AsyncComponent } from "../../../shared/ui";
+import { AsyncComponent, Loading } from "../../../shared/ui";
 
 export const AccountEditPage = () => {
 	const { account } = useLoaderData();

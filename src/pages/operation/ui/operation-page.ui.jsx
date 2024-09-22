@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { AsyncComponent } from "../../../shared/ui";
+import { AsyncComponent, Loading } from "../../../shared/ui";
 import { Operation } from "../../../widgets/operation/ui";
 
 
