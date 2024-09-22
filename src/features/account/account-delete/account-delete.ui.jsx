@@ -1,24 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { loadAccounts } from "../../../entities/accounts";
 import { useFrom } from "../../../shared/lib/location";
 import { server } from "../../../shared/bff";
+import { useState } from "react";
 
 
 export const AccountDelete = ({ accountId }) => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const from = useFrom();
+	const [isDeleted, setIsDeleted] = useState(false);
 
 	const deleteHandler = async (id) => {
-		await server.deleteAccount(id);
+		setIsDeleted(true);
 
-		dispatch(loadAccounts());
+		const response = await server.deleteAccount(id);
+
+		if (!response.ok) setIsDeleted(false);
 
 		navigate(from?.pathname, { replace: true });
 	}
 
 	return (
-		<button type="button" onClick={() => deleteHandler(accountId)}>Удалить</button>
+		<button type="button" onClick={() => deleteHandler(accountId)} disabled={isDeleted}>Удалить</button>
 	)
 };

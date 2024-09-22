@@ -58,19 +58,11 @@
     },
     {
       "amount": 0,
-      "name": "Новый счет",
+      "name": "sdfgs",
       "typeId": 3,
       "userId": 1,
-      "createdAt": "20.09.2024 19:06:12",
-      "id": 14
-    },
-    {
-      "amount": 0,
-      "name": "test",
-      "typeId": 2,
-      "userId": 1,
-      "createdAt": "21.09.2024 01:06:15",
-      "id": 15
+      "createdAt": "23.09.2024 00:20:13",
+      "id": 13
     }
   ],
   "categories": [
@@ -97,66 +89,12 @@
       "userId": 1,
       "createdAt": "20.09.2024 23:36:17",
       "id": 3
-    },
-    {
-      "name": "ashs",
-      "icon": "icon1",
-      "typeId": 2,
-      "userId": 1,
-      "createdAt": "20.09.2024 23:43:43",
-      "id": 4
     }
   ],
-  "operations": [
-    {
-      "accountId": 11,
-      "categoryId": 1,
-      "amount": 442343,
-      "name": "drg",
-      "userId": 1,
-      "createdAt": "19.09.2024 18:32:27",
-      "id": 1
-    },
-    {
-      "accountId": 14,
-      "categoryId": 3,
-      "amount": 1234,
-      "name": "Комментарий",
-      "userId": 1,
-      "createdAt": "21.09.2024 02:32:20",
-      "id": 2
-    },
-    {
-      "accountId": 14,
-      "categoryId": 1,
-      "amount": 343,
-      "name": "ebsdf",
-      "userId": 1,
-      "createdAt": "22.09.2024 00:28:49",
-      "id": 3
-    },
-    {
-      "accountId": 11,
-      "categoryId": 2,
-      "amount": 3242,
-      "name": "asdgs",
-      "userId": 1,
-      "createdAt": "22.09.2024 19:10:24",
-      "id": 4
-    },
-    {
-      "accountId": 11,
-      "categoryId": 3,
-      "amount": 5534,
-      "name": "11111111",
-      "userId": 1,
-      "createdAt": "22.09.2024 19:11:09",
-      "id": 5
-    }
-  ],
+  "operations": [],
   "sessions": [
     {
-      "hash": "0.48268453438773462060851215937873348593711853027344",
+      "hash": "0.78230356577581239285734682198381051421165466308594",
       "userId": 1,
       "id": 1
     }

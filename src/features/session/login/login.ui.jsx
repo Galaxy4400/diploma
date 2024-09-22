@@ -5,11 +5,13 @@ import { loginFormRules } from "./login.rules";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui";
+import { useFrom } from "../../../shared/lib/location";
+import { path } from "../../../shared/lib/router";
 
 
 export const LoginForm = () => {
-	const location = useLocation();
 	const navigate = useNavigate();
+	const from = useFrom();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const { authorize, authorizeError } = useAuth();
@@ -21,7 +23,7 @@ export const LoginForm = () => {
 
 		setIsLoading(false);
 
-		navigate(location.state?.from?.pathname);
+		navigate(from?.pathname || path.home());
 	};
 
 	return (

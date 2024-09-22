@@ -2,25 +2,27 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../../app/providers/auth";
 import { useFrom } from "../../../shared/lib/location";
-import { loadCategories } from "../../../entities/categories";
 import { server } from "../../../shared/bff";
+import { useState } from "react";
 
 
 export const CategoryDelete = ({ categoryId }) => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { authUser } = useAuth();
 	const from = useFrom();
+	const [isDeleted, setIsDeleted] = useState(false);
 
 	const deleteHandler = async (id) => {
-		await server.deleteCategory(id, authUser.id);
+		setIsDeleted(true);
 
-		dispatch(loadCategories(authUser.id));
+		const response = await server.deleteCategory(id, authUser.id);
+
+		if (!response.ok) setIsDeleted(false);
 
 		navigate(from?.pathname, { replace: true });
 	}
 
 	return (
-		<button type="button" onClick={() => deleteHandler(categoryId)}>Удалить</button>
+		<button type="button" onClick={() => deleteHandler(categoryId)} disabled={isDeleted}>Удалить</button>
 	)
 };
