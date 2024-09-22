@@ -25,9 +25,14 @@ export const getAccount = async (accountId) => {
 		}
 	}
 
+	const operations = await api.getOperations(`accountId_like=${accountId}`);
+
 	return {
 		ok: true,
 		error: null,
-		data: account,
+		data: {
+			...account,
+			operations,
+		},
 	}
 };

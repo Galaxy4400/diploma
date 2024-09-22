@@ -35,8 +35,8 @@ export const getOperation = async (operationId) => {
 		error: null,
 		data: {
 			...operation,
-			account: account,
-			category: category,
+			account,
+			category,
 		},
 	}
 };
