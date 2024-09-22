@@ -1,16 +1,14 @@
+import { useAsyncValue } from "react-router-dom";
 import { OperationView } from "../../../entities/operation";
 import { OperationDelete } from "../../../features/operation";
-import { useOperatinNeededData } from "../lib";
 
-export const Operation = ({ operationData }) => {
-	const { account, category } = useOperatinNeededData(operationData);
+export const Operation = () => {
+	const operation = useAsyncValue();
 
 	return (
 		<OperationView 
-			operationData={operationData} 
-			account={account} 
-			category={category}
-			deleteSlot={<OperationDelete operationId={operationData.id}/>}
+			operation={operation} 
+			deleteSlot={<OperationDelete operationId={operation.id}/>}
 		/>
 	)
 };

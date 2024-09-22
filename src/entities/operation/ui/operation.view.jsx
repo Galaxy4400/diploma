@@ -1,12 +1,12 @@
-export const OperationView = ({ operationData, account, category, deleteSlot }) => {
+export const OperationView = ({ operation, deleteSlot }) => {
 	return (
 		<div>
-			<div>Идентификатор: {operationData.id}</div>
-			<div>Счета: {account?.name}</div>
-			<div>Категория: {category?.name}</div>
-			<div>Название: {operationData.name}</div>
-			<div>Сумма: {operationData.amount} руб.</div>
-			<div>Дата: {operationData.createdAt}</div>
+			<div>Идентификатор: {operation.id}</div>
+			<div>Счета: {operation?.account?.name}</div>
+			<div>Категория: {operation?.category?.name}</div>
+			<div>Название: {operation.name}</div>
+			<div>Сумма: {operation.amount} руб.</div>
+			<div>Дата: {operation.createdAt}</div>
 			{deleteSlot}
 		</div>
 	)

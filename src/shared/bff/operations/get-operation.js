@@ -25,9 +25,18 @@ export const getOperation = async (operationId) => {
 		}
 	}
 
+	const [account, category] = await Promise.all([
+		api.getCategory(operation.categoryId),
+		api.getAccount(operation.accountId),
+	]);
+
 	return {
 		ok: true,
 		error: null,
-		data: operation,
+		data: {
+			...operation,
+			account: account,
+			category: category,
+		},
 	}
 };
