@@ -12,7 +12,7 @@ export const ProtectedRoute = ({ element }) => {
 };
 
 
-export const AuthenticateRoute = ({ element }) => {
+export const AuthenticationRoute = ({ element }) => {
   const { authUser } = useAuth();
 
   return authUser ? <Navigate to={path.home()} replace /> : element;

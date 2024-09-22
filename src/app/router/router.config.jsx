@@ -1,7 +1,7 @@
 import { path } from "../../shared/lib/router";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, MainLayout } from "../layouts";
-import { AuthenticateRoute, ProtectedRoute } from "./router.hocs";
+import { AuthenticationRoute, ProtectedRoute } from "./router.hocs";
 import { MainPage, mainPageLoader } from "../../pages/main";
 import { UserEditPage } from "../../pages/user-edit";
 import { AccountPage, accountPageLoader } from "../../pages/account";
@@ -90,7 +90,7 @@ export const routerConfig = createBrowserRouter([
 	},
 	{
 		path: path.home(),
-		element: <AuthenticateRoute element={<AuthLayout />}/>,
+		element: <AuthenticationRoute element={<AuthLayout />}/>,
 		children: [
 			{
 				path: path.login(),
