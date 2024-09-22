@@ -8,7 +8,7 @@ export const AccountEditPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА РЕДАКТИРОВАНИЯ СЧЕТА</h1>
-			<AsyncComponent resolve={account} element={<AccountEditForm />} fallback={<div>Загрузка данных...</div>} />
+			<AsyncComponent resolve={account} element={<AccountEditForm />} fallback={<Loading />} />
 		</div>
 	)
 };

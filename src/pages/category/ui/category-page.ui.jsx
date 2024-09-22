@@ -9,7 +9,7 @@ export const CategoryPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА КАТЕГОРИИ</h1>
-			<AsyncComponent resolve={category} element={<Category />} fallback={<div>Загрузка данных...</div>} />
+			<AsyncComponent resolve={category} element={<Category />} fallback={<Loading />} />
 		</div>
 	)
 };

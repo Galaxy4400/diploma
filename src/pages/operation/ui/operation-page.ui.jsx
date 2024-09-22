@@ -9,7 +9,7 @@ export const OperationPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА ОПЕРАЦИИ</h1>
-			<AsyncComponent resolve={operation} element={<Operation />} fallback={<div>Загрузка данных...</div>} />
+			<AsyncComponent resolve={operation} element={<Operation />} fallback={<Loading />} />
 		</div>
 	)
 };

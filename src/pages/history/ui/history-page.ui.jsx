@@ -9,7 +9,7 @@ export const HistoryPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА ИСТОРИИ</h1>
-				<AsyncComponent resolve={operations} fallback={<div>Загрузка данных...</div>}>
+				<AsyncComponent resolve={operations} fallback={<Loading />}>
 					{(operations) => operations?.length ? (
 						<OperationsList operations={operations} />
 					) : (

@@ -9,7 +9,7 @@ export const AccountPage = () => {
 	return (
 		<div>
 			<h1>СТРАНИЦА СЧЕТА</h1>
-			<AsyncComponent resolve={account} element={<Account />} fallback={<div>Загрузка данных...</div>} />
+			<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
 		</div>
 	)
 };
