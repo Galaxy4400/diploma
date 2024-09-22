@@ -4,7 +4,7 @@ import { useAuth } from "../../../app/providers/auth";
 import { loginFormRules } from "./login.rules";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui";
 
 
 export const LoginForm = () => {
@@ -25,13 +25,13 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
+		<Loader isLoading={isLoading} style={{ width: "300px" }}>
 			<Form onSubmit={submitHandler} resolver={yupResolver(loginFormRules)} style={{ display: "grid", gap: "10px" }} >
 				<Input name="login" placeholder='Логин...' />
 				<Password name="password" placeholder='Пароль...' />
 				<button type='submit'>Войти</button>
 			</Form>
 			{authorizeError && <div>{authorizeError}</div>}
-		</WithLoader>
+		</Loader>
 	)
 };

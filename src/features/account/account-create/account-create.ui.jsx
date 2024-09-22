@@ -5,7 +5,7 @@ import { path } from "../../../shared/lib/router";
 import { Form, Hidden, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui/with-loader";
+import { Loader } from "../../../shared/ui";
 import { server } from "../../../shared/bff";
 
 
@@ -26,7 +26,7 @@ export const AccountCreateForm = ({ userId }) => {
 	return (
 		<>
 		 {userId && 
-			<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
+			<Loader isLoading={isLoading} style={{ width: "300px" }}>
 				<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
 					<Hidden name="userId" defaultValue={userId} />
 					<Hidden name="amount" defaultValue="0" />
@@ -38,7 +38,7 @@ export const AccountCreateForm = ({ userId }) => {
 					</div>
 					<button type='submit'>Создать счет</button>
 				</Form>
-			</WithLoader>
+			</Loader>
 		 }
 		</>
 	);

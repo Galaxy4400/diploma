@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { server } from "../../../shared/bff";
@@ -32,7 +32,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 	return (
 		<>
 			{categoryData &&
-				<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
+				<Loader isLoading={isLoading} style={{ width: "300px" }}>
 					<Form onSubmit={submitHandler} resolver={yupResolver(categoryEditFormRules)} style={{ display: "grid", gap: "10px" }}>
 						<Input name="name" defaultValue={categoryData.name} placeholder='Название категории...' />
 						<div>
@@ -49,7 +49,7 @@ export const CategoryEditForm = ({ categoryData }) => {
 						</div>
 						<button type='submit'>Внести изменения</button>
 					</Form>
-				</WithLoader>
+				</Loader>
 			}
 		</>
 	);

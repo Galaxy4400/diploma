@@ -1,6 +1,6 @@
-import css from "./with-loader.module.scss";
+import css from "./loader.module.scss";
 
-export const WithLoader = ({ className = '', isLoading = false, children, ...rest }) => {
+export const Loader = ({ className = '', isLoading = false, children, ...rest }) => {
 	return (
 		<div className={`${className} ${css['container']}`} {...rest} >
 			{children}

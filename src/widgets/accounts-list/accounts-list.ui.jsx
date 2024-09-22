@@ -12,7 +12,7 @@ export const AccountsList = () => {
 			<h2>СПИСОК СЧЕТОВ</h2>
 			<div>
 				<ul style={{display: 'grid', gap: '10px'}}>
-					{accounts.map(account => (
+					{accounts?.map(account => (
 						<AccountItem 
 							key={account.id} 
 							accountData={account}

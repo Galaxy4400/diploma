@@ -11,7 +11,7 @@ export const CategoriesList = () => {
 			<h2>СПИСОК КАТЕГОРИЙ</h2>
 			<div>
 				<ul style={{display: 'grid', gap: '10px'}}>
-					{categories.map(category => (
+					{categories?.map(category => (
 						<CategoryItem 
 							key={category.id} 
 							categoryData={category}

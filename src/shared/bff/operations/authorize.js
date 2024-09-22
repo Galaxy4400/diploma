@@ -5,7 +5,9 @@ import { sessions } from "../sessions";
 export const authorize = async (authLogin, authPassword) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
-	if (session) {
+	const authSession = await api.getSession(session);
+
+	if (authSession) {
 		return {
 			ok: false,
 			error: 'Вы уже в системе',

@@ -7,7 +7,7 @@ import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui";
 import { server } from "../../../shared/bff";
 
 
@@ -28,7 +28,7 @@ export const CategoryCreateForm = ({ userId }) => {
 	return (
 		<>
 			{userId && 
-				<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
+				<Loader isLoading={isLoading} style={{ width: "300px" }}>
 					<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
 						<Hidden name="userId" defaultValue={userId}/>
 						<Input name="name" placeholder='Название категории...' />
@@ -46,7 +46,7 @@ export const CategoryCreateForm = ({ userId }) => {
 						</div>
 						<button type='submit'>Создать категорию</button>
 					</Form>
-				</WithLoader>
+				</Loader>
 			}
 		</>
 	);

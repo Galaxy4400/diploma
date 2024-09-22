@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router/path";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui";
 
 
 export const EditUserForm = ({ userData }) => {
@@ -29,14 +29,14 @@ export const EditUserForm = ({ userData }) => {
 	return (
 		<>
 			{userData &&
-				<WithLoader isLoading={isLoading} style={{maxWidth: "300px"}}>
+				<Loader isLoading={isLoading} style={{maxWidth: "300px"}}>
 					<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)} style={{display: "grid", gap: "10px"}} >
 						<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
 						<Password name="password" placeholder="Пароль..." />
 						<Password name="passcheck" placeholder="Проверка пароль..." />
 						<button type='submit'>Внести изменения</button>
 					</Form>
-				</WithLoader>
+				</Loader>
 			}
 		</>
 	)

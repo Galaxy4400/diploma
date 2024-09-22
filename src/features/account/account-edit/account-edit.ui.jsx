@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { WithLoader } from "../../../shared/ui/with-loader";
+import { Loader } from "../../../shared/ui";
 
 
 export const AccountEditForm = ({ accountData }) => {
@@ -27,7 +27,7 @@ export const AccountEditForm = ({ accountData }) => {
 	return (
 		<>
 		 {accountData &&
-			<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
+			<Loader isLoading={isLoading} style={{ width: "300px" }}>
 				<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
 					<Input name="name" defaultValue={accountData.name} placeholder='Название счета...' />
 					<div style={{display: 'grid', gap: '10px'}}>
@@ -37,7 +37,7 @@ export const AccountEditForm = ({ accountData }) => {
 					</div>
 					<button type='submit'>Внести изменения</button>
 				</Form>
-			</WithLoader>
+			</Loader>
 		 }
 		</>
 	);
