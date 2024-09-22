@@ -18,6 +18,9 @@ export const path = {
 	page404() {
 		return path.root.concat('404');
 	},
+	others() {
+		return path.root.concat('*');
+	},
 	account: {
 		root() {
 			return path.root.concat('account');

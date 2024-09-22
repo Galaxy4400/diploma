@@ -1,6 +1,6 @@
 import { path } from "../../shared/lib/router";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthLayout, MainLayout } from "../layouts";
+import { AuthLayout, ErrorLayout, MainLayout } from "../layouts";
 import { AuthenticationRoute, ProtectedRoute } from "./router.hocs";
 import { MainPage, mainPageLoader } from "../../pages/main";
 import { UserEditPage } from "../../pages/user-edit";
@@ -15,12 +15,15 @@ import { OperationCreatePage, operationCreatePageLoader } from "../../pages/oper
 import { CategoryPage, categoryPageLoader } from "../../pages/category";
 import { CategoryCreatePage } from "../../pages/category-create";
 import { CategoryEditPage, categoryEditPageLoader } from "../../pages/category-edit";
+import { Page404 } from "../../pages/page-404";
+import { ErrorPage } from "../../pages/error";
 
 
 export const routerConfig = createBrowserRouter([
 	{
 		path: path.home(),
 		element: <ProtectedRoute element={<MainLayout />} />,
+		errorElement: <ErrorLayout><ErrorPage /></ErrorLayout>,
 		children: [
 			{
 				index: true,
@@ -85,6 +88,10 @@ export const routerConfig = createBrowserRouter([
 				path: path.category.edit(),
 				element: <CategoryEditPage />,
 				loader: categoryEditPageLoader,
+			},
+			{
+				path: path.others(),
+				element: <Page404 />,
 			},
 		],
 	},

@@ -4,7 +4,7 @@ import { server } from "../../../shared/bff";
 
 const getAccount = async (id) => {
 	const response = await server.getAccount(id);
-console.log(response);
+
 	return response.data;
 }
 

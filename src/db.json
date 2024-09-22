@@ -55,14 +55,6 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:12:43",
       "id": 12
-    },
-    {
-      "amount": 0,
-      "name": "sdfgs",
-      "typeId": 3,
-      "userId": 1,
-      "createdAt": "23.09.2024 00:20:13",
-      "id": 13
     }
   ],
   "categories": [
@@ -76,25 +68,27 @@
     },
     {
       "name": "sdfasd",
-      "icon": "icon1",
-      "typeId": 1,
+      "icon": "icon3",
+      "typeId": 2,
       "userId": 1,
       "createdAt": "20.09.2024 02:26:50",
       "id": 2
-    },
-    {
-      "name": "Новая категория",
-      "icon": "icon1",
-      "typeId": 2,
-      "userId": 1,
-      "createdAt": "20.09.2024 23:36:17",
-      "id": 3
     }
   ],
-  "operations": [],
+  "operations": [
+    {
+      "accountId": 12,
+      "categoryId": 1,
+      "amount": 45,
+      "name": "jhvj",
+      "userId": 1,
+      "createdAt": "23.09.2024 01:18:08",
+      "id": 1
+    }
+  ],
   "sessions": [
     {
-      "hash": "0.78230356577581239285734682198381051421165466308594",
+      "hash": "0.01607681945987615712567730952287092804908752441406",
       "userId": 1,
       "id": 1
     }
