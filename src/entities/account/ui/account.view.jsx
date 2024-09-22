@@ -3,7 +3,6 @@ import { path } from "../../../shared/lib/router";
 import { getAccountType } from "../lib/get-account-type";
 
 export const AccountView = ({ accountData, deleteSlot }) => {
-	console.log(accountData);
 	return (
 		<div>
 			<div>Идентификатор: {accountData.id}</div>

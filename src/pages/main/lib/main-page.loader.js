@@ -1,16 +1,24 @@
+import { defer } from "react-router-dom";
 import { server } from "../../../shared/bff";
 
+
+const getAccounts = async () => {
+	const response = await server.getAccounts();
+
+	return response.data;
+}
+
+
+const getCategories = async () => {
+	const response = await server.getCategories();
+
+	return response.data;
+}
+
+
 export const mainPageLoader = async () => {
-	const [
-		accountsResponse,
-		categoriesResponse
-	] = await Promise.all([
-		server.getAccounts(),
-		server.getCategories(),
-	]);
-
-	const accounts = accountsResponse.data;
-	const categories = categoriesResponse.data;
-
-	return { accounts, categories };
+	return defer({
+		accounts: getAccounts(),
+		categories: getCategories(),
+	});
 };
