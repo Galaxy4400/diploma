@@ -1,29 +1,27 @@
 import { accountEditFormRules } from "./account-edit.rules";
-import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ACCOUNT_TYPES, updateAccount } from "../../../entities/account";
+import { ACCOUNT_TYPES } from "../../../entities/account";
 import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui";
+import { server } from "../../../shared/bff";
 
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue();
-
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	
 	const submitHandler = async (editData) => {
 		setIsLoading(true);
 
-		dispatch(updateAccount(account.id, editData))
-			.then(() => {
-				setIsLoading(false);
-				navigate(path.account.id(account.id));
-			});
+		await server.updateAccount(account.id, editData);
+
+		setIsLoading(false);
+
+		navigate(path.account.id(account.id));
 	};
 
 	return (
