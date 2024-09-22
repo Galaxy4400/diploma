@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useAsyncValue } from "react-router-dom";
 import { OperationItem } from "../../entities/operation";
 import { OperationDelete } from "../../features/operation";
 import { ErrorHandler } from "../../shared/ui";
 import { path } from "../../shared/lib/router";
 
-export const OperationsList = ({ operations, accountId = null }) => {
+export const OperationsList = ({ accountId }) => {
+	const operations = useAsyncValue();
+
 	return (
 		<div>
 			<h2>СПИСОК ОПЕРАЦИЙ СЧЕТА</h2>

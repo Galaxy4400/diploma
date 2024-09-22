@@ -134,6 +134,24 @@
       "userId": 1,
       "createdAt": "22.09.2024 00:28:49",
       "id": 3
+    },
+    {
+      "accountId": 11,
+      "categoryId": 2,
+      "amount": 3242,
+      "name": "asdgs",
+      "userId": 1,
+      "createdAt": "22.09.2024 19:10:24",
+      "id": 4
+    },
+    {
+      "accountId": 11,
+      "categoryId": 3,
+      "amount": 5534,
+      "name": "11111111",
+      "userId": 1,
+      "createdAt": "22.09.2024 19:11:09",
+      "id": 5
     }
   ],
   "sessions": [
