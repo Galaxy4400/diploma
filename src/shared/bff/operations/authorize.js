@@ -1,7 +1,9 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 import { sessions } from "../sessions";
 
-export const authorize = async (session, authLogin, authPassword) => {
+export const authorize = async (authLogin, authPassword) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (session) {
 		return {

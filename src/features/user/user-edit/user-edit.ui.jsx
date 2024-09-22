@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { useServer } from "../../../app/providers/server";
 import { updateAuth } from "../../../entities/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { editUserFormRules } from "./user-edit.rules";
@@ -13,7 +12,6 @@ import { WithLoader } from "../../../shared/ui";
 export const EditUserForm = ({ userData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = (submittedData) => {
@@ -21,7 +19,7 @@ export const EditUserForm = ({ userData }) => {
 
 		setIsLoading(true);
 
-		dispatch(updateAuth(requestServer, submittedData))
+		dispatch(updateAuth(submittedData))
 			.then(() => {
 				setIsLoading(false)
 				navigate(path.home());

@@ -1,10 +1,11 @@
+import { server } from "../../../shared/bff";
 import { resetCategory, setCategory } from "./category.actions";
 
 
-export const loadCategory = (requestServer, categoryId) => async (dispatch) => {
+export const loadCategory = (categoryId) => async (dispatch) => {
 	dispatch(resetCategory());
 
-	const { data: category } = await requestServer.getCategory(categoryId);
+	const { data: category } = await server.getCategory(categoryId);
 
 	if (category) {
 		dispatch(setCategory(category));
@@ -14,8 +15,8 @@ export const loadCategory = (requestServer, categoryId) => async (dispatch) => {
 };
 
 
-export const updateCategory = (requestServer, categoryId, categoryData) => async (dispatch) => {
-	const { data: category } = await requestServer.updateCategory(categoryId, categoryData);
+export const updateCategory = (categoryId, categoryData) => async (dispatch) => {
+	const { data: category } = await server.updateCategory(categoryId, categoryData);
 
 	dispatch(setCategory(category));
 };

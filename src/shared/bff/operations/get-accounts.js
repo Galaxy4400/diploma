@@ -1,6 +1,8 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const getAccounts = async (session) => {
+export const getAccounts = async () => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (!session) {
 		return {

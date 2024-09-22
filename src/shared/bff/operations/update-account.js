@@ -1,6 +1,9 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const updateAccount = async (session, accountId, updatingAccountData) => {
+export const updateAccount = async (accountId, updatingAccountData) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
+
 	if (!session) {
 		return {
 			ok: false,

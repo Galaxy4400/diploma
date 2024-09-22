@@ -1,9 +1,10 @@
+import { server } from "../../../shared/bff";
 import { resetCategories, setCategories } from "./categories.actions";
 
-export const loadCategories = (requestServer) => async (dispatch) => {
+export const loadCategories = () => async (dispatch) => {
 	dispatch(resetCategories());
 
-	const { data: categories } = await requestServer.getCategories();
+	const { data: categories } = await server.getCategories();
 
 	dispatch(setCategories(categories));
 }

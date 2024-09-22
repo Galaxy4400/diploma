@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { useServer } from "../../../app/providers/server";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAccount, setAccount } from "../../../entities/account";
 import { selectOperations, setOperations } from "../../../entities/operations";
+import { server } from "../../../shared/bff";
 
 export const useAccountPageNeededData = (accountId) => {
 	const dispatch = useDispatch();
-	const { requestServer } = useServer();
 	const account = useSelector(selectAccount);
 	const operations = useSelector(selectOperations);
 
@@ -16,15 +15,15 @@ export const useAccountPageNeededData = (accountId) => {
 				accountResponse,
 				operationsResponse
 			] = await Promise.all([
-				requestServer.getAccount(accountId),
-				requestServer.getOperations(accountId),
+				server.getAccount(accountId),
+				server.getOperations(accountId),
 			]);
 
 			dispatch(setAccount(accountResponse.data));
 			dispatch(setOperations(operationsResponse.data));
 		}
 		fetchData();
-	}, [requestServer, dispatch, accountId]);
+	}, [dispatch, accountId]);
 
 	return { account, operations };
 };

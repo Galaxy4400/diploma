@@ -1,23 +1,21 @@
 import { useDispatch } from "react-redux";
 import { AuthContext } from "./auth.context";
 import { useCallback, useLayoutEffect, useState } from "react";
-import { useServer } from "../server";
 import { resetAuth, setAuth } from "../../../entities/auth";
 import { SESSION_KEY_NAME } from "../../../shared/lib/session";
 import { resetAccounts } from "../../../entities/accounts";
 import { resetCategories } from "../../../entities/categories";
 import { resetOperations } from "../../../entities/operations";
-
+import { server } from "../../../shared/bff";
 
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
-	const { requestServer } = useServer();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [registrationError, setRegistrationError] = useState(null);
 	const [authorizeError, setAuthorizeError] = useState(null);
 
 	const authorize = useCallback(async (login, password) => {
-		const { data: authUser, ok, error} = await requestServer.authorize(login, password);
+		const { data: authUser, ok, error} = await server.authorize(login, password);
 
 		if (!ok) {
 			setAuthorizeError(error);
@@ -27,11 +25,11 @@ export const AuthProvider = ({ children }) => {
 		dispatch(setAuth(authUser));
 
 		sessionStorage.setItem(SESSION_KEY_NAME, authUser.session);
-	}, [dispatch, requestServer]);
+	}, [dispatch]);
 
 
 	const registration = useCallback(async (login, password) => {
-		const response = await requestServer.register(login, password);
+		const response = await server.register(login, password);
 		
 		if (!response.ok) {
 			setRegistrationError(response.error);
@@ -39,11 +37,11 @@ export const AuthProvider = ({ children }) => {
 		};
 
 		authorize(login, password);
-	}, [authorize, requestServer]);
+	}, [authorize]);
 	
 
 	const logout = useCallback(async () => {
-		await requestServer.logout();
+		await server.logout();
 
 		setAuthorizeError(null);
 		setRegistrationError(null);
@@ -54,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 		dispatch(resetOperations());
 
 		sessionStorage.removeItem(SESSION_KEY_NAME);
-	}, [dispatch, requestServer]);
+	}, [dispatch]);
 
 
 	useLayoutEffect(() => {
@@ -66,11 +64,11 @@ export const AuthProvider = ({ children }) => {
 			return;
 		}
 		
-		requestServer.getAuthUser(storageSession)
+		server.getAuthUser(storageSession)
 			.then(({data: user}) => user && dispatch(setAuth(user)))
 			.then(() => setIsAuthInitialize(true));
 			
-	}, [dispatch, logout, requestServer]);
+	}, [dispatch, logout]);
 
 	return (
 		<AuthContext.Provider value={{ authorize, registration, logout, authorizeError, registrationError }}>

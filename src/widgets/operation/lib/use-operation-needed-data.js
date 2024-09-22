@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useServer } from "../../../app/providers/server";
+import { server } from "../../../shared/bff";
 
 export const useOperatinNeededData = (operationData) => {
-	const { requestServer } = useServer();
 	const [account, setAccount] = useState(null);
 	const [category, setCategory] = useState(null);
 
@@ -12,15 +11,15 @@ export const useOperatinNeededData = (operationData) => {
 				accountResponse, 
 				categoryResponse
 			] = await Promise.all([
-				requestServer.getAccount(operationData.accountId),
-				requestServer.getCategory(operationData.categoryId),
+				server.getAccount(operationData.accountId),
+				server.getCategory(operationData.categoryId),
 			]);
 
 			setAccount(accountResponse.data);
 			setCategory(categoryResponse.data);
 		}
 		fetchData();
-	}, [operationData, requestServer]);
+	}, [operationData]);
 
 	return { account, category };
 };

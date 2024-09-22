@@ -1,7 +1,6 @@
 import { api } from "../api";
 
-export const getAuthUser = async (session, storageSession) => {
-
+export const getAuthUser = async (storageSession) => {
 	if (!storageSession) {
 		return {
 			ok: false,

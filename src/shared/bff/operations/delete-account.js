@@ -1,6 +1,9 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const deleteAccount = async (session, accountId) => {
+export const deleteAccount = async (accountId) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
+
 	if (!session) {
 		return {
 			ok: false,

@@ -1,6 +1,8 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const getCategory = async (session, categoryId) => {
+export const getCategory = async (categoryId) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (!session) {
 		return {

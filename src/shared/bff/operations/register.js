@@ -1,6 +1,8 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const register = async (session, regLogin, regPassword) => {
+export const register = async (regLogin, regPassword) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (session) {
 		return {

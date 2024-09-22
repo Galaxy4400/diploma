@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import { useServer } from "../../../app/providers/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
 import { useFrom } from "../../../shared/lib/location";
 import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/react-hook-form";
+import { server } from "../../../shared/bff";
 
 
 export const OperationCreateForm = ({ userId, accountOptions = [], categoryOptions = [] }) => {
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const from = useFrom();
 
 	const submitHandler = async (submittedData) => {
-		const { data: createdOperation } = await requestServer.createOperation(submittedData);
+		const { data: createdOperation } = await server.createOperation(submittedData);
 
 		navigate(path.operation.id(createdOperation.id));
 	};

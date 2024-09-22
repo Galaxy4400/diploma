@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useServer } from "../../../app/providers/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./account-create.rules";
 import { path } from "../../../shared/lib/router";
@@ -7,17 +6,17 @@ import { Form, Hidden, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
 import { useState } from "react";
 import { WithLoader } from "../../../shared/ui/with-loader";
+import { server } from "../../../shared/bff";
 
 
 export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: createdAccount } = await requestServer.createAccount(submittedData);
+		const { data: createdAccount } = await server.createAccount(submittedData);
 
 		setIsLoading(false);
 

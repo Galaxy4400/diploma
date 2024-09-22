@@ -1,5 +1,4 @@
 import { accountEditFormRules } from "./account-edit.rules";
-import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ACCOUNT_TYPES, updateAccount } from "../../../entities/account";
@@ -13,13 +12,12 @@ import { WithLoader } from "../../../shared/ui/with-loader";
 export const AccountEditForm = ({ accountData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const [isLoading, setIsLoading] = useState(false);
 	
 	const submitHandler = async (editData) => {
 		setIsLoading(true);
 
-		dispatch(updateAccount(requestServer, accountData.id, editData))
+		dispatch(updateAccount(accountData.id, editData))
 			.then(() => {
 				setIsLoading(false);
 				navigate(path.account.id(accountData.id));

@@ -1,6 +1,9 @@
+import { SESSION_KEY_NAME } from "../../lib/session";
 import { api } from "../api";
 
-export const createAccount = async (session, accountData) => {
+export const createAccount = async (accountData) => {
+	const session = sessionStorage.getItem(SESSION_KEY_NAME);
+
 	if (!session) {
 		return {
 			ok: false,

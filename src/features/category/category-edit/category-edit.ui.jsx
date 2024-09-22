@@ -1,5 +1,4 @@
 import { categoryEditFormRules } from "./category-edit.rules";
-import { useServer } from "../../../app/providers/server";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CATEGORY_TYPES, setCategory } from "../../../entities/category";
@@ -10,18 +9,18 @@ import { useState } from "react";
 import { WithLoader } from "../../../shared/ui";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
+import { server } from "../../../shared/bff";
 
 
 export const CategoryEditForm = ({ categoryData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: category } = await requestServer.updateCategory(categoryData.id, submittedData);
+		const { data: category } = await server.updateCategory(categoryData.id, submittedData);
 
 		dispatch(setCategory(category));
 

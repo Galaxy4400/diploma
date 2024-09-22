@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useServer } from "../../../app/providers/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { CATEGORY_TYPES } from "../../../entities/category";
@@ -9,17 +8,17 @@ import { CategoryIcon } from "../../../shared/ui/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
 import { WithLoader } from "../../../shared/ui";
+import { server } from "../../../shared/bff";
 
 
 export const CategoryCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
-	const { requestServer } = useServer();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: createdCategory } = await requestServer.createCategory(submittedData);
+		const { data: createdCategory } = await server.createCategory(submittedData);
 
 		setIsLoading(false);
 

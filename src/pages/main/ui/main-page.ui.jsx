@@ -5,6 +5,12 @@ import { CategoriesList } from "../../../widgets/categories-list";
 import { useMainPageNeededData } from "../lib/use-main-page-needed-data";
 
 
+// const mainPageLoader = async ({ request, params }) => {
+// 	console.log(request, params);
+
+// }
+
+
 export const MainPage = () => {
 	const { accounts, categories } = useMainPageNeededData();
 
