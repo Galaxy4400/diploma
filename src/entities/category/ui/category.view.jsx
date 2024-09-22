@@ -9,7 +9,7 @@ export const CategoryView = ({ categoryData, deleteSlot }) => {
 			<div>Идентификатор: {categoryData.id}</div>
 			<div>Название: {categoryData.name}</div>
 			<div>Иконка: <CategoryIcon name={categoryData.icon} /></div>
-			<div>Тип: {getCategoryType(categoryData.typeId).name}</div>
+			<div>Тип: {getCategoryType(categoryData.typeId)?.name}</div>
 			<div>Дата: {categoryData.createdAt}</div>
 			<Link to={path.category.edit(categoryData.id)}>Редактировать</Link>
 			{deleteSlot}

@@ -7,14 +7,21 @@ import { Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/r
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { path } from "../../../shared/lib/router";
+import { useState } from "react";
+import { WithLoader } from "../../../shared/ui";
 
 
 export const CategoryCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
 	const { requestServer } = useServer();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
+		setIsLoading(true);
+
 		const { data: createdCategory } = await requestServer.createCategory(submittedData);
+
+		setIsLoading(false);
 
 		navigate(path.category.id(createdCategory.id));
 	};
@@ -22,7 +29,7 @@ export const CategoryCreateForm = ({ userId }) => {
 	return (
 		<>
 			{userId && 
-				<div style={{ width: "300px" }}>
+				<WithLoader isLoading={isLoading} style={{ width: "300px" }}>
 					<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
 						<Hidden name="userId" defaultValue={userId}/>
 						<Input name="name" placeholder='Название категории...' />
@@ -40,7 +47,7 @@ export const CategoryCreateForm = ({ userId }) => {
 						</div>
 						<button type='submit'>Создать категорию</button>
 					</Form>
-				</div>
+				</WithLoader>
 			}
 		</>
 	);

@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useLoadCategory } from "../../entities/category";
-import { CategoryEditForm } from "../../features/category";
+import { CategoryEditForm } from "../../../features/category";
+import { useCategoryEditPageNeededData } from "../lib";
 
 export const CategoryEditPage = () => {
 	const { id: categoryId } = useParams();
 
-	const category = useLoadCategory(categoryId);
+	const category = useCategoryEditPageNeededData(categoryId);
 
 	return (
 		<div>

@@ -1,1 +1,1 @@
-export * from './category-page.ui';
+export * from './ui';

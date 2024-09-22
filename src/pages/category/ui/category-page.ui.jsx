@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
-import { ErrorHandler } from "../../shared/ui";
-import { useLoadCategory } from "../../entities/category";
-import { Category } from "../../widgets/category";
+import { ErrorHandler } from "../../../shared/ui";
+import { Category } from "../../../widgets/category";
+import { useCategoryPageNeededData } from "../lib";
 
 
 export const CategoryPage = () => {
 	const { id: categoryId } = useParams();
 
-	const category = useLoadCategory(categoryId);
+	const { category } = useCategoryPageNeededData(categoryId);
 
 	return (
 		<div>
