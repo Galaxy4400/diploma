@@ -1,1 +1,1 @@
-export * from './use-account-edit-page-needed-data';
+export * from './account-edit-page.loader';

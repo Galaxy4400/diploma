@@ -1,1 +1,1 @@
-export * from './use-category-edit-page-needed-data';
+export * from './category-edit-page.loader';

@@ -1,12 +1,11 @@
-import { useAuth } from "../../app/providers/auth";
-import { useLoadAccounts } from "../../entities/accounts";
-import { useLoadCategories } from "../../entities/categories";
-import { OperationCreateForm } from "../../features/operation";
+import { useLoaderData } from "react-router-dom";
+import { useAuth } from "../../../app/providers/auth";
+import { OperationCreateForm } from "../../../features/operation";
 
 export const OperationCreatePage = () => {
 	const { authUser } = useAuth();
-	const accounts = useLoadAccounts();
-	const categories = useLoadCategories();
+
+	const { accounts, categories } = useLoaderData();
 
 	const accountOptions = [
 		{ value: "", label: "Счет операции..." },

@@ -1,3 +1,4 @@
+import { path } from "../../shared/lib/router";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, MainLayout } from "../layouts";
 import { AuthenticateRoute, ProtectedRoute } from "./router.hocs";
@@ -5,16 +6,15 @@ import { MainPage, mainPageLoader } from "../../pages/main";
 import { UserEditPage } from "../../pages/user-edit";
 import { AccountPage, accountPageLoader } from "../../pages/account";
 import { AccountCreatePage } from "../../pages/account-create";
-import { AccountEditPage } from "../../pages/account-edit";
+import { AccountEditPage, accountEditPageLoader } from "../../pages/account-edit";
 import { LoginPage } from "../../pages/login";
 import { RegisterPage } from "../../pages/register";
-import { path } from "../../shared/lib/router";
-import { OperationPage } from "../../pages/operation";
+import { OperationPage, operationPageLoader } from "../../pages/operation";
 import { HistoryPage, historyPageLoader } from "../../pages/history";
-import { OperationCreatePage } from "../../pages/operation-create";
-import { CategoryPage } from "../../pages/category";
+import { OperationCreatePage, operationCreatePageLoader } from "../../pages/operation-create";
+import { CategoryPage, categoryPageLoader } from "../../pages/category";
 import { CategoryCreatePage } from "../../pages/category-create";
-import { CategoryEditPage } from "../../pages/category-edit";
+import { CategoryEditPage, categoryEditPageLoader } from "../../pages/category-edit";
 
 
 export const routerConfig = createBrowserRouter([
@@ -52,6 +52,7 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.account.edit(),
 				element: <AccountEditPage />,
+				loader: accountEditPageLoader,
 			},
 			{
 				path: path.operation.root(),
@@ -60,10 +61,12 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.operation.id(),
 				element: <OperationPage />,
+				loader: operationPageLoader,
 			},
 			{
 				path: path.operation.create(),
 				element: <OperationCreatePage />,
+				loader: operationCreatePageLoader,
 			},
 			{
 				path: path.category.root(),
@@ -72,6 +75,7 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.category.id(),
 				element: <CategoryPage />,
+				loader: categoryPageLoader,
 			},
 			{
 				path: path.category.create(),
@@ -80,6 +84,7 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.category.edit(),
 				element: <CategoryEditPage />,
+				loader: categoryEditPageLoader,
 			},
 		],
 	},

@@ -1,11 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { AccountEditForm } from "../../../features/account";
-import { useAccountEditPageNeededData } from "../lib";
 
 export const AccountEditPage = () => {
-	const { id: accountId } = useParams();
-
-	const { account } = useAccountEditPageNeededData(accountId)
+	const account = useLoaderData();
 
 	return (
 		<div>
