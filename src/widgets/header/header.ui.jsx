@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { LogoutButton } from "../../features/session";
 import { path } from "../../shared/lib/router";
 import { useAuth } from "../../app/providers/auth";
-import { CategoryIcon } from "../../shared/ui/icons";
-import { CATEGORY_ICON } from "../../shared/lib/icons";
 import { Container } from "../../shared/ui/technical";
+import { Logo } from "../../shared/ui/components";
 
 
 export const Header = () => {
@@ -16,10 +15,7 @@ export const Header = () => {
 			<Container>
 				<div className="body">
 					<div className="header__column header__column_1">
-						<Link className="logo" to={path.home()}>
-							<CategoryIcon name={CATEGORY_ICON.ICON4} />
-							<div>Учет доходов и расходов</div>
-						</Link>
+						<Logo />
 					</div>
 					<div className="header__column header__column_2">
 						<Link to={path.history()}>История</Link>

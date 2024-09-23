@@ -1,0 +1,27 @@
+@import '../../../assets/styles/abstracts/variables.scss';
+@import '../../../assets/styles/abstracts/functions.scss';
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: rem(15);
+
+	.icon {
+		width: rem(50);
+		height: rem(50);
+	}
+	
+	.label {
+		font-size: rem(30);
+		text-transform: uppercase;
+		font-weight: 700;
+		white-space: nowrap;
+
+		@media (max-width: em($ms)) {
+			span {
+				display: none;
+			}
+		}
+	}
+}
+
