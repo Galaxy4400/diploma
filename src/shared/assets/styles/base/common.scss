@@ -1,0 +1,34 @@
+// Стилизация скроллбаров
+@media (any-hover: hover) {
+	::-webkit-scrollbar {
+		width: px(10);
+		height: px(10);
+	}
+
+	::-webkit-scrollbar-track {
+		background: #eeeeee;
+		box-shadow: 0 0 px(2) rgba(0, 0, 0, .2) inset;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: $color-main-light;
+		border-radius: px(5);
+		border: px(2) solid #eeeeee;
+		&:hover {
+			background: $color-main;
+		}
+	}
+}
+
+
+html {
+}
+
+
+.body {
+	color: var(--color-font);
+	background: var(--color-body-background);
+	&.lock {
+		overflow: hidden;
+	}
+}

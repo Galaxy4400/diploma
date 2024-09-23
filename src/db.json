@@ -55,6 +55,14 @@
       "userId": 1,
       "createdAt": "19.09.2024 18:12:43",
       "id": 12
+    },
+    {
+      "amount": 0,
+      "name": "лгпл",
+      "typeId": 4,
+      "userId": 1,
+      "createdAt": "23.09.2024 15:03:49",
+      "id": 13
     }
   ],
   "categories": [
