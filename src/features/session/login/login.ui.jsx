@@ -1,10 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
 import { loginFormRules } from "./login.rules";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 import { useFrom } from "../../../shared/lib/location";
 import { path } from "../../../shared/lib/router";
 

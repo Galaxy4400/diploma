@@ -5,7 +5,7 @@ import { path } from "../../../shared/lib/router";
 import { useFrom } from "../../../shared/lib/location";
 import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/react-hook-form";
 import { server } from "../../../shared/bff";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 import { useState } from "react";
 
 

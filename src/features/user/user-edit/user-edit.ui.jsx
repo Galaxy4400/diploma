@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router/path";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 
 
 export const EditUserForm = ({ userData }) => {

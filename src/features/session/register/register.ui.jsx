@@ -3,7 +3,7 @@ import { registerFormRules } from "./register.rules";
 import { useAuth } from "../../../app/providers/auth";
 import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 
 
 export const RegisterForm = () => {

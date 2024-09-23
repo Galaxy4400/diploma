@@ -1,3 +1,2 @@
-export * from './layout.auth';
-export * from './layout.main';
-export * from './layout.error';
+export * from './auth.layout';
+export * from './main.layout';

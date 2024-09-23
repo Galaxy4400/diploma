@@ -11,17 +11,19 @@ $color-link: #000000;
 $color-link-hover: #271dd7;
 $color-titles: #000000;
 
-$containerWidth: 800px;
-$containerPadding: 15px;
-$minWidth: 320px;
-$maxWidth: 1920px;
+$containerWidth: 1000;
+$containerPadding: 15;
+$minWidth: 320;
+$maxWidth: 1920;
 $maxWidthContainer: $containerWidth + ($containerPadding * 2);
 
-$maxSize: $maxWidthContainer + 12px;
-$xl: 1200px;
-$lg: 992px;
-$md: 768px;
-$sm: 576px;
+$maxSize: $maxWidthContainer + 12;
+$xl: 1200;
+$lg: 992;
+$md: 768;
+$sm: 576;
 
-$font-size-base: 16px;
+$font-size-base: 16;
 $fontFamily: "OpenSans";
+
+

@@ -5,8 +5,8 @@ import { path } from "../../../shared/lib/router";
 import { Form, Hidden, Input, Radio } from "../../../shared/ui/react-hook-form";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
 import { server } from "../../../shared/bff";
+import { Loader } from "../../../shared/ui/components";
 
 
 export const AccountCreateForm = ({ userId }) => {

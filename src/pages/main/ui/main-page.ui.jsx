@@ -2,7 +2,7 @@ import { AccountsList } from "../../../widgets/accounts-list"
 import { Link, useLoaderData } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { CategoriesList } from "../../../widgets/categories-list";
-import { AsyncComponent, Loading } from "../../../shared/ui";
+import { AsyncComponent, Loading } from "../../../shared/ui/components";
 
 
 export const MainPage = () => {

@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form"
-import { ErrorList } from "../../error-list";
+import { ErrorList } from "../../components/error-list";
 
 
 export function Form({ defaultValues, resolver, onSubmit, children, ...rest }) { // TODO убрать отсюда стили

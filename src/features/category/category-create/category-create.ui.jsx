@@ -7,7 +7,7 @@ import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 import { server } from "../../../shared/bff";
 
 

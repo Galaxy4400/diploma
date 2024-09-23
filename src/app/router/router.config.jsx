@@ -1,6 +1,6 @@
 import { path } from "../../shared/lib/router";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthLayout, ErrorLayout, MainLayout } from "../layouts";
+import { AuthLayout, MainLayout } from "../layouts";
 import { AuthenticationRoute, ProtectedRoute } from "./router.hocs";
 import { MainPage, mainPageLoader } from "../../pages/main";
 import { UserEditPage } from "../../pages/user-edit";
@@ -23,7 +23,7 @@ export const routerConfig = createBrowserRouter([
 	{
 		path: path.home(),
 		element: <ProtectedRoute element={<MainLayout />} />,
-		errorElement: <ErrorLayout><ErrorPage /></ErrorLayout>,
+		errorElement: <MainLayout><ErrorPage /></MainLayout>,
 		children: [
 			{
 				index: true,

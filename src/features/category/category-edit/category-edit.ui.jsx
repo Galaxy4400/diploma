@@ -6,7 +6,7 @@ import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui";
+import { Loader } from "../../../shared/ui/components";
 import { CategoryIcon } from "../../../shared/ui/icons";
 import { CATEGORY_ICON } from "../../../shared/lib/icons";
 import { server } from "../../../shared/bff";
