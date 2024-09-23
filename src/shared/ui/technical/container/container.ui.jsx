@@ -1,8 +1,8 @@
 import css from "./container.module.scss";
 
-export const Container = ({ className = '', children }) => {
+export const Container = ({ children }) => {
 	return (
-		<div className={`${css['container']} ${className}`}>
+		<div className={css['container']}>
 			{children}
 		</div>
 	)
