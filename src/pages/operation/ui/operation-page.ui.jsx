@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { AsyncComponent, Loading } from "../../../shared/ui/components";
-import { Operation } from "../../../widgets/operation/ui";
+import { Operation } from "../../../widgets/operation";
 
 
 export const OperationPage = () => {
