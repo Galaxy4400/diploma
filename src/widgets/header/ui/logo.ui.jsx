@@ -1,8 +1,9 @@
 import css from "./logo.module.scss";
 import { Link } from "react-router-dom";
-import { CategoryIcon } from "../../icons";
-import { CATEGORY_ICON } from "../../../lib/icons";
-import { path } from "../../../lib/router";
+import { CategoryIcon } from "../../../shared/ui/icons";
+import { CATEGORY_ICON } from "../../../shared/lib/icons";
+import { path } from "../../../shared/lib/router";
+
 
 export const Logo = () => {
 	return (
