@@ -10,15 +10,9 @@ export const Header = () => {
 		<header className={css['header']}>
 			<Container>
 				<div className={css['body']}>
-					<div className={css['column-logo']}>
-						<Logo />
-					</div>
-					<div className={css['column-menu']}>
-						<Menu />
-					</div>
-					<div className={css['column-actions']}>
-						<Actions />
-					</div>
+					<Logo />
+					<Menu />
+					<Actions />
 				</div>
 			</Container>
 		</header>

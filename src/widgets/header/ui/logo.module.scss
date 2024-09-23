@@ -15,9 +15,7 @@
 		white-space: nowrap;
 
 		@media (max-width: em($ms)) {
-			span {
-				display: none;
-			}
+			display: none;
 		}
 	}
 }

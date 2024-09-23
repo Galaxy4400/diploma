@@ -7,9 +7,9 @@ import { path } from "../../../shared/lib/router";
 import { Form, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
-import { CategoryIcon } from "../../../shared/ui/icons";
-import { CATEGORY_ICON } from "../../../shared/lib/icons";
+import { ICON_NAME } from "../../../shared/lib/icons";
 import { server } from "../../../shared/bff";
+import { Icon } from "../../../shared/ui/icon";
 
 
 export const CategoryEditForm = () => {
@@ -40,9 +40,9 @@ export const CategoryEditForm = () => {
 					))}
 				</div>
 				<div>
-					{Object.values(CATEGORY_ICON).map((icon) => (
+					{Object.values(ICON_NAME).map((icon) => (
 						<RadioComponent key={icon} name="icon" value={icon} defaultChecked={icon === category.icon}>
-							<CategoryIcon name={icon} />
+							<Icon name={icon} />
 						</RadioComponent>
 					))}
 				</div>

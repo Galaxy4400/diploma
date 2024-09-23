@@ -1,20 +1,11 @@
 .header {
+	background: #fff;
+	border-bottom: rem(1) solid #eeeeee;
 }
 
 .body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
-	.column-logo {
-
-	}
-
-	.column-menu {
-		flex: 1 1 auto;
-	}
-
-	.column-actions {
-
-	}
+	gap: rem(30);
 }

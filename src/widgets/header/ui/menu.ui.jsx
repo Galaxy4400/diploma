@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
+import css from './menu.module.scss';
+import { NavLink } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 
 export const Menu = () => {
 	return (
-		<nav className="menu">
-			<ul className="list">
-				<li className="item">
-					<Link className="link" to={path.home()}>Главная</Link>
+		<nav className={css['menu']}>
+			<ul className={css['list']}>
+				<li className={css['item']}>
+					<NavLink className={css['link']} to={path.home()}>Главная</NavLink>
 				</li>
 				<li>
-					<Link className="link" to={path.history()}>История</Link>
+					<NavLink className={css['link']} to={path.history()}>История</NavLink>
 				</li>
 			</ul>
 		</nav>

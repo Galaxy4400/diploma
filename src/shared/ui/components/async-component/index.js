@@ -1,1 +1,1 @@
-export * from './async-component';
+export * from './async-component.ui';

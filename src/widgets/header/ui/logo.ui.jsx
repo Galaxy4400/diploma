@@ -1,15 +1,15 @@
 import css from "./logo.module.scss";
 import { Link } from "react-router-dom";
-import { CategoryIcon } from "../../../shared/ui/icons";
-import { CATEGORY_ICON } from "../../../shared/lib/icons";
+import { Icon } from "../../../shared/ui/icon";
+import { ICON_NAME } from "../../../shared/lib/icons";
 import { path } from "../../../shared/lib/router";
 
 
 export const Logo = () => {
 	return (
 		<Link className={css['logo']} to={path.home()}>
-			<CategoryIcon className={css['icon']} name={CATEGORY_ICON.ICON4} />
-			<div className={css['label']}>У<span>чет </span>д<span>оходов и </span>р<span>асходов</span></div>
+			<Icon className={css['icon']} name={ICON_NAME.ICON4} />
+			<div className={css['label']}>Учет доходов и расходов</div>
 		</Link>
 	)
 };

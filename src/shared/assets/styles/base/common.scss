@@ -25,9 +25,9 @@ html {
 }
 
 
-.body {
-	color: var(--color-font);
-	background: var(--color-body-background);
+body {
+	color: $color-font;
+	background: $color-body-background;
 	&.lock {
 		overflow: hidden;
 	}
