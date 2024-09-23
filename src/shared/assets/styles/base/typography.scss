@@ -67,7 +67,7 @@ h5 {
 		color: $color-link;
 		@media (any-hover: hover) {
 			&:hover {
-				color: $color-main-dark;
+				color: $color-primary-dark;
 			}
 		}
 	}
@@ -102,7 +102,7 @@ h5 {
 				left: em(-18);
 				width: em(6);
 				height: em(6);
-				background: $color-main-dark;
+				background: $color-primary-dark;
 				border-radius: 50%;
 			}
 		}
@@ -125,7 +125,7 @@ h5 {
 		max-width: 100%;
 		border-collapse: collapse;
 		margin: 0px 0px rem(40) 0px;
-		@media (max-width: ($md3+"px")) {
+		@media (max-width: ($md)) {
 			margin: 0px 0px rem(20) 0px;
 		}
 		tr {
