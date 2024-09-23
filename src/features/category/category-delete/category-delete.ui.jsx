@@ -19,7 +19,7 @@ export const CategoryDelete = ({ categoryId }) => {
 
 		if (!response.ok) setIsDeleted(false);
 
-		navigate(from?.pathname, { replace: true });
+		navigate(from?.pathname || false, { replace: true });
 	}
 
 	return (

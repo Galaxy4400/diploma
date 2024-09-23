@@ -16,7 +16,7 @@ export const AccountDelete = ({ accountId }) => {
 
 		if (!response.ok) setIsDeleted(false);
 
-		navigate(from?.pathname, { replace: true });
+		navigate(from?.pathname || false, { replace: true });
 	}
 
 	return (

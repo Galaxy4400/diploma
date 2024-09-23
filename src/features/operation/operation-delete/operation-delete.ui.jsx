@@ -17,7 +17,7 @@ export const OperationDelete = ({ operationId }) => {
 		if (!response.ok) setIsDeleted(false);
 
 		//TODO navigate to main fix
-		navigate(from?.pathname, { replace: true });
+		navigate(from?.pathname || false, { replace: true });
 	}
 
 	return (
