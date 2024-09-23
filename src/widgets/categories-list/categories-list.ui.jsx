@@ -7,10 +7,10 @@ export const CategoriesList = () => {
 	const categories = useAsyncValue();
 
 	return (
-		<div style={{padding: '10px', border: '1px solid #fff', maxWidth: '300px'}}>
+		<div>
 			<h2>СПИСОК КАТЕГОРИЙ</h2>
 			<div>
-				<ul style={{display: 'grid', gap: '10px'}}>
+				<ul>
 					{categories?.map(category => (
 						<CategoryItem 
 							key={category.id} 

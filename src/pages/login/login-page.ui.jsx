@@ -5,7 +5,7 @@ import { path } from "../../shared/lib/router";
 
 export const LoginPage = () => {
 	return (
-		<div style={{display: 'grid', justifyItems: 'center'}}>
+		<div>
 			<h1>СТРАНИЦА АВТОРИЗАЦИИ</h1>
 			<LoginForm />
 			<Link to={path.register()}>Регистрация</Link>

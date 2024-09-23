@@ -31,15 +31,15 @@ export const CategoryEditForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{ width: "300px" }}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(categoryEditFormRules)} style={{ display: "grid", gap: "10px" }}>
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(categoryEditFormRules)}>
 				<Input name="name" defaultValue={category.name} placeholder='Название категории...' />
 				<div>
 					{CATEGORY_TYPES.map((type) => (
 						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === category.typeId} />
 					))}
 				</div>
-				<div style={{display: 'flex', gap: '10px'}}>
+				<div>
 					{Object.values(CATEGORY_ICON).map((icon) => (
 						<RadioComponent key={icon} name="icon" value={icon} defaultChecked={icon === category.icon}>
 							<CategoryIcon name={icon} />

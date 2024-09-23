@@ -5,7 +5,7 @@ export const CategoryItem = ({ categoryData, deleteSlot }) => {
 	const location = useLocation();
 
 	return (
-		<li style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+		<li>
 			<Link to={path.category.id(categoryData.id)} state={{from: location}}>{categoryData.name}</Link>
 			{deleteSlot}
 		</li>

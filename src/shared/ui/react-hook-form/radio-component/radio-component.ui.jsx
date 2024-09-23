@@ -30,7 +30,7 @@ export const RadioComponent = ({ className, name, value, children, defaultChecke
 
 	return (
 		<div className={className} ref={radioWrapperRef}>
-			<input {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} style={{display: 'none'}} />
+			<input {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} />
 			{children}
 		</div>
 	);

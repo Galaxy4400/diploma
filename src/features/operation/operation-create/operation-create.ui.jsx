@@ -29,8 +29,8 @@ export const OperationCreateForm = ({ userId }) => {
 	const categoryOptions = selectorsData.categories.map(category => ({ value: category.id, label: category.name }));
 
 	return (
-		<Loader isLoading={isLoading} style={{ width: "300px" }}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input name="name" placeholder='Название операции...' />
 				<Number name="amount" placeholder='Сумма операции...' />

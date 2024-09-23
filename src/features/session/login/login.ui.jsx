@@ -27,8 +27,8 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{ width: "300px" }}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(loginFormRules)} style={{ display: "grid", gap: "10px" }} >
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(loginFormRules)}>
 				<Input name="login" placeholder='Логин...' />
 				<Password name="password" placeholder='Пароль...' />
 				<button type='submit'>Войти</button>

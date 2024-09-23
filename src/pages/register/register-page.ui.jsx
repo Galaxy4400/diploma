@@ -5,7 +5,7 @@ import { path } from "../../shared/lib/router";
 
 export const RegisterPage = () => {
 	return (
-		<div style={{display: 'grid', justifyItems: 'center'}}>
+		<div>
 			<h1>СТРАНИЦА РЕГИСТРАЦИИ</h1>
 			<RegisterForm />
 			<Link to={path.login()}>Страница авторизации</Link>

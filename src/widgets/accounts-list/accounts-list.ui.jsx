@@ -8,10 +8,10 @@ export const AccountsList = () => {
 	const accounts = useAsyncValue();
 
 	return (
-		<div style={{padding: '10px', border: '1px solid #fff', maxWidth: '300px'}}>
+		<div>
 			<h2>СПИСОК СЧЕТОВ</h2>
 			<div>
-				<ul style={{display: 'grid', gap: '10px'}}>
+				<ul>
 					{accounts?.map(account => (
 						<AccountItem 
 							key={account.id} 

@@ -9,7 +9,7 @@ export const OperationsList = ({ operations, accountId }) => {
 			<h2>СПИСОК ОПЕРАЦИЙ СЧЕТА</h2>
 			<Link to={path.operation.create()} state={{from: { accountId }}} >Добавить операцию</Link>
 			<div>
-				<ul style={{display: 'grid', gap: '10px'}}>
+				<ul>
 					{operations?.map(operation => (
 						<OperationItem 
 							key={operation.id} 

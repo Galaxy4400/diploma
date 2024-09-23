@@ -24,12 +24,12 @@ export const AccountCreateForm = ({ userId }) => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{ width: "300px" }}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Hidden name="amount" defaultValue="0" />
 				<Input name="name" placeholder='Название счета...' />
-				<div style={{display: 'grid', gap: '10px'}}>
+				<div>
 					{ACCOUNT_TYPES.map((type, i) => (
 						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 					))}

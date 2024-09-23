@@ -25,10 +25,10 @@ export const AccountEditForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{ width: "300px" }}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} style={{ display: "grid", gap: "10px" }}>
+		<Loader isLoading={isLoading} >
+			<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} >
 				<Input name="name" defaultValue={account.name} placeholder='Название счета...' />
-				<div style={{display: 'grid', gap: '10px'}}>
+				<div>
 					{ACCOUNT_TYPES.map((type) => (
 						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === account?.typeId} />
 					))}

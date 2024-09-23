@@ -11,7 +11,7 @@ export const MainPage = () => {
 	return (
 		<div>
 			<h1>ГЛАВНАЯ СТРАНИЦА</h1>
-			<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px'}}>
+			<div>
 				<AsyncComponent resolve={accounts} element={<AccountsList/>} fallback={<Loading />} />
 				<AsyncComponent resolve={categories} element={<CategoriesList/>} fallback={<Loading />} />
 				<div>Возможность открыть страницу добавления/редактирования счета или категории;</div>

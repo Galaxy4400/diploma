@@ -28,8 +28,8 @@ export const CategoryCreateForm = ({ userId }) => {
 	return (
 		<>
 			{userId && 
-				<Loader isLoading={isLoading} style={{ width: "300px" }}>
-					<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)} style={{ display: "grid", gap: "10px" }}>
+				<Loader isLoading={isLoading}>
+					<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 						<Hidden name="userId" defaultValue={userId}/>
 						<Input name="name" placeholder='Название категории...' />
 						<div>
@@ -37,7 +37,7 @@ export const CategoryCreateForm = ({ userId }) => {
 								<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 							))}
 						</div>
-						<div style={{display: 'flex', gap: '10px'}}>
+						<div>
 							{Object.values(CATEGORY_ICON).map((icon, i) => (
 								<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
 									<CategoryIcon name={icon} />

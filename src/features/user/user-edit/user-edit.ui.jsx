@@ -27,8 +27,8 @@ export const EditUserForm = ({ userData }) => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{maxWidth: "300px"}}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)} style={{display: "grid", gap: "10px"}} >
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)}>
 				<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
 				<Password name="password" placeholder="Пароль..." />
 				<Password name="passcheck" placeholder="Проверка пароль..." />

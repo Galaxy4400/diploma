@@ -8,7 +8,7 @@ export const Header = () => {
 	const { authUser } = useAuth();
 
 	return (
-		<div style={{display: "flex", justifyContent: "space-between", marginBottom: '30px'}}>
+		<div>
 			<div>
 				<Link to={path.home()}>ЛОГОТИП САЙТА</Link>
 			</div>

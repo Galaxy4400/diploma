@@ -19,8 +19,8 @@ export const RegisterForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} style={{width: "300px"}}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(registerFormRules)} style={{display: "grid", gap: "10px"}}>
+		<Loader isLoading={isLoading}>
+			<Form onSubmit={submitHandler} resolver={yupResolver(registerFormRules)}>
 				<Input name="login" placeholder="Логин..." />
 				<Password name="password" placeholder="Пароль..." />
 				<Password name="passcheck" placeholder="Проверка пароль..." />
