@@ -1,6 +1,6 @@
 import css from './action.module.scss';
 import { Link } from "react-router-dom";
-import { Icon } from "../../../shared/ui/icon";
+import { Icon } from "../../../../shared/ui/icon";
 
 export const Action = ({ to, title, icon }) => {
 	return (

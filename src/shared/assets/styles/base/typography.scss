@@ -17,7 +17,7 @@ a {
 .h1,
 h1 a,
 h1 {
-	font-weight: 500;
+	font-weight: 700;
 	font-size: rem(40);
 	line-height: prc(42, 40);
 	color: $color-titles;
@@ -25,7 +25,7 @@ h1 {
 .h2,
 h2 a,
 h2 {
-	font-weight: 500;
+	font-weight: 700;
 	font-size: rem(36);
 	line-height: prc(42, 36);
 	color: $color-titles;
@@ -33,6 +33,7 @@ h2 {
 .h3,
 h3 a,
 h3 {
+	font-weight: 700;
 	font-size: rem(28);
 	line-height: prc(33, 28);
 	color: $color-titles;
@@ -40,6 +41,7 @@ h3 {
 .h4,
 h4 a,
 h4 {
+	font-weight: 700;
 	font-size: rem(21);
 	line-height: prc(24, 21);
 	color: $color-titles;
@@ -47,6 +49,7 @@ h4 {
 .h5,
 h5 a,
 h5 {
+	font-weight: 700;
 	font-size: rem(16);
 	line-height: prc(21, 16);
 	color: $color-titles;

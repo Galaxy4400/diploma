@@ -1,2 +1,2 @@
-export * from './account.view';
-export * from './account.item';
+export * from './account-view.ui';
+export * from './account-item.ui';

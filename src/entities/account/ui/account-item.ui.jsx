@@ -5,9 +5,9 @@ export const AccountItem = ({ accountData, deleteSlot }) => {
 	const location = useLocation();
 
 	return (
-		<li>
+		<div>
 			<Link to={path.account.id(accountData.id)} state={{from: location}}>{accountData.name}</Link>
-			{deleteSlot}
-		</li>
+			{/* {deleteSlot} */}
+		</div>
 	)
 };
