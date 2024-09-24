@@ -1,5 +1,5 @@
 import css from "./actions.module.scss";
-import { LogoutButton } from "../../../features/session";
+import { LogoutButton } from "../../../../features/session";
 import { User } from "./user.ui";
 
 

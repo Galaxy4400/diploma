@@ -1,8 +1,6 @@
 import css from "./header.module.scss";
 import { Container } from "../../../shared/ui/technical";
-import { Logo } from "./logo.ui";
-import { Menu } from "./menu.ui";
-import { Actions } from "./actions.ui";
+import { Actions, Logo, Menu } from "./components";
 
 
 export const Header = () => {

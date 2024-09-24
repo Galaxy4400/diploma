@@ -1,7 +1,7 @@
 import css from './user.module.scss';
-import { useAuth } from '../../../app/providers/auth';
-import { path } from '../../../shared/lib/router';
-import { getAvatarPlug } from '../../../shared/lib/utils';
+import { useAuth } from '../../../../app/providers/auth';
+import { path } from '../../../../shared/lib/router';
+import { getAvatarPlug } from '../../../../shared/lib/utils';
 import { Link } from "react-router-dom";
 
 export const User = () => {
