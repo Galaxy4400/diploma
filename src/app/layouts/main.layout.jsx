@@ -1,3 +1,4 @@
+import css from './layouts.module.scss';
 import { Outlet } from "react-router-dom";
 import { Header } from "../../widgets/header";
 import { Footer } from "../../widgets/footer";
@@ -7,7 +8,9 @@ export const MainLayout = ({ children }) => {
 	return (
 		<LayoutWrapper>
 			<Header />
-			{children || <Outlet />}
+			<main className={css['main']} >
+				{children || <Outlet />}
+			</main>
 			<Footer />
 		</LayoutWrapper>
 	);

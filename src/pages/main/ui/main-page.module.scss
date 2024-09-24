@@ -1,0 +1,10 @@
+.main {
+	display: grid;
+	gap: rem(40);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: rem(30);
+}

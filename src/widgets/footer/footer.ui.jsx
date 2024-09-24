@@ -1,5 +1,11 @@
+import { Container } from "../../shared/ui/technical";
+
 export const Footer = () => {
 	return (
-		<div>Footer</div>
+		<footer>
+			<Container>
+				Footer
+			</Container>
+		</footer>
 	)
 };

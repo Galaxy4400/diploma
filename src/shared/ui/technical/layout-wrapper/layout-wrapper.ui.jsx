@@ -1,7 +1,9 @@
 import css from "./layout-wrapper.module.scss";
 
-export const LayoutWrapper = ({ className = '', children }) => {
+export const LayoutWrapper = ({ children }) => {
 	return (
-		<div className={`${className} ${css['wrapper']}`}>{children}</div>
+		<div className={css['wrapper']}>
+			{children}
+		</div>
 	)
 };
