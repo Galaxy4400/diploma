@@ -7,6 +7,10 @@ import Wallet2 from "./icons/wallet2.svg?react";
 import Exit from "./icons/exit.svg?react";
 import Dock from "./icons/dock.svg?react";
 import Dock2 from "./icons/dock2.svg?react";
+import Card from "./icons/card.svg?react";
+import Card2 from "./icons/card2.svg?react";
+import Money from "./icons/money.svg?react";
+import Safe from "./icons/safe.svg?react";
 
 
 export const Icon = ({ name, className, size = 36, ...rest }) => {
@@ -19,6 +23,10 @@ export const Icon = ({ name, className, size = 36, ...rest }) => {
 		case ICON_NAME.EXIT: return <Exit className={className} width={size} height={size} {...rest} />
 		case ICON_NAME.DOCK: return <Dock className={className} width={size} height={size} {...rest} />
 		case ICON_NAME.DOCK2: return <Dock2 className={className} width={size} height={size} {...rest} />
+		case ICON_NAME.CARD: return <Card className={className} width={size} height={size} {...rest} />
+		case ICON_NAME.CARD2: return <Card2 className={className} width={size} height={size} {...rest} />
+		case ICON_NAME.MONEY: return <Money className={className} width={size} height={size} {...rest} />
+		case ICON_NAME.SAFE: return <Safe className={className} width={size} height={size} {...rest} />
 
 		default:
 			break;

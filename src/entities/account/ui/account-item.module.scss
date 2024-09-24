@@ -1,0 +1,47 @@
+.account {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: rem(15);
+	padding: rem(10);
+	border-radius: rem(5);
+	@media (any-hover: hover) {
+		&:hover {
+			background: #e3e5ff;
+			color: #000;
+		}
+	}
+}
+
+.figure {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	width: rem(40);
+	height: rem(40);
+}
+
+.main {
+	display: grid;
+	align-items: center;
+	gap: rem(3);
+}
+
+.amount {
+	font-size: rem(24);
+	font-weight: 500;
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		.account:hover & {
+			color: $color-primary;
+		}
+	}
+}
+
+.name {
+	font-size: rem(14);
+	color: #888;
+}

@@ -15,7 +15,7 @@ export const AccountsBlock = () => {
 				{accounts?.map(account => (
 					<AccountItem 
 						key={account.id} 
-						accountData={account}
+						account={account}
 						deleteSlot={<AccountDelete accountId={account.id}/>}
 					/>
 				))}

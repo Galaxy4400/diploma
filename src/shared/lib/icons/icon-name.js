@@ -7,4 +7,8 @@ export const ICON_NAME = {
 	EXIT: 'exit',
 	DOCK: 'dock',
 	DOCK2: 'dock2',
+	CARD: 'card',
+	CARD2: 'card2',
+	MONEY: 'money',
+	SAFE: 'safe',
 };
