@@ -1,8 +1,8 @@
 import css from "./container.module.scss";
 
-export const Container = ({ children }) => {
+export const Container = ({ children, width }) => {
 	return (
-		<div className={css['container']}>
+		<div className={css['container']} style={width ? {maxWidth: `${width}px`} : {}}>
 			{children}
 		</div>
 	)
