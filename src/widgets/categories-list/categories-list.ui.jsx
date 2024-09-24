@@ -2,12 +2,13 @@ import { Link, useAsyncValue } from "react-router-dom";
 import { path } from "../../shared/lib/router";
 import { CategoryItem } from "../../entities/category";
 import { CategoryDelete } from "../../features/category";
+import { Block } from "../../shared/ui/components";
 
 export const CategoriesList = () => {
 	const categories = useAsyncValue();
 
 	return (
-		<div>
+		<Block>
 			<h2>СПИСОК КАТЕГОРИЙ</h2>
 			<div>
 				<ul>
@@ -23,6 +24,6 @@ export const CategoriesList = () => {
 			<div>
 				<Link to={path.category.create()}>Добавить новую категорию</Link>
 			</div>
-		</div>
+		</Block>
 	)
 };

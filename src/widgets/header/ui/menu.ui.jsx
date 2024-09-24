@@ -12,6 +12,9 @@ export const Menu = () => {
 				<li>
 					<NavLink className={css['link']} to={path.history()}>История</NavLink>
 				</li>
+				<li>
+					<NavLink className={css['link']} to={path.history()}>Аналитика</NavLink>
+				</li>
 			</ul>
 		</nav>
 	)

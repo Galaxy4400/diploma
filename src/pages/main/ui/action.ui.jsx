@@ -8,7 +8,7 @@ export const Action = ({ to, title, icon }) => {
 			<figure className={css['image']}>
 				<Icon name={icon} />
 			</figure>
-			<h4 className={css['title']}>{title}</h4>
+			<h5 className={css['title']}>{title}</h5>
 		</Link>
 	)
 };
