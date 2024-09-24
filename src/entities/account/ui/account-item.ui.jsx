@@ -2,7 +2,7 @@ import css from './account-item.module.scss';
 import { Link, useLocation } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { Icon } from '../../../shared/ui/icon';
-import { getAccountImageName, getAccountTypeName, priceFormat } from '../../../shared/lib/utils';
+import { getAccountTypeImage, getAccountTypeName, priceFormat } from '../../../shared/lib/utils';
 
 export const AccountItem = ({ account, deleteSlot }) => {
 	const location = useLocation();
@@ -10,7 +10,7 @@ export const AccountItem = ({ account, deleteSlot }) => {
 	return (
 		<Link className={css['account']} to={path.account.id(account.id)} state={{from: location}}>
 			<figure className={css['figure']}>
-				<Icon className={css['icon']} name={getAccountImageName(account.typeId)} />
+				<Icon className={css['icon']} name={getAccountTypeImage(account.typeId)} />
 			</figure>
 			<div className={css['main']}>
 				<span className={css['amount']}>{priceFormat(account.amount)}</span>

@@ -11,4 +11,5 @@ export const ICON_NAME = {
 	CARD2: 'card2',
 	MONEY: 'money',
 	SAFE: 'safe',
+	CART: 'cart',
 };

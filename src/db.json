@@ -63,14 +63,6 @@
       "userId": 1,
       "createdAt": "25.09.2024 01:10:12",
       "id": 13
-    },
-    {
-      "amount": 0,
-      "name": "Вклад",
-      "typeId": 4,
-      "userId": 1,
-      "createdAt": "25.09.2024 01:22:41",
-      "id": 14
     }
   ],
   "categories": [

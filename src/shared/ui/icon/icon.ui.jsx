@@ -11,6 +11,7 @@ import Card from "./icons/card.svg?react";
 import Card2 from "./icons/card2.svg?react";
 import Money from "./icons/money.svg?react";
 import Safe from "./icons/safe.svg?react";
+import Cart from "./icons/cart.svg?react";
 
 
 export const Icon = ({ name, className, size = 36, ...rest }) => {
@@ -27,6 +28,7 @@ export const Icon = ({ name, className, size = 36, ...rest }) => {
 		case ICON_NAME.CARD2: return <Card2 className={className} width={size} height={size} {...rest} />
 		case ICON_NAME.MONEY: return <Money className={className} width={size} height={size} {...rest} />
 		case ICON_NAME.SAFE: return <Safe className={className} width={size} height={size} {...rest} />
+		case ICON_NAME.CART: return <Cart className={className} width={size} height={size} {...rest} />
 
 		default:
 			break;
