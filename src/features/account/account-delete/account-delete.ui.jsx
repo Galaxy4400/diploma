@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useFrom } from "../../../shared/lib/location";
 import { server } from "../../../shared/bff";
 import { useState } from "react";
-import { Icon } from "../../../shared/ui/icon";
-import { ICON_NAME } from "../../../shared/lib/icons";
+import { Icon } from "../../../shared/ui/icons";
+import { ICON } from "../../../shared/lib/icons";
 
 
 export const AccountDelete = ({ accountId }) => {
@@ -24,7 +24,7 @@ export const AccountDelete = ({ accountId }) => {
 
 	return (
 		<button className={css['button']} type="button" onClick={() => deleteHandler(accountId)} disabled={isDeleted}>
-			<Icon className={css['icon']} name={ICON_NAME.CART}></Icon>
+			<Icon className={css['icon']} name={ICON.CART}></Icon>
 		</button>
 	)
 };

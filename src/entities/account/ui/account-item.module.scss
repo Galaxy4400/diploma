@@ -1,5 +1,14 @@
 .account {
 	position: relative;
+	padding: rem(10);
+	border-radius: rem(5);
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			background: #e3e5ff;
+			color: #000;
+		}
+	}
 }
 
 .main {
@@ -7,14 +16,6 @@
 	grid-template-columns: auto 1fr;
 	align-items: center;
 	gap: rem(15);
-	padding: rem(10);
-	border-radius: rem(5);
-	@media (any-hover: hover) {
-		&:hover {
-			background: #e3e5ff;
-			color: #000;
-		}
-	}
 }
 
 .figure {
@@ -26,6 +27,7 @@
 .icon {
 	width: rem(40);
 	height: rem(40);
+	color: #000;
 }
 
 .info {

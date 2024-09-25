@@ -1,8 +1,9 @@
 import css from './account-item.module.scss';
 import { Link, useLocation } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Icon } from '../../../shared/ui/icon';
-import { getAccountTypeImage, getAccountTypeName, priceFormat } from '../../../shared/lib/utils';
+import { Icon } from '../../../shared/ui/icons';
+import { priceFormat } from '../../../shared/lib/utils';
+import { getAccountTypeImage, getAccountTypeName } from '../lib';
 
 export const AccountItem = ({ account, deleteSlot }) => {
 	const location = useLocation();

@@ -1,14 +1,14 @@
 import css from './logout.module.scss';
 import { useAuth } from "../../../app/providers/auth";
-import { ICON_NAME } from "../../../shared/lib/icons";
-import { Icon } from "../../../shared/ui/icon";
+import { ICON } from "../../../shared/lib/icons";
+import { Icon } from "../../../shared/ui/icons";
 
 export const LogoutButton = () => {
 	const { logout } = useAuth();
 	
 	return (
 		<button className={css['button']} onClick={() => logout()}>
-			<Icon className={css['icon']} name={ICON_NAME.EXIT} />
+			<Icon className={css['icon']} name={ICON.EXIT} />
 		</button>
 	)
 };

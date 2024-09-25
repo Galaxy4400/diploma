@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
 import { getCategoryType } from "../lib";
-import { Icon } from "../../../shared/ui/icon";
+import { Icon } from "../../../shared/ui/icons";
 
 export const CategoryView = ({ category, deleteSlot }) => {
 	return (
