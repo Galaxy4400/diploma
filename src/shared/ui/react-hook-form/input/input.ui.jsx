@@ -1,7 +1,8 @@
+import css from './input.module.scss';
 import { useFormContext } from "react-hook-form"
 
 export function Input({ name, ...rest }) {
 	const { register } = useFormContext();
 
-  return <input {...register(name)} {...rest} type='text' />
+  return <input className={css['input']} {...register(name)} {...rest} type='text' />
 }
