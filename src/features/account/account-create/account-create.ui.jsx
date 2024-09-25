@@ -29,7 +29,7 @@ export const AccountCreateForm = ({ userId }) => {
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type='text' name="name" label='Название счета' />
-				<Input type='number' name="amount" defaultValue="0" label='Сумма' />
+				<Input type='number' name="amount" label='Сумма' />
 				<div className={css['radiobuttons']}>
 					{ACCOUNT_TYPES.map((type, i) => (
 						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />

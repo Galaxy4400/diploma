@@ -2,7 +2,7 @@ import css from './main-page.module.scss';
 import { AccountsBlock } from "../../../widgets/accounts-block"
 import { useLoaderData } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { CategoriesList } from "../../../widgets/categories-list";
+import { CategoriesBlock } from "../../../widgets/categories-block";
 import { AsyncComponent, Block, Loading } from "../../../shared/ui/components";
 import { Container } from '../../../shared/ui/technical';
 import { ICON } from '../../../shared/lib/icons';
@@ -22,7 +22,7 @@ export const MainPage = () => {
 			<div className={css['content']}>
 				<AsyncComponent resolve={accounts} element={<AccountsBlock/>} fallback={<Loading />} />
 				<Block>Недавние операции</Block>
-				<AsyncComponent resolve={categories} element={<CategoriesList/>} fallback={<Loading />} />
+				<AsyncComponent resolve={categories} element={<CategoriesBlock/>} fallback={<Loading />} />
 			</div>
 		</Container>
 	)

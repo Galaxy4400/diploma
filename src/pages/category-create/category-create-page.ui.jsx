@@ -1,14 +1,16 @@
 import { useAuth } from "../../app/providers/auth";
 import { CategoryCreateForm } from "../../features/category";
+import { Container } from "../../shared/ui/technical";
+import { PageHeader } from "../../widgets/page-header";
 
 
 export const CategoryCreatePage = () => {
 	const { authUser } = useAuth();
 
 	return (
-		<div>
-			<h1>СТРАНИЦА СОЗДАНИЯ КАТЕГОРИИ</h1>
+		<Container>
+			<PageHeader title="Создание категории" />
 			<CategoryCreateForm userId={authUser.id} />
-		</div>
+		</Container>
 	)
 };

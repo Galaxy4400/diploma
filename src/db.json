@@ -89,41 +89,31 @@
   ],
   "categories": [
     {
-      "name": "sdfgve g erg",
-      "icon": "icon2",
-      "typeId": 2,
+      "name": "Категория 1",
+      "icon": "expense",
+      "typeId": 1,
       "userId": 1,
-      "createdAt": "19.09.2024 23:42:35",
+      "createdAt": "26.09.2024 01:32:29",
       "id": 1
     },
     {
-      "name": "sdfasd",
-      "icon": "icon3",
+      "name": "Категория 2",
+      "icon": "income",
       "typeId": 2,
       "userId": 1,
-      "createdAt": "20.09.2024 02:26:50",
+      "createdAt": "26.09.2024 01:32:36",
       "id": 2
     },
     {
-      "name": "kjb",
-      "icon": "icon1",
+      "name": "Категория 3",
+      "icon": "swap",
       "typeId": 1,
       "userId": 1,
-      "createdAt": "23.09.2024 15:00:13",
+      "createdAt": "26.09.2024 01:33:39",
       "id": 3
     }
   ],
-  "operations": [
-    {
-      "accountId": 12,
-      "categoryId": 1,
-      "amount": 45,
-      "name": "jhvj",
-      "userId": 1,
-      "createdAt": "23.09.2024 01:18:08",
-      "id": 1
-    }
-  ],
+  "operations": [],
   "sessions": [
     {
       "hash": "0.18936421464755870402996151824481785297393798828125",

@@ -1,3 +1,4 @@
+import css from './radio-component.module.scss';
 import { useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -30,7 +31,7 @@ export const RadioComponent = ({ className = '', name, value, children, defaultC
 
 	return (
 		<div className={className} ref={radioWrapperRef}>
-			<input {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} />
+			<input className={css['input']} {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} />
 			{children}
 		</div>
 	);
