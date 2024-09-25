@@ -1,3 +1,4 @@
+import css from './account-delete.module.scss';
 import { useNavigate } from "react-router-dom";
 import { useFrom } from "../../../shared/lib/location";
 import { server } from "../../../shared/bff";
@@ -22,8 +23,8 @@ export const AccountDelete = ({ accountId }) => {
 	}
 
 	return (
-		<button type="button" onClick={() => deleteHandler(accountId)} disabled={isDeleted}>
-			<Icon name={ICON_NAME.CART}></Icon>
+		<button className={css['button']} type="button" onClick={() => deleteHandler(accountId)} disabled={isDeleted}>
+			<Icon className={css['icon']} name={ICON_NAME.CART}></Icon>
 		</button>
 	)
 };

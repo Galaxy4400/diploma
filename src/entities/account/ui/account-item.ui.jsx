@@ -8,15 +8,19 @@ export const AccountItem = ({ account, deleteSlot }) => {
 	const location = useLocation();
 
 	return (
-		<Link className={css['account']} to={path.account.id(account.id)} state={{from: location}}>
-			<figure className={css['figure']}>
-				<Icon className={css['icon']} name={getAccountTypeImage(account.typeId)} />
-			</figure>
-			<div className={css['main']}>
-				<span className={css['amount']}>{priceFormat(account.amount)}</span>
-				<span className={css['name']}>{getAccountTypeName(account.typeId)}</span>
+		<div className={css['account']}>
+			<Link className={css['main']} to={path.account.id(account.id)} state={{from: location}}>
+				<figure className={css['figure']}>
+					<Icon className={css['icon']} name={getAccountTypeImage(account.typeId)} />
+				</figure>
+				<div className={css['info']}>
+					<span className={css['amount']}>{priceFormat(account.amount)}</span>
+					<span className={css['name']}>{getAccountTypeName(account.typeId)}</span>
+				</div>
+			</Link>
+			<div className={css['delete']}>
+				{deleteSlot}
 			</div>
-			{/* {deleteSlot} */}
-		</Link>
+		</div>
 	)
 };
