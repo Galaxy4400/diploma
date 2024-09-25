@@ -1,12 +1,12 @@
+import css from './account-create.module.scss';
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./account-create.rules";
 import { path } from "../../../shared/lib/router";
-import { Button, Form, Hidden, Input, Radio } from "../../../shared/ui/form-components";
+import { Button, Form, Hidden, Input, Number, Radio } from "../../../shared/ui/form-components";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
 import { useState } from "react";
 import { server } from "../../../shared/bff";
-import { Loader } from "../../../shared/ui/components";
 
 
 export const AccountCreateForm = ({ userId }) => {
@@ -24,18 +24,16 @@ export const AccountCreateForm = ({ userId }) => {
 	};
 
 	return (
-		<Loader isLoading={isLoading}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
-				<Hidden name="userId" defaultValue={userId} />
-				<Hidden name="amount" defaultValue="0" />
-				<Input name="name" placeholder='Название счета...' />
-				<div>
-					{ACCOUNT_TYPES.map((type, i) => (
-						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
-					))}
-				</div>
-				<Button type='submit'>Создать счет</Button>
-			</Form>
-		</Loader>
+		<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
+			<Hidden name="userId" defaultValue={userId} />
+			<Input name="name" placeholder='Название счета...' />
+			<Number name="amount" defaultValue="0" placeholder='Сумма...' />
+			<div>
+				{ACCOUNT_TYPES.map((type, i) => (
+					<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
+				))}
+			</div>
+			<Button type='submit' disabled={isLoading}>Создать счет</Button>
+		</Form>
 	);
 };

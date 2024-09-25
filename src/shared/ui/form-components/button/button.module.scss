@@ -21,4 +21,9 @@
 	&:focus {
 		box-shadow: 0 0 0 1px $color-focus;
 	}
+
+	&:disabled {
+		background: #ccc;
+		cursor: default;
+	}
 }
