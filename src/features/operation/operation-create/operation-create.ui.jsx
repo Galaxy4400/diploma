@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
 import { useFrom } from "../../../shared/lib/location";
-import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/react-hook-form";
+import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/form-components";
 import { server } from "../../../shared/bff";
 import { Loader } from "../../../shared/ui/components";
 import { useState } from "react";

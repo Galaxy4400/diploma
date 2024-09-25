@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CATEGORY_TYPES, setCategory } from "../../../entities/category";
 import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Form, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
+import { Form, Input, Radio, RadioComponent } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
 import { ICON } from "../../../shared/lib/icons";

@@ -2,11 +2,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
 import { loginFormRules } from "./login.rules";
-import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
+import { Form, Input, Password } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
 import { useFrom } from "../../../shared/lib/location";
 import { path } from "../../../shared/lib/router";
+import { Button } from "../../../shared/ui/form-components";
 
 
 export const LoginForm = () => {
@@ -31,7 +32,7 @@ export const LoginForm = () => {
 			<Form onSubmit={submitHandler} resolver={yupResolver(loginFormRules)}>
 				<Input name="login" placeholder='Логин...' />
 				<Password name="password" placeholder='Пароль...' />
-				<button type='submit'>Войти</button>
+				<Button type='submit'>Войти</Button>
 			</Form>
 			{authorizeError && <div>{authorizeError}</div>}
 		</Loader>

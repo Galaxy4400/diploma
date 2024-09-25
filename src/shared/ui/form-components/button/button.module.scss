@@ -1,0 +1,24 @@
+.button {
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: rem(16);
+	line-height: 1;
+	padding: rem(8) rem(22);
+	height: rem(40);
+	background: $color-primary;
+	color: #ffffff;
+	border-radius: rem(4);
+	transition: background-color 0.3s, color 0.3s, box-shadow 0.1s;
+	@media (any-hover: hover) {
+		&:hover {
+			background: $color-primary-dark;
+		}
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 1px $color-focus;
+	}
+}

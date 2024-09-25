@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ACCOUNT_TYPES } from "../../../entities/account";
 import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Form, Input, Radio } from "../../../shared/ui/react-hook-form";
+import { Form, Input, Radio } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { server } from "../../../shared/bff";
 import { Loader } from "../../../shared/ui/components";

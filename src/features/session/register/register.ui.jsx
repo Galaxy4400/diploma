@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerFormRules } from "./register.rules";
 import { useAuth } from "../../../app/providers/auth";
-import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
+import { Form, Input, Password } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
 

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { editUserFormRules } from "./user-edit.rules";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router/path";
-import { Form, Input, Password } from "../../../shared/ui/react-hook-form";
+import { Form, Input, Password } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
 

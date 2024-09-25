@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { CATEGORY_TYPES } from "../../../entities/category";
-import { Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
+import { Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/form-components";
 import { ICON_CATEGORY } from "../../../shared/lib/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
