@@ -28,7 +28,7 @@ export const AccountCreateForm = ({ userId }) => {
 			<Hidden name="userId" defaultValue={userId} />
 			<Input name="name" placeholder='Название счета...' />
 			<Number name="amount" defaultValue="0" placeholder='Сумма...' />
-			<div>
+			<div className={css['radiobuttons']}>
 				{ACCOUNT_TYPES.map((type, i) => (
 					<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 				))}

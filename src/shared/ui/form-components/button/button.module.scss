@@ -12,6 +12,7 @@
 	color: #ffffff;
 	border-radius: rem(4);
 	transition: background-color 0.3s, color 0.3s, box-shadow 0.1s;
+	
 	@media (any-hover: hover) {
 		&:hover {
 			background: $color-primary-dark;
