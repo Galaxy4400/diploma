@@ -3,12 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { CATEGORY_TYPES } from "../../../entities/category";
 import { Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/react-hook-form";
-import { ICON } from "../../../shared/lib/icons";
+import { ICON_CATEGORY } from "../../../shared/lib/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
 import { Loader } from "../../../shared/ui/components";
 import { server } from "../../../shared/bff";
-import { Icon } from "../../../shared/ui/icons";
+import { IconCategory } from "../../../shared/ui/icons";
 
 
 export const CategoryCreateForm = ({ userId }) => {
@@ -38,9 +38,9 @@ export const CategoryCreateForm = ({ userId }) => {
 							))}
 						</div>
 						<div>
-							{Object.values(ICON).map((icon, i) => (
+							{Object.values(ICON_CATEGORY).map((icon, i) => (
 								<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
-									<Icon name={icon} />
+									<IconCategory name={icon} />
 								</RadioComponent>
 							))}
 						</div>
