@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./category-create.rules";
 import { CATEGORY_TYPES } from "../../../entities/category";
-import { Button, Form, Hidden, Input, Radio, RadioComponent, Section } from "../../../shared/ui/form-components";
+import { Button, Fieldset, Form, Hidden, Input, Radio, RadioComponent } from "../../../shared/ui/form-components";
 import { ICON_CATEGORY } from "../../../shared/lib/icons";
 import { path } from "../../../shared/lib/router";
 import { useState } from "react";
@@ -31,14 +31,14 @@ export const CategoryCreateForm = ({ userId }) => {
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId}/>
 				<Input type="text" name="name" label="Название категории"/>
-				<Section label="Тип категории">
+				<Fieldset label="Тип категории">
 					<div className={css['radiobuttons']}>
 						{CATEGORY_TYPES.map((type, i) => (
 							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 						))}
 					</div>
-				</Section>
-				<Section label="Иконка категории">
+				</Fieldset>
+				<Fieldset label="Иконка категории">
 					<div className={css['icons']}>
 						{Object.values(ICON_CATEGORY).map((icon, i) => (
 							<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
@@ -46,7 +46,7 @@ export const CategoryCreateForm = ({ userId }) => {
 							</RadioComponent>
 						))}
 					</div>
-				</Section>
+				</Fieldset>
 				<Button type='submit' disabled={isLoading}>Создать категорию</Button>
 			</Form>
 		</Block>

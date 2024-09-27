@@ -7,4 +7,4 @@ export * from './number';
 export * from './radio';
 export * from './radio-component';
 export * from './button';
-export * from './section';
+export * from './fieldset';
