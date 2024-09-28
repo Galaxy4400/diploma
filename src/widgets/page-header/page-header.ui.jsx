@@ -8,11 +8,11 @@ export const PageHeader = ({ title }) => {
 
 	return (
 		<div className={css['main']}>
-			<h1>{title}</h1>
 			<button className={css['button']} type="button" onClick={() => navigate(-1)}>
 				<Icon className={css['icon']} name={ICON.BACK}></Icon>
 				<span>Назад</span>
 			</button>
+			<h1>{title}</h1>
 		</div>
 	)
 };
