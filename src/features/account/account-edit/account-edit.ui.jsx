@@ -1,12 +1,13 @@
+import css from './account-edit.module.scss';
 import { accountEditFormRules } from "./account-edit.rules";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ACCOUNT_TYPES } from "../../../entities/account";
 import { useAsyncValue, useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router";
-import { Form, Input, Radio } from "../../../shared/ui/form-components";
+import { Button, Fieldset, Form, Input, Radio } from "../../../shared/ui/form-components";
 import { useState } from "react";
 import { server } from "../../../shared/bff";
-import { Loader } from "../../../shared/ui/components";
+import { Block } from "../../../shared/ui/components";
 
 
 export const AccountEditForm = () => {
@@ -25,17 +26,20 @@ export const AccountEditForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading} >
-			<Form onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)} >
-				<Input name="name" defaultValue={account.name} placeholder='Название счета...' />
-				<div>
-					{ACCOUNT_TYPES.map((type) => (
-						<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === account?.typeId} />
-					))}
-				</div>
-				<button type='submit'>Внести изменения</button>
+		<Block className={css['block']}>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)}>
+				<Input type='text' name="name" defaultValue={account.name} label='Название счета' />
+				<Input type='number' name="amount" defaultValue={account.amount} label='Сумма' />
+				<Fieldset label="Тип счета">
+					<div className={css['radiobuttons']}>
+						{ACCOUNT_TYPES.map((type) => (
+							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === account?.typeId} />
+						))}
+					</div>
+				</Fieldset>
+				<Button type='submit' disabled={isLoading}>Внести изменения</Button>
 			</Form>
-		</Loader>
+		</Block>
 	);
 };
 

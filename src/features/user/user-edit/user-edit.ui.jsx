@@ -1,12 +1,13 @@
+import css from './user-edit.module.scss';
 import { useDispatch } from "react-redux";
 import { updateAuth } from "../../../entities/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { editUserFormRules } from "./user-edit.rules";
 import { useNavigate } from "react-router-dom";
 import { path } from "../../../shared/lib/router/path";
-import { Form, Input, Password } from "../../../shared/ui/form-components";
+import { Button, Form, Input } from "../../../shared/ui/form-components";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui/components";
+import { Block } from "../../../shared/ui/components";
 
 
 export const EditUserForm = ({ userData }) => {
@@ -27,13 +28,13 @@ export const EditUserForm = ({ userData }) => {
 	};
 
 	return (
-		<Loader isLoading={isLoading}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)}>
-				<Input name="login" defaultValue={userData.login} placeholder="Логин..." />
-				<Password name="password" placeholder="Пароль..." />
-				<Password name="passcheck" placeholder="Проверка пароль..." />
-				<button type='submit'>Внести изменения</button>
+		<Block className={css['block']}>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)}>
+				<Input type="text" name="login" defaultValue={userData.login} label="Логин" />
+				<Input type="password" name="password" label="Пароль" />
+				<Input type="password" name="passcheck" label="Повторите пароль" />
+				<Button type='submit' disabled={isLoading}>Внести изменения</Button>
 			</Form>
-		</Loader>
+		</Block>
 	);
 };
