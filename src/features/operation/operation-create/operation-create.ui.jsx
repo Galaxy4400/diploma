@@ -1,11 +1,12 @@
+import css from './operation-create.module.scss';
 import { useAsyncValue, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
 import { useFrom } from "../../../shared/lib/location";
-import { Form, Hidden, Input, Number, Select } from "../../../shared/ui/form-components";
+import { Button, Form, Hidden, Input, Number, Select } from "../../../shared/ui/form-components";
 import { server } from "../../../shared/bff";
-import { Loader } from "../../../shared/ui/components";
+import { Block } from "../../../shared/ui/components";
 import { useState } from "react";
 
 
@@ -29,15 +30,15 @@ export const OperationCreateForm = ({ userId }) => {
 	const categoryOptions = selectorsData.categories.map(category => ({ value: category.id, label: category.name }));
 
 	return (
-		<Loader isLoading={isLoading}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
+		<Block className={css['block']}>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input name="name" placeholder='Название операции...' />
 				<Number name="amount" placeholder='Сумма операции...' />
 				<Select name="accountId" options={accountOptions} defaultValue={from?.accountId || ''} />
 				<Select name="categoryId" options={categoryOptions} defaultValue="" />
-				<button type='submit'>Создать операцию</button>
+				<Button type='submit' disabled={isLoading}>Создать операцию</Button>
 			</Form>
-		</Loader>
+		</Block>
 	);
 };

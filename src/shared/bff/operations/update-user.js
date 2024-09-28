@@ -24,12 +24,13 @@ export const updateUser = async (updatingUserData) => {
 
 	const updatedUser = await api.updateUser(authSession.userId, updatingUserData);
 
+	const { password, ...rest } = updatedUser;
+
 	return {
 		ok: true,
 		error: null,
 		data: {
-			id: updatedUser.id,
-			login: updatedUser.login,
+			...rest,
 		},
 	}
 }

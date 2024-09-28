@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import { useAuth } from "../../../app/providers/auth";
 import { OperationCreateForm } from "../../../features/operation";
 import { AsyncComponent, Loading } from "../../../shared/ui/components";
+import { Container } from "../../../shared/ui/technical";
+import { PageHeader } from "../../../widgets/page-header";
 
 export const OperationCreatePage = () => {
 	const { authUser } = useAuth();
@@ -9,9 +11,9 @@ export const OperationCreatePage = () => {
 	const { selectorsData } = useLoaderData();
 
 	return (
-		<div>
-			<h1>СТРАНИЦА СОЗДАНИЯ ОПЕРАЦИИ</h1>
+		<Container>
+			<PageHeader title="Создание операции" />
 			<AsyncComponent resolve={selectorsData} element={<OperationCreateForm userId={authUser.id} />} fallback={<Loading />} />
-		</div>
+		</Container>
 	)
 };

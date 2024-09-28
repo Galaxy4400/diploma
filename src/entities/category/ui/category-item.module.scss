@@ -1,6 +1,5 @@
 .category {
 	position: relative;
-	padding: rem(10);
 	border-radius: rem(5);
 	transition: all 0.3s ease 0s;
 	@media (any-hover: hover) {
@@ -16,6 +15,7 @@
 	grid-template-columns: auto 1fr;
 	align-items: center;
 	gap: rem(15);
+	padding: rem(10);
 }
 
 .figure {

@@ -1,10 +1,14 @@
 {
   "users": [
     {
-      "login": "Евгений",
+      "login": "Galaxy4400",
       "password": "1111",
       "createdAt": "16.09.2024 15:25:31",
-      "id": 1
+      "id": 1,
+      "email": "moiseevEO@yandex.ru",
+      "name": "Евгений",
+      "surname": "Моисеев",
+      "address": "Мой адрес"
     },
     {
       "login": "2222",

@@ -29,12 +29,13 @@ export const getAuthUser = async (storageSession) => {
 		}
 	}
 
+	const { password, ...rest } = authUser;
+
 	return {
 		ok: true,
 		error: null,
 		data: {
-			id: authUser.id,
-			login: authUser.login,
+			...rest,
 			session: storageSession,
 		},
 	}

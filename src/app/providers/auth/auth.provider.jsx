@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 			setIsAuthInitialize(true);
 			return;
 		}
-		
+
 		server.getAuthUser(storageSession)
 			.then(({data: user}) => user && dispatch(setAuth(user)))
 			.then(() => setIsAuthInitialize(true));

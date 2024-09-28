@@ -25,7 +25,7 @@ export const authorize = async (authLogin, authPassword) => {
 		}
 	}
 
-	const { id, login, password } = user;
+	const { password, ...rest } = user;
 
 	if (authPassword !== password) {
 		return {
@@ -39,8 +39,7 @@ export const authorize = async (authLogin, authPassword) => {
 		ok: true,
 		error: null,
 		data: {
-			id,
-			login,
+			...rest,
 			session: sessions.create(user),
 		},
 	}

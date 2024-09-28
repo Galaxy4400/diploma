@@ -3,6 +3,10 @@ import { ACTION_TYPE } from "../../../shared/lib/store";
 const initialAuthState = {
 	id: null,
 	login: null,
+	email: null,
+	name: null,
+	surname: null,
+	address: null,
 	session: null,
 };
 
