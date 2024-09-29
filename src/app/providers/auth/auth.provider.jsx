@@ -67,5 +67,17 @@ export const AuthProvider = ({ children }) => {
 			.then(() => setIsAuthInitialize(true));
 	}, [dispatch, logout]);
 
-	return <AuthContext.Provider value={{ authorize, registration, logout, authorizeError, registrationError }}>{isAuthInitialize && children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider
+			value={{
+				authorize,
+				registration,
+				logout,
+				authorizeError,
+				registrationError,
+			}}
+		>
+			{isAuthInitialize && children}
+		</AuthContext.Provider>
+	);
 };

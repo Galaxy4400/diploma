@@ -25,8 +25,14 @@ export const OperationCreateForm = ({ userId }) => {
 		navigate(path.operation.id(createdOperation.id));
 	};
 
-	const accountOptions = selectorsData.accounts.map((account) => ({ value: account.id, label: account.name }));
-	const categoryOptions = selectorsData.categories.map((category) => ({ value: category.id, label: category.name }));
+	const accountOptions = selectorsData.accounts.map((account) => ({
+		value: account.id,
+		label: account.name,
+	}));
+	const categoryOptions = selectorsData.categories.map((category) => ({
+		value: category.id,
+		label: category.name,
+	}));
 
 	return (
 		<Block className={css['block']}>
