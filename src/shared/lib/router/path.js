@@ -60,4 +60,4 @@ export const path = {
 			return path.category.id(id).concat('/edit');
 		},
 	},
-}
+};

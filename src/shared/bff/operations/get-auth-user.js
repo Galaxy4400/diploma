@@ -1,4 +1,4 @@
-import { api } from "../api";
+import { api } from '../api';
 
 export const getAuthUser = async (storageSession) => {
 	if (!storageSession) {
@@ -6,7 +6,7 @@ export const getAuthUser = async (storageSession) => {
 			ok: false,
 			error: 'Вы не аутентифицированы',
 			data: null,
-		}
+		};
 	}
 
 	const dbSession = await api.findSession(`hash=${storageSession}`);
@@ -16,7 +16,7 @@ export const getAuthUser = async (storageSession) => {
 			ok: false,
 			error: 'Такой сессии не существует',
 			data: null,
-		}
+		};
 	}
 
 	const authUser = await api.getUser(dbSession.userId);
@@ -26,7 +26,7 @@ export const getAuthUser = async (storageSession) => {
 			ok: false,
 			error: 'Пользователь с такой сессией не найден',
 			data: null,
-		}
+		};
 	}
 
 	const { password, ...rest } = authUser;
@@ -38,5 +38,5 @@ export const getAuthUser = async (storageSession) => {
 			...rest,
 			session: storageSession,
 		},
-	}
+	};
 };

@@ -1,14 +1,13 @@
 import css from './operation-create.module.scss';
-import { useAsyncValue, useNavigate } from "react-router-dom";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { operationCreateFormRules } from "./operation-create.rules";
-import { path } from "../../../shared/lib/router";
-import { useFrom } from "../../../shared/lib/location";
-import { Button, Fieldset, Form, Hidden, Input, Select } from "../../../shared/ui/form-components";
-import { server } from "../../../shared/bff";
-import { Block } from "../../../shared/ui/components";
-import { useState } from "react";
-
+import { useAsyncValue, useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { operationCreateFormRules } from './operation-create.rules';
+import { path } from '../../../shared/lib/router';
+import { useFrom } from '../../../shared/lib/location';
+import { Button, Fieldset, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
+import { server } from '../../../shared/bff';
+import { Block } from '../../../shared/ui/components';
+import { useState } from 'react';
 
 export const OperationCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
@@ -26,8 +25,8 @@ export const OperationCreateForm = ({ userId }) => {
 		navigate(path.operation.id(createdOperation.id));
 	};
 
-	const accountOptions = selectorsData.accounts.map(account => ({ value: account.id, label: account.name }));
-	const categoryOptions = selectorsData.categories.map(category => ({ value: category.id, label: category.name }));
+	const accountOptions = selectorsData.accounts.map((account) => ({ value: account.id, label: account.name }));
+	const categoryOptions = selectorsData.categories.map((category) => ({ value: category.id, label: category.name }));
 
 	return (
 		<Block className={css['block']}>
@@ -41,7 +40,9 @@ export const OperationCreateForm = ({ userId }) => {
 				<Fieldset label="Категория операции">
 					<Select name="categoryId" options={categoryOptions} defaultValue="" placeholder="" />
 				</Fieldset>
-				<Button type="submit" disabled={isLoading}>Создать операцию</Button>
+				<Button type="submit" disabled={isLoading}>
+					Создать операцию
+				</Button>
 			</Form>
 		</Block>
 	);

@@ -7,5 +7,5 @@ export const App = () => {
 		<Providers>
 			<AppRouter />
 		</Providers>
-	)
-}
+	);
+};

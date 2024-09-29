@@ -3,7 +3,9 @@ export const ErrorList = ({ formErrors }) => {
 
 	return (
 		<ul>
-			{errors.map((error, i) => <li key={i}>{error}</li>)}
+			{errors.map((error, i) => (
+				<li key={i}>{error}</li>
+			))}
 		</ul>
 	);
-}
+};

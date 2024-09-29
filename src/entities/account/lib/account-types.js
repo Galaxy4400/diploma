@@ -1,4 +1,4 @@
-import { ICON } from "../../../shared/lib/icons";
+import { ICON } from '../../../shared/lib/icons';
 
 export const ACCOUNT_TYPES = [
 	{ id: 1, name: 'Дебетовая карта', icon: ICON.CARD2 },

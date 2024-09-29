@@ -1,6 +1,6 @@
 import css from './radio-component.module.scss';
-import { useEffect, useRef } from "react";
-import { useFormContext } from "react-hook-form";
+import { useEffect, useRef } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export const RadioComponent = ({ className = '', name, value, children, defaultChecked, ...rest }) => {
 	const { register, setValue, watch } = useFormContext();
@@ -14,9 +14,7 @@ export const RadioComponent = ({ className = '', name, value, children, defaultC
 
 		const isChecked = selectedValue ? selectedValue === value : defaultChecked;
 
-		isChecked
-			? input.nextSibling.classList.add('checked')
-			: input.nextSibling.classList.remove('checked');
+		isChecked ? input.nextSibling.classList.add('checked') : input.nextSibling.classList.remove('checked');
 
 		const clickHandler = () => {
 			setValue(name, value);

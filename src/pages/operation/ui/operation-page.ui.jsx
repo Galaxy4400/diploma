@@ -1,7 +1,6 @@
-import { useLoaderData } from "react-router-dom";
-import { AsyncComponent, Loading } from "../../../shared/ui/components";
-import { Operation } from "../../../widgets/operation";
-
+import { useLoaderData } from 'react-router-dom';
+import { AsyncComponent, Loading } from '../../../shared/ui/components';
+import { Operation } from '../../../widgets/operation';
 
 export const OperationPage = () => {
 	const { operation } = useLoaderData();
@@ -11,5 +10,5 @@ export const OperationPage = () => {
 			<h1>СТРАНИЦА ОПЕРАЦИИ</h1>
 			<AsyncComponent resolve={operation} element={<Operation />} fallback={<Loading />} />
 		</div>
-	)
+	);
 };

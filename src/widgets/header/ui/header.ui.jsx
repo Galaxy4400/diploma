@@ -1,7 +1,6 @@
-import css from "./header.module.scss";
-import { Container } from "../../../shared/ui/technical";
-import { Actions, Logo, Menu } from "./components";
-
+import css from './header.module.scss';
+import { Container } from '../../../shared/ui/technical';
+import { Actions, Logo, Menu } from './components';
 
 export const Header = () => {
 	return (
@@ -14,5 +13,5 @@ export const Header = () => {
 				</div>
 			</Container>
 		</header>
-	)
+	);
 };

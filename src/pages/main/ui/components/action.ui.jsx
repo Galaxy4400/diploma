@@ -1,6 +1,6 @@
 import css from './action.module.scss';
-import { Link } from "react-router-dom";
-import { Icon } from "../../../../shared/ui/icons";
+import { Link } from 'react-router-dom';
+import { Icon } from '../../../../shared/ui/icons';
 
 export const Action = ({ to, title, icon }) => {
 	return (
@@ -10,5 +10,5 @@ export const Action = ({ to, title, icon }) => {
 			</figure>
 			<h5 className={css['title']}>{title}</h5>
 		</Link>
-	)
+	);
 };

@@ -1,6 +1,6 @@
-import { SESSION_KEY_NAME } from "../../lib/session";
-import { api } from "../api";
-import { sessions } from "../sessions";
+import { SESSION_KEY_NAME } from '../../lib/session';
+import { api } from '../api';
+import { sessions } from '../sessions';
 
 export const authorize = async (authLogin, authPassword) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
@@ -12,9 +12,9 @@ export const authorize = async (authLogin, authPassword) => {
 			ok: false,
 			error: 'Вы уже в системе',
 			data: null,
-		}
+		};
 	}
-	
+
 	const user = await api.findUser(`login=${authLogin}`);
 
 	if (!user) {
@@ -22,7 +22,7 @@ export const authorize = async (authLogin, authPassword) => {
 			ok: false,
 			error: 'Такой пользователь не найден',
 			data: null,
-		}
+		};
 	}
 
 	const { password, ...rest } = user;
@@ -32,7 +32,7 @@ export const authorize = async (authLogin, authPassword) => {
 			ok: false,
 			error: 'Неверный пароль',
 			data: null,
-		}
+		};
 	}
 
 	return {
@@ -42,5 +42,5 @@ export const authorize = async (authLogin, authPassword) => {
 			...rest,
 			session: sessions.create(user),
 		},
-	}
+	};
 };

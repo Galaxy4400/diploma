@@ -1,5 +1,5 @@
-import { SESSION_KEY_NAME } from "../../lib/session";
-import { api } from "../api";
+import { SESSION_KEY_NAME } from '../../lib/session';
+import { api } from '../api';
 
 export const getCategories = async () => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
@@ -9,7 +9,7 @@ export const getCategories = async () => {
 			ok: false,
 			error: 'Вы не аутентифицированы',
 			data: null,
-		}
+		};
 	}
 
 	const authSession = await api.getSession(session);
@@ -20,5 +20,5 @@ export const getCategories = async () => {
 		ok: true,
 		error: null,
 		data: categories,
-	}
+	};
 };

@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from "../../../shared/lib/store";
+import { ACTION_TYPE } from '../../../shared/lib/store';
 
 const initialAccountState = {
 	id: null,
@@ -11,7 +11,7 @@ const initialAccountState = {
 export const accountReducer = (state = initialAccountState, { type, payload }) => {
 	switch (type) {
 		case ACTION_TYPE.SET_ACCOUNT: {
-			return { ...state, ...payload }
+			return { ...state, ...payload };
 		}
 		case ACTION_TYPE.RESET_ACCOUNT: {
 			return initialAccountState;
@@ -19,4 +19,4 @@ export const accountReducer = (state = initialAccountState, { type, payload }) =
 		default:
 			return state;
 	}
-}
+};

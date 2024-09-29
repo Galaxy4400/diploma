@@ -1,5 +1,5 @@
-import { SESSION_KEY_NAME } from "../../lib/session";
-import { sessions } from "../sessions";
+import { SESSION_KEY_NAME } from '../../lib/session';
+import { sessions } from '../sessions';
 
 export const logout = async () => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
@@ -10,5 +10,5 @@ export const logout = async () => {
 		ok: true,
 		error: null,
 		data: null,
-	}
+	};
 };

@@ -7,7 +7,7 @@ export function Textarea({ name, label, ...rest }) {
 	return (
 		<label className={css['wraper']}>
 			{label && <span className={css['label']}>{label}</span>}
-			<textarea className={css['input']} {...register(name)} {...rest}/>
+			<textarea className={css['input']} {...register(name)} {...rest} />
 		</label>
-	)
+	);
 }

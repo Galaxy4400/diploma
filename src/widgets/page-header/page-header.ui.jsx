@@ -14,5 +14,5 @@ export const PageHeader = ({ title }) => {
 			</button>
 			<h1>{title}</h1>
 		</div>
-	)
+	);
 };

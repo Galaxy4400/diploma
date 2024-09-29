@@ -1,4 +1,4 @@
-import { ACTION_TYPE } from "../../../shared/lib/store";
+import { ACTION_TYPE } from '../../../shared/lib/store';
 
 const initialOperationState = {
 	id: null,
@@ -13,7 +13,7 @@ const initialOperationState = {
 export const operationReducer = (state = initialOperationState, { type, payload }) => {
 	switch (type) {
 		case ACTION_TYPE.SET_OPERATION: {
-			return { ...state, ...payload }
+			return { ...state, ...payload };
 		}
 		case ACTION_TYPE.RESET_OPERATION: {
 			return initialOperationState;
@@ -21,4 +21,4 @@ export const operationReducer = (state = initialOperationState, { type, payload 
 		default:
 			return state;
 	}
-}
+};

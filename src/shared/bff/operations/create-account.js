@@ -1,5 +1,5 @@
-import { SESSION_KEY_NAME } from "../../lib/session";
-import { api } from "../api";
+import { SESSION_KEY_NAME } from '../../lib/session';
+import { api } from '../api';
 
 export const createAccount = async (accountData) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
@@ -9,7 +9,7 @@ export const createAccount = async (accountData) => {
 			ok: false,
 			error: 'Доступ запрещен',
 			data: null,
-		}
+		};
 	}
 
 	const createdAccount = await api.createAccount(accountData);
@@ -18,5 +18,5 @@ export const createAccount = async (accountData) => {
 		ok: true,
 		error: null,
 		data: createdAccount,
-	}
-}
+	};
+};

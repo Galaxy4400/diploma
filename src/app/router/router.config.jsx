@@ -1,29 +1,32 @@
-import { path } from "../../shared/lib/router";
-import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthLayout, MainLayout } from "../layouts";
-import { AuthenticationRoute, ProtectedRoute } from "./router.hocs";
-import { MainPage, mainPageLoader } from "../../pages/main";
-import { UserEditPage } from "../../pages/user-edit";
-import { AccountPage, accountPageLoader } from "../../pages/account";
-import { AccountCreatePage } from "../../pages/account-create";
-import { AccountEditPage, accountEditPageLoader } from "../../pages/account-edit";
-import { LoginPage } from "../../pages/login";
-import { RegisterPage } from "../../pages/register";
-import { OperationPage, operationPageLoader } from "../../pages/operation";
-import { HistoryPage, historyPageLoader } from "../../pages/history";
-import { OperationCreatePage, operationCreatePageLoader } from "../../pages/operation-create";
-import { CategoryPage, categoryPageLoader } from "../../pages/category";
-import { CategoryCreatePage } from "../../pages/category-create";
-import { CategoryEditPage, categoryEditPageLoader } from "../../pages/category-edit";
-import { Page404 } from "../../pages/page-404";
-import { ErrorPage } from "../../pages/error";
-
+import { path } from '../../shared/lib/router';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { AuthLayout, MainLayout } from '../layouts';
+import { AuthenticationRoute, ProtectedRoute } from './router.hocs';
+import { MainPage, mainPageLoader } from '../../pages/main';
+import { UserEditPage } from '../../pages/user-edit';
+import { AccountPage, accountPageLoader } from '../../pages/account';
+import { AccountCreatePage } from '../../pages/account-create';
+import { AccountEditPage, accountEditPageLoader } from '../../pages/account-edit';
+import { LoginPage } from '../../pages/login';
+import { RegisterPage } from '../../pages/register';
+import { OperationPage, operationPageLoader } from '../../pages/operation';
+import { HistoryPage, historyPageLoader } from '../../pages/history';
+import { OperationCreatePage, operationCreatePageLoader } from '../../pages/operation-create';
+import { CategoryPage, categoryPageLoader } from '../../pages/category';
+import { CategoryCreatePage } from '../../pages/category-create';
+import { CategoryEditPage, categoryEditPageLoader } from '../../pages/category-edit';
+import { Page404 } from '../../pages/page-404';
+import { ErrorPage } from '../../pages/error';
 
 export const routerConfig = createBrowserRouter([
 	{
 		path: path.home(),
 		element: <ProtectedRoute element={<MainLayout />} />,
-		errorElement: <MainLayout><ErrorPage /></MainLayout>,
+		errorElement: (
+			<MainLayout>
+				<ErrorPage />
+			</MainLayout>
+		),
 		children: [
 			{
 				index: true,
@@ -32,7 +35,7 @@ export const routerConfig = createBrowserRouter([
 			},
 			{
 				path: path.settings(),
-				element: <UserEditPage />
+				element: <UserEditPage />,
 			},
 			{
 				path: path.history(),
@@ -97,7 +100,7 @@ export const routerConfig = createBrowserRouter([
 	},
 	{
 		path: path.home(),
-		element: <AuthenticationRoute element={<AuthLayout />}/>,
+		element: <AuthenticationRoute element={<AuthLayout />} />,
 		children: [
 			{
 				path: path.login(),

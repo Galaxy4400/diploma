@@ -1,21 +1,27 @@
 import css from './menu.module.scss';
-import { NavLink } from "react-router-dom";
-import { path } from "../../../../shared/lib/router";
+import { NavLink } from 'react-router-dom';
+import { path } from '../../../../shared/lib/router';
 
 export const Menu = () => {
 	return (
 		<nav className={css['menu']}>
 			<ul className={css['list']}>
 				<li className={css['item']}>
-					<NavLink className={css['link']} to={path.home()}>Главная</NavLink>
+					<NavLink className={css['link']} to={path.home()}>
+						Главная
+					</NavLink>
 				</li>
 				<li>
-					<NavLink className={css['link']} to={path.history()}>История</NavLink>
+					<NavLink className={css['link']} to={path.history()}>
+						История
+					</NavLink>
 				</li>
 				<li>
-					<NavLink className={css['link']} to={path.history()}>Аналитика</NavLink>
+					<NavLink className={css['link']} to={path.history()}>
+						Аналитика
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
-	)
+	);
 };

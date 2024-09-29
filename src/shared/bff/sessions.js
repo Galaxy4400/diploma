@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { api } from './api';
 
 export const sessions = {
 	create: (user) => {
@@ -25,5 +25,5 @@ export const sessions = {
 		const user = await api.getUser(session.userId, true);
 
 		return !!user && accessRoles.includes(user.roleId);
-	}
+	},
 };

@@ -9,5 +9,5 @@ export const OperationView = ({ operation, deleteSlot }) => {
 			<div>Дата: {operation.createdAt}</div>
 			{deleteSlot}
 		</div>
-	)
+	);
 };

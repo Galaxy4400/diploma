@@ -1,10 +1,9 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import { thunk } from "redux-thunk";
-import { authReducer } from "../../entities/auth";
-import { accountReducer } from "../../entities/account";
-import { operationReducer } from "../../entities/operation";
-import { categoryReducer } from "../../entities/category";
-
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { thunk } from 'redux-thunk';
+import { authReducer } from '../../entities/auth';
+import { accountReducer } from '../../entities/account';
+import { operationReducer } from '../../entities/operation';
+import { categoryReducer } from '../../entities/category';
 
 const rootReducer = combineReducers({
 	auth: authReducer,

@@ -6,5 +6,5 @@ export const Fieldset = ({ label, children }) => {
 			<legend className={css['legend']}>{label}</legend>
 			{children}
 		</fieldset>
-	)
+	);
 };

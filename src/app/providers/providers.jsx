@@ -1,12 +1,10 @@
-import { AuthProvider } from "./auth";
-import { StoreProvider } from "./store";
+import { AuthProvider } from './auth';
+import { StoreProvider } from './store';
 
 export const Providers = ({ children }) => {
 	return (
 		<StoreProvider>
-			<AuthProvider>
-				{children}
-			</AuthProvider>
+			<AuthProvider>{children}</AuthProvider>
 		</StoreProvider>
 	);
 };

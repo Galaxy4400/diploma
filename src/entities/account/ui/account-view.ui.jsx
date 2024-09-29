@@ -1,8 +1,8 @@
 import css from './account-view.module.scss';
-import { Link } from "react-router-dom";
-import { path } from "../../../shared/lib/router";
-import { getAccountType } from "../lib/get-account-type";
-import { Block } from "../../../shared/ui/components";
+import { Link } from 'react-router-dom';
+import { path } from '../../../shared/lib/router';
+import { getAccountType } from '../lib/get-account-type';
+import { Block } from '../../../shared/ui/components';
 import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { priceFormat } from '../../../shared/lib/utils';
@@ -40,5 +40,5 @@ export const AccountView = ({ accountData, deleteSlot }) => {
 				{deleteSlot}
 			</div>
 		</Block>
-	)
+	);
 };

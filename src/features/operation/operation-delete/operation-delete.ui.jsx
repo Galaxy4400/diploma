@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { useFrom } from "../../../shared/lib/location";
-import { server } from "../../../shared/bff";
-import { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
+import { useFrom } from '../../../shared/lib/location';
+import { server } from '../../../shared/bff';
+import { useState } from 'react';
 
 export const OperationDelete = ({ operationId }) => {
 	const navigate = useNavigate();
@@ -18,9 +17,11 @@ export const OperationDelete = ({ operationId }) => {
 
 		//TODO navigate to main fix
 		navigate(from?.pathname || false, { replace: true });
-	}
+	};
 
 	return (
-		<button type="button" onClick={() => deleteHandler(operationId)} disabled={isDeleted}>Удалить</button>
-	)
+		<button type="button" onClick={() => deleteHandler(operationId)} disabled={isDeleted}>
+			Удалить
+		</button>
+	);
 };
