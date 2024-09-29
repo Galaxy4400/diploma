@@ -4,7 +4,7 @@
 	transition: all 0.3s ease 0s;
 	@media (any-hover: hover) {
 		&:hover {
-			background: #e3e5ff;
+			background: #f3f4ff;
 			color: #000;
 		}
 	}
@@ -27,7 +27,7 @@
 .icon {
 	width: rem(40);
 	height: rem(40);
-	color: #000;
+	color: $color-primary;
 }
 
 .info {

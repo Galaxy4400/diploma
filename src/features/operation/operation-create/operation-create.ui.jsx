@@ -29,6 +29,7 @@ export const OperationCreateForm = ({ userId }) => {
 		value: account.id,
 		label: account.name,
 	}));
+
 	const categoryOptions = selectorsData.categories.map((category) => ({
 		value: category.id,
 		label: category.name,
@@ -42,7 +43,6 @@ export const OperationCreateForm = ({ userId }) => {
 				resolver={yupResolver(operationCreateFormRules)}
 			>
 				<Hidden name="userId" defaultValue={userId} />
-				<Input type="text" name="name" label="Название операции" />
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Fieldset label="Счет операции">
 					<Select
@@ -55,6 +55,7 @@ export const OperationCreateForm = ({ userId }) => {
 				<Fieldset label="Категория операции">
 					<Select name="categoryId" options={categoryOptions} defaultValue="" placeholder="" />
 				</Fieldset>
+				<Input type="text" name="comment" label="Комментарий" />
 				<Button type="submit" disabled={isLoading}>
 					Создать операцию
 				</Button>

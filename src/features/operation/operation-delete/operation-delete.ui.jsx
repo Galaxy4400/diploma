@@ -1,7 +1,10 @@
+import css from './operation-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useFrom } from '../../../shared/lib/location';
 import { server } from '../../../shared/bff';
 import { useState } from 'react';
+import { Icon } from '../../../shared/ui/icons';
+import { ICON } from '../../../shared/lib/icons';
 
 export const OperationDelete = ({ operationId }) => {
 	const navigate = useNavigate();
@@ -20,8 +23,13 @@ export const OperationDelete = ({ operationId }) => {
 	};
 
 	return (
-		<button type="button" onClick={() => deleteHandler(operationId)} disabled={isDeleted}>
-			Удалить
+		<button
+			className={css['button']}
+			type="button"
+			onClick={() => deleteHandler(operationId)}
+			disabled={isDeleted}
+		>
+			<Icon className={css['icon']} name={ICON.CART}></Icon>
 		</button>
 	);
 };

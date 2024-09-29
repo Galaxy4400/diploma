@@ -11,11 +11,11 @@ export const OperationsBlock = () => {
 		<Block className={css['main']}>
 			<h4 className={css['title']}>Недавние операции</h4>
 			<div className={css['list']}>
-				{operations?.map((account) => (
+				{operations?.map((operation) => (
 					<OperationItem
-						key={account.id}
-						account={account}
-						deleteSlot={<OperationDelete accountId={account.id} />}
+						key={operation.id}
+						operation={operation}
+						deleteSlot={<OperationDelete operationId={operation.id} />}
 					/>
 				))}
 			</div>

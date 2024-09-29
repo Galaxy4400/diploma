@@ -37,7 +37,7 @@
       "id": 9
     },
     {
-      "amount": 0,
+      "amount": 5800,
       "name": "Мой кошелек",
       "typeId": 1,
       "userId": 1,
@@ -54,6 +54,14 @@
       "userId": 1,
       "createdAt": "29.09.2024 21:03:31",
       "id": 1
+    },
+    {
+      "name": "Снятие со счета",
+      "icon": "expense",
+      "typeId": 1,
+      "userId": 1,
+      "createdAt": "29.09.2024 22:22:06",
+      "id": 2
     }
   ],
   "operations": [
@@ -61,15 +69,33 @@
       "accountId": 10,
       "categoryId": 1,
       "amount": 1000,
-      "name": "Пополнение счета",
+      "comment": "Пополнение счета",
       "userId": 1,
       "createdAt": "29.09.2024 21:04:22",
       "id": 1
+    },
+    {
+      "accountId": 10,
+      "categoryId": 2,
+      "amount": 200,
+      "comment": "Забрал деньги",
+      "userId": 1,
+      "createdAt": "29.09.2024 22:22:42",
+      "id": 2
+    },
+    {
+      "accountId": 10,
+      "categoryId": 1,
+      "amount": 5000,
+      "comment": "Закинул денег",
+      "userId": 1,
+      "createdAt": "29.09.2024 22:45:59",
+      "id": 3
     }
   ],
   "sessions": [
     {
-      "hash": "0.64533983528010319119516680075321346521377563476563",
+      "hash": "0.13126435022183846612620072846766561269760131835938",
       "userId": 1,
       "id": 1
     }
