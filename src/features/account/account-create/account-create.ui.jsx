@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { categoryCreateFormRules } from "./account-create.rules";
 import { path } from "../../../shared/lib/router";
-import { Button, Fieldset, Form, Hidden, Input, Radio } from "../../../shared/ui/form-components";
+import { Button, Fieldset, Form, Hidden, Input, Radio, Textarea } from "../../../shared/ui/form-components";
 import { ACCOUNT_TYPES } from "../../../entities/account/lib/account-types";
 import { useState } from "react";
 import { server } from "../../../shared/bff";
@@ -28,8 +28,7 @@ export const AccountCreateForm = ({ userId }) => {
 		<Block className={css['block']}>
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
-				<Input type='text' name="name" label='Название счета' />
-				<Input type='number' name="amount" label='Сумма' />
+				<Input type="text" name="name" label="Название счета" />
 				<Fieldset label="Тип счета">
 					<div className={css['radiobuttons']}>
 						{ACCOUNT_TYPES.map((type, i) => (
@@ -37,6 +36,8 @@ export const AccountCreateForm = ({ userId }) => {
 						))}
 					</div>
 				</Fieldset>
+				<Input type='number' name="amount" label="Сумма" />
+				<Textarea name="comment" label="Комментарий" />
 				<Button type='submit' disabled={isLoading}>Создать счет</Button>
 			</Form>
 		</Block>

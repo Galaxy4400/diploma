@@ -9,4 +9,5 @@ export const ICON = {
 	SAFE: 'safe',
 	CART: 'cart',
 	BACK: 'back',
+	EDIT: 'edit',
 };

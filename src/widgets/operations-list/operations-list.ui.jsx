@@ -1,13 +1,17 @@
+import css from './operations-list.module.scss';
 import { Link } from "react-router-dom";
 import { OperationItem } from "../../entities/operation";
 import { OperationDelete } from "../../features/operation";
 import { path } from "../../shared/lib/router";
+import { Block } from "../../shared/ui/components";
 
 export const OperationsList = ({ operations, accountId }) => {
 	return (
-		<div>
-			<h2>СПИСОК ОПЕРАЦИЙ СЧЕТА</h2>
-			<Link to={path.operation.create()} state={{from: { accountId }}} >Добавить операцию</Link>
+		<Block className={css['operations']}>
+			<header className={css['header']}>
+				<h4>Операции счета</h4>
+				<Link to={path.operation.create()} state={{from: { accountId }}} >Добавить операцию</Link>
+			</header>
 			<div>
 				<ul>
 					{operations?.map(operation => (
@@ -19,6 +23,6 @@ export const OperationsList = ({ operations, accountId }) => {
 					))}
 				</ul>
 			</div>
-		</div>
+		</Block>
 	)
 };

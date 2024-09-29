@@ -9,6 +9,7 @@ import Money from "./svg/money.svg?react";
 import Safe from "./svg/safe.svg?react";
 import Cart from "./svg/cart.svg?react";
 import Back from "./svg/arrow-back.svg?react";
+import Edit from "./svg/edit.svg?react";
 
 
 export const Icon = ({ name, className, size = 36, ...rest }) => {
@@ -23,6 +24,7 @@ export const Icon = ({ name, className, size = 36, ...rest }) => {
 		case ICON.SAFE: return <Safe className={className} width={size} height={size} {...rest} />
 		case ICON.CART: return <Cart className={className} width={size} height={size} {...rest} />
 		case ICON.BACK: return <Back className={className} width={size} height={size} {...rest} />
+		case ICON.EDIT: return <Edit className={className} width={size} height={size} {...rest} />
 
 		default:
 			break;

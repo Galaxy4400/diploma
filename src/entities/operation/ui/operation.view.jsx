@@ -5,7 +5,7 @@ export const OperationView = ({ operation, deleteSlot }) => {
 			<div>Счета: {operation?.account?.name}</div>
 			<div>Категория: {operation?.category?.name}</div>
 			<div>Название: {operation.name}</div>
-			<div>Сумма: {operation.amount} руб.</div>
+			<div>Сумма: {operation.amount} </div>
 			<div>Дата: {operation.createdAt}</div>
 			{deleteSlot}
 		</div>
