@@ -10,7 +10,7 @@ export function Form({ className = '', defaultValues, resolver, onSubmit, childr
 		<FormProvider {...methods}>
 			<form className={className} onSubmit={handleSubmit(onSubmit)} { ...rest }>
 				{children}
-				{<ErrorList formErrors={errors} />} {/* TODO перенести обработку ошибок в другое место */}
+				{/* {<ErrorList formErrors={errors} />}  TODO перенести обработку ошибок в другое место */}
 			</form>
 		</FormProvider>
 	)

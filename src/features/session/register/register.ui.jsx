@@ -1,9 +1,12 @@
+import css from './register.module.scss';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerFormRules } from "./register.rules";
 import { useAuth } from "../../../app/providers/auth";
-import { Form, Input, Password } from "../../../shared/ui/form-components";
+import { Button, Form, Input } from "../../../shared/ui/form-components";
 import { useState } from "react";
-import { Loader } from "../../../shared/ui/components";
+import { Block } from "../../../shared/ui/components";
+import { Link } from "react-router-dom";
+import { path } from '../../../shared/lib/router';
 
 
 export const RegisterForm = () => {
@@ -19,14 +22,16 @@ export const RegisterForm = () => {
 	};
 
 	return (
-		<Loader isLoading={isLoading}>
-			<Form onSubmit={submitHandler} resolver={yupResolver(registerFormRules)}>
-				<Input name="login" placeholder="Логин..." />
-				<Password name="password" placeholder="Пароль..." />
-				<Password name="passcheck" placeholder="Проверка пароль..." />
-				<button type='submit'>Зарегистрироваться</button>
+		<Block className={css['block']}>
+			<h1 className={css['title']}>Регистрация</h1>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(registerFormRules)}>
+				<Input type="text" name="login" label="Логин" />
+				<Input type="password" name="password" label="Пароль" />
+				<Input type="password" name="passcheck" label="Повторите пароль" />
+				<Button type='submit' disabled={isLoading}>Зарегистрироваться</Button>
 			</Form>
+			<Link className={css['link']} to={path.login()}>Авторизация</Link>
 			{registrationError && <div>{registrationError}</div>}
-		</Loader>
+		</Block>
 	)
 };

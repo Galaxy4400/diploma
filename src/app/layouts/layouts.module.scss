@@ -1,3 +1,10 @@
 .main {
 	padding: rem(40) 0px;
 }
+
+.auth {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

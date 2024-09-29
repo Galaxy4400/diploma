@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { operationCreateFormRules } from "./operation-create.rules";
 import { path } from "../../../shared/lib/router";
 import { useFrom } from "../../../shared/lib/location";
-import { Button, Fieldset, Form, Hidden, Input, Number, Select } from "../../../shared/ui/form-components";
+import { Button, Fieldset, Form, Hidden, Input, Select } from "../../../shared/ui/form-components";
 import { server } from "../../../shared/bff";
 import { Block } from "../../../shared/ui/components";
 import { useState } from "react";
@@ -17,15 +17,13 @@ export const OperationCreateForm = ({ userId }) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
-		console.log(submittedData);
+		setIsLoading(true);
 
-		// setIsLoading(true);
+		const { data: createdOperation } = await server.createOperation(submittedData);
 
-		// const { data: createdOperation } = await server.createOperation(submittedData);
+		setIsLoading(false);
 
-		// setIsLoading(false);
-
-		// navigate(path.operation.id(createdOperation.id));
+		navigate(path.operation.id(createdOperation.id));
 	};
 
 	const accountOptions = selectorsData.accounts.map(account => ({ value: account.id, label: account.name }));
