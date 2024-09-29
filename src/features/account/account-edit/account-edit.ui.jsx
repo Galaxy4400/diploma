@@ -26,12 +26,22 @@ export const AccountEditForm = () => {
 
 	return (
 		<Block className={css['block']}>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(accountEditFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(accountEditFormRules)}
+			>
 				<Input type="text" name="name" defaultValue={account.name} label="Название счета" />
 				<Fieldset label="Тип счета">
 					<div className={css['radiobuttons']}>
 						{ACCOUNT_TYPES.map((type) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={type.id === account?.typeId} />
+							<Radio
+								key={type.id}
+								name="typeId"
+								value={type.id}
+								label={type.name}
+								defaultChecked={type.id === account?.typeId}
+							/>
 						))}
 					</div>
 				</Fieldset>

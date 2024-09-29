@@ -2,7 +2,14 @@ import css from './radio-component.module.scss';
 import { useEffect, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-export const RadioComponent = ({ className = '', name, value, children, defaultChecked, ...rest }) => {
+export const RadioComponent = ({
+	className = '',
+	name,
+	value,
+	children,
+	defaultChecked,
+	...rest
+}) => {
 	const { register, setValue, watch } = useFormContext();
 
 	const radioWrapperRef = useRef(null);
@@ -14,7 +21,9 @@ export const RadioComponent = ({ className = '', name, value, children, defaultC
 
 		const isChecked = selectedValue ? selectedValue === value : defaultChecked;
 
-		isChecked ? input.nextSibling.classList.add('checked') : input.nextSibling.classList.remove('checked');
+		isChecked
+			? input.nextSibling.classList.add('checked')
+			: input.nextSibling.classList.remove('checked');
 
 		const clickHandler = () => {
 			setValue(name, value);
@@ -29,7 +38,14 @@ export const RadioComponent = ({ className = '', name, value, children, defaultC
 
 	return (
 		<div className={className} ref={radioWrapperRef}>
-			<input className={css['input']} {...register(name)} value={value} type="radio" defaultChecked={defaultChecked} {...rest} />
+			<input
+				className={css['input']}
+				{...register(name)}
+				value={value}
+				type="radio"
+				defaultChecked={defaultChecked}
+				{...rest}
+			/>
 			{children}
 		</div>
 	);

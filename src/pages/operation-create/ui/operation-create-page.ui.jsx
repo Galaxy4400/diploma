@@ -13,7 +13,11 @@ export const OperationCreatePage = () => {
 	return (
 		<Container>
 			<PageHeader title="Создание операции" />
-			<AsyncComponent resolve={selectorsData} element={<OperationCreateForm userId={authUser.id} />} fallback={<Loading />} />
+			<AsyncComponent
+				resolve={selectorsData}
+				element={<OperationCreateForm userId={authUser.id} />}
+				fallback={<Loading />}
+			/>
 		</Container>
 	);
 };

@@ -3,7 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
 import { CATEGORY_TYPES } from '../../../entities/category';
-import { Button, Fieldset, Form, Hidden, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
+import {
+	Button,
+	Fieldset,
+	Form,
+	Hidden,
+	Input,
+	Radio,
+	RadioComponent,
+} from '../../../shared/ui/form-components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
@@ -27,13 +35,23 @@ export const CategoryCreateForm = ({ userId }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(categoryCreateFormRules)}
+			>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type="text" name="name" label="Название категории" />
 				<Fieldset label="Тип категории">
 					<div className={css['radiobuttons']}>
 						{CATEGORY_TYPES.map((type, i) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
+							<Radio
+								key={type.id}
+								name="typeId"
+								value={type.id}
+								label={type.name}
+								defaultChecked={!i}
+							/>
 						))}
 					</div>
 				</Fieldset>

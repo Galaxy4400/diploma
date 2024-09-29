@@ -15,11 +15,19 @@ export const OperationsList = ({ operations, accountId }) => {
 				</Link>
 			</header>
 			<div>
-				<ul>
-					{operations?.map((operation) => (
-						<OperationItem key={operation.id} operation={operation} deleteSlot={<OperationDelete operationId={operation.id} />} />
-					))}
-				</ul>
+				{operations.length ? (
+					<ul>
+						{operations?.map((operation) => (
+							<OperationItem
+								key={operation.id}
+								operation={operation}
+								deleteSlot={<OperationDelete operationId={operation.id} />}
+							/>
+						))}
+					</ul>
+				) : (
+					<h5>Операций нет</h5>
+				)}
 			</div>
 		</Block>
 	);

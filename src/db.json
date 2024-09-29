@@ -37,87 +37,39 @@
       "id": 9
     },
     {
-      "typeId": 1,
-      "name": "Счет жены",
-      "amount": 1003,
-      "userId": 1,
-      "createdAt": "19.09.2024 15:03:05",
-      "id": 11,
-      "comment": "test"
-    },
-    {
-      "typeId": 2,
-      "name": "Мой счет",
-      "amount": 12345,
-      "userId": 1,
-      "createdAt": "19.09.2024 18:12:43",
-      "id": 12
-    },
-    {
-      "amount": 98765,
-      "name": "Сберегательный счет",
-      "typeId": 3,
-      "userId": 1,
-      "createdAt": "25.09.2024 01:10:12",
-      "id": 13
-    },
-    {
       "amount": 0,
-      "name": "kugjyf",
-      "typeId": 4,
+      "name": "Мой кошелек",
+      "typeId": 1,
       "userId": 1,
-      "createdAt": "25.09.2024 17:16:38",
-      "id": 14
-    },
-    {
-      "amount": 5465332,
-      "name": "sdafgseh",
-      "typeId": 4,
-      "userId": 1,
-      "createdAt": "25.09.2024 19:43:09",
-      "id": 15
+      "comment": "Мой основной кошелек",
+      "createdAt": "29.09.2024 21:02:38",
+      "id": 10
     }
   ],
   "categories": [
     {
-      "name": "Категория 1",
-      "icon": "expense",
-      "typeId": 1,
-      "userId": 1,
-      "createdAt": "26.09.2024 01:32:29",
-      "id": 1
-    },
-    {
-      "name": "Категория 2",
+      "name": "Пополнение",
       "icon": "income",
       "typeId": 2,
       "userId": 1,
-      "createdAt": "26.09.2024 01:32:36",
-      "id": 2
-    },
-    {
-      "name": "Категория 3",
-      "icon": "swap",
-      "typeId": 1,
-      "userId": 1,
-      "createdAt": "26.09.2024 01:33:39",
-      "id": 3
+      "createdAt": "29.09.2024 21:03:31",
+      "id": 1
     }
   ],
   "operations": [
     {
-      "accountId": 12,
+      "accountId": 10,
       "categoryId": 1,
-      "amount": 12353,
-      "name": "Первая операция",
+      "amount": 1000,
+      "name": "Пополнение счета",
       "userId": 1,
-      "createdAt": "28.09.2024 23:41:33",
+      "createdAt": "29.09.2024 21:04:22",
       "id": 1
     }
   ],
   "sessions": [
     {
-      "hash": "0.78877605188928301416240174148697406053543090820313",
+      "hash": "0.64533983528010319119516680075321346521377563476563",
       "userId": 1,
       "id": 1
     }

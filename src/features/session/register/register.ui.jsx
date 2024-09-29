@@ -23,7 +23,11 @@ export const RegisterForm = () => {
 	return (
 		<Block className={css['block']}>
 			<h1 className={css['title']}>Регистрация</h1>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(registerFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(registerFormRules)}
+			>
 				<Input type="text" name="login" label="Логин" />
 				<Input type="password" name="password" label="Пароль" />
 				<Input type="password" name="passcheck" label="Повторите пароль" />

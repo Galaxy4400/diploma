@@ -12,7 +12,11 @@ export const AccountsBlock = () => {
 			<h4 className={css['title']}>Список счетов</h4>
 			<div className={css['list']}>
 				{accounts?.map((account) => (
-					<AccountItem key={account.id} account={account} deleteSlot={<AccountDelete accountId={account.id} />} />
+					<AccountItem
+						key={account.id}
+						account={account}
+						deleteSlot={<AccountDelete accountId={account.id} />}
+					/>
 				))}
 			</div>
 		</Block>

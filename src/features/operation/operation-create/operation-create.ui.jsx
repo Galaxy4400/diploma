@@ -36,12 +36,21 @@ export const OperationCreateForm = ({ userId }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(operationCreateFormRules)}
+			>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type="text" name="name" label="Название операции" />
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Fieldset label="Счет операции">
-					<Select name="accountId" options={accountOptions} defaultValue={from?.accountId || ''} placeholder="" />
+					<Select
+						name="accountId"
+						options={accountOptions}
+						defaultValue={from?.accountId || ''}
+						placeholder=""
+					/>
 				</Fieldset>
 				<Fieldset label="Категория операции">
 					<Select name="categoryId" options={categoryOptions} defaultValue="" placeholder="" />

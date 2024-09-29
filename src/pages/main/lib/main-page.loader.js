@@ -7,6 +7,12 @@ const getAccounts = async () => {
 	return response.data;
 };
 
+const getOperations = async () => {
+	const response = await server.getOperations(null, 10);
+
+	return response.data;
+};
+
 const getCategories = async () => {
 	const response = await server.getCategories();
 
@@ -16,6 +22,7 @@ const getCategories = async () => {
 export const mainPageLoader = async () => {
 	return defer({
 		accounts: getAccounts(),
+		operations: getOperations(),
 		categories: getCategories(),
 	});
 };

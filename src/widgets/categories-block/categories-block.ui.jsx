@@ -13,7 +13,11 @@ export const CategoriesBlock = () => {
 			<h4 className={css['title']}>Список категорий</h4>
 			<div className={css['list']}>
 				{categories?.map((category) => (
-					<CategoryItem key={category.id} category={category} deleteSlot={<CategoryDelete categoryId={category.id} />} />
+					<CategoryItem
+						key={category.id}
+						category={category}
+						deleteSlot={<CategoryDelete categoryId={category.id} />}
+					/>
 				))}
 			</div>
 		</Block>

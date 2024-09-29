@@ -27,7 +27,11 @@ export const EditUserForm = ({ userData }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)}>
+			<Form
+				className={css['form']}
+				onSubmit={submitHandler}
+				resolver={yupResolver(editUserFormRules)}
+			>
 				<Input type="text" name="login" defaultValue={userData.login} label="Логин" />
 				<Input type="email" name="email" defaultValue={userData.email} label="E-mail" />
 				<Input type="text" name="name" defaultValue={userData.name} label="Имя" />

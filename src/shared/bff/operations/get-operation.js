@@ -12,7 +12,10 @@ export const getOperation = async (operationId) => {
 		};
 	}
 
-	const [authSession, operation] = await Promise.all([api.getSession(session), api.getOperation(operationId)]);
+	const [authSession, operation] = await Promise.all([
+		api.getSession(session),
+		api.getOperation(operationId),
+	]);
 
 	if (!operation || operation.userId !== authSession.userId) {
 		return {
@@ -22,7 +25,10 @@ export const getOperation = async (operationId) => {
 		};
 	}
 
-	const [account, category] = await Promise.all([api.getCategory(operation.categoryId), api.getAccount(operation.accountId)]);
+	const [account, category] = await Promise.all([
+		api.getCategory(operation.categoryId),
+		api.getAccount(operation.accountId),
+	]);
 
 	return {
 		ok: true,

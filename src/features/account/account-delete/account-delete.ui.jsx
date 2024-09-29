@@ -22,7 +22,12 @@ export const AccountDelete = ({ accountId }) => {
 	};
 
 	return (
-		<button className={css['button']} type="button" onClick={() => deleteHandler(accountId)} disabled={isDeleted}>
+		<button
+			className={css['button']}
+			type="button"
+			onClick={() => deleteHandler(accountId)}
+			disabled={isDeleted}
+		>
 			<Icon className={css['icon']} name={ICON.CART}></Icon>
 		</button>
 	);

@@ -24,7 +24,12 @@ export const CategoryDelete = ({ categoryId }) => {
 	};
 
 	return (
-		<button className={css['button']} type="button" onClick={() => deleteHandler(categoryId)} disabled={isDeleted}>
+		<button
+			className={css['button']}
+			type="button"
+			onClick={() => deleteHandler(categoryId)}
+			disabled={isDeleted}
+		>
 			<Icon className={css['icon']} name={ICON.CART}></Icon>
 		</button>
 	);

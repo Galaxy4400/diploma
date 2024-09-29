@@ -3,13 +3,14 @@ import { AccountsBlock } from '../../../widgets/accounts-block';
 import { useLoaderData } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { CategoriesBlock } from '../../../widgets/categories-block';
-import { AsyncComponent, Block, Loading } from '../../../shared/ui/components';
+import { AsyncComponent, Loading } from '../../../shared/ui/components';
 import { Container } from '../../../shared/ui/technical';
 import { ICON } from '../../../shared/lib/icons';
 import { Action } from './components';
+import { OperationsBlock } from '../../../widgets/operations-block';
 
 export const MainPage = () => {
-	const { accounts, categories } = useLoaderData();
+	const { accounts, operations, categories } = useLoaderData();
 
 	return (
 		<Container className={css['main']}>
@@ -20,7 +21,7 @@ export const MainPage = () => {
 			</header>
 			<div className={css['content']}>
 				<AsyncComponent resolve={accounts} element={<AccountsBlock />} fallback={<Loading />} />
-				<Block>Недавние операции</Block>
+				<AsyncComponent resolve={operations} element={<OperationsBlock />} fallback={<Loading />} />
 				<AsyncComponent resolve={categories} element={<CategoriesBlock />} fallback={<Loading />} />
 			</div>
 		</Container>

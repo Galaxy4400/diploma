@@ -12,7 +12,10 @@ export const getAccount = async (accountId) => {
 		};
 	}
 
-	const [authSession, account] = await Promise.all([api.getSession(session), api.getAccount(accountId)]);
+	const [authSession, account] = await Promise.all([
+		api.getSession(session),
+		api.getAccount(accountId),
+	]);
 
 	if (!account || account.userId !== authSession.userId) {
 		return {
@@ -22,14 +25,24 @@ export const getAccount = async (accountId) => {
 		};
 	}
 
-	const operations = await api.getOperations(`accountId_like=${accountId}`);
+	const [operations, accounts, categories] = await Promise.all([
+		api.getOperations(`accountId_like=${accountId}`),
+		api.getAccounts(),
+		api.getCategories(),
+	]);
+
+	const enhancedOperations = operations.map((operation) => ({
+		...operation,
+		account: accounts.find((account) => account.id === operation.accountId),
+		category: categories.find((category) => category.id === operation.categoryId),
+	}));
 
 	return {
 		ok: true,
 		error: null,
 		data: {
 			...account,
-			operations,
+			operations: enhancedOperations,
 		},
 	};
 };
