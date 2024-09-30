@@ -46,7 +46,7 @@
       "id": 10
     },
     {
-      "amount": 500000,
+      "amount": 400000,
       "name": "Сбережения",
       "typeId": 4,
       "userId": 1,
@@ -81,6 +81,7 @@
       "comment": "Пополнение счета",
       "userId": 1,
       "createdAt": "29.09.2024 21:04:22",
+      "status": 1,
       "id": 1
     },
     {
@@ -90,6 +91,7 @@
       "comment": "Забрал деньги",
       "userId": 1,
       "createdAt": "29.09.2024 22:22:42",
+      "status": 1,
       "id": 2
     },
     {
@@ -99,6 +101,7 @@
       "comment": "Закинул денег",
       "userId": 1,
       "createdAt": "29.09.2024 22:45:59",
+      "status": 1,
       "id": 3
     },
     {
@@ -108,6 +111,7 @@
       "amount": 100000,
       "userId": 1,
       "createdAt": "30.09.2024 19:43:25",
+      "status": 1,
       "id": 4
     },
     {
@@ -117,6 +121,7 @@
       "amount": 100,
       "userId": 1,
       "createdAt": "30.09.2024 20:00:18",
+      "status": 1,
       "id": 5
     },
     {
@@ -126,6 +131,7 @@
       "amount": 300,
       "userId": 1,
       "createdAt": "30.09.2024 20:27:56",
+      "status": 1,
       "id": 6
     },
     {
@@ -135,7 +141,28 @@
       "amount": 4500,
       "userId": 1,
       "createdAt": "30.09.2024 20:28:31",
+      "status": 1,
       "id": 7
+    },
+    {
+      "comment": "test",
+      "accountId": 11,
+      "categoryId": 2,
+      "amount": 100000,
+      "userId": 1,
+      "status": true,
+      "createdAt": "30.09.2024 23:40:55",
+      "id": 8
+    },
+    {
+      "comment": "Недостаточно средств",
+      "accountId": 11,
+      "categoryId": 2,
+      "amount": 1000000,
+      "userId": 1,
+      "status": false,
+      "createdAt": "30.09.2024 23:42:43",
+      "id": 9
     }
   ],
   "sessions": [

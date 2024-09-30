@@ -37,6 +37,12 @@
 	color: $color-primary;
 }
 
+.abort-icon {
+	width: rem(40);
+	height: rem(40);
+	color: $color-error;
+}
+
 .info {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

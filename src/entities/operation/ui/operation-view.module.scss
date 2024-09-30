@@ -17,6 +17,18 @@
 	}
 }
 
+.icon {
+	width: rem(40);
+	height: rem(40);
+	color: $color-primary;
+}
+
+.abort-icon {
+	width: rem(40);
+	height: rem(40);
+	color: $color-error;
+}
+
 .amount {
 	&:global(.income) {
 		color: $color-success;
@@ -46,3 +58,4 @@
 	height: rem(24);
 	width: rem(24);
 }
+

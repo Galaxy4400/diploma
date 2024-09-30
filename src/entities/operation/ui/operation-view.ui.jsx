@@ -1,8 +1,9 @@
 import css from './operation-view.module.scss';
 import { Block } from '../../../shared/ui/components';
 import { priceFormat } from '../../../shared/lib/utils';
-import { IconCategory } from '../../../shared/ui/icons';
+import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { CATEGORY_TYPE } from '../../category/lib/category-type';
+import { ICON } from '../../../shared/lib/icons';
 
 export const OperationView = ({ operation, deleteSlot }) => {
 	const ammountTypeClass =
@@ -11,7 +12,11 @@ export const OperationView = ({ operation, deleteSlot }) => {
 	return (
 		<Block className={css['view']}>
 			<h4>Операция №{operation.id}</h4>
-			<IconCategory name={operation.category.icon} />
+			{operation.status ? (
+				<IconCategory className={css['icon']} name={operation?.category.icon} />
+			) : (
+				<Icon className={css['abort-icon']} name={ICON.ABORT} />
+			)}
 			<dl>
 				<div>
 					<dt>Дата:</dt>

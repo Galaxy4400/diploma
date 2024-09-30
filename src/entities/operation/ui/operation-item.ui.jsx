@@ -1,9 +1,10 @@
 import css from './operation-item.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
-import { IconCategory } from '../../../shared/ui/icons';
+import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 import { CATEGORY_TYPE } from '../../category';
+import { ICON } from '../../../shared/lib/icons';
 
 export const OperationItem = ({ operation, deleteSlot }) => {
 	const location = useLocation();
@@ -15,7 +16,11 @@ export const OperationItem = ({ operation, deleteSlot }) => {
 		<div className={css['operation']}>
 			<Link className={css['main']} to={path.operation.id(operation.id)} state={{ from: location }}>
 				<figure className={css['figure']}>
-					<IconCategory className={css['icon']} name={operation?.category.icon} />
+					{operation.status ? (
+						<IconCategory className={css['icon']} name={operation?.category.icon} />
+					) : (
+						<Icon className={css['abort-icon']} name={ICON.ABORT} />
+					)}
 				</figure>
 				<div className={css['info']}>
 					<span>{operation?.category.name}</span>
