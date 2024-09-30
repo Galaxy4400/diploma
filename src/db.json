@@ -37,7 +37,7 @@
       "id": 9
     },
     {
-      "amount": 5800,
+      "amount": 10000,
       "name": "Мой кошелек",
       "typeId": 1,
       "userId": 1,
@@ -109,6 +109,33 @@
       "userId": 1,
       "createdAt": "30.09.2024 19:43:25",
       "id": 4
+    },
+    {
+      "comment": "",
+      "accountId": 10,
+      "categoryId": 2,
+      "amount": 100,
+      "userId": 1,
+      "createdAt": "30.09.2024 20:00:18",
+      "id": 5
+    },
+    {
+      "comment": "Тестовое вычитание",
+      "accountId": 10,
+      "categoryId": 2,
+      "amount": 300,
+      "userId": 1,
+      "createdAt": "30.09.2024 20:27:56",
+      "id": 6
+    },
+    {
+      "comment": "Добавили до 10000",
+      "accountId": 10,
+      "categoryId": 1,
+      "amount": 4500,
+      "userId": 1,
+      "createdAt": "30.09.2024 20:28:31",
+      "id": 7
     }
   ],
   "sessions": [

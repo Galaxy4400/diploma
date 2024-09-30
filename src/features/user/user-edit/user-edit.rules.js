@@ -2,13 +2,36 @@ import * as yup from 'yup';
 
 const loginRules = yup.string().required().min(3).max(30);
 
-const emailRules = yup.string().nullable().email();
+const emailRules = yup
+	.string()
+	.nullable()
+	.notRequired()
+	.transform((value) => (value === '' ? null : value))
+	.email();
 
-const nameRules = yup.string().nullable().min(3).max(30);
+const nameRules = yup
+	.string()
+	.nullable()
+	.notRequired()
+	.transform((value) => (value === '' ? null : value))
+	.min(3)
+	.max(30);
 
-const surnameRules = yup.string().nullable().min(3).max(30);
+const surnameRules = yup
+	.string()
+	.nullable()
+	.notRequired()
+	.transform((value) => (value === '' ? null : value))
+	.min(3)
+	.max(30);
 
-const addressRules = yup.string().nullable().min(3).max(30);
+const addressRules = yup
+	.string()
+	.nullable()
+	.notRequired()
+	.transform((value) => (value === '' ? null : value))
+	.min(3)
+	.max(30);
 
 const passwordRules = yup
 	.string()
@@ -31,10 +54,10 @@ const passcheckRules = yup
 export const editUserFormRules = yup.object().shape(
 	{
 		login: loginRules,
-		// email: emailRules,
-		// name: nameRules,
-		// surname: surnameRules,
-		// address: addressRules,
+		email: emailRules,
+		name: nameRules,
+		surname: surnameRules,
+		address: addressRules,
 		password: passwordRules,
 		passcheck: passcheckRules,
 	},
