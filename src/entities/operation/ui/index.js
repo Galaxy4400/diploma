@@ -1,2 +1,2 @@
-export * from './operation.view';
-export * from './operation.item';
+export * from './operation-view.ui';
+export * from './operation-item.ui';

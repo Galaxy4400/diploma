@@ -7,34 +7,34 @@ import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 
-export const AccountView = ({ accountData, deleteSlot }) => {
+export const AccountView = ({ account, deleteSlot }) => {
 	return (
 		<Block className={css['view']}>
-			<h4>Счет №{accountData.id}</h4>
+			<h4>Счет №{account.id}</h4>
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{accountData.createdAt}</dd>
+					<dd>{account.createdAt}</dd>
 				</div>
 				<div>
 					<dt>Название:</dt>
-					<dd>{accountData.name}</dd>
+					<dd>{account.name}</dd>
 				</div>
 				<div>
 					<dt>Сумма:</dt>
-					<dd>{priceFormat(accountData.amount)}</dd>
+					<dd>{priceFormat(account.amount)}</dd>
 				</div>
 				<div>
 					<dt>Тип:</dt>
-					<dd>{getAccountType(accountData.typeId)?.name}</dd>
+					<dd>{getAccountType(account.typeId)?.name}</dd>
 				</div>
 				<div>
 					<dt>Комментарий:</dt>
-					<dd>{accountData.comment}</dd>
+					<dd>{account.comment}</dd>
 				</div>
 			</dl>
 			<div className={css['actions']}>
-				<Link className={css['edit-link']} to={path.account.edit(accountData.id)}>
+				<Link className={css['edit-link']} to={path.account.edit(account.id)}>
 					<Icon className={css['edit-icon']} name={ICON.EDIT} />
 				</Link>
 				{deleteSlot}

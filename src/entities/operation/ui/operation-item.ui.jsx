@@ -1,4 +1,4 @@
-import css from './operation.module.scss';
+import css from './operation-item.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { IconCategory } from '../../../shared/ui/icons';

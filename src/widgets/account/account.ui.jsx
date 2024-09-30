@@ -9,7 +9,7 @@ export const Account = () => {
 
 	return (
 		<div className={css['block']}>
-			<AccountView accountData={account} deleteSlot={<AccountDelete accountId={account.id} />} />
+			<AccountView account={account} deleteSlot={<AccountDelete accountId={account.id} />} />
 			<OperationsList operations={account.operations} accountId={account.id} />
 		</div>
 	);

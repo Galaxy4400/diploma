@@ -1,0 +1,44 @@
+import css from './operation-view.module.scss';
+import { Block } from '../../../shared/ui/components';
+import { priceFormat } from '../../../shared/lib/utils';
+import { IconCategory } from '../../../shared/ui/icons';
+import { CATEGORY_TYPE } from '../../category/lib/category-type';
+
+export const OperationView = ({ operation, deleteSlot }) => {
+	const ammountTypeClass =
+		operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+
+	return (
+		<Block className={css['view']}>
+			<h4>Операция №{operation.id}</h4>
+			<IconCategory name={operation.category.icon} />
+			<dl>
+				<div>
+					<dt>Дата:</dt>
+					<dd>{operation.createdAt}</dd>
+				</div>
+				<div>
+					<dt>Тип:</dt>
+					<dd>{operation.category.name}</dd>
+				</div>
+				<div>
+					<dt>Сумма:</dt>
+					<dd>
+						<span className={`${css['amount']} ${ammountTypeClass}`}>
+							{priceFormat(operation.amount)}
+						</span>
+					</dd>
+				</div>
+				<div>
+					<dt>Счет:</dt>
+					<dd>{operation.account.name}</dd>
+				</div>
+				<div>
+					<dt>Комментарий:</dt>
+					<dd>{operation.comment}</dd>
+				</div>
+			</dl>
+			<div className={css['actions']}>{deleteSlot}</div>
+		</Block>
+	);
+};
