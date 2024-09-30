@@ -15,6 +15,7 @@ export const getOperations = async (accountId = null, limit = null) => {
 	const authSession = await api.getSession(session);
 
 	const searchProps = [];
+	searchProps.push(`_sort=id&_order=desc`);
 	if (authSession?.userId) searchProps.push(`userId_like=${authSession.userId}`);
 	if (accountId) searchProps.push(`accountId_like=${accountId}`);
 	if (limit) searchProps.push(`_limit=${limit}`);

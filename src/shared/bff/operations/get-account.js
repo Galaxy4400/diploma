@@ -26,7 +26,7 @@ export const getAccount = async (accountId) => {
 	}
 
 	const [operations, accounts, categories] = await Promise.all([
-		api.getOperations(`accountId_like=${accountId}`),
+		api.getOperations(`accountId_like=${accountId}&_sort=id&_order=desc`),
 		api.getAccounts(),
 		api.getCategories(),
 	]);

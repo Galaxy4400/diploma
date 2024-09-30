@@ -37,7 +37,7 @@
       "id": 9
     },
     {
-      "amount": 10000,
+      "amount": 12322,
       "name": "Мой кошелек",
       "typeId": 1,
       "userId": 1,
@@ -181,6 +181,26 @@
       "status": false,
       "createdAt": "30.09.2024 23:42:43",
       "id": 9
+    },
+    {
+      "comment": "ebfb",
+      "accountId": 10,
+      "categoryId": 1,
+      "amount": 2345,
+      "userId": 1,
+      "status": true,
+      "createdAt": "01.10.2024 00:31:13",
+      "id": 10
+    },
+    {
+      "comment": "andtgn",
+      "accountId": 10,
+      "categoryId": 2,
+      "amount": 23,
+      "userId": 1,
+      "status": true,
+      "createdAt": "01.10.2024 00:34:42",
+      "id": 11
     }
   ],
   "sessions": [
@@ -195,7 +215,7 @@
       "id": 2
     },
     {
-      "hash": "0.58772919827210490240076978807337582111358642578125",
+      "hash": "0.60255422566329319700173527962760999798774719238281",
       "userId": 1,
       "id": 3
     }
