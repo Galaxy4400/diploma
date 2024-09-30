@@ -28,7 +28,7 @@ export const AccountCreateForm = ({ userId }) => {
 
 		setIsLoading(false);
 
-		navigate(path.account.id(createdAccount.id));
+		navigate(path.account.id(createdAccount.id), { replace: true });
 	};
 
 	return (

@@ -30,7 +30,7 @@ export const CategoryCreateForm = ({ userId }) => {
 
 		setIsLoading(false);
 
-		navigate(path.category.id(createdCategory.id));
+		navigate(path.category.id(createdCategory.id), { replace: true });
 	};
 
 	return (

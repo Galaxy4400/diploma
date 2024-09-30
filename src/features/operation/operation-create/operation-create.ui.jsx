@@ -22,7 +22,7 @@ export const OperationCreateForm = ({ userId }) => {
 
 		setIsLoading(false);
 
-		navigate(path.operation.id(createdOperation.id));
+		navigate(path.operation.id(createdOperation.id), { replace: true });
 	};
 
 	const accountOptions = selectorsData.accounts.map((account) => ({
