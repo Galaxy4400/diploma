@@ -39,7 +39,7 @@
 
 .info {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(2, 1fr);
 	align-items: center;
 	gap: rem(3) rem(10);
 	padding: 0px rem(50) 0px 0px;

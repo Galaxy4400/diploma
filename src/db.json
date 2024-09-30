@@ -100,6 +100,15 @@
       "userId": 1,
       "createdAt": "29.09.2024 22:45:59",
       "id": 3
+    },
+    {
+      "comment": "Нужны бабки",
+      "accountId": 11,
+      "categoryId": 2,
+      "amount": 100000,
+      "userId": 1,
+      "createdAt": "30.09.2024 19:43:25",
+      "id": 4
     }
   ],
   "sessions": [
