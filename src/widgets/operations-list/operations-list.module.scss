@@ -13,3 +13,8 @@
 		color: $color-success;
 	}
 }
+
+.list {
+	display: grid;
+	gap: rem(10);
+}

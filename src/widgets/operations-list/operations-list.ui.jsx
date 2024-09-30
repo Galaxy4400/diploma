@@ -14,17 +14,15 @@ export const OperationsList = ({ operations, accountId }) => {
 					Добавить операцию
 				</Link>
 			</header>
-			<div>
+			<div className={css['list']}>
 				{operations.length ? (
-					<ul>
-						{operations?.map((operation) => (
-							<OperationItem
-								key={operation.id}
-								operation={operation}
-								deleteSlot={<OperationDelete operationId={operation.id} />}
-							/>
-						))}
-					</ul>
+					operations?.map((operation) => (
+						<OperationItem
+							key={operation.id}
+							operation={operation}
+							deleteSlot={<OperationDelete operationId={operation.id} />}
+						/>
+					))
 				) : (
 					<h5>Операций нет</h5>
 				)}
