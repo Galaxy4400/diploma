@@ -53,6 +53,24 @@
       "comment": "На черный день",
       "createdAt": "30.09.2024 17:48:50",
       "id": 11
+    },
+    {
+      "amount": 0,
+      "name": "test",
+      "typeId": 2,
+      "userId": 1,
+      "comment": "",
+      "createdAt": "01.10.2024 00:05:47",
+      "id": 12
+    },
+    {
+      "amount": 0,
+      "name": "test",
+      "typeId": 3,
+      "userId": 1,
+      "comment": "",
+      "createdAt": "01.10.2024 00:07:32",
+      "id": 13
     }
   ],
   "categories": [
