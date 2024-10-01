@@ -2,7 +2,7 @@ import { defer } from 'react-router-dom';
 import { server } from '../../../shared/bff';
 
 const getAccount = async (id) => {
-	const response = await server.getAccount(id);
+	const response = await server.getAccount(id, 3);
 
 	return response.data;
 };

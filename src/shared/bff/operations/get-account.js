@@ -1,7 +1,7 @@
 import { SESSION_KEY_NAME } from '../../lib/session';
 import { api } from '../api';
 
-export const getAccount = async (accountId) => {
+export const getAccount = async (accountId, operationsLimit = null) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (!session) {
@@ -23,7 +23,9 @@ export const getAccount = async (accountId) => {
 	}
 
 	const [operations, accounts, categories] = await Promise.all([
-		api.getOperations(`accountId_like=${accountId}&_sort=id&_order=desc`),
+		api.getOperations(
+			`accountId_like=${accountId}&_sort=id&_order=desc${operationsLimit && `&_limit=${operationsLimit}`}`,
+		),
 		api.getAccounts(),
 		api.getCategories(),
 	]);

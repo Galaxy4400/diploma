@@ -1,22 +1,32 @@
+import css from './history-page.module.scss';
 import { useLoaderData } from 'react-router-dom';
-import { AsyncComponent, ErrorHandler, Loading } from '../../../shared/ui/components';
+import { AsyncComponent, Block, Loading } from '../../../shared/ui/components';
 import { OperationsList } from '../../../widgets/operations-list';
+import { Container } from '../../../shared/ui/technical';
+import { PageHeader } from '../../../widgets/page-header';
+import { useEffect, useState } from 'react';
 
 export const HistoryPage = () => {
-	const { operations } = useLoaderData();
+	const { operations: initialOperations } = useLoaderData();
+
+	const [operations, setOperations] = useState(initialOperations);
+
+	useEffect(() => {
+		setOperations(initialOperations);
+	}, [initialOperations]);
 
 	return (
-		<div>
-			<h1>СТРАНИЦА ИСТОРИИ</h1>
+		<Container>
+			<PageHeader title="История операций" />
 			<AsyncComponent resolve={operations} fallback={<Loading />}>
-				{(operations) =>
-					operations?.length ? (
-						<OperationsList operations={operations} />
-					) : (
-						<ErrorHandler message="Вы не совершили ни одной операции" />
-					)
-				}
+				{(operations) => (
+					<>
+						<Block className={css['operations']}>
+							<OperationsList operations={operations} />
+						</Block>
+					</>
+				)}
 			</AsyncComponent>
-		</div>
+		</Container>
 	);
 };

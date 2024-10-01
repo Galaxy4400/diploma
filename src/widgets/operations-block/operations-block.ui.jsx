@@ -1,28 +1,19 @@
 import css from './operations-block.module.scss';
-import { Link, useAsyncValue } from 'react-router-dom';
-import { Block } from '../../shared/ui/components';
-import { OperationDelete } from '../../features/operation';
 import { OperationItem } from '../../entities/operation';
+import { OperationDelete } from '../../features/operation';
+import { Block } from '../../shared/ui/components';
+import { Link } from 'react-router-dom';
+import { OperationsList } from '../operations-list';
+import { useState } from 'react';
 import { path } from '../../shared/lib/router';
+import { Button } from '../../shared/ui/form-components';
 
-export const OperationsBlock = () => {
-	const operations = useAsyncValue();
-
+export const OperationsBlock = ({ initialOperations, renderOperationsList }) => {
+	const [operations, setOperations] = useState(initialOperations);
 	return (
-		<Block className={css['main']}>
-			<h4 className={css['title']}>Недавние операции</h4>
-			<div className={css['list']}>
-				{operations?.map((operation) => (
-					<OperationItem
-						key={operation.id}
-						operation={operation}
-						deleteSlot={<OperationDelete operationId={operation.id} />}
-					/>
-				))}
-			</div>
-			<Link className={css['more']} to={path.history()}>
-				Просмотреть больше операций
-			</Link>
-		</Block>
+		<>
+			{renderOperationsList(operations)}
+			<Button>Загрузить ещё</Button>
+		</>
 	);
 };

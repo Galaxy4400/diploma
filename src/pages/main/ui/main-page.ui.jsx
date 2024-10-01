@@ -1,13 +1,14 @@
 import css from './main-page.module.scss';
-import { AccountsBlock } from '../../../widgets/accounts-block';
+import { Accounts } from '../../../widgets/accounts';
 import { useLoaderData } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
-import { CategoriesBlock } from '../../../widgets/categories-block';
+import { Categories } from '../../../widgets/categories';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
 import { Container } from '../../../shared/ui/technical';
 import { ICON } from '../../../shared/lib/icons';
 import { Action } from './components';
-import { OperationsBlock } from '../../../widgets/operations-block';
+import { Operations } from '../../../widgets/operations';
+import { OperationsList } from '../../../widgets/operations-list';
 
 export const MainPage = () => {
 	const { accounts, operations, categories } = useLoaderData();
@@ -20,9 +21,15 @@ export const MainPage = () => {
 				<Action to={path.category.create()} title="Добавить категорию" icon={ICON.DOCK2} />
 			</header>
 			<div className={css['content']}>
-				<AsyncComponent resolve={accounts} element={<AccountsBlock />} fallback={<Loading />} />
-				<AsyncComponent resolve={operations} element={<OperationsBlock />} fallback={<Loading />} />
-				<AsyncComponent resolve={categories} element={<CategoriesBlock />} fallback={<Loading />} />
+				<AsyncComponent resolve={accounts} element={<Accounts />} fallback={<Loading />} />
+				<AsyncComponent
+					resolve={operations}
+					element={
+						<Operations renderOperationsList={(operations) => <OperationsList operations={operations} />} />
+					}
+					fallback={<Loading />}
+				/>
+				<AsyncComponent resolve={categories} element={<Categories />} fallback={<Loading />} />
 			</div>
 		</Container>
 	);
