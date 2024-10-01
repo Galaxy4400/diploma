@@ -1,4 +1,5 @@
 import css from './operation-item.module.scss';
+import cn from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
@@ -9,8 +10,7 @@ import { ICON } from '../../../shared/lib/icons';
 export const OperationItem = ({ operation, deleteSlot }) => {
 	const location = useLocation();
 
-	const ammountTypeClass =
-		operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const ammountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
 		<div className={css['operation']}>
@@ -25,9 +25,7 @@ export const OperationItem = ({ operation, deleteSlot }) => {
 				<div className={css['info']}>
 					<span>{operation?.category.name}</span>
 					<span className={css['comment']}>{operation.comment}</span>
-					<span className={`${css['amount']} ${ammountTypeClass}`}>
-						{priceFormat(operation.amount)}
-					</span>
+					<span className={cn(css['amount'], ammountTypeClass)}>{priceFormat(operation.amount)}</span>
 					<span>Счет: {operation?.account.name}</span>
 				</div>
 			</Link>

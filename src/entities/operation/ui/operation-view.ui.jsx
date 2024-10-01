@@ -1,4 +1,5 @@
 import css from './operation-view.module.scss';
+import cn from 'classnames';
 import { Block } from '../../../shared/ui/components';
 import { priceFormat } from '../../../shared/lib/utils';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
@@ -6,8 +7,7 @@ import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { ICON } from '../../../shared/lib/icons';
 
 export const OperationView = ({ operation, deleteSlot }) => {
-	const ammountTypeClass =
-		operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const ammountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
 		<Block className={css['view']}>
@@ -29,9 +29,7 @@ export const OperationView = ({ operation, deleteSlot }) => {
 				<div>
 					<dt>Сумма:</dt>
 					<dd>
-						<span className={`${css['amount']} ${ammountTypeClass}`}>
-							{priceFormat(operation.amount)}
-						</span>
+						<span className={cn(css['amount'], ammountTypeClass)}>{priceFormat(operation.amount)}</span>
 					</dd>
 				</div>
 				<div>

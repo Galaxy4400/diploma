@@ -12,10 +12,7 @@ export const getAccount = async (accountId) => {
 		};
 	}
 
-	const [authSession, account] = await Promise.all([
-		api.getSession(session),
-		api.getAccount(accountId),
-	]);
+	const [authSession, account] = await Promise.all([api.getSession(session), api.getAccount(accountId)]);
 
 	if (!account || account.userId !== authSession.userId) {
 		return {

@@ -35,7 +35,7 @@ export default [
 			'no-unused-vars': ['warn'],
 			'react/prop-types': 'off',
 			quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
-			'prettier/prettier': ['error', { printWidth: 100 }],
+			'prettier/prettier': ['error', { printWidth: 110 }],
 		},
 	},
 ];

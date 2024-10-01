@@ -35,23 +35,13 @@ export const CategoryCreateForm = ({ userId }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form
-				className={css['form']}
-				onSubmit={submitHandler}
-				resolver={yupResolver(categoryCreateFormRules)}
-			>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type="text" name="name" label="Название категории" />
 				<Fieldset label="Тип категории">
 					<div className={css['radiobuttons']}>
 						{CATEGORY_TYPES.map((type, i) => (
-							<Radio
-								key={type.id}
-								name="typeId"
-								value={type.id}
-								label={type.name}
-								defaultChecked={!i}
-							/>
+							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
 						))}
 					</div>
 				</Fieldset>

@@ -1,10 +1,11 @@
 import css from './loader.module.scss';
+import cn from 'classnames';
 
-export const Loader = ({ className = '', isLoading = false, children, ...rest }) => {
+export const Loader = ({ isLoading = false, children, ...rest }) => {
 	return (
-		<div className={`${className} ${css['container']}`} {...rest}>
+		<div className={css['container']} {...rest}>
 			{children}
-			<div className={`${css['loader']} ${isLoading ? css['active'] : ''}`}>
+			<div className={cn(css['loader'], isLoading ? css['active'] : '')}>
 				<span>Loading...</span>
 			</div>
 		</div>

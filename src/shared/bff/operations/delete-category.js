@@ -12,10 +12,7 @@ export const deleteCategory = async (categoryId) => {
 		};
 	}
 
-	const [authSession, category] = await Promise.all([
-		api.getSession(session),
-		api.getCategory(categoryId),
-	]);
+	const [authSession, category] = await Promise.all([api.getSession(session), api.getCategory(categoryId)]);
 
 	if (!category || category.userId !== authSession.userId) {
 		return {

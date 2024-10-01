@@ -37,11 +37,7 @@ export const OperationCreateForm = ({ userId }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form
-				className={css['form']}
-				onSubmit={submitHandler}
-				resolver={yupResolver(operationCreateFormRules)}
-			>
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Fieldset label="Счет операции">

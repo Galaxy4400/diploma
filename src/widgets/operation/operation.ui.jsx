@@ -6,10 +6,5 @@ import { OperationDelete } from '../../features/operation';
 export const Operation = () => {
 	const operation = useAsyncValue();
 
-	return (
-		<OperationView
-			operation={operation}
-			deleteSlot={<OperationDelete operationId={operation.id} />}
-		/>
-	);
+	return <OperationView operation={operation} deleteSlot={<OperationDelete operationId={operation.id} />} />;
 };
