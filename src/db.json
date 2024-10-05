@@ -46,7 +46,7 @@
       "id": 10
     },
     {
-      "amount": 0,
+      "amount": 12222,
       "name": "test 2",
       "typeId": 2,
       "userId": 1,
@@ -171,6 +171,26 @@
       "status": true,
       "createdAt": "05.10.2024 14:12:28",
       "id": 9
+    },
+    {
+      "comment": "jhgj",
+      "accountId": 11,
+      "categoryId": 1,
+      "amount": 12345,
+      "userId": 1,
+      "status": true,
+      "createdAt": "05.10.2024 17:40:11",
+      "id": 10
+    },
+    {
+      "comment": "hlhjhf",
+      "accountId": 11,
+      "categoryId": 3,
+      "amount": 123,
+      "userId": 1,
+      "status": true,
+      "createdAt": "05.10.2024 17:40:42",
+      "id": 11
     }
   ],
   "sessions": [
