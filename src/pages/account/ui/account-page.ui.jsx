@@ -17,6 +17,7 @@ export const AccountPage = () => {
 				<AsyncComponent resolve={account} fallback={<Loading />}>
 					{(account) => (
 						<OperationsPagination
+							accountId={account.id}
 							initialOperations={account.operations}
 							renderOperationsList={(operations) => <OperationsList operations={operations} />}
 						/>

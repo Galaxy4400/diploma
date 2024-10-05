@@ -1,7 +1,7 @@
 import { SESSION_KEY_NAME } from '../../lib/session';
 import { api } from '../api';
 
-export const getOperations = async (accountId = null, limit = null) => {
+export const getOperations = async (accountId = null, limit = null, start = null) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (!session) {
@@ -19,6 +19,7 @@ export const getOperations = async (accountId = null, limit = null) => {
 	if (authSession?.userId) searchProps.push(`userId_like=${authSession.userId}`);
 	if (accountId) searchProps.push(`accountId_like=${accountId}`);
 	if (limit) searchProps.push(`_limit=${limit}`);
+	if (start) searchProps.push(`_start=${start}`);
 
 	const [operations, accounts, categories] = await Promise.all([
 		api.getOperations(searchProps.join('&')),
