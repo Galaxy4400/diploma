@@ -6,7 +6,7 @@ import { Button } from '../../../shared/ui/components';
 import { addOperations, selectOperations } from '../../../entities/operations';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const OperationsPagination = ({ accountId = null, operationsListSlot }) => {
+export const OperationsPagination = ({ accountId = null }) => {
 	const operations = useSelector(selectOperations);
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +30,6 @@ export const OperationsPagination = ({ accountId = null, operationsListSlot }) =
 
 	return (
 		<div className={css['block']}>
-			{operationsListSlot}
 			{!isAll ? (
 				<Button className={css['button']} onClick={loadHandler} disabled={isLoading}>
 					Загрузить ещё

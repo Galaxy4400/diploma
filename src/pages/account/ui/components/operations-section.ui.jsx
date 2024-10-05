@@ -2,7 +2,7 @@ import css from './operations-section.module.scss';
 import { Link, useAsyncValue } from 'react-router-dom';
 import { Block } from '../../../../shared/ui/components';
 import { path } from '../../../../shared/lib/router';
-import { OperationsPagination } from '../../../../features/operations/operations-pagination';
+import { OperationsPagination } from '../../../../features/operations';
 import { OperationsList } from '../../../../widgets/operations-list';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -28,7 +28,8 @@ export const OperationsSection = () => {
 					Создать операцию
 				</Link>
 			</header>
-			<OperationsPagination accountId={account.id} operationsListSlot={<OperationsList />} />
+			<OperationsList />
+			<OperationsPagination accountId={account.id} />
 		</Block>
 	);
 };

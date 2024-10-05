@@ -7,13 +7,17 @@ import { useLoadOptions } from '../../../shared/hooks';
 import { server } from '../../../shared/bff';
 import { useDispatch } from 'react-redux';
 import { setOperations } from '../../../entities/operations';
+import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 
 export const OperationsFilter = () => {
 	const dispatch = useDispatch();
 	const { accountOptions, categoryOptions } = useLoadOptions();
 
 	const filterHandler = async (submitedData) => {
-		const { data: filteredOperations } = await server.getOperations(submitedData);
+		const { data: filteredOperations } = await server.getOperations({
+			...submitedData,
+			limit: OPERATIONS_PER_LOAD,
+		});
 
 		dispatch(setOperations(filteredOperations));
 	};
@@ -31,7 +35,7 @@ export const OperationsFilter = () => {
 					</Fieldset>
 				</div>
 				<div className={css['actions']}>
-					<Button type="button" isReset={true} isTrigger={true}>
+					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>
 						Сбросить
 					</Button>
 					<Button type="submit">Применить</Button>
