@@ -24,11 +24,7 @@ export const MainPage = () => {
 				<AsyncComponent resolve={accounts} element={<AccountsMain />} fallback={<Loading />} />
 				<AsyncComponent
 					resolve={operations}
-					element={
-						<OperationsMain
-							renderOperationsList={(operations) => <OperationsList operations={operations} />}
-						/>
-					}
+					element={<OperationsMain operationsListSlot={<OperationsList />} />}
 					fallback={<Loading />}
 				/>
 				<AsyncComponent resolve={categories} element={<CategoriesMain />} fallback={<Loading />} />

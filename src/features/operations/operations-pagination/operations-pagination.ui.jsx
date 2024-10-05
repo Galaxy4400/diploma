@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { server } from '../../../shared/bff';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { Button } from '../../../shared/ui/components';
+import { addOperations, selectOperations } from '../../../entities/operations';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const OperationsPagination = ({ accountId = null, initialOperations = [], renderOperationsList }) => {
-	const [operations, setOperations] = useState(initialOperations);
+export const OperationsPagination = ({ accountId = null, operationsListSlot }) => {
+	const operations = useSelector(selectOperations);
+	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAll, setIsAll] = useState(false);
 
@@ -18,7 +21,7 @@ export const OperationsPagination = ({ accountId = null, initialOperations = [],
 			operations.length,
 		);
 
-		setOperations([...operations, ...newOperations]);
+		dispatch(addOperations(newOperations));
 
 		if (!newOperations.length) setIsAll(true);
 
@@ -27,7 +30,7 @@ export const OperationsPagination = ({ accountId = null, initialOperations = [],
 
 	return (
 		<div className={css['block']}>
-			{renderOperationsList(operations)}
+			{operationsListSlot}
 			{!isAll ? (
 				<Button className={css['button']} onClick={loadHandler} disabled={isLoading}>
 					Загрузить ещё
