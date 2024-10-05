@@ -8,11 +8,12 @@ import { Button, Fieldset, Form, Hidden, Input, Select } from '../../../shared/u
 import { server } from '../../../shared/bff';
 import { Block } from '../../../shared/ui/components';
 import { useState } from 'react';
+import { useLoadOptions } from '../../../shared/hooks';
 
 export const OperationCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
 	const from = useFrom();
-	const selectorsData = useAsyncValue();
+	const { accountOptions, categoryOptions } = useLoadOptions();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
@@ -24,16 +25,6 @@ export const OperationCreateForm = ({ userId }) => {
 
 		navigate(path.operation.id(createdOperation.id), { replace: true });
 	};
-
-	const accountOptions = selectorsData.accounts.map((account) => ({
-		value: account.id,
-		label: account.name,
-	}));
-
-	const categoryOptions = selectorsData.categories.map((category) => ({
-		value: category.id,
-		label: category.name,
-	}));
 
 	return (
 		<Block className={css['block']}>

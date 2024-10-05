@@ -1,35 +1,10 @@
 import css from './operations-filter.module.scss';
-import { server } from '../../../shared/bff';
 import { Block } from '../../../shared/ui/components';
 import { Fieldset, Form, Select } from '../../../shared/ui/form-components';
-import { useEffect, useState } from 'react';
+import { useLoadOptions } from '../../../shared/hooks';
 
 export const OperationsFilter = () => {
-	const [accountOptions, setAccountOptions] = useState([]);
-	const [categoryOptions, setCategoryOptions] = useState([]);
-
-	useEffect(() => {
-		const loadOptions = async () => {
-			const { data: accounts } = await server.getAccounts();
-			const { data: categories } = await server.getCategories();
-
-			setAccountOptions(
-				accounts.map((account) => ({
-					value: account.id,
-					label: account.name,
-				})),
-			);
-
-			setCategoryOptions(
-				categories.map((category) => ({
-					value: category.id,
-					label: category.name,
-				})),
-			);
-		};
-
-		loadOptions();
-	}, []);
+	const { accountOptions, categoryOptions } = useLoadOptions();
 
 	return (
 		<Block className={css['block']}>
