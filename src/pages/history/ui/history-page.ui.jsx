@@ -4,29 +4,27 @@ import { AsyncComponent, Block, Loading } from '../../../shared/ui/components';
 import { OperationsList } from '../../../widgets/operations-list';
 import { Container } from '../../../shared/ui/technical';
 import { PageHeader } from '../../../widgets/page-header';
-import { useEffect, useState } from 'react';
+import { OperationsFilter, OperationsPagination } from '../../../features/operations';
 
 export const HistoryPage = () => {
-	const { operations: initialOperations } = useLoaderData();
-
-	const [operations, setOperations] = useState(initialOperations);
-
-	useEffect(() => {
-		setOperations(initialOperations);
-	}, [initialOperations]);
+	const { operations } = useLoaderData();
 
 	return (
 		<Container>
 			<PageHeader title="История операций" />
-			<AsyncComponent resolve={operations} fallback={<Loading />}>
-				{(operations) => (
-					<>
-						<Block className={css['operations']}>
-							<OperationsList operations={operations} />
+			<div className={css['main']}>
+				<OperationsFilter />
+				<AsyncComponent resolve={operations} fallback={<Loading />}>
+					{(operations) => (
+						<Block className={css['block']}>
+							<OperationsPagination
+								initialOperations={operations}
+								renderOperationsList={(operations) => <OperationsList operations={operations} />}
+							/>
 						</Block>
-					</>
-				)}
-			</AsyncComponent>
+					)}
+				</AsyncComponent>
+			</div>
 		</Container>
 	);
 };

@@ -12,8 +12,10 @@ export const AccountPage = () => {
 	return (
 		<Container className={css['container']}>
 			<PageHeader title="Информация о счете" />
-			<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
-			<AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} />
+			<div className={css['main']}>
+				<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
+				<AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} />
+			</div>
 		</Container>
 	);
 };

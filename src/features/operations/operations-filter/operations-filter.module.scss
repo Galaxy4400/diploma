@@ -1,0 +1,10 @@
+.block {
+	display: grid;
+	gap: rem(20);
+}
+
+.form {
+	display: grid;
+	gap: rem(20);
+	grid-template-columns: repeat(4, 1fr);
+}

@@ -1,3 +1,8 @@
-.operations {
+.main {
+	display: grid;
+	gap: rem(20);
+}
+
+.block {
 	max-width: rem(700);
 }
