@@ -1,5 +1,4 @@
 import css from './operations-pagination.module.scss';
-import { Block } from '../../../shared/ui/components';
 import { Button } from '../../../shared/ui/form-components';
 import { useState } from 'react';
 import { server } from '../../../shared/bff';
@@ -19,9 +18,9 @@ export const OperationsPagination = ({ accountId = null, initialOperations = [],
 	};
 
 	return (
-		<Block className={css['block']}>
+		<div>
 			{renderOperationsList(operations)}
-			<Button onClick={() => loadHandler()}>Загрузить ещё</Button>
-		</Block>
+			<Button onClick={loadHandler}>Загрузить ещё</Button>
+		</div>
 	);
 };

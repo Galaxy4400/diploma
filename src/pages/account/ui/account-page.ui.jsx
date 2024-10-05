@@ -1,29 +1,19 @@
+import css from './account-page.module.scss';
 import { useLoaderData } from 'react-router-dom';
 import { Account } from '../../../widgets/account';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
-import { Container, Grid } from '../../../shared/ui/technical';
+import { Container } from '../../../shared/ui/technical';
 import { PageHeader } from '../../../widgets/page-header';
-import { OperationsList } from '../../../widgets/operations-list';
-import { OperationsPagination } from '../../../features/operations/operations-pagination';
+import { OperationsSection } from './components';
 
 export const AccountPage = () => {
 	const { account } = useLoaderData();
 
 	return (
-		<Container>
-			<Grid gap={20}>
-				<PageHeader title="Информация о счете" />
-				<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
-				<AsyncComponent resolve={account} fallback={<Loading />}>
-					{(account) => (
-						<OperationsPagination
-							accountId={account.id}
-							initialOperations={account.operations}
-							renderOperationsList={(operations) => <OperationsList operations={operations} />}
-						/>
-					)}
-				</AsyncComponent>
-			</Grid>
+		<Container className={css['container']}>
+			<PageHeader title="Информация о счете" />
+			<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
+			<AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} />
 		</Container>
 	);
 };
