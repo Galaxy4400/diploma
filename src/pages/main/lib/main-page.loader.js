@@ -8,7 +8,7 @@ const getAccounts = async () => {
 };
 
 const getOperations = async () => {
-	const response = await server.getOperations(null, 10);
+	const response = await server.getOperations({ limit: 10 });
 
 	return response.data;
 };

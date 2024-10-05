@@ -9,7 +9,7 @@ export function Form({ className = '', defaultValues, resolver, onSubmit, childr
 	} = methods; // TODO перенести обработку ошибок в другое место
 
 	return (
-		<FormProvider {...methods}>
+		<FormProvider {...{ ...methods, onSubmit }}>
 			<form className={className} onSubmit={handleSubmit(onSubmit)} {...rest}>
 				{children}
 				{<ErrorList formErrors={errors} />} {/* TODO перенести обработку ошибок в другое место */}

@@ -15,11 +15,11 @@ export const OperationsPagination = ({ accountId = null, operationsListSlot }) =
 	const loadHandler = async () => {
 		setIsLoading(true);
 
-		const { data: newOperations } = await server.getOperations(
+		const { data: newOperations } = await server.getOperations({
 			accountId,
-			OPERATIONS_PER_LOAD,
-			operations.length,
-		);
+			limit: OPERATIONS_PER_LOAD,
+			start: operations.length,
+		});
 
 		dispatch(addOperations(newOperations));
 
