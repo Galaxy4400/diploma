@@ -1,8 +1,8 @@
 import css from './operations-pagination.module.scss';
-import { Button } from '../../../shared/ui/form-components';
 import { useState } from 'react';
 import { server } from '../../../shared/bff';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
+import { Button } from '../../../shared/ui/components';
 
 export const OperationsPagination = ({ accountId = null, initialOperations = [], renderOperationsList }) => {
 	const [operations, setOperations] = useState(initialOperations);

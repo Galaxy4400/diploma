@@ -4,3 +4,4 @@ export * from './error-list';
 export * from './loader';
 export * from './loading';
 export * from './block';
+export * from './button';

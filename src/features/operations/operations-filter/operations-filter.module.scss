@@ -6,5 +6,20 @@
 .form {
 	display: grid;
 	gap: rem(20);
+}
+
+.section {
+	display: grid;
+	gap: rem(20);
 	grid-template-columns: repeat(4, 1fr);
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: rem(20);
+}
+
+.button {
+	justify-self: start;
 }
