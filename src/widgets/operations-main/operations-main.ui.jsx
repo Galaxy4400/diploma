@@ -1,9 +1,9 @@
-import css from './operations.module.scss';
+import css from './operations-main.module.scss';
 import { Link, useAsyncValue } from 'react-router-dom';
 import { Block } from '../../shared/ui/components';
 import { path } from '../../shared/lib/router';
 
-export const Operations = ({ renderOperationsList }) => {
+export const OperationsMain = ({ renderOperationsList }) => {
 	const operations = useAsyncValue();
 
 	return (

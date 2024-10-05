@@ -1,10 +1,10 @@
-import css from './accounts.module.scss';
+import css from './accounts-main.module.scss';
 import { useAsyncValue } from 'react-router-dom';
 import { AccountItem } from '../../entities/account';
 import { AccountDelete } from '../../features/account';
 import { Block } from '../../shared/ui/components';
 
-export const Accounts = () => {
+export const AccountsMain = () => {
 	const accounts = useAsyncValue();
 
 	return (

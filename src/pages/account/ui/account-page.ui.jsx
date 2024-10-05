@@ -3,8 +3,8 @@ import { Account } from '../../../widgets/account';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
 import { Container, Grid } from '../../../shared/ui/technical';
 import { PageHeader } from '../../../widgets/page-header';
-import { OperationsBlock } from '../../../widgets/operations-block';
 import { OperationsList } from '../../../widgets/operations-list';
+import { OperationsPagination } from '../../../features/operations/operations-pagination';
 
 export const AccountPage = () => {
 	const { account } = useLoaderData();
@@ -16,7 +16,7 @@ export const AccountPage = () => {
 				<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
 				<AsyncComponent resolve={account} fallback={<Loading />}>
 					{(account) => (
-						<OperationsBlock
+						<OperationsPagination
 							initialOperations={account.operations}
 							renderOperationsList={(operations) => <OperationsList operations={operations} />}
 						/>
