@@ -6,5 +6,6 @@ export * from './radio';
 export * from './radio-component';
 export * from './button';
 export * from './textarea';
-export * from './datepicker';
-export * from './daterange';
+export * from './date-picker';
+export * from './date-range';
+export * from './price-range';

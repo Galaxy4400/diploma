@@ -1,10 +1,10 @@
 import 'react-datepicker/dist/react-datepicker.css';
-import css from './daterange.module.scss';
+import css from './date-picker.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import { forwardRef } from 'react';
 
-export const DateRange = ({ name, label }) => {
+export const DatePicker = ({ name, label }) => {
 	const { control } = useFormContext();
 
 	const DatePickerInput = forwardRef(({ value, onClick }, ref) => (
@@ -19,14 +19,12 @@ export const DateRange = ({ name, label }) => {
 			<Controller
 				name={name}
 				control={control}
-				defaultValue={[null, null]}
+				defaultValue={null}
 				render={({ field: { onChange, onBlur, value, ref } }) => (
 					<ReactDatePicker
 						wrapperClassName={css['container']}
-						selectsRange={true}
-						startDate={value[0]}
-						endDate={value[1]}
-						onChange={(update) => onChange(update)}
+						selected={value}
+						onChange={onChange}
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
 						locale="ru"
