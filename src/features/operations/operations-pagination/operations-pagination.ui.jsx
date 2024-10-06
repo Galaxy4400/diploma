@@ -1,11 +1,11 @@
 import css from './operations-pagination.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { server } from '../../../shared/bff';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { Button } from '../../../shared/ui/components';
 import { addOperations, selectOperations } from '../../../entities/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from '../../../entities/application';
+import { selectFilter, setFilter } from '../../../entities/application';
 
 export const OperationsPagination = ({ accountId = null }) => {
 	const operations = useSelector(selectOperations);
@@ -13,6 +13,10 @@ export const OperationsPagination = ({ accountId = null }) => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAll, setIsAll] = useState(false);
+
+	useEffect(() => {
+		dispatch(setFilter({}));
+	}, [dispatch]);
 
 	const loadHandler = async () => {
 		setIsLoading(true);
