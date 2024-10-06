@@ -11,7 +11,7 @@ export const useOperationsFilter = () => {
 
 	const filterHandler = async (filterParams) => {
 		setIsLoading(true);
-		console.log(filterParams);
+
 		const { data: filteredOperations } = await server.getOperations({
 			...filterParams,
 			limit: OPERATIONS_PER_LOAD,

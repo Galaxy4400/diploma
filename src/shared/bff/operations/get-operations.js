@@ -1,7 +1,13 @@
 import { SESSION_KEY_NAME } from '../../lib/session';
 import { api } from '../api';
 
-export const getOperations = async ({ accountId = null, categoryId = null, limit = null, start = null }) => {
+export const getOperations = async ({
+	accountId = null,
+	categoryId = null,
+	limit = null,
+	start = null,
+	daterange = null,
+}) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
 	if (!session) {
@@ -13,7 +19,7 @@ export const getOperations = async ({ accountId = null, categoryId = null, limit
 	}
 
 	const authSession = await api.getSession(session);
-
+	console.log(daterange);
 	const searchProps = [];
 	searchProps.push(`_sort=id&_order=desc`);
 	if (authSession?.userId) searchProps.push(`userId_like=${authSession.userId}`);
@@ -21,6 +27,8 @@ export const getOperations = async ({ accountId = null, categoryId = null, limit
 	if (categoryId) searchProps.push(`categoryId_like=${categoryId}`);
 	if (limit) searchProps.push(`_limit=${limit}`);
 	if (start) searchProps.push(`_start=${start}`);
+	if (daterange?.at(0)) searchProps.push(`createdAt_gte=${daterange[0]}`);
+	if (daterange?.at(1)) searchProps.push(`createdAt_lte=${daterange[1]}`);
 
 	const [operations, accounts, categories] = await Promise.all([
 		api.getOperations(searchProps.join('&')),

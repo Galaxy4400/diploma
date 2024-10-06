@@ -21,7 +21,7 @@ const daterangeRules = yup
 		if (!value || !value[0] || !value[1]) return undefined;
 
 		const startDate = new Date(value[0]);
-		const endDate = new Date(value[1]);
+		const endDate = new Date(new Date(value[1]).getTime() + 24 * 60 * 60 * 1000 - 1);
 
 		const formattedStartDate = format(startDate, DATETIME_FORMAT);
 		const formattedEndDate = format(endDate, DATETIME_FORMAT);

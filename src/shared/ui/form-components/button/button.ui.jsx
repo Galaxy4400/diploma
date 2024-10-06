@@ -15,7 +15,7 @@ export const Button = ({
 	const clickHandler = () => {
 		if (isReset) reset();
 
-		if (isTrigger) handleSubmit(onSubmit)();
+		if (isTrigger) handleSubmit(() => onSubmit({}))();
 	};
 
 	return (
