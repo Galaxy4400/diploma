@@ -7,3 +7,4 @@ export * from './radio-component';
 export * from './button';
 export * from './textarea';
 export * from './datepicker';
+export * from './daterange';

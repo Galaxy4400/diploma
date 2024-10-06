@@ -12,14 +12,14 @@ const categoryIdRules = yup
 	.notRequired()
 	.transform((value) => (!value ? undefined : value));
 
-const dateRules = yup
-	.string()
+const daterangeRules = yup
+	.array()
 	.nullable()
 	.notRequired()
-	.transform((value) => (!value ? undefined : value));
+	.transform((value) => (!value[0] || !value[1] ? undefined : value));
 
 export const operationsFilterRules = yup.object().shape({
 	accountId: accountIdRules,
 	categoryId: categoryIdRules,
-	date: dateRules,
+	daterange: daterangeRules,
 });
