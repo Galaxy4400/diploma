@@ -8,17 +8,19 @@ import { server } from '../../../shared/bff';
 import { useDispatch } from 'react-redux';
 import { setOperations } from '../../../entities/operations';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
+import { setFilter } from '../../../entities/application';
 
 export const OperationsFilter = () => {
 	const dispatch = useDispatch();
 	const { accountOptions, categoryOptions } = useLoadOptions();
 
-	const filterHandler = async (submitedData) => {
+	const filterHandler = async (filterParams) => {
 		const { data: filteredOperations } = await server.getOperations({
-			...submitedData,
+			...filterParams,
 			limit: OPERATIONS_PER_LOAD,
 		});
 
+		dispatch(setFilter(filterParams));
 		dispatch(setOperations(filteredOperations));
 	};
 

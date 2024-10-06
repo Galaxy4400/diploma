@@ -5,9 +5,11 @@ import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { Button } from '../../../shared/ui/components';
 import { addOperations, selectOperations } from '../../../entities/operations';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter } from '../../../entities/application';
 
 export const OperationsPagination = ({ accountId = null }) => {
 	const operations = useSelector(selectOperations);
+	const filterParams = useSelector(selectFilter);
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAll, setIsAll] = useState(false);
@@ -16,7 +18,8 @@ export const OperationsPagination = ({ accountId = null }) => {
 		setIsLoading(true);
 
 		const { data: newOperations } = await server.getOperations({
-			accountId,
+			...filterParams,
+			...(accountId ? { accountId } : {}),
 			limit: OPERATIONS_PER_LOAD,
 			start: operations.length,
 		});
