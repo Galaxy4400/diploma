@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import css from './textarea.module.scss';
 
-export function Textarea({ name, label, ...rest }) {
+export const Textarea = ({ name, label, ...rest }) => {
 	const { register } = useFormContext();
 
 	return (
@@ -10,4 +10,4 @@ export function Textarea({ name, label, ...rest }) {
 			<textarea className={css['input']} {...register(name)} {...rest} />
 		</label>
 	);
-}
+};

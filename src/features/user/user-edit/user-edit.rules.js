@@ -6,14 +6,14 @@ const emailRules = yup
 	.string()
 	.nullable()
 	.notRequired()
-	.transform((value) => (value === '' ? null : value))
+	.transform((value) => (!value ? undefined : value))
 	.email();
 
 const nameRules = yup
 	.string()
 	.nullable()
 	.notRequired()
-	.transform((value) => (value === '' ? null : value))
+	.transform((value) => (!value ? undefined : value))
 	.min(3)
 	.max(30);
 
@@ -21,7 +21,7 @@ const surnameRules = yup
 	.string()
 	.nullable()
 	.notRequired()
-	.transform((value) => (value === '' ? null : value))
+	.transform((value) => (!value ? undefined : value))
 	.min(3)
 	.max(30);
 
@@ -29,7 +29,7 @@ const addressRules = yup
 	.string()
 	.nullable()
 	.notRequired()
-	.transform((value) => (value === '' ? null : value))
+	.transform((value) => (!value ? undefined : value))
 	.min(3)
 	.max(30);
 

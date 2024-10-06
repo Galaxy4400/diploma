@@ -2,7 +2,7 @@ import css from './select.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReactSelect from 'react-select';
 
-export function Select({ name, options, label, defaultValue, ...rest }) {
+export const Select = ({ name, options, label, defaultValue, ...rest }) => {
 	const {
 		control,
 		formState: { errors },
@@ -28,4 +28,4 @@ export function Select({ name, options, label, defaultValue, ...rest }) {
 			{!!errors[name] && <p className={css['error']}>{errors[name]?.message}</p>}
 		</label>
 	);
-}
+};

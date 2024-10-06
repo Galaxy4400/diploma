@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
 
-export function Form({ className = '', defaultValues, resolver, onSubmit, children, ...rest }) {
+export const Form = ({ className = '', defaultValues, resolver, onSubmit, children, ...rest }) => {
 	const methods = useForm({ defaultValues, resolver });
 	const { handleSubmit } = methods;
 
@@ -11,4 +11,4 @@ export function Form({ className = '', defaultValues, resolver, onSubmit, childr
 			</form>
 		</FormProvider>
 	);
-}
+};
