@@ -8,15 +8,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, setFilter } from '../../../entities/application';
 
 export const OperationsPagination = ({ accountId = null }) => {
+	const dispatch = useDispatch();
 	const operations = useSelector(selectOperations);
 	const filterParams = useSelector(selectFilter);
-	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAll, setIsAll] = useState(false);
 
 	useEffect(() => {
 		dispatch(setFilter({}));
 	}, [dispatch]);
+
+	useEffect(() => {
+		console.log('change');
+		setIsAll(false);
+	}, [filterParams]);
 
 	const loadHandler = async () => {
 		setIsLoading(true);
