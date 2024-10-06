@@ -19,7 +19,6 @@ export const OperationsPagination = ({ accountId = null }) => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		console.log('change');
 		setIsAll(false);
 	}, [filterParams]);
 
