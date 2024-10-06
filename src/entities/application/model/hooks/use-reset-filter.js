@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
-import { setFilter } from '../model';
 import { useDispatch } from 'react-redux';
+import { setFilter } from '../application.actions';
 
 export const useResetFilter = () => {
 	const dispatch = useDispatch();

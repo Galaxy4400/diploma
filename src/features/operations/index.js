@@ -1,2 +1,2 @@
-export * from './operations-pagination';
-export * from './operations-filter';
+export * from './operations-pagination/ui';
+export * from './operations-filter/ui';

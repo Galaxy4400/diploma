@@ -1,13 +1,11 @@
-import css from './operations-pagination.module.scss';
 import { useEffect, useState } from 'react';
-import { server } from '../../../shared/bff';
-import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
-import { Button } from '../../../shared/ui/components';
-import { addOperations, selectOperations } from '../../../entities/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, useResetFilter } from '../../../entities/application';
+import { addOperations, selectOperations } from '../../../../entities/operations';
+import { selectFilter, useResetFilter } from '../../../../entities/application';
+import { server } from '../../../../shared/bff';
+import { OPERATIONS_PER_LOAD } from '../../../../entities/operation';
 
-export const OperationsPagination = ({ accountId = null }) => {
+export const useOperationsPagination = (accountId = null) => {
 	const dispatch = useDispatch();
 	const operations = useSelector(selectOperations);
 	const filterParams = useSelector(selectFilter);
@@ -37,15 +35,5 @@ export const OperationsPagination = ({ accountId = null }) => {
 		setIsLoading(false);
 	};
 
-	return (
-		<div className={css['block']}>
-			{!isLoadedAll ? (
-				<Button className={css['button']} onClick={loadHandler} disabled={isLoading}>
-					Загрузить ещё
-				</Button>
-			) : (
-				<h5>Загружены все операции</h5>
-			)}
-		</div>
-	);
+	return { operations, loadHandler, isLoading, isLoadedAll };
 };

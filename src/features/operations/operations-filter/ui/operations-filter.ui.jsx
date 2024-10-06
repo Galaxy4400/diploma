@@ -1,28 +1,14 @@
 import css from './operations-filter.module.scss';
-import { Block } from '../../../shared/ui/components';
-import { Button, Fieldset, Form, Select } from '../../../shared/ui/form-components';
+import { Block } from '../../../../shared/ui/components';
+import { Button, Fieldset, Form, Select } from '../../../../shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { operationsFilterRules } from './operations-filter.rules';
-import { useLoadOptions } from '../../../shared/hooks';
-import { server } from '../../../shared/bff';
-import { useDispatch } from 'react-redux';
-import { setOperations } from '../../../entities/operations';
-import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
-import { setFilter } from '../../../entities/application';
+import { useLoadOptions } from '../../../../shared/hooks';
+import { useOperationsFilter } from '../model/use-operations-filter';
+import { operationsFilterRules } from '../lib';
 
 export const OperationsFilter = () => {
-	const dispatch = useDispatch();
 	const { accountOptions, categoryOptions } = useLoadOptions();
-
-	const filterHandler = async (filterParams) => {
-		const { data: filteredOperations } = await server.getOperations({
-			...filterParams,
-			limit: OPERATIONS_PER_LOAD,
-		});
-
-		dispatch(setFilter(filterParams));
-		dispatch(setOperations(filteredOperations));
-	};
+	const { filterHandler, isLoading } = useOperationsFilter();
 
 	return (
 		<Block className={css['block']}>
@@ -40,7 +26,9 @@ export const OperationsFilter = () => {
 					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>
 						Сбросить
 					</Button>
-					<Button type="submit">Применить</Button>
+					<Button type="submit" disabled={isLoading}>
+						Применить
+					</Button>
 				</div>
 			</Form>
 		</Block>
