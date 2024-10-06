@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { yup } from '../../../shared/lib/yup';
 
 export const accountEditFormRules = yup.object().shape({
 	typeId: yup.number().required(),

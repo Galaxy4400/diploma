@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { yup } from '../../../../shared/lib/yup';
 
 const accountIdRules = yup
 	.number()

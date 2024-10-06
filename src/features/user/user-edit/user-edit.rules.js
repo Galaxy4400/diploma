@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { yup } from '../../../shared/lib/yup';
 
 const loginRules = yup.string().required().min(3).max(30);
 

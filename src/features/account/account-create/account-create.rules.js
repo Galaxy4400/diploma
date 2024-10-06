@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import { yup } from '../../../shared/lib/yup';
 
 export const categoryCreateFormRules = yup.object().shape({
 	userId: yup.number().required(),
