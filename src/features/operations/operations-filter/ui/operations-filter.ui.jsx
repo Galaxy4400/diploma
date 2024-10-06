@@ -17,7 +17,7 @@ export const OperationsFilter = () => {
 				<div className={css['section']}>
 					<Select name="accountId" options={accountOptions} label="По счету" placeholder="" />
 					<Select name="categoryId" options={categoryOptions} label="По категории" placeholder="" />
-					<DatePicker name="date" />
+					<DatePicker name="date" label="По дате" />
 				</div>
 				<div className={css['actions']}>
 					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>

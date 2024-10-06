@@ -6,13 +6,17 @@
 	margin: 0px 0px rem(5) 0px;
 }
 
+.container {
+	width: 100%;
+}
+
 .input {
 	display: block;
 	width: 100%;
 	font-size: rem(16);
 	line-height: prc(20, 16);
 	padding: rem(10) rem(12);
-	height: rem(43);
+	height: rem(38);
 	color: #000000;
 	background: #ffffff;
 	border: rem(1) solid #cccccc;
@@ -26,14 +30,5 @@
 	}
 	&.success {
 		border: rem(1) solid $color-success;
-	}
-}
-
-.error {
-	color: $color-error;
-	font-style: italic;
-	font-size: rem(12);
-	&::first-letter {
-		text-transform: uppercase;
 	}
 }
