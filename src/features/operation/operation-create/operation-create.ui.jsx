@@ -6,7 +6,7 @@ import { path } from '../../../shared/lib/router';
 import { useFrom } from '../../../shared/lib/location';
 import { Button, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
 import { server } from '../../../shared/bff';
-import { Block, Fieldset } from '../../../shared/ui/components';
+import { Block } from '../../../shared/ui/components';
 import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
 
@@ -31,17 +31,20 @@ export const OperationCreateForm = ({ userId }) => {
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
 				<Hidden name="userId" defaultValue={userId} />
 				<Input type="number" name="amount" label="Сумма операции" />
-				<Fieldset label="Счет операции">
-					<Select
-						name="accountId"
-						options={accountOptions}
-						defaultValue={from?.accountId || ''}
-						placeholder=""
-					/>
-				</Fieldset>
-				<Fieldset label="Категория операции">
-					<Select name="categoryId" options={categoryOptions} defaultValue="" placeholder="" />
-				</Fieldset>
+				<Select
+					name="accountId"
+					options={accountOptions}
+					defaultValue={from?.accountId || ''}
+					label="Счет операции"
+					placeholder=""
+				/>
+				<Select
+					name="categoryId"
+					options={categoryOptions}
+					defaultValue=""
+					label="Категория операции"
+					placeholder=""
+				/>
 				<Input type="text" name="comment" label="Комментарий" />
 				<Button type="submit" disabled={isLoading}>
 					Создать операцию
