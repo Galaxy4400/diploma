@@ -46,7 +46,7 @@
       "id": 10
     },
     {
-      "amount": 12646,
+      "amount": 2646,
       "name": "test 2",
       "typeId": 2,
       "userId": 1,
@@ -201,6 +201,16 @@
       "status": true,
       "createdAt": "07.10.2024 00:17:26",
       "id": 12
+    },
+    {
+      "comment": "покупки",
+      "accountId": 11,
+      "categoryId": 3,
+      "amount": 10000,
+      "userId": 1,
+      "status": true,
+      "createdAt": "07.10.2024 01:29:15",
+      "id": 13
     }
   ],
   "sessions": [

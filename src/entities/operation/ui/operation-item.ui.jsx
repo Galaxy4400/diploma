@@ -24,7 +24,7 @@ export const OperationItem = ({ operation, deleteSlot }) => {
 				</figure>
 				<div className={css['info']}>
 					<span>{operation?.category.name}</span>
-					<span className={css['comment']}>{operation.comment}</span>
+					<span className={css['datetime']}>{operation.createdAt}</span>
 					<span className={cn(css['amount'], ammountTypeClass)}>{priceFormat(operation.amount)}</span>
 					<span>Счет: {operation?.account.name}</span>
 				</div>
