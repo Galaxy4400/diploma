@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { operationCreateFormRules } from './operation-create.rules';
 import { path } from '../../../shared/lib/router';
 import { useFrom } from '../../../shared/lib/location';
-import { Button, Fieldset, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
+import { Button, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
 import { server } from '../../../shared/bff';
-import { Block } from '../../../shared/ui/components';
+import { Block, Fieldset } from '../../../shared/ui/components';
 import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
 

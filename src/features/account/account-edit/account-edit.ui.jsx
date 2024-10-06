@@ -4,10 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ACCOUNT_TYPES } from '../../../entities/account';
 import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
-import { Button, Fieldset, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
+import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { useState } from 'react';
 import { server } from '../../../shared/bff';
-import { Block } from '../../../shared/ui/components';
+import { Block, Fieldset } from '../../../shared/ui/components';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue();

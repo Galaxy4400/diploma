@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './account-create.rules';
 import { path } from '../../../shared/lib/router';
-import { Button, Fieldset, Form, Hidden, Input, Radio, Textarea } from '../../../shared/ui/form-components';
+import { Button, Form, Hidden, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
 import { useState } from 'react';
 import { server } from '../../../shared/bff';
-import { Block } from '../../../shared/ui/components';
+import { Block, Fieldset } from '../../../shared/ui/components';
 
 export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();

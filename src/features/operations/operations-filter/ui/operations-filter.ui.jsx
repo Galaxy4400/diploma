@@ -1,6 +1,6 @@
 import css from './operations-filter.module.scss';
-import { Block } from '../../../../shared/ui/components';
-import { Button, Fieldset, Form, Select } from '../../../../shared/ui/form-components';
+import { Block, Fieldset } from '../../../../shared/ui/components';
+import { Button, Form, Select } from '../../../../shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLoadOptions } from '../../../../shared/hooks';
 import { useOperationsFilter } from '../model/use-operations-filter';

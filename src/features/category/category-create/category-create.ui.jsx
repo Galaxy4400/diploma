@@ -3,19 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
 import { CATEGORY_TYPES } from '../../../entities/category';
-import {
-	Button,
-	Fieldset,
-	Form,
-	Hidden,
-	Input,
-	Radio,
-	RadioComponent,
-} from '../../../shared/ui/form-components';
+import { Button, Form, Hidden, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
-import { Block } from '../../../shared/ui/components';
+import { Block, Fieldset } from '../../../shared/ui/components';
 import { server } from '../../../shared/bff';
 import { IconCategory } from '../../../shared/ui/icons';
 
