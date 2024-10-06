@@ -24,6 +24,7 @@ export const updateUser = async (updatingUserData) => {
 
 	const updatedUser = await api.updateUser(authSession.userId, updatingUserData);
 
+	// eslint-disable-next-line no-unused-vars
 	const { password, ...rest } = updatedUser;
 
 	return {

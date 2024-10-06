@@ -1,4 +1,3 @@
-import css from './operation.module.scss';
 import { useAsyncValue } from 'react-router-dom';
 import { OperationView } from '../../entities/operation';
 import { OperationDelete } from '../../features/operation';

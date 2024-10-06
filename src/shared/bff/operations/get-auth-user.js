@@ -29,6 +29,7 @@ export const getAuthUser = async (storageSession) => {
 		};
 	}
 
+	// eslint-disable-next-line no-unused-vars
 	const { password, ...rest } = authUser;
 
 	return {

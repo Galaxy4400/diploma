@@ -1,5 +1,5 @@
 import css from './operation-create.module.scss';
-import { useAsyncValue, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { operationCreateFormRules } from './operation-create.rules';
 import { path } from '../../../shared/lib/router';

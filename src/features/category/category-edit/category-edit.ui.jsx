@@ -7,10 +7,10 @@ import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Button, Fieldset, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
 import { useState } from 'react';
-import { Block, Loader } from '../../../shared/ui/components';
-import { ICON, ICON_CATEGORY } from '../../../shared/lib/icons';
+import { Block } from '../../../shared/ui/components';
+import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { server } from '../../../shared/bff';
-import { Icon, IconCategory } from '../../../shared/ui/icons';
+import { IconCategory } from '../../../shared/ui/icons';
 
 export const CategoryEditForm = () => {
 	const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const CategoryEditForm = () => {
 				<Input type="text" name="name" defaultValue={category.name} label="Название категории" />
 				<Fieldset label="Тип категории">
 					<div className={css['radiobuttons']}>
-						{CATEGORY_TYPES.map((type, i) => (
+						{CATEGORY_TYPES.map((type) => (
 							<Radio
 								key={type.id}
 								name="typeId"
