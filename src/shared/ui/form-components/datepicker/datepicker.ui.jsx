@@ -27,6 +27,7 @@ export const DatePicker = ({ name, label }) => {
 						onChange={onChange}
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
+						locale="ru"
 						ref={ref}
 					/>
 				)}

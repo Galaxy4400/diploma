@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { API_HOST } from '../constants';
+import { API_HOST, DATETIME_FORMAT } from '../constants';
 
 export const createAccount = (accountData) =>
 	fetch(`${API_HOST}/accounts`, {
@@ -9,6 +9,6 @@ export const createAccount = (accountData) =>
 		},
 		body: JSON.stringify({
 			...accountData,
-			createdAt: format(new Date(), 'dd.MM.yyyy HH:mm:ss'),
+			createdAt: format(new Date(), DATETIME_FORMAT),
 		}),
 	}).then((response) => response.json());

@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { API_HOST } from '../constants';
+import { API_HOST, DATETIME_FORMAT } from '../constants';
 
 export const createCategory = (categoryData) =>
 	fetch(`${API_HOST}/categories`, {
@@ -9,6 +9,6 @@ export const createCategory = (categoryData) =>
 		},
 		body: JSON.stringify({
 			...categoryData,
-			createdAt: format(new Date(), 'dd.MM.yyyy HH:mm:ss'),
+			createdAt: format(new Date(), DATETIME_FORMAT),
 		}),
 	}).then((response) => response.json());

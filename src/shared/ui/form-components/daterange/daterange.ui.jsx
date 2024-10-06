@@ -29,6 +29,7 @@ export const DateRange = ({ name, label }) => {
 						onChange={(update) => onChange(update)}
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
+						locale="ru"
 						ref={ref}
 					/>
 				)}
