@@ -5,21 +5,19 @@ import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { Button } from '../../../shared/ui/components';
 import { addOperations, selectOperations } from '../../../entities/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setFilter } from '../../../entities/application';
+import { selectFilter, useResetFilter } from '../../../entities/application';
 
 export const OperationsPagination = ({ accountId = null }) => {
 	const dispatch = useDispatch();
 	const operations = useSelector(selectOperations);
 	const filterParams = useSelector(selectFilter);
 	const [isLoading, setIsLoading] = useState(false);
-	const [isAll, setIsAll] = useState(false);
+	const [isLoadedAll, setIsLoadedAll] = useState(false);
+
+	useResetFilter();
 
 	useEffect(() => {
-		dispatch(setFilter({}));
-	}, [dispatch]);
-
-	useEffect(() => {
-		setIsAll(false);
+		setIsLoadedAll(false);
 	}, [filterParams]);
 
 	const loadHandler = async () => {
@@ -34,14 +32,14 @@ export const OperationsPagination = ({ accountId = null }) => {
 
 		dispatch(addOperations(newOperations));
 
-		if (!newOperations.length) setIsAll(true);
+		if (!newOperations.length) setIsLoadedAll(true);
 
 		setIsLoading(false);
 	};
 
 	return (
 		<div className={css['block']}>
-			{!isAll ? (
+			{!isLoadedAll ? (
 				<Button className={css['button']} onClick={loadHandler} disabled={isLoading}>
 					Загрузить ещё
 				</Button>
