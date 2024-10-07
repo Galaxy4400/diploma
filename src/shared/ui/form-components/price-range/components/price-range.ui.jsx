@@ -4,12 +4,15 @@ import cn from 'classnames';
 import { priceFormat } from '../../../../lib/utils/price-format';
 
 export const PriceRange = ({ lowPrice: initialLowPrice, highPrice: initialHighPrice, onChange }) => {
-	const [lowPrice, setLowPrice] = useState(initialLowPrice || '0');
-	const [highPrice, setHighPrice] = useState(initialHighPrice || '0');
+	const [lowPrice, setLowPrice] = useState(initialLowPrice);
+	const [highPrice, setHighPrice] = useState(initialHighPrice);
 	const [isActive, setIsActive] = useState(false);
 	const wrapperRef = useRef(null);
 
-	const display = [priceFormat(lowPrice), priceFormat(highPrice)].join(' - ');
+	const display = [
+		...(lowPrice ? [priceFormat(lowPrice)] : []),
+		...(highPrice ? [priceFormat(highPrice)] : []),
+	].join(' - ');
 
 	const lowPriceChangeHandler = (event) => {
 		setLowPrice(event.target.value);
@@ -39,21 +42,14 @@ export const PriceRange = ({ lowPrice: initialLowPrice, highPrice: initialHighPr
 
 	return (
 		<div className={css['wrapper']} ref={wrapperRef}>
-			<input
-				className={css['input']}
-				onClick={handleClickInside}
-				type="text"
-				value={display}
-				readOnly
-				placeholder="placeholder"
-			/>
+			<input className={css['input']} onClick={handleClickInside} type="text" value={display} readOnly />
 			<div className={cn(css['container'], isActive ? 'active' : '')}>
 				<label>
-					<span>От</span>
+					<span className={css['label']}>От</span>
 					<input className={css['input']} type="number" value={lowPrice} onChange={lowPriceChangeHandler} />
 				</label>
 				<label>
-					<span>До</span>
+					<span className={css['label']}>До</span>
 					<input className={css['input']} type="number" value={highPrice} onChange={highPriceChangeHandler} />
 				</label>
 			</div>

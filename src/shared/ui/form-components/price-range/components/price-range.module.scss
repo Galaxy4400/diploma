@@ -2,6 +2,14 @@
 	position: relative;
 }
 
+.label {
+	color: #888;
+	font-weight: 400;
+	font-size: rem(14);
+	display: inline-block;
+	margin: 0px 0px rem(5) 0px;
+}
+
 .input {
 	display: block;
 	width: 100%;
@@ -35,6 +43,8 @@
 	padding: rem(25) rem(15);
 	opacity: 0;
 	visibility: hidden;
+	display: grid;
+	gap: rem(10);
 	&:global(.active) {
 		opacity: 1;
 		visibility: visible;
