@@ -1,6 +1,6 @@
 import css from './price-range.module.scss';
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { priceFormat } from '../../../../lib/utils/price-format';
 import { useClickAway } from '@uidotdev/usehooks';
 
@@ -8,6 +8,7 @@ export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 	const [display, setDisplay] = useState('');
 	const [isActive, setIsActive] = useState(false);
 	const wrapperRef = useClickAway(() => setIsActive(false));
+	const lowInputRef = useRef(null);
 
 	useEffect(() => {
 		const formatDisplay = [
@@ -17,6 +18,10 @@ export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 
 		setDisplay(formatDisplay);
 	}, [lowPrice, highPrice]);
+
+	useEffect(() => {
+		isActive && lowInputRef.current.focus();
+	}, [isActive]);
 
 	return (
 		<div className={css['wrapper']} ref={wrapperRef}>
@@ -35,6 +40,7 @@ export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 						type="number"
 						value={lowPrice || ''}
 						onChange={(e) => onChange([e.target.value, highPrice])}
+						ref={lowInputRef}
 					/>
 				</label>
 				<label>

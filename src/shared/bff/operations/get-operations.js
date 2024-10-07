@@ -7,6 +7,7 @@ export const getOperations = async ({
 	limit = null,
 	start = null,
 	daterange = null,
+	pricerange = null,
 }) => {
 	const session = sessionStorage.getItem(SESSION_KEY_NAME);
 
@@ -29,6 +30,8 @@ export const getOperations = async ({
 	if (start) searchProps.push(`_start=${start}`);
 	if (daterange?.at(0)) searchProps.push(`createdAt_gte=${daterange[0]}`);
 	if (daterange?.at(1)) searchProps.push(`createdAt_lte=${daterange[1]}`);
+	if (pricerange?.at(0)) searchProps.push(`amount_gte=${pricerange[0]}`);
+	if (pricerange?.at(1)) searchProps.push(`amount_lte=${pricerange[1]}`);
 
 	const [operations, accounts, categories] = await Promise.all([
 		api.getOperations(searchProps.join('&')),
