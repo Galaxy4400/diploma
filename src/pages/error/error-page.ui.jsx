@@ -1,3 +1,10 @@
+import { Container } from '../../shared/ui/technical';
+import { PageHeader } from '../../widgets/page-header';
+
 export const ErrorPage = () => {
-	return <h1>Что-то пошло не так :(</h1>;
+	return (
+		<Container>
+			<PageHeader title="Что-то пошло не так :(" />
+		</Container>
+	);
 };
