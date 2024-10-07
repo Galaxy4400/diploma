@@ -1,13 +1,5 @@
-.label {
-	color: #888;
-	font-weight: 400;
-	font-size: rem(14);
-	display: inline-block;
-	margin: 0px 0px rem(5) 0px;
-}
-
-.container {
-	width: 100%;
+.wrapper {
+	position: relative;
 }
 
 .input {
@@ -30,5 +22,21 @@
 	}
 	&.success {
 		border: rem(1) solid $color-success;
+	}
+}
+
+.container {
+	background: #fff;
+	border-radius: rem(5);
+	box-shadow: 0px 0px rem(5) rem(3) rgba(0, 0, 0, 0.07);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	padding: rem(25) rem(15);
+	opacity: 0;
+	visibility: hidden;
+	&:global(.active) {
+		opacity: 1;
+		visibility: visible;
 	}
 }
