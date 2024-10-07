@@ -2,10 +2,10 @@ import { useState } from 'react';
 import css from './price-range.module.scss';
 
 export const PriceRange = ({ lowPrice: initialLowPrice, highPrice: initialHighPrice, onChange }) => {
-	const [lowPrice, setLowPrice] = useState(initialLowPrice || '');
-	const [highPrice, setHighPrice] = useState(initialHighPrice || '');
+	const [lowPrice, setLowPrice] = useState(initialLowPrice || '0');
+	const [highPrice, setHighPrice] = useState(initialHighPrice || '0');
 
-	const display = `${lowPrice} - ${highPrice}`;
+	const display = [lowPrice, highPrice].join(' - ');
 
 	const lowPriceChangeHandler = (event) => {
 		setLowPrice(event.target.value);
