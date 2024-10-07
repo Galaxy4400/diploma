@@ -7,7 +7,7 @@ import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { ICON } from '../../../shared/lib/icons';
 
 export const OperationView = ({ operation, deleteSlot }) => {
-	const ammountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const amountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
 		<Block className={css['view']}>
@@ -29,7 +29,7 @@ export const OperationView = ({ operation, deleteSlot }) => {
 				<div>
 					<dt>Сумма:</dt>
 					<dd>
-						<span className={cn(css['amount'], ammountTypeClass)}>{priceFormat(operation.amount)}</span>
+						<span className={cn(css['amount'], amountTypeClass)}>{priceFormat(operation.amount)}</span>
 					</dd>
 				</div>
 				<div>

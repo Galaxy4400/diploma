@@ -7,7 +7,7 @@ import { useClickAway } from '@uidotdev/usehooks';
 export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 	const [display, setDisplay] = useState('');
 	const [isActive, setIsActive] = useState(false);
-	const wrapperRef = useClickAway(() => setIsActive(false));
+	const clickAwayRef = useClickAway(() => setIsActive(false));
 	const lowInputRef = useRef(null);
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 	}, [isActive]);
 
 	return (
-		<div className={css['wrapper']} ref={wrapperRef}>
+		<div className={css['wrapper']} ref={clickAwayRef}>
 			<input
 				className={css['input']}
 				onClick={() => setIsActive(true)}
