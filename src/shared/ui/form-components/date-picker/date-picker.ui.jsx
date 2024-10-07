@@ -4,7 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import { forwardRef } from 'react';
 
-export const DatePicker = ({ name, label }) => {
+export const DatePicker = ({ name, label, defaultValue }) => {
 	const { control } = useFormContext();
 
 	const DatePickerInput = forwardRef(({ value, onClick }, ref) => (
@@ -19,7 +19,7 @@ export const DatePicker = ({ name, label }) => {
 			<Controller
 				name={name}
 				control={control}
-				defaultValue={null}
+				defaultValue={defaultValue}
 				render={({ field: { onChange, onBlur, value, ref } }) => (
 					<ReactDatePicker
 						wrapperClassName={css['container']}

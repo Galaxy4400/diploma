@@ -19,7 +19,7 @@ export const getOperations = async ({
 	}
 
 	const authSession = await api.getSession(session);
-	console.log(daterange);
+
 	const searchProps = [];
 	searchProps.push(`_sort=id&_order=desc`);
 	if (authSession?.userId) searchProps.push(`userId_like=${authSession.userId}`);

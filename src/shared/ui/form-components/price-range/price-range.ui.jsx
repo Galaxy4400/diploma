@@ -13,11 +13,7 @@ export const PriceRange = ({ name, label, lowPrice, highPrice }) => {
 				control={control}
 				defaultValue={[lowPrice, highPrice]}
 				render={({ field: { onChange, value } }) => (
-					<PriceRangeComponent
-						lowPrice={value[0]}
-						highPrice={value[1]}
-						onChange={(newValue) => onChange(newValue)}
-					/>
+					<PriceRangeComponent lowPrice={value[0]} highPrice={value[1]} onChange={onChange} />
 				)}
 			/>
 		</label>

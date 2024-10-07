@@ -1,56 +1,50 @@
 import css from './price-range.module.scss';
-import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import { priceFormat } from '../../../../lib/utils/price-format';
+import { useClickAway } from '@uidotdev/usehooks';
 
-export const PriceRange = ({ lowPrice: initialLowPrice, highPrice: initialHighPrice, onChange }) => {
-	const [lowPrice, setLowPrice] = useState(initialLowPrice);
-	const [highPrice, setHighPrice] = useState(initialHighPrice);
+export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
+	const [display, setDisplay] = useState('');
 	const [isActive, setIsActive] = useState(false);
-	const wrapperRef = useRef(null);
-
-	const display = [
-		...(lowPrice ? [priceFormat(lowPrice)] : []),
-		...(highPrice ? [priceFormat(highPrice)] : []),
-	].join(' - ');
-
-	const lowPriceChangeHandler = (event) => {
-		setLowPrice(event.target.value);
-		onChange([lowPrice, highPrice]);
-	};
-
-	const highPriceChangeHandler = (event) => {
-		setHighPrice(event.target.value);
-		onChange([lowPrice, highPrice]);
-	};
-
-	const handleClickInside = () => {
-		setIsActive(true);
-	};
-
-	const handleClickOutside = (event) => {
-		if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-			setIsActive(false);
-		}
-	};
+	const wrapperRef = useClickAway(() => setIsActive(false));
 
 	useEffect(() => {
-		document.addEventListener('mousedown', handleClickOutside);
+		const formatDisplay = [
+			...(lowPrice ? [priceFormat(lowPrice)] : []),
+			...(highPrice ? [priceFormat(highPrice)] : []),
+		].join(' - ');
 
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, []);
+		setDisplay(formatDisplay);
+	}, [lowPrice, highPrice]);
 
 	return (
 		<div className={css['wrapper']} ref={wrapperRef}>
-			<input className={css['input']} onClick={handleClickInside} type="text" value={display} readOnly />
+			<input
+				className={css['input']}
+				onClick={() => setIsActive(true)}
+				type="text"
+				value={display}
+				readOnly
+			/>
 			<div className={cn(css['container'], isActive ? 'active' : '')}>
 				<label>
 					<span className={css['label']}>От</span>
-					<input className={css['input']} type="number" value={lowPrice} onChange={lowPriceChangeHandler} />
+					<input
+						className={css['input']}
+						type="number"
+						value={lowPrice || ''}
+						onChange={(e) => onChange([e.target.value, highPrice])}
+					/>
 				</label>
 				<label>
 					<span className={css['label']}>До</span>
-					<input className={css['input']} type="number" value={highPrice} onChange={highPriceChangeHandler} />
+					<input
+						className={css['input']}
+						type="number"
+						value={highPrice || ''}
+						onChange={(e) => onChange([lowPrice, e.target.value])}
+					/>
 				</label>
 			</div>
 		</div>

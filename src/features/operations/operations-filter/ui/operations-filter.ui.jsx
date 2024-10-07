@@ -1,11 +1,10 @@
 import css from './operations-filter.module.scss';
 import { Block } from '../../../../shared/ui/components';
-import { Button, DateRange, Form, Select } from '../../../../shared/ui/form-components';
+import { Button, DateRange, Form, PriceRange, Select } from '../../../../shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLoadOptions } from '../../../../shared/hooks';
 import { useOperationsFilter } from '../model/use-operations-filter';
 import { operationsFilterRules } from '../lib';
-import { PriceRange } from '../../../../shared/ui/form-components/price-range/components/price-range.ui';
 
 export const OperationsFilter = () => {
 	const { accountOptions, categoryOptions } = useLoadOptions();
@@ -19,7 +18,7 @@ export const OperationsFilter = () => {
 					<Select name="accountId" options={accountOptions} label="По счету" placeholder="" />
 					<Select name="categoryId" options={categoryOptions} label="По категории" placeholder="" />
 					<DateRange name="daterange" label="По дате" />
-					<PriceRange />
+					<PriceRange name="pricerange" label="По цене" />
 				</div>
 				<div className={css['actions']}>
 					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>

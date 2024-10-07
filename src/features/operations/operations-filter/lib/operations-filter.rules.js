@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { endOfDay, format, startOfDay } from 'date-fns';
 import { DATETIME_FORMAT, yup } from '../../../../shared/lib/yup';
 
 const accountIdRules = yup
@@ -18,19 +18,27 @@ const daterangeRules = yup
 	.nullable()
 	.notRequired()
 	.transform((value) => {
-		if (!value || !value[0] || !value[1]) return undefined;
+		if (!value || (!value[0] && !value[1])) return undefined;
 
-		const startDate = new Date(value[0]);
-		const endDate = new Date(new Date(value[1]).getTime() + 24 * 60 * 60 * 1000 - 1);
+		const startDate = value[0] ? format(startOfDay(value[0]), DATETIME_FORMAT) : undefined;
+		const endDate = value[1] ? format(endOfDay(value[1]), DATETIME_FORMAT) : undefined;
 
-		const formattedStartDate = format(startDate, DATETIME_FORMAT);
-		const formattedEndDate = format(endDate, DATETIME_FORMAT);
+		return [startDate, endDate];
+	});
 
-		return [formattedStartDate, formattedEndDate];
+const pricerangeRules = yup
+	.array()
+	.nullable()
+	.notRequired()
+	.transform((value) => {
+		if (!value || (!value[0] && !value[1])) return undefined;
+
+		return value;
 	});
 
 export const operationsFilterRules = yup.object().shape({
 	accountId: accountIdRules,
 	categoryId: categoryIdRules,
 	daterange: daterangeRules,
+	pricerange: pricerangeRules,
 });

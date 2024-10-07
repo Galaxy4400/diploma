@@ -26,7 +26,7 @@ export const DateRange = ({ name, label, from, to }) => {
 						selectsRange={true}
 						startDate={value[0]}
 						endDate={value[1]}
-						onChange={(newValue) => onChange(newValue)}
+						onChange={onChange}
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
 						locale="ru"
