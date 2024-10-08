@@ -53,15 +53,6 @@
       "comment": "",
       "createdAt": "05.10.2024 14:18:19",
       "id": 11
-    },
-    {
-      "amount": 45423653,
-      "name": "Много денег",
-      "typeId": 3,
-      "userId": 1,
-      "comment": "Много денег",
-      "createdAt": "08.10.2024 16:53:24",
-      "id": 12
     }
   ],
   "categories": [

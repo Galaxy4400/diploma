@@ -15,14 +15,12 @@ export const OperationsMain = ({ operationsListSlot }) => {
 	}, [dispatch, operations]);
 
 	return (
-		<>
-			<Block className={css['main']}>
-				<h4 className={css['title']}>Недавние операции</h4>
-				{operationsListSlot}
-				<Link className={css['more']} to={path.history()}>
-					Просмотреть больше операций
-				</Link>
-			</Block>
-		</>
+		<Block className={css['main']}>
+			<h4 className={css['title']}>Недавние операции</h4>
+			{operationsListSlot}
+			<Link className={css['more']} to={path.history()}>
+				Просмотреть больше операций
+			</Link>
+		</Block>
 	);
 };
