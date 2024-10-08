@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
 import { Category } from '../../../widgets/category';
-import { Container } from '../../../shared/ui/technical';
+import { Container } from '../../../shared/ui/components';
 import { PageHeader } from '../../../widgets/page-header';
 
 export const CategoryPage = () => {

@@ -1,4 +1,4 @@
-import { Container, Grid } from '../../shared/ui/technical';
+import { Container, Grid } from '../../shared/ui/components';
 import { PageHeader } from '../../widgets/page-header';
 
 export const Page404 = () => {

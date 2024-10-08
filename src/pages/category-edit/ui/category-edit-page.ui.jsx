@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { CategoryEditForm } from '../../../features/category';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
-import { Container } from '../../../shared/ui/technical';
+import { Container } from '../../../shared/ui/components';
 import { PageHeader } from '../../../widgets/page-header';
 
 export const CategoryEditPage = () => {

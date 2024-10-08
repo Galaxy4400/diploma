@@ -1,6 +1,6 @@
 import { useAuth } from '../../app/providers/auth';
 import { AccountCreateForm } from '../../features/account';
-import { Container } from '../../shared/ui/technical';
+import { Container } from '../../shared/ui/components';
 import { PageHeader } from '../../widgets/page-header';
 
 export const AccountCreatePage = () => {

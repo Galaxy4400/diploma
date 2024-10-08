@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { CategoriesMain } from '../../../widgets/categories-main';
 import { AsyncComponent, Loading } from '../../../shared/ui/components';
-import { Container } from '../../../shared/ui/technical';
+import { Container } from '../../../shared/ui/components';
 import { ICON } from '../../../shared/lib/icons';
 import { Action } from './components';
 import { OperationsMain } from '../../../widgets/operations-main';
