@@ -1,21 +1,19 @@
 import css from './modal.module.scss';
-import { useModal } from '../../../../app/providers/modal/modal.use';
-import { useClickAway } from '@uidotdev/usehooks';
-import { Icon } from '../../icons';
-import { ICON } from '../../../lib/icons';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-export const Modal = ({ children }) => {
-	const { isOpen, closeModal } = useModal();
-	const clickAwayRef = useClickAway(() => closeModal());
+export const Modal = ({ isOpen, onClose, children }) => {
+	if (!isOpen) return null;
 
-	return (
-		<div className={`${css['modal']} ${isOpen ? 'active' : ''}`}>
-			<div className={css['container']} ref={clickAwayRef}>
-				<button className={css['close']} onClick={() => closeModal()}>
-					<Icon className={css['icon']} name={ICON.CROSS} />
+	return ReactDOM.createPortal(
+		<div className={css['modal-overlay']} onClick={onClose}>
+			<div className={css['modal-content']} onClick={(e) => e.stopPropagation()}>
+				<button className={css['modal-close']} onClick={onClose}>
+					X
 				</button>
 				{children}
 			</div>
-		</div>
+		</div>,
+		document.getElementById('modal-root'),
 	);
 };

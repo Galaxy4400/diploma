@@ -1,1 +1,1 @@
-export const OPERATIONS_PER_LOAD = 3;
+export const OPERATIONS_PER_LOAD = 10;
