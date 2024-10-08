@@ -1,34 +1,22 @@
-// import { useState } from 'react';
-// import { createPortal } from 'react-dom';
+import { useState } from 'react';
+import { Modal } from '../ui/components/modal';
 
-// export const useModal = () => {
-// 	const [isOpen, setIsOpen] = useState(false);
-// 	const [content, setContent] = useState(null);
+export const useModal = () => {
+	const [isOpen, setIsOpen] = useState(false);
 
-// 	const openModal = (modalContent) => {
-// 		setContent(modalContent);
-// 		setIsOpen(true);
-// 	};
+	const openModal = () => {
+		setIsOpen(true);
+	};
 
-// 	const closeModal = () => {
-// 		setIsOpen(false);
-// 		setContent(null);
-// 	};
+	const closeModal = () => {
+		setIsOpen(false);
+	};
 
-// 	const ModalComponent = () => {
-// 		if (!isOpen || !content) return null;
+	const ModalPortal = ({ children }) => (
+		<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+			{children}
+		</Modal>
+	);
 
-// 		const modalRoot = document.getElementById('modal');
-// 		return createPortal(
-// 			<div className="modal-overlay" onClick={closeModal}>
-// 				<div className="modal-content" onClick={(e) => e.stopPropagation()}>
-// 					<button onClick={closeModal}>Close</button>
-// 					{content}
-// 				</div>
-// 			</div>,
-// 			modalRoot,
-// 		);
-// 	};
-
-// 	return { openModal, closeModal, ModalComponent };
-// };
+	return { openModal, closeModal, ModalPortal };
+};

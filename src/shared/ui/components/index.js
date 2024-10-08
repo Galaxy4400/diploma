@@ -10,5 +10,5 @@ export * from './container';
 export * from './grid';
 export * from './layout-wrapper';
 export * from './typography';
-export * from './modal';
 export * from './confirm';
+export * from './modal';
