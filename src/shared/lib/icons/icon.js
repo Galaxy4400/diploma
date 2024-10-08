@@ -11,4 +11,5 @@ export const ICON = {
 	BACK: 'back',
 	EDIT: 'edit',
 	ABORT: 'abort',
+	CROSS: 'cross',
 };

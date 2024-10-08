@@ -11,6 +11,7 @@ import Cart from './svg/cart.svg?react';
 import Back from './svg/arrow-back.svg?react';
 import Edit from './svg/edit.svg?react';
 import Abort from './svg/abort.svg?react';
+import Cross from './svg/cross.svg?react';
 
 export const Icon = ({ name, className, size = 36, ...rest }) => {
 	switch (name) {
@@ -38,6 +39,8 @@ export const Icon = ({ name, className, size = 36, ...rest }) => {
 			return <Edit className={className} width={size} height={size} {...rest} />;
 		case ICON.ABORT:
 			return <Abort className={className} width={size} height={size} {...rest} />;
+		case ICON.CROSS:
+			return <Cross className={className} width={size} height={size} {...rest} />;
 
 		default:
 			break;

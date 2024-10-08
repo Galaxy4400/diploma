@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ModalContext } from './modal.context';
-import { Modal } from './modal.ui';
+import { Modal } from '../../../shared/ui/components/modal/modal.ui';
 
 export const ModalProvider = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(false);
