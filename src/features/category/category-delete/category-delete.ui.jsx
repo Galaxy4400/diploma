@@ -6,31 +6,40 @@ import { server } from '../../../shared/bff';
 import { useState } from 'react';
 import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
+import { useModal } from '../../../shared/hooks';
+import { Confirm } from '../../../shared/ui/components';
 
 export const CategoryDelete = ({ categoryId }) => {
 	const navigate = useNavigate();
-	const { authUser } = useAuth();
 	const from = useFrom();
 	const [isDeleted, setIsDeleted] = useState(false);
+	const { ModalPortal, openModal, closeModal } = useModal();
 
-	const deleteHandler = async (id) => {
+	const deleteHandler = async () => {
 		setIsDeleted(true);
 
-		const response = await server.deleteCategory(id, authUser.id);
+		const response = await server.deleteCategory(categoryId);
 
 		if (!response.ok) setIsDeleted(false);
 
 		navigate(from?.pathname || false, { replace: true });
+
+		closeModal();
 	};
 
 	return (
-		<button
-			className={css['button']}
-			type="button"
-			onClick={() => deleteHandler(categoryId)}
-			disabled={isDeleted}
-		>
-			<Icon className={css['icon']} name={ICON.CART}></Icon>
-		</button>
+		<>
+			<button className={css['button']} type="button" onClick={openModal} disabled={isDeleted}>
+				<Icon className={css['icon']} name={ICON.CART}></Icon>
+			</button>
+
+			<ModalPortal>
+				<Confirm
+					question="Вы точно хотите удалить категорию?"
+					onConfirm={deleteHandler}
+					onReject={closeModal}
+				/>
+			</ModalPortal>
+		</>
 	);
 };

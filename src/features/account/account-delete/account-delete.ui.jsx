@@ -22,20 +22,18 @@ export const AccountDelete = ({ accountId }) => {
 		if (!response.ok) setIsDeleted(false);
 
 		navigate(from?.pathname || false, { replace: true });
+
+		closeModal();
 	};
 
 	return (
 		<>
-			<button className={css['button']} type="button" onClick={() => openModal()} disabled={isDeleted}>
+			<button className={css['button']} type="button" onClick={openModal} disabled={isDeleted}>
 				<Icon className={css['icon']} name={ICON.CART}></Icon>
 			</button>
 
 			<ModalPortal>
-				<Confirm
-					question="Вы точно хотите удалить счет?"
-					onConfirm={() => deleteHandler()}
-					onReject={closeModal}
-				/>
+				<Confirm question="Вы точно хотите удалить счет?" onConfirm={deleteHandler} onReject={closeModal} />
 			</ModalPortal>
 		</>
 	);

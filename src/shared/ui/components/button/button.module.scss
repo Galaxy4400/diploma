@@ -11,11 +11,11 @@
 	background: $color-primary;
 	color: #ffffff;
 	border-radius: rem(4);
-	transition: background-color 0.3s, color 0.3s, box-shadow 0.1s;
+	transition: opacity 0.3s;
 	
 	@media (any-hover: hover) {
 		&:hover {
-			background: $color-primary-dark;
+			opacity: 0.8;
 		}
 	}
 

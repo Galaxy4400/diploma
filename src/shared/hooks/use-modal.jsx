@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal } from '../ui/components/modal';
 
 export const useModal = () => {
 	const [isOpen, setIsOpen] = useState(false);
+
+	// TODO избавиться от резкого скрола наверх при открытии модального окна
+	useEffect(() => {
+		const body = document.querySelector('body');
+
+		isOpen ? body.classList.add('lock') : body.classList.remove('lock');
+	}, [isOpen]);
 
 	const openModal = () => {
 		setIsOpen(true);
