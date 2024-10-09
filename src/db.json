@@ -46,15 +46,6 @@
       "id": 10
     },
     {
-      "amount": 3532,
-      "name": "jglaksdj",
-      "typeId": 2,
-      "userId": 1,
-      "comment": "egf",
-      "createdAt": "09.10.2024 01:20:06",
-      "id": 11
-    },
-    {
       "amount": 124477,
       "name": "Сберегательный",
       "typeId": 3,
@@ -62,6 +53,15 @@
       "comment": "Коплю деньги",
       "createdAt": "09.10.2024 18:15:01",
       "id": 12
+    },
+    {
+      "amount": 43,
+      "name": "a;sdf",
+      "typeId": 1,
+      "userId": 1,
+      "comment": "42",
+      "createdAt": "09.10.2024 23:50:50",
+      "id": 13
     }
   ],
   "categories": [
@@ -172,16 +172,6 @@
       "id": 9
     },
     {
-      "comment": "jhgjh",
-      "accountId": 11,
-      "categoryId": 2,
-      "amount": 654675,
-      "userId": 1,
-      "status": false,
-      "createdAt": "09.10.2024 18:14:26",
-      "id": 10
-    },
-    {
       "comment": "Положил ещё",
       "accountId": 12,
       "categoryId": 1,
@@ -219,7 +209,7 @@
       "id": 3
     },
     {
-      "hash": "0.24144415789653228543443219678010791540145874023438",
+      "hash": "0.32217797424992000721033491572597995400428771972656",
       "userId": 1,
       "id": 4
     }
