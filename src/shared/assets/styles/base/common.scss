@@ -33,17 +33,3 @@ body {
 		overflow: hidden;
 	}
 }
-
-
-#modal-root {
-	--transition-time: 1s;
-
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity var(--transition-time), visibility var(--transition-time);
-
-	&.active {
-		opacity: 1;
-		visibility: visible;
-	}
-}
