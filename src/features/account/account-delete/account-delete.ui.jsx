@@ -12,8 +12,6 @@ export const AccountDelete = ({ accountId }) => {
 	const from = useFrom();
 	const { openModal, closeModal } = useModal();
 
-	console.log('AccountDelete render');
-
 	const deleteAccount = async () => {
 		await server.deleteAccount(accountId);
 
