@@ -37,8 +37,8 @@
       "id": 9
     },
     {
-      "amount": 3,
-      "name": "test",
+      "amount": 53593,
+      "name": "Кошелек",
       "typeId": 1,
       "userId": 1,
       "comment": "test",
@@ -53,6 +53,15 @@
       "comment": "egf",
       "createdAt": "09.10.2024 01:20:06",
       "id": 11
+    },
+    {
+      "amount": 124477,
+      "name": "Сберегательный",
+      "typeId": 3,
+      "userId": 1,
+      "comment": "Коплю деньги",
+      "createdAt": "09.10.2024 18:15:01",
+      "id": 12
     }
   ],
   "categories": [
@@ -171,6 +180,36 @@
       "status": true,
       "createdAt": "05.10.2024 14:12:28",
       "id": 9
+    },
+    {
+      "comment": "jhgjh",
+      "accountId": 11,
+      "categoryId": 2,
+      "amount": 654675,
+      "userId": 1,
+      "status": false,
+      "createdAt": "09.10.2024 18:14:26",
+      "id": 10
+    },
+    {
+      "comment": "Положил ещё",
+      "accountId": 12,
+      "categoryId": 1,
+      "amount": 235,
+      "userId": 1,
+      "status": true,
+      "createdAt": "09.10.2024 18:15:38",
+      "id": 11
+    },
+    {
+      "comment": "Больше",
+      "accountId": 10,
+      "categoryId": 1,
+      "amount": 53590,
+      "userId": 1,
+      "status": true,
+      "createdAt": "09.10.2024 18:16:50",
+      "id": 12
     }
   ],
   "sessions": [
@@ -188,6 +227,11 @@
       "hash": "0.82107585010391681556995990831637755036354064941406",
       "userId": 1,
       "id": 3
+    },
+    {
+      "hash": "0.14140423195310924953105313761625438928604125976563",
+      "userId": 1,
+      "id": 4
     }
   ]
 }

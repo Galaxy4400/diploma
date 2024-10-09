@@ -12,6 +12,9 @@ export const path = {
 	history() {
 		return path.root.concat('history');
 	},
+	analytics() {
+		return path.root.concat('analytics');
+	},
 	settings() {
 		return path.root.concat('user/edit');
 	},

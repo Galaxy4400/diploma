@@ -2,11 +2,32 @@ import css from './modal.module.scss';
 import { Icon } from '../../icons';
 import { ICON } from '../../../lib/icons';
 import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
 
 export const Modal = ({ isOpen, onClose, children }) => {
-	if (!isOpen) return null;
+	const [isClosing, setIsClosing] = useState(false);
 
-	return createPortal(
+	const modalRoot = document.getElementById('modal-root');
+
+	useEffect(() => {
+		if (isOpen) {
+			modalRoot.classList.add('active');
+		} else {
+			setIsClosing(true);
+
+			modalRoot.classList.remove('active');
+
+			const timer = setTimeout(() => {
+				setIsClosing(false);
+			}, 1000);
+
+			return () => clearTimeout(timer);
+		}
+	}, [isOpen, modalRoot]);
+
+	if (!isOpen && !isClosing) return null;
+
+	const ModalComponent = () => (
 		<div className={css['modal']}>
 			<div className={css['container']}>
 				<button className={css['close']} onClick={() => onClose()}>
@@ -14,7 +35,8 @@ export const Modal = ({ isOpen, onClose, children }) => {
 				</button>
 				{children}
 			</div>
-		</div>,
-		document.getElementById('modal-root'),
+		</div>
 	);
+
+	return createPortal(<ModalComponent />, modalRoot);
 };

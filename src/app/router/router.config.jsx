@@ -10,6 +10,7 @@ import { AccountEditPage, accountEditPageLoader } from '../../pages/account-edit
 import { LoginPage } from '../../pages/login';
 import { RegisterPage } from '../../pages/register';
 import { OperationPage, operationPageLoader } from '../../pages/operation';
+import { AnalyticsPage, analyticsPageLoader } from '../../pages/analytics';
 import { HistoryPage, historyPageLoader } from '../../pages/history';
 import { OperationCreatePage, operationCreatePageLoader } from '../../pages/operation-create';
 import { CategoryPage, categoryPageLoader } from '../../pages/category';
@@ -41,6 +42,11 @@ export const routerConfig = createBrowserRouter([
 				path: path.history(),
 				element: <HistoryPage />,
 				loader: historyPageLoader,
+			},
+			{
+				path: path.analytics(),
+				element: <AnalyticsPage />,
+				loader: analyticsPageLoader,
 			},
 			{
 				path: path.account.root(),

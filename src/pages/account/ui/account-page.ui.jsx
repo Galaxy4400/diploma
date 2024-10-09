@@ -10,7 +10,7 @@ export const AccountPage = () => {
 	const { account } = useLoaderData();
 
 	return (
-		<Container className={css['container']}>
+		<Container>
 			<PageHeader title="Информация о счете" />
 			<div className={css['main']}>
 				<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />

@@ -24,6 +24,7 @@ export default defineConfig({
 							@import '@/shared/assets/styles/abstracts/functions.scss';
 							@import '@/shared/assets/styles/abstracts/variables.scss';
 							@import '@/shared/assets/styles/abstracts/mixins.scss';
+							@import '@/shared/assets/styles/abstracts/extenders.scss';
 							${content}
 						`;
 					}

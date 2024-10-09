@@ -17,7 +17,7 @@ export const Menu = () => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink className={css['link']} to={path.login()}>
+					<NavLink className={css['link']} to={path.analytics()}>
 						Аналитика
 					</NavLink>
 				</li>
