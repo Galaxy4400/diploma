@@ -12,3 +12,4 @@ export * from './layout-wrapper';
 export * from './typography';
 export * from './confirm';
 export * from './modal';
+export * from './toast';

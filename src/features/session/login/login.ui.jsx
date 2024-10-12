@@ -1,23 +1,25 @@
 import css from './login.module.scss';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../app/providers/auth';
 import { loginFormRules } from './login.rules';
+import { useAuth } from '../../../app/providers/auth';
 import { Form, Input } from '../../../shared/ui/form-components';
-import { useState } from 'react';
 import { Block } from '../../../shared/ui/components';
 import { useFrom } from '../../../shared/lib/location';
 import { path } from '../../../shared/lib/router';
 import { Button } from '../../../shared/ui/form-components';
+import { useToast } from '../../../app/providers/toast';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
 	const from = useFrom();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const { authorize, authorizeError } = useAuth();
 
-	const submitHandler = async ({ login, password }) => {
+	const loginHandler = async ({ login, password }) => {
 		setIsLoading(true);
 
 		await authorize(login, password);
@@ -25,12 +27,14 @@ export const LoginForm = () => {
 		setIsLoading(false);
 
 		navigate(from?.pathname || path.home());
+
+		showToast(authorizeError || 'Вы успешно вошли в систему');
 	};
 
 	return (
 		<Block className={css['block']}>
 			<h1 className={css['title']}>Авторизация</h1>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(loginFormRules)}>
+			<Form className={css['form']} onSubmit={loginHandler} resolver={yupResolver(loginFormRules)}>
 				<Input type="text" name="login" label="Логин" />
 				<Input type="password" name="password" label="Пароль" />
 				<Button type="submit" disabled={isLoading}>

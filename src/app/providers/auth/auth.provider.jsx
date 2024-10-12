@@ -8,16 +8,13 @@ import { server } from '../../../shared/bff';
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
-	const [registrationError, setRegistrationError] = useState(null);
-	const [authorizeError, setAuthorizeError] = useState(null);
 
 	const authorize = useCallback(
 		async (login, password) => {
 			const { data: authUser, ok, error } = await server.authorize(login, password);
 
 			if (!ok) {
-				setAuthorizeError(error);
-				return;
+				return error;
 			}
 
 			dispatch(setAuth(authUser));
@@ -32,7 +29,6 @@ export const AuthProvider = ({ children }) => {
 			const response = await server.register(login, password);
 
 			if (!response.ok) {
-				setRegistrationError(response.error);
 				return;
 			}
 
@@ -43,9 +39,6 @@ export const AuthProvider = ({ children }) => {
 
 	const logout = useCallback(async () => {
 		await server.logout();
-
-		setAuthorizeError(null);
-		setRegistrationError(null);
 
 		dispatch(resetAuth());
 
@@ -73,8 +66,6 @@ export const AuthProvider = ({ children }) => {
 				authorize,
 				registration,
 				logout,
-				authorizeError,
-				registrationError,
 			}}
 		>
 			{isAuthInitialize && children}

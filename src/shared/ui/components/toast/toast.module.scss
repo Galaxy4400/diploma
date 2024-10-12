@@ -1,0 +1,34 @@
+.toast {
+	position: fixed;
+	width: rem(250);
+	top: rem(80);
+	right: rem(20);
+	background: $color-primary;
+	padding: rem(15) rem(10);
+	border-radius: rem(10);
+	border: rem(1) solid $color-primary-dark;
+	color: #fff;
+	opacity: 0;
+	visibility: hidden;
+	translate: rem(50) 0;
+	transition: all 0.3s ease 0s;
+
+	&:global(.active) {
+		opacity: 1;
+		visibility: visible;
+		translate: 0 0;
+	}
+}
+
+.close {
+
+}
+
+.icon {
+	position: absolute;
+	top: rem(10);
+	right: rem(10);
+	color: #fff;
+	width: rem(10);
+	height: rem(10);
+}

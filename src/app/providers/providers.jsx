@@ -1,12 +1,15 @@
 import { AuthProvider } from './auth';
 import { ModalProvider } from './modal';
 import { StoreProvider } from './store';
+import { ToastProvider } from './toast';
 
 export const Providers = ({ children }) => {
 	return (
 		<StoreProvider>
 			<AuthProvider>
-				<ModalProvider>{children}</ModalProvider>
+				<ModalProvider>
+					<ToastProvider>{children}</ToastProvider>
+				</ModalProvider>
 			</AuthProvider>
 		</StoreProvider>
 	);
