@@ -4,10 +4,12 @@ import { Toast } from '../../../shared/ui/components';
 
 export const ToastProvider = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [content, setContent] = useState(null);
+	const [message, setMessage] = useState(null);
+	const [type, setType] = useState('');
 
-	const showToast = useCallback((content, time = 3000) => {
-		setContent(content);
+	const showToast = useCallback(({ message: initMessage, type: initType = '', time = 5000 }) => {
+		setType(initType);
+		setMessage(initMessage);
 		setIsOpen(true);
 
 		setTimeout(() => {
@@ -19,7 +21,7 @@ export const ToastProvider = ({ children }) => {
 
 	const toastFunctions = useMemo(() => ({ showToast, closeToast }), [showToast, closeToast]);
 
-	const toastState = useMemo(() => ({ isOpen, content }), [isOpen, content]);
+	const toastState = useMemo(() => ({ isOpen, message, type }), [isOpen, message, type]);
 
 	return (
 		<ToastFunctionContext.Provider value={toastFunctions}>

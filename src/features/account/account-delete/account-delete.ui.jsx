@@ -6,10 +6,13 @@ import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const AccountDelete = ({ accountId }) => {
 	const navigate = useNavigate();
 	const from = useFrom();
+	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 
 	const deleteAccount = async () => {
@@ -18,6 +21,8 @@ export const AccountDelete = ({ accountId }) => {
 		navigate(from?.pathname || false, { replace: true });
 
 		closeModal();
+
+		showToast({ message: 'Счет удален', type: TOAST_TYPE.WARNING });
 	};
 
 	const deleteHandler = () => {

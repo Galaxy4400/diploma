@@ -8,9 +8,12 @@ import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
 import { useState } from 'react';
 import { server } from '../../../shared/bff';
 import { Block, Fieldset } from '../../../shared/ui/components';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
@@ -21,6 +24,8 @@ export const AccountCreateForm = ({ userId }) => {
 		setIsLoading(false);
 
 		navigate(path.account.id(createdAccount.id), { replace: true });
+
+		showToast({ message: 'Счет создан', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (

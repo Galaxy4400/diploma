@@ -10,6 +10,7 @@ import { useFrom } from '../../../shared/lib/location';
 import { path } from '../../../shared/lib/router';
 import { Button } from '../../../shared/ui/form-components';
 import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const LoginForm = () => {
 
 		navigate(from?.pathname || path.home());
 
-		showToast(authorizeError || 'Вы успешно вошли в систему');
+		showToast({ message: 'Вы успешно вошли в систему', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (
