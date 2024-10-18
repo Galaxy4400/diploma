@@ -35,6 +35,10 @@ const login = async (login, password) => {
 };
 
 const updateUser = async (id, userData) => {
+	if (userData?.password) {
+		userData.password = await bcrypt.hash(userData.password, 10);
+	}
+
 	const user = await User.findByIdAndUpdate(id, userData, { returnDocument: 'after' });
 
 	if (!user) {
