@@ -3,7 +3,7 @@ const User = require("../models/user.model");
 
 module.exports = async (req, res, next) => {
 	if (!req.cookies.token) {
-		res.send('Authenticated user not found');
+		res.send({ error: true, message: 'You are not authenticated' });
 
 		return;
 	}
@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 	const user = await User.findOne({ _id: tokenData.id });
 
 	if (!user) {
-		res.send('Authenticated user not found');
+		res.send({ error: true, message: 'Authenticated user not found' });
 
 		return;
 	}
