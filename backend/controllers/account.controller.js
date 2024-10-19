@@ -29,6 +29,10 @@ const createAccount = async (accountData) => {
 const updateAccount = async (id, accountData) => {
 	const account = await Account.findByIdAndUpdate(id, accountData, { returnDocument: 'after' });
 
+	if (!account) {
+		throw new Error('Account not found');
+	}
+
 	await account.populate('user', 'login');
 
 	return account;
