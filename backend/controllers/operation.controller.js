@@ -7,33 +7,39 @@ const getOperation = async (id) => {
 		throw new Error('Operation not found');
 	}
 
-	await operation.populate('user', 'login');
+	await operation.populate([
+		{ path: 'user', select: 'login' },
+		{ path: 'account', select: 'name' },
+		{ path: 'category', select: 'name' },
+	]);
 
 	return operation;
 };
 
 const getOperations = async (userId) => {
-	const operations = await Operation.find({ user: userId }).populate('user', 'login');
+	const operations = await Operation.find({ user: userId }).populate([
+		{ path: 'user', select: 'login' },
+		{ path: 'account', select: 'name' },
+		{ path: 'category', select: 'name' },
+	]);
 
 	return operations;
 };
 
-const createOperation = async (operationData) => {
-	const operation = await Operation.create(operationData);
+const createOperation = async (userId, accountId, categoryId, operationData) => {
+	const operation = await Operation.create({
+		...operationData,
+		user: userId,
+		account: accountId,
+		category: categoryId,
+		status: true,
+	});
 
-	await operation.populate('user', 'login');
-
-	return operation;
-};
-
-const updateOperation = async (id, operationData) => {
-	const operation = await Operation.findByIdAndUpdate(id, operationData, { returnDocument: 'after' });
-
-	if (!operation) {
-		throw new Error('Operation not found');
-	}
-
-	await operation.populate('user', 'login');
+	await operation.populate([
+		{ path: 'user', select: 'login' },
+		{ path: 'account', select: 'name' },
+		{ path: 'category', select: 'name' },
+	]);
 
 	return operation;
 };
@@ -42,4 +48,4 @@ const deleteOperation = async (id) => {
 	await Operation.findByIdAndDelete(id);
 };
 
-module.exports = { getOperation, getOperations, createOperation, updateOperation, deleteOperation };
+module.exports = { getOperation, getOperations, createOperation, deleteOperation };

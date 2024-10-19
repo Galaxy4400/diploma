@@ -24,6 +24,10 @@ const OperationSchema = new Schema({
 		type: Number,
 		required: true,
 	},
+	status: {
+		type: Boolean,
+		required: true,
+	},
 }, { timestamps: true });
 
 const Operation = mongoose.model('Operation', OperationSchema);
