@@ -1,6 +1,6 @@
 const express = require('express');
 const authenticated = require('../middlewares/authenticated');
-const { createAccount, getAccounts } = require('../controllers/account.controller');
+const { createAccount, getAccounts, getAccount, deleteAccount, updateAccount } = require('../controllers/account.controller');
 const accountMap = require('../mappers/account.map');
 
 const router = express.Router({ mergeParams: true });
@@ -16,6 +16,13 @@ router.get('/', authenticated, async (req, res) => {
 });
 
 router.get('/:id', authenticated, async (req, res) => {
+	try {
+		const account = await getAccount(req.params.id);
+
+		res.send({ error: null, data: accountMap(account) });
+	} catch (error) {
+		res.send({ error: error.message || "Unknown error" });
+	}
 });
 
 router.post('/', authenticated, async (req, res) => {
@@ -29,9 +36,23 @@ router.post('/', authenticated, async (req, res) => {
 });
 
 router.patch('/:id', authenticated, async (req, res) => {
+	try {
+		const account = await updateAccount(req.params.id, req.body);
+
+		res.send({ error: null, data: accountMap(account) });
+	} catch (error) {
+		res.send({ error: error.message || "Unknown error" });
+	}
 });
 
 router.delete('/:id', authenticated, async (req, res) => {
+	try {
+		await deleteAccount(req.params.id);
+
+		res.send({ error: null });
+	} catch (error) {
+		res.send({ error: error.message || "Unknown error" });
+	}
 });
 
 module.exports = router;
