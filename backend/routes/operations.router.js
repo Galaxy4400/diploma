@@ -5,7 +5,9 @@ const { createOperation, getOperations, getOperation, deleteOperation, updateOpe
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', authenticated, async (req, res) => {
+router.use(authenticated);
+
+router.get('/', async (req, res) => {
 	try {
 		const operations = await getOperations(req.user.id);
 
@@ -15,7 +17,7 @@ router.get('/', authenticated, async (req, res) => {
 	}
 });
 
-router.get('/:id', authenticated, async (req, res) => {
+router.get('/:id', async (req, res) => {
 	try {
 		const operation = await getOperation(req.params.id);
 
@@ -25,9 +27,14 @@ router.get('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.post('/', authenticated, async (req, res) => {
+router.post('/account/:accountId/category/:categoryId', async (req, res) => {
 	try {
-		const operation = await createOperation({ ...req.body, user: req.user.id });
+		const operation = await createOperation({ 
+			...req.body,
+			user: req.user.id,
+			account: req.params.accountId,
+			category: req.params.categoryId,
+		});
 
 		res.send({ error: null, data: operation });
 	} catch (error) {
@@ -35,7 +42,7 @@ router.post('/', authenticated, async (req, res) => {
 	}
 });
 
-router.patch('/:id', authenticated, async (req, res) => {
+router.patch('/:id', async (req, res) => {
 	try {
 		const operation = await updateOperation(req.params.id, req.body);
 
@@ -45,7 +52,7 @@ router.patch('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.delete('/:id', authenticated, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		await deleteOperation(req.params.id);
 

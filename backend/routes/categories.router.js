@@ -5,7 +5,9 @@ const categoryMap = require('../mappers/category.map');
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', authenticated, async (req, res) => {
+router.use(authenticated);
+
+router.get('/', async (req, res) => {
 	try {
 		const categories = await getCategories(req.user.id);
 
@@ -15,7 +17,7 @@ router.get('/', authenticated, async (req, res) => {
 	}
 });
 
-router.get('/:id', authenticated, async (req, res) => {
+router.get('/:id', async (req, res) => {
 	try {
 		const category = await getCategory(req.params.id);
 
@@ -25,7 +27,7 @@ router.get('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.post('/', authenticated, async (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		const category = await createCategory({ ...req.body, user: req.user.id });
 
@@ -35,7 +37,7 @@ router.post('/', authenticated, async (req, res) => {
 	}
 });
 
-router.patch('/:id', authenticated, async (req, res) => {
+router.patch('/:id', async (req, res) => {
 	try {
 		const category = await updateCategory(req.params.id, req.body);
 
@@ -45,7 +47,7 @@ router.patch('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.delete('/:id', authenticated, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		await deleteCategory(req.params.id);
 

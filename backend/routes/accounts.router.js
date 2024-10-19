@@ -5,7 +5,9 @@ const accountMap = require('../mappers/account.map');
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', authenticated, async (req, res) => {
+router.use(authenticated);
+
+router.get('/', async (req, res) => {
 	try {
 		const accounts = await getAccounts(req.user.id);
 
@@ -15,7 +17,7 @@ router.get('/', authenticated, async (req, res) => {
 	}
 });
 
-router.get('/:id', authenticated, async (req, res) => {
+router.get('/:id', async (req, res) => {
 	try {
 		const account = await getAccount(req.params.id);
 
@@ -25,7 +27,7 @@ router.get('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.post('/', authenticated, async (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		const account = await createAccount({ ...req.body, user: req.user.id });
 
@@ -35,7 +37,7 @@ router.post('/', authenticated, async (req, res) => {
 	}
 });
 
-router.patch('/:id', authenticated, async (req, res) => {
+router.patch('/:id', async (req, res) => {
 	try {
 		const account = await updateAccount(req.params.id, req.body);
 
@@ -45,7 +47,7 @@ router.patch('/:id', authenticated, async (req, res) => {
 	}
 });
 
-router.delete('/:id', authenticated, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		await deleteAccount(req.params.id);
 

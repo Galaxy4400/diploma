@@ -5,7 +5,9 @@ const userMap = require('../mappers/user.map');
 
 const router = express.Router({ mergeParams: true });
 
-router.patch('/:id', authenticated, async (req, res) => {
+router.use(authenticated);
+
+router.patch('/:id', async (req, res) => {
 	try {
 		const user = await updateUser(req.params.id, req.body);
 
