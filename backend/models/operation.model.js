@@ -2,23 +2,27 @@ const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const OperationSchema = new Schema({
-	comment: {
-		type: String,
-	},
 	account: {
 		type: Schema.Types.ObjectId,
 		ref: 'Account',
+		required: true,
 	},
 	category: {
 		type: Schema.Types.ObjectId,
 		ref: 'Category',
+		required: true,
 	},
 	user: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
+		required: true,
+	},
+	comment: {
+		type: String,
 	},
 	ammount: {
 		type: Number,
+		required: true,
 	},
 }, { timestamps: true });
 

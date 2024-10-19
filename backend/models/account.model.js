@@ -8,13 +8,16 @@ const AccountSchema = new Schema({
 	},
 	ammount: {
 		type: Number,
+		required: true,
 	},
 	user: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
+		required: true,
 	},
 	type: {
 		type: Number,
+		required: true,
 	}
 }, { timestamps: true });
 
