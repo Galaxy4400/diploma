@@ -1,6 +1,6 @@
 const express = require('express');
 const { register, login } = require('../controllers/user.controller');
-const mapUser = require('../mappers/user.mapper');
+const mapUser = require('../mappers/user.map');
 const authenticated = require('../middlewares/authenticated');
 
 const router = express.Router({ mergeParams: true });
