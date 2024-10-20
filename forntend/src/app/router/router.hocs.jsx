@@ -5,13 +5,13 @@ import { path } from '../../shared/lib/router';
 export const ProtectedRoute = ({ element }) => {
 	const location = useLocation();
 
-	const { authUser } = useAuth();
+	const { isAuth } = useAuth();
 
-	return authUser ? element : <Navigate to={path.login()} replace state={{ from: location }} />;
+	return isAuth ? element : <Navigate to={path.login()} replace state={{ from: location }} />;
 };
 
 export const AuthenticationRoute = ({ element }) => {
-	const { authUser } = useAuth();
+	const { isAuth } = useAuth();
 
-	return authUser ? <Navigate to={path.home()} replace /> : element;
+	return isAuth ? <Navigate to={path.home()} replace /> : element;
 };

@@ -7,6 +7,7 @@ import { request } from '../../../shared/api';
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
+	const [isAuth, setIsAuth] = useState(false);
 
 	const authorize = useCallback(
 		async (login, password) => {
@@ -15,6 +16,8 @@ export const AuthProvider = ({ children }) => {
 			if (error) return;
 
 			dispatch(setAuth(user));
+
+			setIsAuth(true);
 		},
 		[dispatch],
 	);
@@ -36,24 +39,26 @@ export const AuthProvider = ({ children }) => {
 		if (error) return;
 
 		dispatch(resetAuth());
+
+		setIsAuth(false);
 	}, [dispatch]);
 
-	useLayoutEffect(() => {
-		const loginCheck = async () => {
-			const { user, error } = await request({ url: '/me' });
+	const authCheck = useCallback(async () => {
+		const { user, error } = await request({ url: '/me' });
 
-			if (error) {
-				logout();
-				setIsAuthInitialize(true);
-				return;
-			}
-
-			dispatch(setAuth(user));
+		if (error) {
+			logout();
 			setIsAuthInitialize(true);
-		};
+			return;
+		}
 
-		loginCheck();
+		dispatch(setAuth(user));
+		setIsAuthInitialize(true);
 	}, [dispatch, logout]);
+
+	useLayoutEffect(() => {
+		authCheck();
+	}, [authCheck]);
 
 	return (
 		<AuthContext.Provider
@@ -61,6 +66,7 @@ export const AuthProvider = ({ children }) => {
 				authorize,
 				registration,
 				logout,
+				isAuth,
 			}}
 		>
 			{isAuthInitialize && children}
