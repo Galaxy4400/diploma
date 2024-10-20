@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
 
 		dispatch(setAuth(user));
 		setIsAuthInitialize(true);
+		setIsAuth(true);
 	}, [dispatch, logout]);
 
 	useLayoutEffect(() => {
