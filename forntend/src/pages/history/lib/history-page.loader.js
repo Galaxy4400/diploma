@@ -3,7 +3,7 @@ import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { request } from '../../../shared/api';
 
 const getOperations = async () => {
-	const { pagingData } = await request({ url: '/operations' });
+	const { pagingData } = await request({ url: '/operations', query: { limit: OPERATIONS_PER_LOAD } });
 
 	return pagingData.items;
 };

@@ -9,7 +9,7 @@ const getAccounts = async () => {
 };
 
 const getOperations = async () => {
-	const { pagingData } = await request({ url: '/operations' });
+	const { pagingData } = await request({ url: '/operations', query: { limit: OPERATIONS_PER_LOAD } });
 
 	return pagingData.items;
 };
