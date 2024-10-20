@@ -9,9 +9,41 @@ router.use(authenticated);
 
 router.get('/', async (req, res) => {
 	try {
-		const operations = await getOperations(req.user.id);
+		const pagination = {
+			page: +req.query.page || 1,
+			limit: +req.query.limit || null,
+		};
 
-		res.send({ error: null, data: operations.map(operationMap) });
+		const search = {
+			user: req.user.id,
+		}
+
+		const operationsPagination = await getOperations(search, pagination);
+
+		res.send({ error: null, data: operationsPagination.items.map(operationMap) });
+	} catch (error) {
+		res.send({ error: error.message || "Unknown error" });
+	}
+});
+
+router.get('/account/:accountId', async (req, res) => {
+	try {
+		const pagination = {
+			page: +req.query.page || 1,
+			limit: +req.query.limit || null,
+		};
+
+		const search = {
+			user: req.user.id,
+			account: req.params.accountId,
+		}
+
+		const operationsPagination = await getOperations(search, pagination);
+
+		res.send({ error: null, data: {
+			...operationsPagination,
+			items: operationsPagination.items.map(operationMap),
+		} });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}

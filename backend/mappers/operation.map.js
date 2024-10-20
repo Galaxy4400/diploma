@@ -2,7 +2,7 @@ module.exports = (operation) => {
 	return {
 		id: operation.id,
 		comment: operation.comment,
-		ammount: operation.ammount,
+		amount: operation.amount,
 		status: operation.status,
 		user: operation.user.login,
 		account: operation.account.name,

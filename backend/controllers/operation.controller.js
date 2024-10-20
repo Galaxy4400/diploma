@@ -16,14 +16,27 @@ const getOperation = async (id) => {
 	return operation;
 };
 
-const getOperations = async (userId) => {
-	const operations = await Operation.find({ user: userId }).populate([
-		{ path: 'user', select: 'login' },
-		{ path: 'account', select: 'name' },
-		{ path: 'category', select: 'name' },
+const getOperations = async (search, { limit, page }) => {
+	const [items, total] = await Promise.all([
+		Operation.find(search)
+			.limit(limit)
+			.skip((page - 1) * limit)
+			.sort({ createdAt: -1 })
+			.populate([
+				{ path: 'user', select: 'login' },
+				{ path: 'account', select: 'name' },
+				{ path: 'category', select: 'name' },
+			]),
+		Operation.countDocuments(search),
 	]);
 
-	return operations;
+	return {
+		items,
+		total,
+		page,
+		limit,
+		totalPages: Math.ceil(total / limit),
+	};
 };
 
 const createOperation = async (userId, accountId, categoryId, operationData) => {

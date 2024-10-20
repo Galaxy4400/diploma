@@ -20,7 +20,7 @@ const OperationSchema = new Schema({
 	comment: {
 		type: String,
 	},
-	ammount: {
+	amount: {
 		type: Number,
 		required: true,
 	},
