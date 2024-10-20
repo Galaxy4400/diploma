@@ -20,7 +20,10 @@ router.get('/', async (req, res) => {
 
 		const operationsPagination = await getOperations(search, pagination);
 
-		res.send({ error: null, pagingData: operationsPagination.items.map(operationMap) });
+		res.send({ error: null, pagingData: {
+			...operationsPagination,
+			items: operationsPagination.items.map(operationMap),
+		} });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}

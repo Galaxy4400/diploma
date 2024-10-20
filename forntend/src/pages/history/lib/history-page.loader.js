@@ -1,9 +1,11 @@
 import { defer } from 'react-router-dom';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
+import { request } from '../../../shared/api';
 
 const getOperations = async () => {
-	// const response = await server.getOperations({ limit: OPERATIONS_PER_LOAD });
-	// return response.data;
+	const { pagingData } = await request({ url: '/operations' });
+
+	return pagingData.items;
 };
 
 export const historyPageLoader = async () => {
