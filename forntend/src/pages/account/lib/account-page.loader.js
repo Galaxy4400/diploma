@@ -5,7 +5,7 @@ import { request } from '../../../shared/api';
 const getAccount = async (accountId) => {
 	const [accountResponse, operationsResponse] = await Promise.all([
 		request({ url: `/accounts/${accountId}` }),
-		request({ url: `/operations/account/${accountId}` }),
+		request({ url: `/operations/account/${accountId}`, query: { limit: OPERATIONS_PER_LOAD } }),
 	]);
 
 	const account = accountResponse.account;

@@ -8,6 +8,7 @@ const router = express.Router({ mergeParams: true });
 router.use(authenticated);
 
 router.get('/', async (req, res) => {
+	console.log(req.query);
 	try {
 		const pagination = {
 			page: +req.query.page || 1,
