@@ -22,12 +22,12 @@ export const MainPage = () => {
 			</header>
 			<div className={css['content']}>
 				<AsyncComponent resolve={accounts} element={<AccountsMain />} fallback={<Loading />} />
-				<AsyncComponent
+				{/* <AsyncComponent
 					resolve={operations}
 					element={<OperationsMain operationsListSlot={<OperationsList />} />}
 					fallback={<Loading />}
-				/>
-				<AsyncComponent resolve={categories} element={<CategoriesMain />} fallback={<Loading />} />
+				/> */}
+				{/* <AsyncComponent resolve={categories} element={<CategoriesMain />} fallback={<Loading />} /> */}
 			</div>
 		</Container>
 	);

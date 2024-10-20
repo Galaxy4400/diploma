@@ -18,7 +18,10 @@ const AccountSchema = new Schema({
 	type: {
 		type: Number,
 		required: true,
-	}
+	},
+	comment: {
+		type: String,
+	},
 }, { timestamps: true });
 
 const Account = mongoose.model('Account', AccountSchema);

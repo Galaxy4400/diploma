@@ -1,17 +1,17 @@
 import css from './account-create.module.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { categoryCreateFormRules } from './account-create.rules';
+import { accountCreateFormRules } from './account-create.rules';
 import { path } from '../../../shared/lib/router';
-import { Button, Form, Hidden, Input, Radio, Textarea } from '../../../shared/ui/form-components';
+import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
-import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
 import { TOAST_TYPE } from '../../../shared/lib/toast';
 import { request } from '../../../shared/api';
 
-export const AccountCreateForm = ({ userId }) => {
+export const AccountCreateForm = () => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export const AccountCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { account, error } = await request({ url: '/account', method: 'POST', data: submittedData });
+		const { account, error } = await request({ url: '/accounts', method: 'POST', data: submittedData });
 
 		setIsLoading(false);
 
@@ -32,13 +32,12 @@ export const AccountCreateForm = ({ userId }) => {
 
 	return (
 		<Block className={css['block']}>
-			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
-				<Hidden name="userId" defaultValue={userId} />
+			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(accountCreateFormRules)}>
 				<Input type="text" name="name" label="Название счета" />
 				<Fieldset label="Тип счета">
 					<div className={css['radiobuttons']}>
 						{ACCOUNT_TYPES.map((type, i) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
+							<Radio key={type.id} name="type" value={type.id} label={type.name} defaultChecked={!i} />
 						))}
 					</div>
 				</Fieldset>

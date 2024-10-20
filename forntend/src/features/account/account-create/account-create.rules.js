@@ -1,12 +1,8 @@
 import { yup } from '../../../shared/lib/yup';
 
-export const categoryCreateFormRules = yup.object().shape({
-	userId: yup.number().required(),
-	typeId: yup.number().required(),
+export const accountCreateFormRules = yup.object().shape({
 	name: yup.string().required().min(3).max(50),
-	amount: yup
-		.number()
-		.nullable()
-		.transform((value, originalValue) => (originalValue === '' ? undefined : value))
-		.required(),
+	type: yup.number().required(),
+	amount: yup.number().transform((value, originalValue) => (originalValue === '' ? 0 : value)),
+	comment: yup.string().nullable(),
 });

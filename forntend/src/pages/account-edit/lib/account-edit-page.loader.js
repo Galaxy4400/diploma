@@ -1,8 +1,10 @@
 import { defer } from 'react-router-dom';
+import { request } from '../../../shared/api';
 
-const getAccount = async (id) => {
-	// const response = await server.getAccount(id);
-	// return response.data;
+const getAccount = async (accountId) => {
+	const { account } = await request({ url: `/accounts/${accountId}` });
+
+	return account;
 };
 
 export const accountEditPageLoader = async ({ params }) => {

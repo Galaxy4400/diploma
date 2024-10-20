@@ -7,6 +7,7 @@ import { path } from '../../../shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
+import { request } from '../../../shared/api';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue();
@@ -16,9 +17,15 @@ export const AccountEditForm = () => {
 	const submitHandler = async (editData) => {
 		setIsLoading(true);
 
-		// await server.updateAccount(account.id, editData);
+		const { error } = await request({
+			url: `/accounts/${account.id}`,
+			method: 'PATCH',
+			data: editData,
+		});
 
 		setIsLoading(false);
+
+		if (error) return;
 
 		navigate(path.account.id(account.id));
 	};
@@ -32,10 +39,10 @@ export const AccountEditForm = () => {
 						{ACCOUNT_TYPES.map((type) => (
 							<Radio
 								key={type.id}
-								name="typeId"
+								name="type"
 								value={type.id}
 								label={type.name}
-								defaultChecked={type.id === account?.typeId}
+								defaultChecked={type.id === account?.type}
 							/>
 						))}
 					</div>

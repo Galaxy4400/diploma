@@ -26,7 +26,7 @@ export const AccountView = ({ account, deleteSlot }) => {
 				</div>
 				<div>
 					<dt>Тип:</dt>
-					<dd>{getAccountType(account.typeId)?.name}</dd>
+					<dd>{getAccountType(account.type)?.name}</dd>
 				</div>
 				<div>
 					<dt>Комментарий:</dt>

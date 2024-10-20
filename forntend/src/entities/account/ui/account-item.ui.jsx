@@ -12,11 +12,11 @@ export const AccountItem = ({ account, deleteSlot }) => {
 		<div className={css['account']}>
 			<Link className={css['main']} to={path.account.id(account.id)} state={{ from: location }}>
 				<figure className={css['figure']}>
-					<Icon className={css['icon']} name={getAccountTypeImage(account.typeId)} />
+					<Icon className={css['icon']} name={getAccountTypeImage(account.type)} />
 				</figure>
 				<div className={css['info']}>
 					<span className={css['amount']}>{priceFormat(account.amount)}</span>
-					<span className={css['name']}>{getAccountTypeName(account.typeId)}</span>
+					<span className={css['name']}>{getAccountTypeName(account.type)}</span>
 				</div>
 			</Link>
 			<div className={css['delete']}>{deleteSlot}</div>

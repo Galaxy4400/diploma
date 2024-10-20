@@ -3,21 +3,21 @@ import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
 import { request } from '../../../shared/api';
 
 const getAccounts = async () => {
-	const { data } = await request({ url: '/accounts' });
+	const { accounts } = await request({ url: '/accounts' });
 
-	return data;
+	return accounts;
 };
 
 const getOperations = async () => {
-	const { data } = await request({ url: '/operations' });
+	const { pagingData } = await request({ url: '/operations' });
 
-	return data;
+	return pagingData;
 };
 
 const getCategories = async () => {
-	const { data } = await request({ url: '/categories' });
+	const { categories } = await request({ url: '/categories' });
 
-	return data;
+	return categories;
 };
 
 export const mainPageLoader = async () => {

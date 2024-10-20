@@ -5,12 +5,10 @@ import { Container } from '../../shared/ui/components';
 import { PageHeader } from '../../widgets/page-header';
 
 export const AccountCreatePage = () => {
-	const authUserId = useSelector(selectAuthId);
-
 	return (
 		<Container>
 			<PageHeader title="Создание счета" />
-			<AccountCreateForm userId={authUserId} />
+			<AccountCreateForm />
 		</Container>
 	);
 };
