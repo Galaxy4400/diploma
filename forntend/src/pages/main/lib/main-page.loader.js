@@ -11,7 +11,7 @@ const getAccounts = async () => {
 const getOperations = async () => {
 	const { pagingData } = await request({ url: '/operations' });
 
-	return pagingData;
+	return pagingData.items;
 };
 
 const getCategories = async () => {

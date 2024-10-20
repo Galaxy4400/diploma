@@ -10,7 +10,7 @@ import { ICON } from '../../../shared/lib/icons';
 export const OperationItem = ({ operation, deleteSlot }) => {
 	const location = useLocation();
 
-	const amountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
 		<div className={css['operation']}>

@@ -1,4 +1,7 @@
 const Operation = require('../models/operation.model');
+const Account = require('../models/account.model');
+const Category = require('../models/category.model');
+const CATEGORY_TYPE = require('../constants/category-type');
 
 const getOperation = async (id) => {
 	const operation = await Operation.findById(id);
@@ -40,10 +43,25 @@ const getOperations = async (search, { limit, page }) => {
 };
 
 const createOperation = async (userId, operationData) => {
+	const [account, category] = await Promise.all([
+		Account.findById(operationData.account),
+		Category.findById(operationData.category),
+	]);
+
+	const newAccountAmount = (category.type === CATEGORY_TYPE.INCOME)
+		? account.amount + operationData.amount
+		: account.amount - operationData.amount;
+
+	const isAmountPositive = newAccountAmount >= 0;
+
+	if (isAmountPositive) {
+		await Account.findByIdAndUpdate(account.id, { amount: newAccountAmount });
+	}
+
 	const operation = await Operation.create({
 		...operationData,
 		user: userId,
-		status: true,
+		status: isAmountPositive,
 	});
 
 	await operation.populate([
