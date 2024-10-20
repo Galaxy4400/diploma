@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 	try {
 		const accounts = await getAccounts(req.user.id);
 
-		res.send({ error: null, data: accounts.map(accountMap) });
+		res.send({ error: null, accounts: accounts.map(accountMap) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const account = await getAccount(req.params.id);
 
-		res.send({ error: null, data: accountMap(account) });
+		res.send({ error: null, account: accountMap(account) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 	try {
 		const account = await createAccount({ ...req.body, user: req.user.id });
 
-		res.send({ error: null, data: accountMap(account) });
+		res.send({ error: null, account: accountMap(account) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -41,7 +41,7 @@ router.patch('/:id', async (req, res) => {
 	try {
 		const account = await updateAccount(req.params.id, req.body);
 
-		res.send({ error: null, data: accountMap(account) });
+		res.send({ error: null, account: accountMap(account) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}

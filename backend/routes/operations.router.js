@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 		const operationsPagination = await getOperations(search, pagination);
 
-		res.send({ error: null, data: operationsPagination.items.map(operationMap) });
+		res.send({ error: null, pagingData: operationsPagination.items.map(operationMap) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -40,7 +40,7 @@ router.get('/account/:accountId', async (req, res) => {
 
 		const operationsPagination = await getOperations(search, pagination);
 
-		res.send({ error: null, data: {
+		res.send({ error: null, pagingData: {
 			...operationsPagination,
 			items: operationsPagination.items.map(operationMap),
 		} });
@@ -53,7 +53,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const operation = await getOperation(req.params.id);
 
-		res.send({ error: null, data: operationMap(operation) });
+		res.send({ error: null, operation: operationMap(operation) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -63,7 +63,7 @@ router.post('/account/:accountId/category/:categoryId', async (req, res) => {
 	try {
 		const operation = await createOperation(req.user.id, req.params.accountId, req.params.categoryId, req.body);
 
-		res.send({ error: null, data: operationMap(operation) });
+		res.send({ error: null, operation: operationMap(operation) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}

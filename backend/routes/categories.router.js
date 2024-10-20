@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 	try {
 		const categories = await getCategories(req.user.id);
 
-		res.send({ error: null, data: categories.map(categoryMap) });
+		res.send({ error: null, categories: categories.map(categoryMap) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 	try {
 		const category = await getCategory(req.params.id);
 
-		res.send({ error: null, data: categoryMap(category) });
+		res.send({ error: null, category: categoryMap(category) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 	try {
 		const category = await createCategory({ ...req.body, user: req.user.id });
 
-		res.send({ error: null, data: categoryMap(category) });
+		res.send({ error: null, category: categoryMap(category) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}
@@ -41,7 +41,7 @@ router.patch('/:id', async (req, res) => {
 	try {
 		const category = await updateCategory(req.params.id, req.body);
 
-		res.send({ error: null, data: categoryMap(category) });
+		res.send({ error: null, category: categoryMap(category) });
 	} catch (error) {
 		res.send({ error: error.message || "Unknown error" });
 	}

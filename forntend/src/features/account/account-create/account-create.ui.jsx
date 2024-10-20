@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
 import { TOAST_TYPE } from '../../../shared/lib/toast';
+import { request } from '../../../shared/api';
 
 export const AccountCreateForm = ({ userId }) => {
 	const navigate = useNavigate();
@@ -18,11 +19,13 @@ export const AccountCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		// const { data: createdAccount } = await server.createAccount(submittedData);
+		const { account, error } = await request({ url: '/account', method: 'POST', data: submittedData });
 
 		setIsLoading(false);
 
-		// navigate(path.account.id(createdAccount.id), { replace: true });
+		if (error) return;
+
+		navigate(path.account.id(account.id), { replace: true });
 
 		showToast({ message: 'Счет создан', type: TOAST_TYPE.SUCCESS });
 	};
