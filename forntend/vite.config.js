@@ -10,6 +10,11 @@ const __dirname = dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [svgr(), react()],
+	server: {
+		proxy: {
+			'/api': 'http://localhost:3000',
+		},
+	},
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, 'src'),
