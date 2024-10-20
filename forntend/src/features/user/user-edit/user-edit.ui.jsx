@@ -1,4 +1,5 @@
 import css from './user-edit.module.scss';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateAuth } from '../../../entities/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,7 +7,6 @@ import { editUserFormRules } from './user-edit.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router/path';
 import { Button, Form, Input } from '../../../shared/ui/form-components';
-import { useState } from 'react';
 import { Block } from '../../../shared/ui/components';
 
 export const EditUserForm = ({ userData }) => {
@@ -19,7 +19,7 @@ export const EditUserForm = ({ userData }) => {
 
 		setIsLoading(true);
 
-		dispatch(updateAuth(submittedData)).then(() => {
+		dispatch(updateAuth(userData.id, submittedData)).then(() => {
 			setIsLoading(false);
 			navigate(path.home());
 		});

@@ -1,19 +1,23 @@
 import { defer } from 'react-router-dom';
 import { OPERATIONS_PER_LOAD } from '../../../entities/operation';
+import { request } from '../../../shared/api';
 
 const getAccounts = async () => {
-	// const response = await server.getAccounts();
-	// return response.data;
+	const { data } = await request({ url: '/accounts' });
+
+	return data;
 };
 
 const getOperations = async () => {
-	// const response = await server.getOperations({ limit: OPERATIONS_PER_LOAD });
-	// return response.data;
+	const { data } = await request({ url: '/operations' });
+
+	return data;
 };
 
 const getCategories = async () => {
-	// const response = await server.getCategories();
-	// return response.data;
+	const { data } = await request({ url: '/categories' });
+
+	return data;
 };
 
 export const mainPageLoader = async () => {

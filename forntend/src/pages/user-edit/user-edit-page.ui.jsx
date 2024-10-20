@@ -1,10 +1,11 @@
 import { EditUserForm } from '../../features/user';
-import { useAuth } from '../../app/providers/auth';
 import { Container } from '../../shared/ui/components';
 import { PageHeader } from '../../widgets/page-header';
+import { selectAuth } from '../../entities/auth';
+import { useSelector } from 'react-redux';
 
 export const UserEditPage = () => {
-	const { authUser } = useAuth();
+	const authUser = useSelector(selectAuth);
 
 	return (
 		<Container>
