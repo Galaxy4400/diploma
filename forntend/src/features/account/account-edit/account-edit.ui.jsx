@@ -6,7 +6,6 @@ import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { useState } from 'react';
-import { server } from '../../../shared/bff';
 import { Block, Fieldset } from '../../../shared/ui/components';
 
 export const AccountEditForm = () => {
@@ -17,7 +16,7 @@ export const AccountEditForm = () => {
 	const submitHandler = async (editData) => {
 		setIsLoading(true);
 
-		await server.updateAccount(account.id, editData);
+		// await server.updateAccount(account.id, editData);
 
 		setIsLoading(false);
 

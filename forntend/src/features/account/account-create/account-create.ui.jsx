@@ -6,7 +6,6 @@ import { path } from '../../../shared/lib/router';
 import { Button, Form, Hidden, Input, Radio, Textarea } from '../../../shared/ui/form-components';
 import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
 import { useState } from 'react';
-import { server } from '../../../shared/bff';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
 import { TOAST_TYPE } from '../../../shared/lib/toast';
@@ -19,11 +18,11 @@ export const AccountCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: createdAccount } = await server.createAccount(submittedData);
+		// const { data: createdAccount } = await server.createAccount(submittedData);
 
 		setIsLoading(false);
 
-		navigate(path.account.id(createdAccount.id), { replace: true });
+		// navigate(path.account.id(createdAccount.id), { replace: true });
 
 		showToast({ message: 'Счет создан', type: TOAST_TYPE.SUCCESS });
 	};

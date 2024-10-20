@@ -9,7 +9,6 @@ import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/f
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
-import { server } from '../../../shared/bff';
 import { IconCategory } from '../../../shared/ui/icons';
 
 export const CategoryEditForm = () => {
@@ -21,9 +20,9 @@ export const CategoryEditForm = () => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const response = await server.updateCategory(category.id, submittedData);
+		// const response = await server.updateCategory(category.id, submittedData);
 
-		dispatch(setCategory(response.data));
+		// dispatch(setCategory(response.data));
 
 		setIsLoading(false);
 

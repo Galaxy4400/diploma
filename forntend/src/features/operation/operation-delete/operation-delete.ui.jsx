@@ -1,7 +1,6 @@
 import css from './operation-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useFrom } from '../../../shared/lib/location';
-import { server } from '../../../shared/bff';
 import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
@@ -13,7 +12,7 @@ export const OperationDelete = ({ operationId }) => {
 	const { openModal, closeModal } = useModal();
 
 	const deleteOperation = async () => {
-		await server.deleteOperation(operationId);
+		// await server.deleteOperation(operationId);
 
 		navigate(from?.pathname || false, { replace: true });
 

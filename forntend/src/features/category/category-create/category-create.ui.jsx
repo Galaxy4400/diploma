@@ -8,7 +8,6 @@ import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
-import { server } from '../../../shared/bff';
 import { IconCategory } from '../../../shared/ui/icons';
 
 export const CategoryCreateForm = ({ userId }) => {
@@ -18,11 +17,11 @@ export const CategoryCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: createdCategory } = await server.createCategory(submittedData);
+		// const { data: createdCategory } = await server.createCategory(submittedData);
 
 		setIsLoading(false);
 
-		navigate(path.category.id(createdCategory.id), { replace: true });
+		// navigate(path.category.id(createdCategory.id), { replace: true });
 	};
 
 	return (

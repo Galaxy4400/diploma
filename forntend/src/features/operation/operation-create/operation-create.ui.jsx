@@ -5,7 +5,6 @@ import { operationCreateFormRules } from './operation-create.rules';
 import { path } from '../../../shared/lib/router';
 import { useFrom } from '../../../shared/lib/location';
 import { Button, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
-import { server } from '../../../shared/bff';
 import { Block } from '../../../shared/ui/components';
 import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
@@ -19,11 +18,11 @@ export const OperationCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		const { data: createdOperation } = await server.createOperation(submittedData);
+		// const { data: createdOperation } = await server.createOperation(submittedData);
 
 		setIsLoading(false);
 
-		navigate(path.operation.id(createdOperation.id), { replace: true });
+		// navigate(path.operation.id(createdOperation.id), { replace: true });
 	};
 
 	return (

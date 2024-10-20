@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { server } from '../../../../shared/bff';
 import { OPERATIONS_PER_LOAD } from '../../../../entities/operation';
 import { setFilter } from '../../../../entities/application';
 import { setOperations } from '../../../../entities/operations';
@@ -12,13 +11,13 @@ export const useOperationsFilter = () => {
 	const filterHandler = async (filterParams) => {
 		setIsLoading(true);
 
-		const { data: filteredOperations } = await server.getOperations({
-			...filterParams,
-			limit: OPERATIONS_PER_LOAD,
-		});
+		// const { data: filteredOperations } = await server.getOperations({
+		// 	...filterParams,
+		// 	limit: OPERATIONS_PER_LOAD,
+		// });
 
 		dispatch(setFilter(filterParams));
-		dispatch(setOperations(filteredOperations));
+		// dispatch(setOperations(filteredOperations));
 
 		setIsLoading(false);
 	};
