@@ -1,8 +1,10 @@
 import { defer } from 'react-router-dom';
+import { request } from '../../../shared/api';
 
-const getCategory = async (id) => {
-	// const response = await server.getCategory(id);
-	// return response.data;
+const getCategory = async (categoryId) => {
+	const { category } = await request({ url: `/categories/${categoryId}` });
+
+	return category;
 };
 
 export const categoryEditPageLoader = async ({ params }) => {

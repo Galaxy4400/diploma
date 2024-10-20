@@ -1,8 +1,7 @@
 import css from './category-edit.module.scss';
 import { categoryEditFormRules } from './category-edit.rules';
-import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { CATEGORY_TYPES, setCategory } from '../../../entities/category';
+import { CATEGORY_TYPES } from '../../../entities/category';
 import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
@@ -10,9 +9,9 @@ import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { IconCategory } from '../../../shared/ui/icons';
+import { request } from '../../../shared/api';
 
 export const CategoryEditForm = () => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const category = useAsyncValue();
 	const [isLoading, setIsLoading] = useState(false);
@@ -20,11 +19,15 @@ export const CategoryEditForm = () => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		// const response = await server.updateCategory(category.id, submittedData);
-
-		// dispatch(setCategory(response.data));
+		const { error } = await request({
+			url: `/categories/${category.id}`,
+			method: 'PATCH',
+			data: submittedData,
+		});
 
 		setIsLoading(false);
+
+		if (error) return;
 
 		navigate(path.category.id(category.id));
 	};
@@ -38,10 +41,10 @@ export const CategoryEditForm = () => {
 						{CATEGORY_TYPES.map((type) => (
 							<Radio
 								key={type.id}
-								name="typeId"
+								name="type"
 								value={type.id}
 								label={type.name}
-								defaultChecked={type.id === category.typeId}
+								defaultChecked={type.id === category.type}
 							/>
 						))}
 					</div>
