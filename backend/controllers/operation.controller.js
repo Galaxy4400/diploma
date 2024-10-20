@@ -9,8 +9,8 @@ const getOperation = async (id) => {
 
 	await operation.populate([
 		{ path: 'user', select: 'login' },
-		{ path: 'account', select: 'name' },
-		{ path: 'category', select: 'name' },
+		{ path: 'account', select: 'name type' },
+		{ path: 'category', select: 'name icon type' },
 	]);
 
 	return operation;
@@ -24,8 +24,8 @@ const getOperations = async (search, { limit, page }) => {
 			.sort({ createdAt: -1 })
 			.populate([
 				{ path: 'user', select: 'login' },
-				{ path: 'account', select: 'name' },
-				{ path: 'category', select: 'name' },
+				{ path: 'account', select: 'name type' },
+				{ path: 'category', select: 'name icon type' },
 			]),
 		Operation.countDocuments(search),
 	]);
@@ -39,19 +39,17 @@ const getOperations = async (search, { limit, page }) => {
 	};
 };
 
-const createOperation = async (userId, accountId, categoryId, operationData) => {
+const createOperation = async (userId, operationData) => {
 	const operation = await Operation.create({
 		...operationData,
 		user: userId,
-		account: accountId,
-		category: categoryId,
 		status: true,
 	});
 
 	await operation.populate([
 		{ path: 'user', select: 'login' },
-		{ path: 'account', select: 'name' },
-		{ path: 'category', select: 'name' },
+		{ path: 'account', select: 'name type' },
+		{ path: 'category', select: 'name icon type' },
 	]);
 
 	return operation;

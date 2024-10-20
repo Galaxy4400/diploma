@@ -1,8 +1,10 @@
 import { defer } from 'react-router-dom';
+import { request } from '../../../shared/api';
 
-const getOperation = async (id) => {
-	// const response = await server.getOperation(id);
-	// return response.data;
+const getOperation = async (opeartionId) => {
+	const { operation } = await request({ url: `/operations/${opeartionId}` });
+
+	return operation;
 };
 
 export const operationPageLoader = async ({ params }) => {

@@ -59,9 +59,9 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-router.post('/account/:accountId/category/:categoryId', async (req, res) => {
+router.post('/', async (req, res) => {
 	try {
-		const operation = await createOperation(req.user.id, req.params.accountId, req.params.categoryId, req.body);
+		const operation = await createOperation(req.user.id, req.body);
 
 		res.send({ error: null, operation: operationMap(operation) });
 	} catch (error) {

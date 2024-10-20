@@ -12,7 +12,7 @@ import { RegisterPage } from '../../pages/register';
 import { OperationPage, operationPageLoader } from '../../pages/operation';
 import { AnalyticsPage, analyticsPageLoader } from '../../pages/analytics';
 import { HistoryPage, historyPageLoader } from '../../pages/history';
-import { OperationCreatePage, operationCreatePageLoader } from '../../pages/operation-create';
+import { OperationCreatePage } from '../../pages/operation-create';
 import { CategoryPage, categoryPageLoader } from '../../pages/category';
 import { CategoryCreatePage } from '../../pages/category-create';
 import { CategoryEditPage, categoryEditPageLoader } from '../../pages/category-edit';
@@ -78,7 +78,6 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.operation.create(),
 				element: <OperationCreatePage />,
-				loader: operationCreatePageLoader,
 			},
 			{
 				path: path.category.root(),

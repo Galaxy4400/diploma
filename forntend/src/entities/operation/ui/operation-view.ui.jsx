@@ -7,7 +7,7 @@ import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { ICON } from '../../../shared/lib/icons';
 
 export const OperationView = ({ operation, deleteSlot }) => {
-	const amountTypeClass = operation?.category.typeId === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
 		<Block className={css['view']}>

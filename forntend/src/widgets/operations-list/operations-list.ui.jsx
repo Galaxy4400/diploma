@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export const OperationsList = () => {
 	const operations = useSelector(selectOperations);
-
+	console.log(operations);
 	return (
 		<div className={css['list']}>
 			{operations.length ? (

@@ -5,6 +5,7 @@ import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
+import { request } from '../../../shared/api';
 
 export const OperationDelete = ({ operationId }) => {
 	const navigate = useNavigate();
@@ -12,7 +13,9 @@ export const OperationDelete = ({ operationId }) => {
 	const { openModal, closeModal } = useModal();
 
 	const deleteOperation = async () => {
-		// await server.deleteOperation(operationId);
+		const { error } = await request({ url: `/operations/${operationId}`, method: 'DELETE' });
+
+		if (error) return;
 
 		navigate(from?.pathname || false, { replace: true });
 

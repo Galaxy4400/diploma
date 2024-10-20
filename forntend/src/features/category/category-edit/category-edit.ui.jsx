@@ -1,11 +1,11 @@
 import css from './category-edit.module.scss';
+import { useState } from 'react';
 import { categoryEditFormRules } from './category-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CATEGORY_TYPES } from '../../../entities/category';
 import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
-import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { IconCategory } from '../../../shared/ui/icons';

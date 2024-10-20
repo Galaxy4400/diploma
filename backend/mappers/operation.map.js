@@ -5,8 +5,8 @@ module.exports = (operation) => {
 		amount: operation.amount,
 		status: operation.status,
 		user: operation.user.login,
-		account: operation.account.name,
-		category: operation.category.name,
+		account: operation.account,
+		category: operation.category,
 		createdAt: operation.createdAt,
 	}
 }

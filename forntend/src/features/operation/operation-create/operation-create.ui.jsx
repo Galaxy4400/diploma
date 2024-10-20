@@ -4,12 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { operationCreateFormRules } from './operation-create.rules';
 import { path } from '../../../shared/lib/router';
 import { useFrom } from '../../../shared/lib/location';
-import { Button, Form, Hidden, Input, Select } from '../../../shared/ui/form-components';
+import { Button, Form, Input, Select } from '../../../shared/ui/form-components';
 import { Block } from '../../../shared/ui/components';
 import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
+import { request } from '../../../shared/api';
 
-export const OperationCreateForm = ({ userId }) => {
+export const OperationCreateForm = () => {
 	const navigate = useNavigate();
 	const from = useFrom();
 	const { accountOptions, categoryOptions } = useLoadOptions();
@@ -18,27 +19,28 @@ export const OperationCreateForm = ({ userId }) => {
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		// const { data: createdOperation } = await server.createOperation(submittedData);
+		const { operation, error } = await request({ url: '/operations', method: 'POST', data: submittedData });
 
 		setIsLoading(false);
 
-		// navigate(path.operation.id(createdOperation.id), { replace: true });
+		if (error) return;
+
+		navigate(path.operation.id(operation.id), { replace: true });
 	};
 
 	return (
 		<Block className={css['block']}>
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(operationCreateFormRules)}>
-				<Hidden name="userId" defaultValue={userId} />
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Select
-					name="accountId"
+					name="account"
 					options={accountOptions}
 					defaultValue={from?.accountId || ''}
 					label="Счет операции"
 					placeholder=""
 				/>
 				<Select
-					name="categoryId"
+					name="category"
 					options={categoryOptions}
 					defaultValue=""
 					label="Категория операции"

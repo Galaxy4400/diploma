@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { request } from '../api/request';
 
 export const useLoadOptions = () => {
 	const [accountOptions, setAccountOptions] = useState([]);
@@ -6,20 +7,24 @@ export const useLoadOptions = () => {
 
 	useEffect(() => {
 		const loadOptions = async () => {
-			// const { data: accounts } = await server.getAccounts();
-			// const { data: categories } = await server.getCategories();
-			// setAccountOptions(
-			// 	accounts.map((account) => ({
-			// 		value: account.id,
-			// 		label: account.name,
-			// 	})),
-			// );
-			// setCategoryOptions(
-			// 	categories.map((category) => ({
-			// 		value: category.id,
-			// 		label: category.name,
-			// 	})),
-			// );
+			const [accountsResponse, categoriesResponse] = await Promise.all([
+				request({ url: '/accounts' }),
+				request({ url: '/categories' }),
+			]);
+
+			setAccountOptions(
+				accountsResponse.accounts.map((account) => ({
+					value: account.id,
+					label: account.name,
+				})),
+			);
+
+			setCategoryOptions(
+				categoriesResponse.categories.map((category) => ({
+					value: category.id,
+					label: category.name,
+				})),
+			);
 		};
 
 		loadOptions();
