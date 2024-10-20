@@ -21,7 +21,7 @@ export const CategoryView = ({ category, deleteSlot }) => {
 				</div>
 				<div>
 					<dt>Тип:</dt>
-					<dd>{getCategoryType(category.typeId)?.name}</dd>
+					<dd>{getCategoryType(category.type)?.name}</dd>
 				</div>
 				<div>
 					<dt>Иконка:</dt>

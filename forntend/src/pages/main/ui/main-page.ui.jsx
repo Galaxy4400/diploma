@@ -27,7 +27,7 @@ export const MainPage = () => {
 					element={<OperationsMain operationsListSlot={<OperationsList />} />}
 					fallback={<Loading />}
 				/> */}
-				{/* <AsyncComponent resolve={categories} element={<CategoriesMain />} fallback={<Loading />} /> */}
+				<AsyncComponent resolve={categories} element={<CategoriesMain />} fallback={<Loading />} />
 			</div>
 		</Container>
 	);

@@ -5,6 +5,7 @@ import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
+import { request } from '../../../shared/api';
 
 export const CategoryDelete = ({ categoryId }) => {
 	const navigate = useNavigate();
@@ -12,7 +13,9 @@ export const CategoryDelete = ({ categoryId }) => {
 	const { openModal, closeModal } = useModal();
 
 	const deleteCategory = async () => {
-		// await server.deleteCategory(categoryId);
+		const { error } = await request({ url: `/categories/${categoryId}`, method: 'DELETE' });
+
+		if (error) return;
 
 		navigate(from?.pathname || false, { replace: true });
 

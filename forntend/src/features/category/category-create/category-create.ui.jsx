@@ -9,30 +9,32 @@ import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { IconCategory } from '../../../shared/ui/icons';
+import { request } from '../../../shared/api';
 
-export const CategoryCreateForm = ({ userId }) => {
+export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
 		setIsLoading(true);
 
-		// const { data: createdCategory } = await server.createCategory(submittedData);
+		const { category, error } = await request({ url: '/categories', method: 'POST', data: submittedData });
 
 		setIsLoading(false);
 
-		// navigate(path.category.id(createdCategory.id), { replace: true });
+		if (error) return;
+
+		navigate(path.category.id(category.id), { replace: true });
 	};
 
 	return (
 		<Block className={css['block']}>
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(categoryCreateFormRules)}>
-				<Hidden name="userId" defaultValue={userId} />
 				<Input type="text" name="name" label="Название категории" />
 				<Fieldset label="Тип категории">
 					<div className={css['radiobuttons']}>
 						{CATEGORY_TYPES.map((type, i) => (
-							<Radio key={type.id} name="typeId" value={type.id} label={type.name} defaultChecked={!i} />
+							<Radio key={type.id} name="type" value={type.id} label={type.name} defaultChecked={!i} />
 						))}
 					</div>
 				</Fieldset>

@@ -15,7 +15,7 @@ export const CategoryItem = ({ category, deleteSlot }) => {
 				</figure>
 				<div className={css['info']}>
 					<span className={css['name']}>{category.name}</span>
-					<span className={css['type']}>{getCategoryTypeName(category.typeId)}</span>
+					<span className={css['type']}>{getCategoryTypeName(category.type)}</span>
 				</div>
 			</Link>
 			<div className={css['delete']}>{deleteSlot}</div>
