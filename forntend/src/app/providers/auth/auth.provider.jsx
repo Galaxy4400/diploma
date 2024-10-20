@@ -2,8 +2,7 @@ import { useDispatch } from 'react-redux';
 import { AuthContext } from './auth.context';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { resetAuth, setAuth } from '../../../entities/auth';
-import { SESSION_KEY_NAME } from '../../../shared/lib/session';
-import { server } from '../../../shared/bff';
+import { request } from '../../../shared/api';
 
 export const AuthProvider = ({ children }) => {
 	const dispatch = useDispatch();
@@ -11,26 +10,20 @@ export const AuthProvider = ({ children }) => {
 
 	const authorize = useCallback(
 		async (login, password) => {
-			const { data: authUser, ok, error } = await server.authorize(login, password);
+			const { user, error } = await request({ url: '/login', method: 'POST', data: { login, password } });
 
-			if (!ok) {
-				return error;
-			}
+			if (error) return;
 
-			dispatch(setAuth(authUser));
-
-			sessionStorage.setItem(SESSION_KEY_NAME, authUser.session);
+			dispatch(setAuth(user));
 		},
 		[dispatch],
 	);
 
 	const registration = useCallback(
 		async (login, password) => {
-			const response = await server.register(login, password);
+			const { error } = await request({ url: '/register', method: 'POST', data: { login, password } });
 
-			if (!response.ok) {
-				return;
-			}
+			if (error) return;
 
 			authorize(login, password);
 		},
@@ -38,26 +31,28 @@ export const AuthProvider = ({ children }) => {
 	);
 
 	const logout = useCallback(async () => {
-		await server.logout();
+		const { error } = await request({ url: '/logout', method: 'POST' });
+
+		if (error) return;
 
 		dispatch(resetAuth());
-
-		sessionStorage.removeItem(SESSION_KEY_NAME);
 	}, [dispatch]);
 
 	useLayoutEffect(() => {
-		const storageSession = sessionStorage.getItem(SESSION_KEY_NAME);
+		const loginCheck = async () => {
+			const { user, error } = await request({ url: '/me' });
 
-		if (!storageSession) {
-			logout();
+			if (error) {
+				logout();
+				setIsAuthInitialize(true);
+				return;
+			}
+
+			dispatch(setAuth(user));
 			setIsAuthInitialize(true);
-			return;
-		}
+		};
 
-		server
-			.getAuthUser(storageSession)
-			.then(({ data: user }) => user && dispatch(setAuth(user)))
-			.then(() => setIsAuthInitialize(true));
+		loginCheck();
 	}, [dispatch, logout]);
 
 	return (

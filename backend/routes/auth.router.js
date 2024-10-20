@@ -33,7 +33,7 @@ router.post('/logout', async (req, res) => {
 });
 
 router.get('/me', authenticated, async (req, res) => {
-	res.send({ user: mapUser(req.user) });
+	res.send({ error: null, user: mapUser(req.user) });
 });
 
 module.exports = router;
