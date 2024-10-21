@@ -13,11 +13,13 @@ export const AuthProvider = ({ children }) => {
 		async (login, password) => {
 			const { user, error } = await request({ url: '/login', method: 'POST', data: { login, password } });
 
-			if (error) return;
+			if (error) return { error };
 
 			dispatch(setAuth(user));
 
 			setIsAuth(true);
+
+			return { user };
 		},
 		[dispatch],
 	);
@@ -26,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 		async (login, password) => {
 			const { error } = await request({ url: '/register', method: 'POST', data: { login, password } });
 
-			if (error) return;
+			if (error) return { error };
 
 			authorize(login, password);
 		},

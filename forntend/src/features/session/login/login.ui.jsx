@@ -23,9 +23,15 @@ export const LoginForm = () => {
 	const loginHandler = async ({ login, password }) => {
 		setIsLoading(true);
 
-		await authorize(login, password);
+		const { error } = await authorize(login, password);
 
 		setIsLoading(false);
+
+		if (error) {
+			showToast({ message: error, type: TOAST_TYPE.ERROR });
+
+			return;
+		}
 
 		navigate(from?.pathname || path.home());
 

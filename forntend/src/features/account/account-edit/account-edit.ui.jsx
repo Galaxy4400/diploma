@@ -8,10 +8,13 @@ import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-co
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue();
 	const navigate = useNavigate();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (editData) => {
@@ -25,9 +28,14 @@ export const AccountEditForm = () => {
 
 		setIsLoading(false);
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(path.account.id(account.id));
+
+		showToast({ message: 'Изменения внесены', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (

@@ -7,17 +7,22 @@ import { useState } from 'react';
 import { Block } from '../../../shared/ui/components';
 import { Link } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const RegisterForm = () => {
 	const { registration, registrationError } = useAuth();
 	const [isLoading, setIsLoading] = useState(false);
+	const { showToast } = useToast();
 
 	const submitHandler = async ({ login, password }) => {
 		setIsLoading(true);
 
-		await registration(login, password);
+		const { error } = await registration(login, password);
 
 		setIsLoading(false);
+
+		showToast({ message: error, type: TOAST_TYPE.ERROR });
 	};
 
 	return (

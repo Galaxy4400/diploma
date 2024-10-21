@@ -23,7 +23,11 @@ export const AccountCreateForm = () => {
 
 		setIsLoading(false);
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Не удалось создать счет', type: TOAST_TYPE.ERROR });
+
+			return;
+		}
 
 		navigate(path.account.id(account.id), { replace: true });
 

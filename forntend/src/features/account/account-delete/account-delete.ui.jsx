@@ -18,13 +18,16 @@ export const AccountDelete = ({ accountId }) => {
 	const deleteAccount = async () => {
 		const { error } = await request({ url: `/accounts/${accountId}`, method: 'DELETE' });
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(from?.pathname || false, { replace: true });
 
 		closeModal();
 
-		showToast({ message: 'Счет удален', type: TOAST_TYPE.WARNING });
+		showToast({ message: 'Счет удален', type: TOAST_TYPE.SUCCESS });
 	};
 
 	const deleteHandler = () => {
