@@ -2,6 +2,7 @@ const express = require('express');
 const authenticated = require('../middlewares/authenticated');
 const { createOperation, getOperations, getOperation, deleteOperation } = require('../controllers/operation.controller');
 const operationMap = require('../mappers/operation.map');
+const { buildOperationsSearch } = require('../services/build-operations-search');
 
 const router = express.Router({ mergeParams: true });
 
@@ -14,22 +15,7 @@ router.get('/', async (req, res) => {
 			limit: +req.query.limit || null,
 		};
 
-		const search = {
-			user: req.user.id,
-		}
-
-		// if (req.query.account) search.account = accountId;
-		// if (req.query.category) search.category = categoryId;
-		// if (req.query.daterange) {
-		// 	search.date = {};
-		// 	if (startDate) search.date.$gte = new Date(startDate);
-		// 	if (endDate) search.date.$lte = new Date(endDate);
-		// }
-		// if (amountrange) {
-		// 	search.amount = {};
-		// 	if (minAmount) search.amount.$gte = +minAmount;
-		// 	if (maxAmount) search.amount.$lte = +maxAmount;
-		// }
+		const search = buildOperationsSearch(req);
 
 		const operationsPagination = await getOperations(search, pagination);
 

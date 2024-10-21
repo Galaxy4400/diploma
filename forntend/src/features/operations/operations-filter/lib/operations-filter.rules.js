@@ -20,8 +20,8 @@ const daterangeRules = yup
 	.transform((value) => {
 		if (!value || (!value[0] && !value[1])) return undefined;
 
-		const startDate = value[0] ? format(startOfDay(value[0]), DATETIME_FORMAT) : undefined;
-		const endDate = value[1] ? format(endOfDay(value[1]), DATETIME_FORMAT) : undefined;
+		const startDate = value[0] ? startOfDay(value[0]).toISOString() : undefined;
+		const endDate = value[1] ? endOfDay(value[1]).toISOString() : undefined;
 
 		return [startDate, endDate];
 	});

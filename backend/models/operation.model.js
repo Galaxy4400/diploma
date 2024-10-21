@@ -32,6 +32,4 @@ const OperationSchema = new Schema({
 
 const Operation = mongoose.model('Operation', OperationSchema);
 
-Operation.createIndexes();
-
 module.exports = Operation;

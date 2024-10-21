@@ -26,6 +26,4 @@ const AccountSchema = new Schema({
 
 const Account = mongoose.model('Account', AccountSchema);
 
-Account.createIndexes();
-
 module.exports = Account;
