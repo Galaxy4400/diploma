@@ -6,20 +6,28 @@ import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const CategoryDelete = ({ categoryId }) => {
 	const navigate = useNavigate();
 	const from = useFrom();
+	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 
 	const deleteCategory = async () => {
 		const { error } = await request({ url: `/categories/${categoryId}`, method: 'DELETE' });
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(from?.pathname || false, { replace: true });
 
 		closeModal();
+
+		showToast({ message: 'Категория удалена', type: TOAST_TYPE.SUCCESS });
 	};
 
 	const deleteHandler = () => {

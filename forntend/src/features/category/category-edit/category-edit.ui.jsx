@@ -10,10 +10,13 @@ import { Block, Fieldset } from '../../../shared/ui/components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();
 	const category = useAsyncValue();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
@@ -27,9 +30,14 @@ export const CategoryEditForm = () => {
 
 		setIsLoading(false);
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(path.category.id(category.id));
+
+		showToast({ message: 'Изменения внесены', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (

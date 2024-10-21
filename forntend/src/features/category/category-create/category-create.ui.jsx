@@ -3,16 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
 import { CATEGORY_TYPES } from '../../../entities/category';
-import { Button, Form, Hidden, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
+import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
 import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData) => {
@@ -22,9 +25,14 @@ export const CategoryCreateForm = () => {
 
 		setIsLoading(false);
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(path.category.id(category.id), { replace: true });
+
+		showToast({ message: 'Категория создана', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (
