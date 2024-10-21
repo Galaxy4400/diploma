@@ -10,10 +10,10 @@ const buildOperationsSearch = ({ user, query }) => {
 	if (query.daterange) {
 		const [startDate, endDate] = query.daterange.split(',');
 
-		search.date = {};
+		search.createdAt = {};
 
-		if (startDate) search.date.$gte = startDate;
-		if (endDate) search.date.$lte = endDate;
+		if (startDate) search.createdAt.$gte = startDate;
+		if (endDate) search.createdAt.$lte = endDate;
 	}
 
 	if (query.amountrange) {
@@ -28,4 +28,4 @@ const buildOperationsSearch = ({ user, query }) => {
 	return search;
 }
 
-module.exports = { buildOperationsSearch };
+module.exports = buildOperationsSearch;

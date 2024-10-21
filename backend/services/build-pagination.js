@@ -5,4 +5,4 @@ const buildPagination = ({ query }) => {
 	};
 };
 
-module.exports = { buildPagination };
+module.exports = buildPagination;
