@@ -9,10 +9,13 @@ import { Block } from '../../../shared/ui/components';
 import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const OperationCreateForm = () => {
 	const navigate = useNavigate();
 	const from = useFrom();
+	const { showToast } = useToast();
 	const { accountOptions, categoryOptions } = useLoadOptions();
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -23,9 +26,14 @@ export const OperationCreateForm = () => {
 
 		setIsLoading(false);
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(path.operation.id(operation.id), { replace: true });
+
+		showToast({ message: 'Операция создана', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (

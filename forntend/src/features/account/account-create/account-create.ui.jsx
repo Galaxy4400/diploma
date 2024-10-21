@@ -24,8 +24,7 @@ export const AccountCreateForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: 'Не удалось создать счет', type: TOAST_TYPE.ERROR });
-
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
 			return;
 		}
 

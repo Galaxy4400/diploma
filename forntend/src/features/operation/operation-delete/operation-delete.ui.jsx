@@ -6,20 +6,28 @@ import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
 import { request } from '../../../shared/api';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const OperationDelete = ({ operationId }) => {
 	const navigate = useNavigate();
+	const { showToast } = useToast();
 	const from = useFrom();
 	const { openModal, closeModal } = useModal();
 
 	const deleteOperation = async () => {
 		const { error } = await request({ url: `/operations/${operationId}`, method: 'DELETE' });
 
-		if (error) return;
+		if (error) {
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			return;
+		}
 
 		navigate(from?.pathname || false, { replace: true });
 
 		closeModal();
+
+		showToast({ message: 'Операция удалена', type: TOAST_TYPE.SUCCESS });
 	};
 
 	const deleteHandler = () => {
