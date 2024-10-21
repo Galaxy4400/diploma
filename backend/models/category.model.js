@@ -5,6 +5,7 @@ const CategorySchema = new Schema({
 	name: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	icon: {
 		type: String,
@@ -20,6 +21,9 @@ const CategorySchema = new Schema({
 		required: true,
 	},
 }, { timestamps: true });
+
+CategorySchema.index({ user: 1 });
+CategorySchema.index({ name: 1 });
 
 const Category = mongoose.model('Category', CategorySchema);
 

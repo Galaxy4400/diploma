@@ -5,6 +5,7 @@ const AccountSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	amount: {
 		type: Number,
@@ -23,6 +24,9 @@ const AccountSchema = new Schema({
 		type: String,
 	},
 }, { timestamps: true });
+
+AccountSchema.index({ name: 1 });
+AccountSchema.index({ user: 1 });
 
 const Account = mongoose.model('Account', AccountSchema);
 

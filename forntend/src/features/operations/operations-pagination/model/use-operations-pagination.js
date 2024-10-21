@@ -26,15 +26,9 @@ export const useOperationsPagination = (accountId = null) => {
 			query: {
 				limit: OPERATIONS_PER_LOAD,
 				page: Math.ceil(operations.length / OPERATIONS_PER_LOAD) + 1,
+				...filterParams,
 			},
 		});
-
-		// const { data: newOperations } = await server.getOperations({
-		// 	...filterParams,
-		// 	...(accountId ? { accountId } : {}),
-		// 	limit: OPERATIONS_PER_LOAD,
-		// 	start: operations.length,
-		// });
 
 		dispatch(addOperations(pagingData.items));
 

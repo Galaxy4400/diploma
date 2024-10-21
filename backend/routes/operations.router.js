@@ -11,7 +11,7 @@ router.use(authenticated);
 
 router.get('/', async (req, res) => {
 	try {
-		const pagination = buildPagination();
+		const pagination = buildPagination(req);
 		const search = buildOperationsSearch(req);
 
 		const operationsPagination = await getOperations(search, pagination);
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 
 router.get('/account/:accountId', async (req, res) => {
 	try {
-		const pagination = buildPagination();
+		const pagination = buildPagination(req);
 
 		const search = {
 			user: req.user.id,

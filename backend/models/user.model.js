@@ -14,6 +14,7 @@ const UserSchema = new Schema({
 	email: {
 		type: String,
 		match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+		unique: true,
 	},
 	name: {
 		type: String,
@@ -25,6 +26,9 @@ const UserSchema = new Schema({
 		type: String,
 	},
 }, { timestamps: true });
+
+UserSchema.index({ login: 1 });
+UserSchema.index({ email: 1 });
 
 const User = mongoose.model('User', UserSchema);
 
