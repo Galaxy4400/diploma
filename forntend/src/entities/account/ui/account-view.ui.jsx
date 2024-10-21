@@ -6,6 +6,8 @@ import { Block } from '../../../shared/ui/components';
 import { Icon } from '../../../shared/ui/icons';
 import { ICON } from '../../../shared/lib/icons';
 import { priceFormat } from '../../../shared/lib/utils';
+import { format } from 'date-fns';
+import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 
 export const AccountView = ({ account, deleteSlot }) => {
 	return (
@@ -14,7 +16,7 @@ export const AccountView = ({ account, deleteSlot }) => {
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{account.createdAt}</dd>
+					<dd>{format(account.createdAt, DATETIME_FORMAT)}</dd>
 				</div>
 				<div>
 					<dt>Название:</dt>

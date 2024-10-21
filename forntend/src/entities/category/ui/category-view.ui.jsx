@@ -5,6 +5,8 @@ import { getCategoryType } from '../lib';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { Block } from '../../../shared/ui/components';
 import { ICON } from '../../../shared/lib/icons';
+import { format } from 'date-fns';
+import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 
 export const CategoryView = ({ category, deleteSlot }) => {
 	return (
@@ -13,7 +15,7 @@ export const CategoryView = ({ category, deleteSlot }) => {
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{category.createdAt}</dd>
+					<dd>{format(category.createdAt, DATETIME_FORMAT)}</dd>
 				</div>
 				<div>
 					<dt>Название:</dt>

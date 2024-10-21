@@ -5,6 +5,8 @@ import { priceFormat } from '../../../shared/lib/utils';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { ICON } from '../../../shared/lib/icons';
+import { format } from 'date-fns';
+import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 
 export const OperationView = ({ operation, deleteSlot }) => {
 	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
@@ -20,7 +22,7 @@ export const OperationView = ({ operation, deleteSlot }) => {
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{operation.createdAt}</dd>
+					<dd>{format(operation.createdAt, DATETIME_FORMAT)}</dd>
 				</div>
 				<div>
 					<dt>Тип:</dt>

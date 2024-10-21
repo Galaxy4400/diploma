@@ -6,6 +6,8 @@ import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 import { CATEGORY_TYPE } from '../../category';
 import { ICON } from '../../../shared/lib/icons';
+import { format } from 'date-fns';
+import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 
 export const OperationItem = ({ operation, deleteSlot }) => {
 	const location = useLocation();
@@ -24,7 +26,7 @@ export const OperationItem = ({ operation, deleteSlot }) => {
 				</figure>
 				<div className={css['info']}>
 					<span>{operation?.category.name}</span>
-					<span className={css['datetime']}>{operation.createdAt}</span>
+					<span className={css['datetime']}>{format(operation.createdAt, DATETIME_FORMAT)}</span>
 					<span className={cn(css['amount'], amountTypeClass)}>{priceFormat(operation.amount)}</span>
 					<span>Счет: {operation?.account.name}</span>
 				</div>
