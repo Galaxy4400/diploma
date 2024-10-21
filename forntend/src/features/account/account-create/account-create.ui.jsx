@@ -43,7 +43,7 @@ export const AccountCreateForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" label="Сумма" />
 				<Textarea name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Создать счет
 				</Button>
 			</Form>

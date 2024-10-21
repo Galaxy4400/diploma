@@ -58,7 +58,7 @@ export const CategoryEditForm = () => {
 						))}
 					</div>
 				</Fieldset>
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Внести изменения
 				</Button>
 			</Form>

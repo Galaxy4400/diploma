@@ -21,10 +21,10 @@ export const OperationsFilter = () => {
 					<PriceRange name="amountrange" label="По цене" />
 				</div>
 				<div className={css['actions']}>
-					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>
+					<Button className={css['reset']} type="button" isReset={true} isTrigger={true} loading={isLoading}>
 						Сбросить
 					</Button>
-					<Button type="submit" disabled={isLoading}>
+					<Button type="submit" disabled={isLoading} loading={isLoading}>
 						Применить
 					</Button>
 				</div>

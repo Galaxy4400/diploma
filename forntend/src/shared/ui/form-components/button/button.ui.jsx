@@ -8,6 +8,7 @@ export const Button = ({
 	label,
 	isReset = false,
 	isTrigger = false,
+	loading,
 	...rest
 }) => {
 	const { reset, handleSubmit, onSubmit } = useFormContext();
@@ -19,7 +20,7 @@ export const Button = ({
 	};
 
 	return (
-		<ButtonComponent className={className} type={type} onClick={clickHandler} {...rest}>
+		<ButtonComponent className={className} type={type} loading={loading} onClick={clickHandler} {...rest}>
 			{label || children}
 		</ButtonComponent>
 	);

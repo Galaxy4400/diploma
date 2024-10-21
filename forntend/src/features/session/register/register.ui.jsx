@@ -27,7 +27,7 @@ export const RegisterForm = () => {
 				<Input type="text" name="login" label="Логин" />
 				<Input type="password" name="password" label="Пароль" />
 				<Input type="password" name="passcheck" label="Повторите пароль" />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Зарегистрироваться
 				</Button>
 			</Form>

@@ -47,7 +47,7 @@ export const OperationCreateForm = () => {
 					placeholder=""
 				/>
 				<Input type="text" name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Создать операцию
 				</Button>
 			</Form>

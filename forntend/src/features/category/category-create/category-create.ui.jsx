@@ -47,7 +47,7 @@ export const CategoryCreateForm = () => {
 						))}
 					</div>
 				</Fieldset>
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Создать категорию
 				</Button>
 			</Form>

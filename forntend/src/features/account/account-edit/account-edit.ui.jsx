@@ -49,7 +49,7 @@ export const AccountEditForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" defaultValue={account.amount} label="Сумма" />
 				<Textarea name="comment" label="Комментарий" defaultValue={account.comment} />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Внести изменения
 				</Button>
 			</Form>

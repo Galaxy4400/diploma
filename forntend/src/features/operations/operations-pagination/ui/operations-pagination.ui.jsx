@@ -8,7 +8,7 @@ export const OperationsPagination = ({ accountId = null }) => {
 	return (
 		<div className={css['block']}>
 			{!isLoadedAll ? (
-				<Button className={css['button']} onClick={loadHandler} disabled={isLoading}>
+				<Button className={css['button']} onClick={loadHandler} disabled={isLoading} loading={isLoading}>
 					Загрузить ещё
 				</Button>
 			) : (

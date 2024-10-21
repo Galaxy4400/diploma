@@ -38,7 +38,7 @@ export const LoginForm = () => {
 			<Form className={css['form']} onSubmit={loginHandler} resolver={yupResolver(loginFormRules)}>
 				<Input type="text" name="login" label="Логин" />
 				<Input type="password" name="password" label="Пароль" />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Войти
 				</Button>
 			</Form>

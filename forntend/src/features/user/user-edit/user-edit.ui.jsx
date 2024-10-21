@@ -35,7 +35,7 @@ export const EditUserForm = ({ userData }) => {
 				<Input type="text" name="address" defaultValue={userData.address} label="Адрес" />
 				<Input type="password" name="password" label="Пароль" />
 				<Input type="password" name="passcheck" label="Повторите пароль" />
-				<Button type="submit" disabled={isLoading}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Внести изменения
 				</Button>
 			</Form>
