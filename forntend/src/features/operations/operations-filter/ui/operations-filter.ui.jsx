@@ -18,7 +18,7 @@ export const OperationsFilter = () => {
 					<Select name="account" options={accountOptions} label="По счету" placeholder="" />
 					<Select name="category" options={categoryOptions} label="По категории" placeholder="" />
 					<DateRange name="daterange" label="По дате" />
-					<PriceRange name="pricerange" label="По цене" />
+					<PriceRange name="amountrange" label="По цене" />
 				</div>
 				<div className={css['actions']}>
 					<Button className={css['reset']} type="button" isReset={true} isTrigger={true}>

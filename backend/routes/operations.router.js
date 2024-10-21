@@ -8,7 +8,6 @@ const router = express.Router({ mergeParams: true });
 router.use(authenticated);
 
 router.get('/', async (req, res) => {
-	console.log(req.query);
 	try {
 		const pagination = {
 			page: +req.query.page || 1,
@@ -18,6 +17,19 @@ router.get('/', async (req, res) => {
 		const search = {
 			user: req.user.id,
 		}
+
+		// if (req.query.account) search.account = accountId;
+		// if (req.query.category) search.category = categoryId;
+		// if (req.query.daterange) {
+		// 	search.date = {};
+		// 	if (startDate) search.date.$gte = new Date(startDate);
+		// 	if (endDate) search.date.$lte = new Date(endDate);
+		// }
+		// if (amountrange) {
+		// 	search.amount = {};
+		// 	if (minAmount) search.amount.$gte = +minAmount;
+		// 	if (maxAmount) search.amount.$lte = +maxAmount;
+		// }
 
 		const operationsPagination = await getOperations(search, pagination);
 
