@@ -1,17 +1,20 @@
 import css from './user-edit.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateAuth } from '../../../entities/auth';
+import { updateAuthAsync } from '../../../entities/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editUserFormRules } from './user-edit.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router/path';
 import { Button, Form, Input } from '../../../shared/ui/form-components';
 import { Block } from '../../../shared/ui/components';
+import { useToast } from '../../../app/providers/toast';
+import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const EditUserForm = ({ userData }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = (submittedData) => {
@@ -19,9 +22,10 @@ export const EditUserForm = ({ userData }) => {
 
 		setIsLoading(true);
 
-		dispatch(updateAuth(userData.id, submittedData)).then(() => {
+		dispatch(updateAuthAsync(userData.id, submittedData)).then(() => {
 			setIsLoading(false);
 			navigate(path.home());
+			showToast({ message: 'Изменения внесены', type: TOAST_TYPE.SUCCESS });
 		});
 	};
 

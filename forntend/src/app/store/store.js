@@ -1,5 +1,4 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import { thunk } from 'redux-thunk';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { authReducer } from '../../entities/auth';
 import { accountReducer } from '../../entities/account';
 import { operationReducer } from '../../entities/operation';
@@ -16,6 +15,4 @@ const rootReducer = combineReducers({
 	operations: operationsReducer,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+export const store = configureStore({ reducer: rootReducer });

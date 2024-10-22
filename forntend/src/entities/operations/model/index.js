@@ -1,3 +1,2 @@
-export * from './operations.reducer';
+export * from './operations.slice';
 export * from './operations.selectors';
-export * from './operations.actions';
