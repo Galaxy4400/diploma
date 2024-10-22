@@ -31,6 +31,8 @@ export const AuthProvider = ({ children }) => {
 			if (error) return { error };
 
 			authorize(login, password);
+
+			return { error };
 		},
 		[authorize],
 	);

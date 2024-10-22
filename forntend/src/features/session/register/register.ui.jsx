@@ -22,7 +22,13 @@ export const RegisterForm = () => {
 
 		setIsLoading(false);
 
-		showToast({ message: error, type: TOAST_TYPE.ERROR });
+		if (error) {
+			showToast({ message: error, type: TOAST_TYPE.ERROR });
+
+			return;
+		}
+
+		showToast({ message: 'Вы успешно зарегистрировались', type: TOAST_TYPE.SUCCESS });
 	};
 
 	return (
