@@ -14,6 +14,7 @@ const initialState = {
 
 const reducers = {
 	setAuth: (state, { payload }) => Object.assign(state, payload),
+
 	resetAuth: () => initialState,
 };
 

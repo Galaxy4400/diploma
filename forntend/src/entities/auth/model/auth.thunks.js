@@ -1,5 +1,5 @@
 import { request } from '../../../shared/api';
-import { setAuth } from './auth.actions';
+import { setAuth } from './auth.slice';
 
 export const updateAuthAsync = (userId, updatingData) => async (dispatch) => {
 	const { user, error } = await request({ url: `/users/${userId}`, method: 'PATCH', data: updatingData });
