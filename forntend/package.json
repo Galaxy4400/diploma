@@ -28,15 +28,18 @@
     "react-select": "^5.8.1",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "typescript": "^5.6.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {
     "@conarti/eslint-plugin-feature-sliced": "^1.0.5",
     "@eslint/js": "^9.9.0",
+    "@types/node": "^22.7.8",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
@@ -47,6 +50,7 @@
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
+    "typescript": "^5.6.3",
     "vite": "^5.4.1",
     "vite-plugin-svgr": "^4.2.0"
   }
