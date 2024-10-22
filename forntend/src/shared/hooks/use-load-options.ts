@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { request } from '../api/request';
 
+interface Options {
+	id: number;
+	name: string;
+}
+
 export const useLoadOptions = () => {
 	const [accountOptions, setAccountOptions] = useState([]);
 	const [categoryOptions, setCategoryOptions] = useState([]);
@@ -13,14 +18,14 @@ export const useLoadOptions = () => {
 			]);
 
 			setAccountOptions(
-				accountsResponse.accounts.map((account) => ({
+				accountsResponse.accounts.map((account: Options) => ({
 					value: account.id,
 					label: account.name,
 				})),
 			);
 
 			setCategoryOptions(
-				categoriesResponse.categories.map((category) => ({
+				categoriesResponse.categories.map((category: Options) => ({
 					value: category.id,
 					label: category.name,
 				})),
