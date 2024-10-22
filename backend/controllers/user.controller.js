@@ -2,6 +2,10 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 const { generate } = require('../utils/token');
 
+const getUsers = async () => {
+	return await User.find();
+};
+
 const register = async (login, password) => {
 	if (!password) {
 		throw new Error('Password is empty');
@@ -48,4 +52,8 @@ const updateUser = async (id, userData) => {
 	return user;
 };
 
-module.exports = { register, login, updateUser };
+const deleteUser = async (id) => {
+	await User.findByIdAndDelete(id);
+};
+
+module.exports = { register, login, updateUser, deleteUser, getUsers };
