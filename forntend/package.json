@@ -11,6 +11,7 @@
     "format": "prettier --write '**/*.{js,jsx}'"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.0.3",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.3.0",
     "@uidotdev/usehooks": "^2.4.1",
