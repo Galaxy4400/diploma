@@ -25,6 +25,17 @@ const CategorySchema = new Schema({
 CategorySchema.index({ user: 1 });
 CategorySchema.index({ name: 1 });
 
+CategorySchema.pre('findOneAndDelete', async function (next) {
+	const { _id: id } = this.getQuery();
+	
+	try {
+		await Operation.deleteMany({ category: id });
+		next();
+	} catch (error) {
+		next(error);
+	}
+});
+
 const Category = mongoose.model('Category', CategorySchema);
 
 module.exports = Category;

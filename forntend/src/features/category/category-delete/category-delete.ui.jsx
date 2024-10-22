@@ -32,7 +32,12 @@ export const CategoryDelete = ({ categoryId }) => {
 
 	const deleteHandler = () => {
 		openModal(
-			<Confirm question="Хотите удалить категорию?" onConfirm={deleteCategory} onReject={closeModal} />,
+			<Confirm
+				title="Хотите удалить категорию?"
+				text="Все операции категории так же будут удалены!"
+				onConfirm={deleteCategory}
+				onReject={closeModal}
+			/>,
 		);
 	};
 

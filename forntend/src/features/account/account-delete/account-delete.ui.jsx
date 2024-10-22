@@ -30,7 +30,14 @@ export const AccountDelete = ({ accountId }) => {
 	};
 
 	const deleteHandler = () => {
-		openModal(<Confirm question="Хотите удалить счет?" onConfirm={deleteAccount} onReject={closeModal} />);
+		openModal(
+			<Confirm
+				title="Хотите удалить счет?"
+				text="Все операции счета так же будут удалены!"
+				onConfirm={deleteAccount}
+				onReject={closeModal}
+			/>,
+		);
 	};
 
 	return (

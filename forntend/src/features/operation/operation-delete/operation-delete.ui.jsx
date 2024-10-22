@@ -31,9 +31,7 @@ export const OperationDelete = ({ operationId }) => {
 	};
 
 	const deleteHandler = () => {
-		openModal(
-			<Confirm question="Хотите удалить операцию?" onConfirm={deleteOperation} onReject={closeModal} />,
-		);
+		openModal(<Confirm title="Хотите удалить операцию?" onConfirm={deleteOperation} onReject={closeModal} />);
 	};
 
 	return (

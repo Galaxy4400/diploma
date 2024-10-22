@@ -5,9 +5,13 @@ const name = 'operations';
 const initialState = [];
 
 const reducers = {
-	setOperations: (state, { payload }) => [...payload],
+	setOperations: (state, { payload }) => {
+		state.splice(0, state.length, ...payload);
+	},
 
-	addOperations: (state, { payload }) => state.push(...payload),
+	addOperations: (state, { payload }) => {
+		state.push(...payload);
+	},
 
 	resetOperations: () => initialState,
 };
