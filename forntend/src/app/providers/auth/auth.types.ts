@@ -1,11 +1,11 @@
-export interface AuthResponseType {
+export interface AuthResponse {
 	error?: string | null;
 	user?: object | null;
 }
 
 export interface AuthContextType {
-	authorize: (login: string, password: string) => Promise<AuthResponseType>;
-	registration: (login: string, password: string) => Promise<AuthResponseType>;
+	authorize: (login: string, password: string) => Promise<AuthResponse>;
+	registration: (login: string, password: string) => Promise<AuthResponse>;
 	logout: () => void;
 	isAuth: boolean;
 }
