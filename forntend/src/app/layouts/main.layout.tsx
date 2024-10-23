@@ -4,7 +4,11 @@ import { Header } from '../../widgets/header';
 import { Footer } from '../../widgets/footer';
 import { LayoutWrapper } from '../../shared/ui/components';
 
-export const MainLayout = ({ children }) => {
+interface MainLayoutProps {
+	children: React.ReactNode;
+}
+
+export const MainLayout = ({ children }: MainLayoutProps) => {
 	return (
 		<LayoutWrapper>
 			<Header />

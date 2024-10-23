@@ -13,7 +13,10 @@ export default [
 		files: ['**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			ecmaVersion: 2020,
-			globals: globals.browser,
+			globals: {
+				...globals.browser,
+				React: 'readonly',
+			},
 			parserOptions: {
 				ecmaVersion: 'latest',
 				ecmaFeatures: { jsx: true },
@@ -42,6 +45,8 @@ export default [
 			'react/prop-types': 'off',
 			quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
 			'prettier/prettier': ['error', { printWidth: 110 }],
+			'react/jsx-uses-react': 'off',
+			'react/react-in-jsx-scope': 'off',
 		},
 	},
 ];

@@ -3,7 +3,11 @@ import { ModalProvider } from './modal';
 import { StoreProvider } from './store';
 import { ToastProvider } from './toast';
 
-export const Providers = ({ children }) => {
+interface MainLayoutProps {
+	children: React.ReactNode;
+}
+
+export const Providers = ({ children }: MainLayoutProps) => {
 	return (
 		<StoreProvider>
 			<AuthProvider>
