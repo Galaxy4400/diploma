@@ -1,8 +1,9 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import { WithElementProp } from '@/shared/types';
+import { path } from '@/shared/lib/router';
 import { useAuth } from '../providers/auth';
-import { path } from '../../shared/lib/router';
 
-export const ProtectedRoute = ({ element }) => {
+export const ProtectedRoute = ({ element }: WithElementProp) => {
 	const location = useLocation();
 
 	const { isAuth } = useAuth();
@@ -10,7 +11,7 @@ export const ProtectedRoute = ({ element }) => {
 	return isAuth ? element : <Navigate to={path.login()} replace state={{ from: location }} />;
 };
 
-export const AuthenticationRoute = ({ element }) => {
+export const AuthenticationRoute = ({ element }: WithElementProp) => {
 	const { isAuth } = useAuth();
 
 	return isAuth ? <Navigate to={path.home()} replace /> : element;

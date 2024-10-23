@@ -1,11 +1,11 @@
 import css from './layouts.module.scss';
 import { Outlet } from 'react-router-dom';
-import { WithChildren } from '@/shared/types';
+import { WithChildrenProp } from '@/shared/types';
 import { LayoutWrapper } from '@/shared/ui/components';
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
 
-export const MainLayout = ({ children }: WithChildren) => {
+export const MainLayout = ({ children }: WithChildrenProp) => {
 	return (
 		<LayoutWrapper>
 			<Header />

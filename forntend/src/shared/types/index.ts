@@ -1,1 +1,2 @@
-export * from './with-children';
+export * from './with-children-prop';
+export * from './with-element-prop';
