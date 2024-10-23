@@ -1,13 +1,10 @@
+import { WithChildren } from '@/shared/types';
 import { AuthProvider } from './auth';
 import { ModalProvider } from './modal';
 import { StoreProvider } from './store';
 import { ToastProvider } from './toast';
 
-interface MainLayoutProps {
-	children: React.ReactNode;
-}
-
-export const Providers = ({ children }: MainLayoutProps) => {
+export const Providers = ({ children }: WithChildren) => {
 	return (
 		<StoreProvider>
 			<AuthProvider>

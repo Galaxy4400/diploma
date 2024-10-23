@@ -1,14 +1,11 @@
 import css from './layouts.module.scss';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../../widgets/header';
-import { Footer } from '../../widgets/footer';
-import { LayoutWrapper } from '../../shared/ui/components';
+import { WithChildren } from '@/shared/types';
+import { LayoutWrapper } from '@/shared/ui/components';
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
 
-interface MainLayoutProps {
-	children: React.ReactNode;
-}
-
-export const MainLayout = ({ children }: MainLayoutProps) => {
+export const MainLayout = ({ children }: WithChildren) => {
 	return (
 		<LayoutWrapper>
 			<Header />
