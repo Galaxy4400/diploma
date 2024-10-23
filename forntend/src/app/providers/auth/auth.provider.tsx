@@ -3,14 +3,16 @@ import { AuthContext } from './auth.context';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { resetAuth, setAuth } from '../../../entities/auth';
 import { request } from '../../../shared/api';
+import { WithChildrenProp } from '@/shared/types';
+import { AuthResponseType } from './auth.types';
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: WithChildrenProp) => {
 	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [isAuth, setIsAuth] = useState(false);
 
 	const authorize = useCallback(
-		async (login, password) => {
+		async (login: string, password: string): Promise<AuthResponseType> => {
 			const { user, error } = await request({ url: '/login', method: 'POST', data: { login, password } });
 
 			if (error) return { error };
@@ -25,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 	);
 
 	const registration = useCallback(
-		async (login, password) => {
+		async (login: string, password: string): Promise<AuthResponseType> => {
 			const { error } = await request({ url: '/register', method: 'POST', data: { login, password } });
 
 			if (error) return { error };
