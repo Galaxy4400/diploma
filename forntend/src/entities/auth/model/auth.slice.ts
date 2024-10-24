@@ -1,19 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AuthState, UserType } from './auth.types';
 
 const name = 'auth';
 
-const initialState = {
+const initialState: AuthState = {
 	id: null,
 	login: null,
 	email: null,
 	name: null,
 	surname: null,
 	address: null,
-	session: null,
 };
 
 const reducers = {
-	setAuth: (state, { payload }) => Object.assign(state, payload),
+	setAuth: (state: AuthState, { payload }: PayloadAction<UserType>) => Object.assign(state, payload),
 
 	resetAuth: () => initialState,
 };
