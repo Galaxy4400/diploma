@@ -1,7 +1,7 @@
 import { request } from '@/shared/api';
 import { setAuth } from './auth.slice';
 import { AppDispatch } from '@/app/store';
-import { AuthResponse, UserType } from '@/shared/types';
+import { AuthResponse, UserType } from './auth.types';
 
 export const updateAuthAsync =
 	(userId: string | number, updatingData: Partial<UserType>) => async (dispatch: AppDispatch) => {
