@@ -1,9 +1,9 @@
 import css from './logout.module.scss';
 import { useAuth } from '../../../app/providers/auth';
-import { ICON } from '../../../shared/lib/icons';
 import { Icon } from '../../../shared/ui/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
+import { Icons } from '@/shared/types';
 
 export const LogoutButton = () => {
 	const { logout } = useAuth();
@@ -24,7 +24,7 @@ export const LogoutButton = () => {
 
 	return (
 		<button className={css['button']} onClick={logoutHandler}>
-			<Icon className={css['icon']} name={ICON.EXIT} />
+			<Icon className={css['icon']} name={Icons.exit} />
 		</button>
 	);
 };

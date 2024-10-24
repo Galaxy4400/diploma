@@ -4,10 +4,10 @@ import { path } from '../../../shared/lib/router';
 import { getAccountType } from '../lib/get-account-type';
 import { Block } from '../../../shared/ui/components';
 import { Icon } from '../../../shared/ui/icons';
-import { ICON } from '../../../shared/lib/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
+import { Icons } from '@/shared/types';
 
 export const AccountView = ({ account, deleteSlot }) => {
 	return (
@@ -37,7 +37,7 @@ export const AccountView = ({ account, deleteSlot }) => {
 			</dl>
 			<div className={css['actions']}>
 				<Link className={css['edit-link']} to={path.account.edit(account.id)}>
-					<Icon className={css['edit-icon']} name={ICON.EDIT} />
+					<Icon className={css['edit-icon']} name={Icons.edit} />
 				</Link>
 				{deleteSlot}
 			</div>

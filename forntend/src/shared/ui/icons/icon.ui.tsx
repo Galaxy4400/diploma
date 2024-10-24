@@ -1,4 +1,3 @@
-import { ICON } from '../../lib/icons';
 import Wallet from './svg/wallet2.svg?react';
 import Exit from './svg/exit.svg?react';
 import Dock from './svg/dock.svg?react';

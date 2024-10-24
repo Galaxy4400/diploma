@@ -4,9 +4,9 @@ import { Block } from '../../../shared/ui/components';
 import { priceFormat } from '../../../shared/lib/utils';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { CATEGORY_TYPE } from '../../category/lib/category-type';
-import { ICON } from '../../../shared/lib/icons';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
+import { Icons } from '@/shared/types';
 
 export const OperationView = ({ operation, deleteSlot }) => {
 	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
@@ -17,7 +17,7 @@ export const OperationView = ({ operation, deleteSlot }) => {
 			{operation.status ? (
 				<IconCategory className={css['icon']} name={operation?.category.icon} />
 			) : (
-				<Icon className={css['abort-icon']} name={ICON.ABORT} />
+				<Icon className={css['abort-icon']} name={Icons.abort} />
 			)}
 			<dl>
 				<div>

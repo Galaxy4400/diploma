@@ -5,9 +5,9 @@ import { path } from '../../../shared/lib/router';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 import { CATEGORY_TYPE } from '../../category';
-import { ICON } from '../../../shared/lib/icons';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
+import { Icons } from '@/shared/types';
 
 export const OperationItem = ({ operation, deleteSlot }) => {
 	const location = useLocation();
@@ -21,7 +21,7 @@ export const OperationItem = ({ operation, deleteSlot }) => {
 					{operation.status ? (
 						<IconCategory className={css['icon']} name={operation?.category.icon} />
 					) : (
-						<Icon className={css['abort-icon']} name={ICON.ABORT} />
+						<Icon className={css['abort-icon']} name={Icons.abort} />
 					)}
 				</figure>
 				<div className={css['info']}>

@@ -4,9 +4,9 @@ import { path } from '../../../shared/lib/router';
 import { getCategoryType } from '../lib';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { Block } from '../../../shared/ui/components';
-import { ICON } from '../../../shared/lib/icons';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
+import { Icons } from '@/shared/types';
 
 export const CategoryView = ({ category, deleteSlot }) => {
 	return (
@@ -34,7 +34,7 @@ export const CategoryView = ({ category, deleteSlot }) => {
 			</dl>
 			<div className={css['actions']}>
 				<Link className={css['edit-link']} to={path.category.edit(category.id)}>
-					<Icon className={css['edit-icon']} name={ICON.EDIT} />
+					<Icon className={css['edit-icon']} name={Icons.edit} />
 				</Link>
 				{deleteSlot}
 			</div>
