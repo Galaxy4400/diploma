@@ -18,28 +18,40 @@ export const Icon = ({ name, className, size = 36, ...rest }: IconProps) => {
 	switch (name) {
 		case Icons.wallet:
 			return <Wallet className={className} width={size} height={size} {...rest} />;
+
 		case Icons.exit:
 			return <Exit className={className} width={size} height={size} {...rest} />;
+
 		case Icons.dock:
 			return <Dock className={className} width={size} height={size} {...rest} />;
+
 		case Icons.dock2:
 			return <Dock2 className={className} width={size} height={size} {...rest} />;
+
 		case Icons.card:
 			return <Card className={className} width={size} height={size} {...rest} />;
+
 		case Icons.card2:
 			return <Card2 className={className} width={size} height={size} {...rest} />;
+
 		case Icons.money:
 			return <Money className={className} width={size} height={size} {...rest} />;
+
 		case Icons.safe:
 			return <Safe className={className} width={size} height={size} {...rest} />;
+
 		case Icons.cart:
 			return <Cart className={className} width={size} height={size} {...rest} />;
+
 		case Icons.back:
 			return <Back className={className} width={size} height={size} {...rest} />;
+
 		case Icons.edit:
 			return <Edit className={className} width={size} height={size} {...rest} />;
+
 		case Icons.abort:
 			return <Abort className={className} width={size} height={size} {...rest} />;
+
 		case Icons.cross:
 			return <Cross className={className} width={size} height={size} {...rest} />;
 

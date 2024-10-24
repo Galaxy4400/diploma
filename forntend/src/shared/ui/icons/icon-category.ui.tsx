@@ -11,14 +11,19 @@ export const IconCategory = ({ name, className, size = 36, ...rest }: IconCatego
 	switch (name) {
 		case CategoryIcons.expense:
 			return <Expense className={className} width={size} height={size} {...rest} />;
+
 		case CategoryIcons.swap:
 			return <Swap className={className} width={size} height={size} {...rest} />;
+
 		case CategoryIcons.income:
 			return <Income className={className} width={size} height={size} {...rest} />;
+
 		case CategoryIcons.wallet:
 			return <Wallet className={className} width={size} height={size} {...rest} />;
+
 		case CategoryIcons.cart:
 			return <Cart className={className} width={size} height={size} {...rest} />;
+
 		case CategoryIcons.percent:
 			return <Percent className={className} width={size} height={size} {...rest} />;
 
