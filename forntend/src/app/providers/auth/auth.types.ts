@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
+
 export interface AuthResponse {
-	error?: string | null;
-	user?: object | null;
+	readonly error?: string | null;
+	readonly user?: object | null;
 }
 
 export interface AuthContextType {

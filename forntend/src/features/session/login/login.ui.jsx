@@ -18,7 +18,7 @@ export const LoginForm = () => {
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const { authorize, authorizeError } = useAuth();
+	const { authorize } = useAuth();
 
 	const loginHandler = async ({ login, password }) => {
 		setIsLoading(true);
