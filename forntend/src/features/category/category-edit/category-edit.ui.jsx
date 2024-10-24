@@ -7,7 +7,6 @@ import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
 import { Block, Fieldset } from '../../../shared/ui/components';
-import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
@@ -58,7 +57,7 @@ export const CategoryEditForm = () => {
 				</Fieldset>
 				<Fieldset label="Иконка категории">
 					<div className={css['icons']}>
-						{Object.values(ICON_CATEGORY).map((icon) => (
+						{Object.keys(CategoryIcons).map((icon) => (
 							<RadioComponent key={icon} name="icon" value={icon} defaultChecked={icon === category.icon}>
 								<IconCategory className={css['icon']} name={icon} />
 							</RadioComponent>

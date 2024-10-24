@@ -12,37 +12,39 @@ import Back from './svg/arrow-back.svg?react';
 import Edit from './svg/edit.svg?react';
 import Abort from './svg/abort.svg?react';
 import Cross from './svg/cross.svg?react';
+import { IconProps } from './icon.types';
+import { Icons } from '@/shared/types';
 
-export const Icon = ({ name, className, size = 36, ...rest }) => {
+export const Icon = ({ name, className, size = 36, ...rest }: IconProps) => {
 	switch (name) {
-		case ICON.WALLET:
+		case Icons.wallet:
 			return <Wallet className={className} width={size} height={size} {...rest} />;
-		case ICON.EXIT:
+		case Icons.exit:
 			return <Exit className={className} width={size} height={size} {...rest} />;
-		case ICON.DOCK:
+		case Icons.dock:
 			return <Dock className={className} width={size} height={size} {...rest} />;
-		case ICON.DOCK2:
+		case Icons.dock2:
 			return <Dock2 className={className} width={size} height={size} {...rest} />;
-		case ICON.CARD:
+		case Icons.card:
 			return <Card className={className} width={size} height={size} {...rest} />;
-		case ICON.CARD2:
+		case Icons.card2:
 			return <Card2 className={className} width={size} height={size} {...rest} />;
-		case ICON.MONEY:
+		case Icons.money:
 			return <Money className={className} width={size} height={size} {...rest} />;
-		case ICON.SAFE:
+		case Icons.safe:
 			return <Safe className={className} width={size} height={size} {...rest} />;
-		case ICON.CART:
+		case Icons.cart:
 			return <Cart className={className} width={size} height={size} {...rest} />;
-		case ICON.BACK:
+		case Icons.back:
 			return <Back className={className} width={size} height={size} {...rest} />;
-		case ICON.EDIT:
+		case Icons.edit:
 			return <Edit className={className} width={size} height={size} {...rest} />;
-		case ICON.ABORT:
+		case Icons.abort:
 			return <Abort className={className} width={size} height={size} {...rest} />;
-		case ICON.CROSS:
+		case Icons.cross:
 			return <Cross className={className} width={size} height={size} {...rest} />;
 
 		default:
-			break;
+			return null;
 	}
 };

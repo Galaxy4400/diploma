@@ -4,13 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
 import { CATEGORY_TYPES } from '../../../entities/category';
 import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
-import { ICON_CATEGORY } from '../../../shared/lib/icons';
 import { path } from '../../../shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
+import { CategoryIcons } from '@/shared/types';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
@@ -47,7 +47,7 @@ export const CategoryCreateForm = () => {
 				</Fieldset>
 				<Fieldset label="Иконка категории">
 					<div className={css['icons']}>
-						{Object.values(ICON_CATEGORY).map((icon, i) => (
+						{Object.keys(CategoryIcons).map((icon, i) => (
 							<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
 								<IconCategory className={css['icon']} name={icon} />
 							</RadioComponent>
