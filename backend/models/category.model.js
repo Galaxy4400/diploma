@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
+const Operation = require('./operation.model');
 
 const CategorySchema = new Schema({
 	name: {

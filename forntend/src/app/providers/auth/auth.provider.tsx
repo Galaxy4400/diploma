@@ -13,7 +13,11 @@ export const AuthProvider = ({ children }: WithChildren) => {
 
 	const authorize = useCallback(
 		async (login: string, password: string): Promise<AuthResponse> => {
-			const { user, error } = await request({ url: '/login', method: 'POST', data: { login, password } });
+			const { user, error } = await request<AuthResponse>({
+				url: '/login',
+				method: 'POST',
+				data: { login, password },
+			});
 
 			if (error) return { error };
 
@@ -28,7 +32,11 @@ export const AuthProvider = ({ children }: WithChildren) => {
 
 	const registration = useCallback(
 		async (login: string, password: string): Promise<AuthResponse> => {
-			const { error } = await request({ url: '/register', method: 'POST', data: { login, password } });
+			const { error } = await request<AuthResponse>({
+				url: '/register',
+				method: 'POST',
+				data: { login, password },
+			});
 
 			if (error) return { error };
 
@@ -40,7 +48,7 @@ export const AuthProvider = ({ children }: WithChildren) => {
 	);
 
 	const logout = useCallback(async () => {
-		const { error } = await request({ url: '/logout', method: 'POST' });
+		const { error } = await request<AuthResponse>({ url: '/logout', method: 'POST' });
 
 		if (error) return;
 
@@ -50,7 +58,7 @@ export const AuthProvider = ({ children }: WithChildren) => {
 	}, [dispatch]);
 
 	const authCheck = useCallback(async () => {
-		const { user, error } = await request({ url: '/me' });
+		const { user, error } = await request<AuthResponse>({ url: '/me' });
 
 		if (error) {
 			logout();
