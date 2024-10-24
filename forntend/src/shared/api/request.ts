@@ -1,4 +1,18 @@
-export const request = async ({ url = '', method = 'GET', data = {}, query = {} }) => {
+import { Methods } from '../types';
+
+interface requestProps {
+	url: string;
+	method?: Methods;
+	data?: Record<string, string | number>;
+	query?: Record<string, string>;
+}
+
+export const request = async <T>({
+	url,
+	method = 'GET',
+	data = {},
+	query = {},
+}: requestProps): Promise<T> => {
 	const endpoint = `/api/${url.replace(/^\/+/, '')}`;
 
 	const queryString = Object.keys(query).length ? `?${new URLSearchParams(query).toString()}` : '';
@@ -15,5 +29,5 @@ export const request = async ({ url = '', method = 'GET', data = {}, query = {} 
 		throw new Error(`HTTP error! Status: ${response.status}`);
 	}
 
-	return await response.json();
+	return (await response.json()) as T;
 };
