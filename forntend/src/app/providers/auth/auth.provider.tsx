@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { AuthContextType, AuthResponse } from './auth.types';
-import { createContext, useCallback, useContext, useLayoutEffect, useState } from 'react';
+import { AuthResponse } from './auth.types';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import { WithChildren } from '@/shared/types';
 import { request } from '@/shared/api';
 import { resetAuth, setAuth } from '@/entities/auth';
-
-const AuthContext = createContext<AuthContextType | null>(null);
+import { AuthContext } from './auth.context';
 
 export const AuthProvider = ({ children }: WithChildren) => {
 	const dispatch = useDispatch();
@@ -80,14 +79,4 @@ export const AuthProvider = ({ children }: WithChildren) => {
 			{isAuthInitialize && children}
 		</AuthContext.Provider>
 	);
-};
-
-export const useAuth = (): AuthContextType => {
-	const context = useContext(AuthContext);
-
-	if (context === null) {
-		throw new Error('useAuth must be used within an AuthProvider');
-	}
-
-	return context;
 };
