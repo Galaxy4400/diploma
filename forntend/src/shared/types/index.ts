@@ -4,3 +4,4 @@ export * from './toast-type.type';
 export * from './auth-data.type';
 export * from './price-type.type';
 export * from './url.type';
+export * from './location-from-location.type';
