@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { AuthResponse } from './auth.types';
 import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
 import { request } from '@/shared/api';
 import { resetAuth, setAuth } from '@/entities/auth';
 import { AuthContext } from './auth.context';
+import { AuthResponse } from '@/shared/types';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 				data: { login, password },
 			});
 
-			if (error) return { error };
+			if (!user) return { error };
 
 			dispatch(setAuth(user));
 
@@ -57,9 +57,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	}, [dispatch]);
 
 	const authCheck = useCallback(async () => {
-		const { user, error } = await request<AuthResponse>({ url: '/me' });
+		const { user } = await request<AuthResponse>({ url: '/me' });
 
-		if (error) {
+		if (!user) {
 			logout();
 			setIsAuthInitialize(true);
 			return;

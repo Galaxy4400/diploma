@@ -1,9 +1,5 @@
 /* eslint-disable no-unused-vars */
-
-export interface AuthResponse {
-	readonly error?: string | null;
-	readonly user?: object | null;
-}
+import { AuthResponse } from '@/shared/types';
 
 export interface AuthContextType {
 	authorize: (login: string, password: string) => Promise<AuthResponse>;
