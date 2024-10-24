@@ -8,3 +8,4 @@ export * from './icons.type';
 export * from './methods.type';
 export * from './nullable.type';
 export * from './auth-response.type';
+export * from './user-type.type';

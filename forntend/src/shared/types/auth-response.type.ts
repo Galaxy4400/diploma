@@ -1,4 +1,4 @@
-import { UserType } from '@/entities/auth';
+import { UserType } from './user-type.type';
 
 export interface AuthResponse {
 	readonly error?: string | null;
