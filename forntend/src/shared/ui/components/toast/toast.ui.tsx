@@ -10,7 +10,7 @@ export const Toast = () => {
 
 	return (
 		<div className={cn(css['toast'], type, isOpen ? 'active' : '')}>
-			<button className={css['close']} onClick={() => closeToast()}>
+			<button className={css['close']} onClick={closeToast}>
 				<Icon className={css['icon']} name={Icons.cross} />
 			</button>
 			{message}

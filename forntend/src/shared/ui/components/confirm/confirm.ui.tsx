@@ -1,7 +1,14 @@
 import css from './confirm.module.scss';
 import { Button } from '../button';
 
-export const Confirm = ({ title, text, onConfirm, onReject }) => {
+interface ConfirmProps {
+	title: string;
+	text?: string;
+	onConfirm: () => void;
+	onReject: () => void;
+}
+
+export const Confirm = ({ title, text, onConfirm, onReject }: ConfirmProps) => {
 	return (
 		<div className={css['container']}>
 			<h3 className={css['title']}>{title}</h3>

@@ -11,8 +11,13 @@ import Back from './svg/arrow-back.svg?react';
 import Edit from './svg/edit.svg?react';
 import Abort from './svg/abort.svg?react';
 import Cross from './svg/cross.svg?react';
-import { IconProps } from './icon.types';
 import { Icons } from '@/shared/types';
+import { SVGProps } from 'react';
+
+interface IconProps extends SVGProps<SVGSVGElement> {
+	name: Icons;
+	size?: number;
+}
 
 export const Icon = ({ name, className, size = 36, ...rest }: IconProps) => {
 	switch (name) {

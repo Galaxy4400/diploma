@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import { store } from '../../store';
-import { WithChildren } from '@/shared/types';
+import { PropsWithChildren } from 'react';
 
-export const StoreProvider = ({ children }: WithChildren) => {
+export const StoreProvider = ({ children }: PropsWithChildren) => {
 	return <Provider store={store}>{children}</Provider>;
 };

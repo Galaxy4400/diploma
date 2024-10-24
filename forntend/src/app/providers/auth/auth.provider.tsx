@@ -1,12 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { AuthResponse } from './auth.types';
-import { useCallback, useLayoutEffect, useState } from 'react';
-import { WithChildren } from '@/shared/types';
+import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
 import { request } from '@/shared/api';
 import { resetAuth, setAuth } from '@/entities/auth';
 import { AuthContext } from './auth.context';
 
-export const AuthProvider = ({ children }: WithChildren) => {
+export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [isAuth, setIsAuth] = useState(false);

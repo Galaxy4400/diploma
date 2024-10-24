@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface WithElement {
+export interface PropsWithElement {
 	element?: ReactNode;
 }

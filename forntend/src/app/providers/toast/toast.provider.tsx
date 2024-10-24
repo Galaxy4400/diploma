@@ -1,10 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { ToastFunctionContext, ToastStateContext } from './toast.context';
-import { ToastType, WithChildren } from '@/shared/types';
+import { ToastType } from '@/shared/types';
 import { Toast } from '@/shared/ui/components';
 import { ToastOptions } from './toast.types';
 
-export const ToastProvider = ({ children }: WithChildren) => {
+export const ToastProvider = ({ children }: PropsWithChildren) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [message, setMessage] = useState('');
 	const [type, setType] = useState<ToastType>(null);

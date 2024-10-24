@@ -1,7 +1,12 @@
+import { HTMLAttributes } from 'react';
 import css from './loader.module.scss';
 import cn from 'classnames';
 
-export const Loader = ({ isLoading = false, children, ...rest }) => {
+interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
+	isLoading?: boolean;
+}
+
+export const Loader = ({ isLoading = false, children, ...rest }: LoaderProps) => {
 	return (
 		<div className={css['container']} {...rest}>
 			{children}

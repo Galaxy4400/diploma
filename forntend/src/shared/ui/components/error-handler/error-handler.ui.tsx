@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export const ErrorHandler = ({ message }) => {
+export const ErrorHandler = ({ message }: { message: string }) => {
 	const navigate = useNavigate();
 
 	return (
