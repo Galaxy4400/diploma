@@ -11,7 +11,6 @@ import { Block, Fieldset } from '../../../shared/ui/components';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
@@ -26,13 +25,13 @@ export const CategoryCreateForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
 		navigate(path.category.id(category.id), { replace: true });
 
-		showToast({ message: 'Категория создана', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Категория создана', type: 'success' });
 	};
 
 	return (

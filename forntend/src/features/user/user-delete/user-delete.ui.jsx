@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useModal } from '../../../app/providers/modal';
 import { Button, Confirm } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 import { request } from '../../../shared/api';
 import { path } from '../../../shared/lib/router';
 import { useAuth } from '../../../app/providers/auth';
@@ -18,7 +17,7 @@ export const UserDelete = ({ userId }) => {
 		const { error } = await request({ url: `/users/${userId}`, method: 'DELETE' });
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
@@ -28,7 +27,7 @@ export const UserDelete = ({ userId }) => {
 
 		closeModal();
 
-		showToast({ message: 'Вы удалены из системы', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Вы удалены из системы', type: 'success' });
 	};
 
 	const deleteHandler = () => {

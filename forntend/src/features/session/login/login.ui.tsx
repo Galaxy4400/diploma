@@ -10,7 +10,7 @@ import { useFrom } from '../../../shared/lib/location';
 import { path } from '../../../shared/lib/router';
 import { Button } from '../../../shared/ui/form-components';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
+import { AuthData } from '@/shared/types';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
 	const { authorize } = useAuth();
 
-	const loginHandler = async ({ login, password }) => {
+	const loginHandler = async ({ login, password }: AuthData) => {
 		setIsLoading(true);
 
 		const { error } = await authorize(login, password);
@@ -28,14 +28,14 @@ export const LoginForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: error, type: TOAST_TYPE.ERROR });
+			showToast({ message: error, type: 'error' });
 
 			return;
 		}
 
 		navigate(from?.pathname || path.home());
 
-		showToast({ message: 'Вы успешно вошли в систему', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Вы успешно вошли в систему', type: 'success' });
 	};
 
 	return (
@@ -51,7 +51,6 @@ export const LoginForm = () => {
 			<Link className={css['link']} to={path.register()}>
 				Регистрация
 			</Link>
-			{authorizeError && <div>{authorizeError}</div>}
 		</Block>
 	);
 };

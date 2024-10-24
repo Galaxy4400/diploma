@@ -9,7 +9,6 @@ import { path } from '../../../shared/lib/router/path';
 import { Button, Form, Input } from '../../../shared/ui/form-components';
 import { Block } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const EditUserForm = ({ userData }) => {
 	const dispatch = useDispatch();
@@ -25,7 +24,7 @@ export const EditUserForm = ({ userData }) => {
 		dispatch(updateAuthAsync(userData.id, submittedData)).then(() => {
 			setIsLoading(false);
 			navigate(path.home());
-			showToast({ message: 'Изменения внесены', type: TOAST_TYPE.SUCCESS });
+			showToast({ message: 'Изменения внесены', type: 'success' });
 		});
 	};
 

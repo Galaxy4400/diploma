@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue();
@@ -29,13 +28,13 @@ export const AccountEditForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
 		navigate(path.account.id(account.id));
 
-		showToast({ message: 'Изменения внесены', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Изменения внесены', type: 'success' });
 	};
 
 	return (

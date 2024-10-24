@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { useLoadOptions } from '../../../shared/hooks';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const OperationCreateForm = () => {
 	const navigate = useNavigate();
@@ -27,13 +26,13 @@ export const OperationCreateForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
 		navigate(path.operation.id(operation.id), { replace: true });
 
-		showToast({ message: 'Операция создана', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Операция создана', type: 'success' });
 	};
 
 	return (

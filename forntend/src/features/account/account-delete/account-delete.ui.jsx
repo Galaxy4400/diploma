@@ -5,7 +5,6 @@ import { ICON } from '../../../shared/lib/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 import { request } from '../../../shared/api';
 import { path } from '../../../shared/lib/router';
 
@@ -18,7 +17,7 @@ export const AccountDelete = ({ accountId }) => {
 		const { error } = await request({ url: `/accounts/${accountId}`, method: 'DELETE' });
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
@@ -26,7 +25,7 @@ export const AccountDelete = ({ accountId }) => {
 
 		closeModal();
 
-		showToast({ message: 'Счет удален', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Счет удален', type: 'success' });
 	};
 
 	const deleteHandler = () => {

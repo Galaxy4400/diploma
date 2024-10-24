@@ -8,7 +8,6 @@ import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-co
 import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
 import { Block, Fieldset } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 import { request } from '../../../shared/api';
 
 export const AccountCreateForm = () => {
@@ -24,13 +23,13 @@ export const AccountCreateForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: TOAST_TYPE.ERROR });
+			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
 
 		navigate(path.account.id(account.id), { replace: true });
 
-		showToast({ message: 'Счет создан', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Счет создан', type: 'success' });
 	};
 
 	return (

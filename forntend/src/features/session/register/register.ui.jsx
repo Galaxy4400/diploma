@@ -8,7 +8,6 @@ import { Block } from '../../../shared/ui/components';
 import { Link } from 'react-router-dom';
 import { path } from '../../../shared/lib/router';
 import { useToast } from '../../../app/providers/toast';
-import { TOAST_TYPE } from '../../../shared/lib/toast';
 
 export const RegisterForm = () => {
 	const { registration, registrationError } = useAuth();
@@ -23,12 +22,12 @@ export const RegisterForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: error, type: TOAST_TYPE.ERROR });
+			showToast({ message: error, type: 'error' });
 
 			return;
 		}
 
-		showToast({ message: 'Вы успешно зарегистрировались', type: TOAST_TYPE.SUCCESS });
+		showToast({ message: 'Вы успешно зарегистрировались', type: 'success' });
 	};
 
 	return (
