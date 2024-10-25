@@ -16,6 +16,8 @@ export default [
 			globals: {
 				...globals.browser,
 				React: 'readonly',
+				RootState: 'readonly',
+				AppDispatch: 'readonly',
 			},
 			parserOptions: {
 				ecmaVersion: 'latest',
