@@ -1,15 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { OperationsState } from './operations.types';
 
 const name = 'operations';
 
-const initialState = [];
+const initialState: OperationsState = [];
 
 const reducers = {
-	setOperations: (state, { payload }) => {
+	setOperations: (state: OperationsState, { payload }: PayloadAction<OperationsState>) => {
 		state.splice(0, state.length, ...payload);
 	},
 
-	addOperations: (state, { payload }) => {
+	addOperations: (state: OperationsState, { payload }: PayloadAction<OperationsState>) => {
 		state.push(...payload);
 	},
 
