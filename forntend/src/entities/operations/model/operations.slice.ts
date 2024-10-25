@@ -1,16 +1,16 @@
+import { OperationType } from '@/entities/operation/model';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { OperationsState } from './operations.types';
 
 const name = 'operations';
 
-const initialState: OperationsState = [];
+const initialState: OperationType[] = [];
 
 const reducers = {
-	setOperations: (state: OperationsState, { payload }: PayloadAction<OperationsState>) => {
+	setOperations: (state: OperationType[], { payload }: PayloadAction<OperationType[]>) => {
 		state.splice(0, state.length, ...payload);
 	},
 
-	addOperations: (state: OperationsState, { payload }: PayloadAction<OperationsState>) => {
+	addOperations: (state: OperationType[], { payload }: PayloadAction<OperationType[]>) => {
 		state.push(...payload);
 	},
 
