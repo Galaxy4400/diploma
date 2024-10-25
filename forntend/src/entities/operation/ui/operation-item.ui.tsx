@@ -8,8 +8,15 @@ import { CATEGORY_TYPE } from '../../category';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 import { Icons } from '@/shared/types';
+import { OperationType } from '../model';
+import { ReactNode } from 'react';
 
-export const OperationItem = ({ operation, deleteSlot }) => {
+interface OperationItemProps {
+	operation: OperationType;
+	deleteSlot: ReactNode;
+}
+
+export const OperationItem = ({ operation, deleteSlot }: OperationItemProps) => {
 	const location = useLocation();
 
 	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';

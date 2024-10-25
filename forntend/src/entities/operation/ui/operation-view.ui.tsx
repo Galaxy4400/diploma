@@ -7,8 +7,15 @@ import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 import { Icons } from '@/shared/types';
+import { OperationType } from '../model';
+import { ReactNode } from 'react';
 
-export const OperationView = ({ operation, deleteSlot }) => {
+interface OperationViewProps {
+	operation: OperationType;
+	deleteSlot: ReactNode;
+}
+
+export const OperationView = ({ operation, deleteSlot }: OperationViewProps) => {
 	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
 
 	return (
