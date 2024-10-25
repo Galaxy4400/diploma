@@ -1,13 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ApplicationState, FilterProps } from './application.types';
 
 const name = 'application';
 
-const initialState = {
+const initialState: ApplicationState = {
 	filter: {},
 };
 
 const reducers = {
-	setFilter: (state, { payload }) => {
+	setFilter: (state: ApplicationState, { payload }: PayloadAction<FilterProps>) => {
 		state.filter = payload;
 	},
 	resetApp: () => initialState,
