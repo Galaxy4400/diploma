@@ -1,10 +1,17 @@
 import css from './category-item.module.scss';
+import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { path } from '../../../shared/lib/router';
-import { IconCategory } from '../../../shared/ui/icons';
 import { getCategoryTypeName } from '../lib';
+import { CategoryType } from '../model';
+import { IconCategory } from '@/shared/ui/icons';
+import { path } from '@/shared/lib/router';
 
-export const CategoryItem = ({ category, deleteSlot }) => {
+interface CategoryItemPropts {
+	category: CategoryType;
+	deleteSlot: ReactNode;
+}
+
+export const CategoryItem = ({ category, deleteSlot }: CategoryItemPropts) => {
 	const location = useLocation();
 
 	return (

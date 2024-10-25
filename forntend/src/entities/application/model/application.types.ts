@@ -4,7 +4,7 @@ export interface FilterProps {
 	account?: ID;
 	category?: ID;
 	daterange?: string;
-	pricerange?: string;
+	amountrange?: string;
 }
 
 export interface ApplicationState {

@@ -8,7 +8,7 @@ import Percent from './svg/percent.svg?react';
 import { CategoryIcons } from '@/shared/types';
 
 interface IconCategoryProps extends SVGProps<SVGSVGElement> {
-	name: CategoryIcons;
+	name?: CategoryIcons;
 	size?: number;
 }
 

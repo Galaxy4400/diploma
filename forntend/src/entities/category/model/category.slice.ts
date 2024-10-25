@@ -1,16 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CategoryState, CategoryType } from './category.types';
 
 const name = 'category';
 
-const initialState = {
+const initialState: CategoryState = {
 	id: null,
 	name: null,
-	typeId: null,
+	type: null,
 	createdAt: null,
 };
 
 const reducers = {
-	setCategory: (state, { payload }) => Object.assign(state, payload),
+	setCategory: (state: CategoryState, { payload }: PayloadAction<CategoryType>) => {
+		return Object.assign(state, payload);
+	},
 
 	resetCategory: () => initialState,
 };
