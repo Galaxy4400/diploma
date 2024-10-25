@@ -1,3 +1,5 @@
+import { ID } from '@/shared/types';
+
 export const path = {
 	root: '/',
 	home() {
@@ -28,13 +30,13 @@ export const path = {
 		root() {
 			return path.root.concat('account');
 		},
-		id(id = ':id') {
-			return path.account.root().concat('/', id);
+		id(id: ID = ':id') {
+			return path.account.root().concat('/', `${id}`);
 		},
 		create() {
 			return path.account.root().concat('/create');
 		},
-		edit(id = ':id') {
+		edit(id: ID = ':id') {
 			return path.account.id(id).concat('/edit');
 		},
 	},
@@ -42,8 +44,8 @@ export const path = {
 		root() {
 			return path.root.concat('operation');
 		},
-		id(id = ':id') {
-			return path.operation.root().concat('/', id);
+		id(id: ID = ':id') {
+			return path.operation.root().concat('/', `${id}`);
 		},
 		create() {
 			return path.operation.root().concat('/create');
@@ -53,13 +55,13 @@ export const path = {
 		root() {
 			return path.root.concat('category');
 		},
-		id(id = ':id') {
-			return path.category.root().concat('/', id);
+		id(id: ID = ':id') {
+			return path.category.root().concat('/', `${id}`);
 		},
 		create() {
 			return path.category.root().concat('/create');
 		},
-		edit(id = ':id') {
+		edit(id: ID = ':id') {
 			return path.category.id(id).concat('/edit');
 		},
 	},

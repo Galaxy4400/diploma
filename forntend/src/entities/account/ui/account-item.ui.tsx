@@ -4,8 +4,15 @@ import { path } from '../../../shared/lib/router';
 import { Icon } from '../../../shared/ui/icons';
 import { priceFormat } from '../../../shared/lib/utils';
 import { getAccountTypeImage, getAccountTypeName } from '../lib';
+import { ReactNode } from 'react';
+import { AccountType } from '../model';
 
-export const AccountItem = ({ account, deleteSlot }) => {
+interface AccountItemProps {
+	account: AccountType;
+	deleteSlot: ReactNode;
+}
+
+export const AccountItem = ({ account, deleteSlot }: AccountItemProps) => {
 	const location = useLocation();
 
 	return (

@@ -15,7 +15,7 @@ import { Icons } from '@/shared/types';
 import { SVGProps } from 'react';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
-	name: Icons;
+	name?: Icons;
 	size?: number;
 }
 

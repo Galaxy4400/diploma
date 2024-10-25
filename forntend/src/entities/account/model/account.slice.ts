@@ -5,7 +5,7 @@ const name = 'account';
 
 const initialState: AccountState = {
 	id: null,
-	typeId: null,
+	type: null,
 	name: null,
 	createdAt: null,
 	amount: null,

@@ -8,8 +8,15 @@ import { priceFormat } from '../../../shared/lib/utils';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 import { Icons } from '@/shared/types';
+import { AccountType } from '../model';
+import { ReactNode } from 'react';
 
-export const AccountView = ({ account, deleteSlot }) => {
+interface AccountViewProps {
+	account: AccountType;
+	deleteSlot: ReactNode;
+}
+
+export const AccountView = ({ account, deleteSlot }: AccountViewProps) => {
 	return (
 		<Block className={css['view']}>
 			<h4>Счет №{account.id}</h4>

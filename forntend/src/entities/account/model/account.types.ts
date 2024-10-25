@@ -7,10 +7,11 @@ import { ID, Nullable } from '@/shared/types';
 
 export interface AccountType {
 	id: ID;
-	typeId: ID;
+	type: ID;
 	name: string;
 	createdAt: string;
 	amount: number;
+	comment?: string;
 }
 
 // export interface AuthResponse {
