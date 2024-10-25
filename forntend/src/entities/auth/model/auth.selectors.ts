@@ -1,3 +1,8 @@
-export const selectAuth = ({ auth }: RootState) => auth;
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectAuthId = ({ auth }: RootState) => auth.id;
+export const selectAuth = createSelector(
+	(state: RootState) => state.auth,
+	(auth) => auth,
+);
+
+export const selectAuthId = createSelector(selectAuth, (auth) => auth.id);

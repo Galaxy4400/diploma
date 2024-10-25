@@ -1,3 +1,8 @@
-export const selectAccount = ({ account }: RootState) => account;
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectAccountId = ({ account }: RootState) => account.id;
+export const selectAccount = createSelector(
+	(state: RootState) => state.account,
+	(account) => account,
+);
+
+export const selectAccountId = createSelector(selectAccount, (account) => account.id);

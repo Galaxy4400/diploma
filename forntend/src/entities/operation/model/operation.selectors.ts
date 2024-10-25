@@ -1,3 +1,8 @@
-export const selectOperation = ({ operation }: RootState) => operation;
+import { createSelector } from '@reduxjs/toolkit';
 
-export const selectOperationId = ({ operation }: RootState) => operation.id;
+export const selectOperation = createSelector(
+	(state: RootState) => state.operation,
+	(operation) => operation,
+);
+
+export const selectOperationId = createSelector(selectOperation, (operation) => operation.id);
