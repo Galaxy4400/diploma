@@ -1,4 +1,4 @@
-import { Price } from '@/shared/types';
+import { Price } from 'shared/types';
 
 export const priceFormat = (number: number): Price => {
 	return new Intl.NumberFormat('ru-RU', {

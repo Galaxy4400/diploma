@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { getAccountTypeImage, getAccountTypeName } from '../lib';
 import { ReactNode } from 'react';
 import { AccountType } from '../model';
-import { path } from '@/shared/lib/router';
-import { Icon } from '@/shared/ui/icons';
-import { priceFormat } from '@/shared/lib/utils';
+import { path } from 'shared/lib/router';
+import { Icon } from 'shared/ui/icons';
+import { priceFormat } from 'shared/lib/utils';
 
 interface AccountItemProps {
 	account: AccountType;

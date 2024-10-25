@@ -1,4 +1,4 @@
-import { CategoryIcons, ID, Nullable } from '@/shared/types';
+import { CategoryIcons, ID, Nullable } from 'shared/types';
 
 export interface CategoryType {
 	id: ID;

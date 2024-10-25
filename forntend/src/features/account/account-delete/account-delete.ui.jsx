@@ -6,7 +6,7 @@ import { Confirm } from '../../../shared/ui/components';
 import { useToast } from '../../../app/providers/toast';
 import { request } from '../../../shared/api';
 import { path } from '../../../shared/lib/router';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const AccountDelete = ({ accountId }) => {
 	const navigate = useNavigate();

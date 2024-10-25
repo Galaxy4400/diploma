@@ -1,4 +1,4 @@
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const ACCOUNT_TYPES = [
 	{ id: 1, name: 'Дебетовая карта', icon: Icons.card2 },

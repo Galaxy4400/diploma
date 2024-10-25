@@ -11,7 +11,7 @@ import Back from './svg/arrow-back.svg?react';
 import Edit from './svg/edit.svg?react';
 import Abort from './svg/abort.svg?react';
 import Cross from './svg/cross.svg?react';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 import { SVGProps } from 'react';
 
 interface IconProps extends SVGProps<SVGSVGElement> {

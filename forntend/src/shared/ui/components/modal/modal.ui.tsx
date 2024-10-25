@@ -1,8 +1,8 @@
 import css from './modal.module.scss';
 import { useClickAway } from '@uidotdev/usehooks';
 import { Icon } from '../../icons';
-import { Icons } from '@/shared/types';
-import { useModal, useModalState } from '@/app/providers/modal';
+import { Icons } from 'shared/types';
+import { useModal, useModalState } from 'app/providers/modal';
 
 export const Modal = () => {
 	const { isOpen, content } = useModalState();

@@ -7,7 +7,7 @@ import { priceFormat } from '../../../shared/lib/utils';
 import { CATEGORY_TYPE } from '../../category';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 import { OperationType } from '../model';
 import { ReactNode } from 'react';
 

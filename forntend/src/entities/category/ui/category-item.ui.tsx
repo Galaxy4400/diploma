@@ -3,8 +3,8 @@ import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getCategoryTypeName } from '../lib';
 import { CategoryType } from '../model';
-import { IconCategory } from '@/shared/ui/icons';
-import { path } from '@/shared/lib/router';
+import { IconCategory } from 'shared/ui/icons';
+import { path } from 'shared/lib/router';
 
 interface CategoryItemPropts {
 	category: CategoryType;

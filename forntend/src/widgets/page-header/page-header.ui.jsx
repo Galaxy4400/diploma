@@ -1,7 +1,7 @@
 import css from './page-header.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../shared/ui/icons';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const PageHeader = ({ title }) => {
 	const navigate = useNavigate();

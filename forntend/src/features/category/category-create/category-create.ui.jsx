@@ -10,7 +10,7 @@ import { Block, Fieldset } from '../../../shared/ui/components';
 import { IconCategory } from '../../../shared/ui/icons';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
-import { CategoryIcons } from '@/shared/types';
+import { CategoryIcons } from 'shared/types';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();

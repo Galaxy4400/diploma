@@ -1,4 +1,4 @@
-import { OperationType } from '@/entities/operation/model';
+import { OperationType } from 'entities/operation/model';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const name = 'operations';

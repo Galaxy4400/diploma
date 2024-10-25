@@ -5,7 +5,7 @@ import Income from './svg/income.svg?react';
 import Wallet from './svg/wallet.svg?react';
 import Cart from './svg/cart2.svg?react';
 import Percent from './svg/percent.svg?react';
-import { CategoryIcons } from '@/shared/types';
+import { CategoryIcons } from 'shared/types';
 
 interface IconCategoryProps extends SVGProps<SVGSVGElement> {
 	name?: CategoryIcons;

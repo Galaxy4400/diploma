@@ -1,4 +1,4 @@
-import { ID } from '@/shared/types';
+import { ID } from 'shared/types';
 
 export interface FilterProps {
 	account?: ID;

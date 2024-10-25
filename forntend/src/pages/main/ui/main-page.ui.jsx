@@ -8,7 +8,7 @@ import { Container } from '../../../shared/ui/components';
 import { Action } from './components';
 import { OperationsMain } from '../../../widgets/operations-main';
 import { OperationsList } from '../../../widgets/operations-list';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const MainPage = () => {
 	const { accounts, operations, categories } = useLoaderData();

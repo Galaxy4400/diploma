@@ -6,7 +6,7 @@ import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
 import { request } from '../../../shared/api';
 import { useToast } from '../../../app/providers/toast';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const CategoryDelete = ({ categoryId }) => {
 	const navigate = useNavigate();

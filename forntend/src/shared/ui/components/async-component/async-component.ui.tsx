@@ -1,4 +1,4 @@
-import { PropsWithElement } from '@/shared/types';
+import { PropsWithElement } from 'shared/types';
 import { PropsWithChildren, ReactNode, Suspense } from 'react';
 import { Await } from 'react-router-dom';
 

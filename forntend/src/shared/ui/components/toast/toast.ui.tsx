@@ -2,7 +2,7 @@ import css from './toast.module.scss';
 import cn from 'classnames';
 import { useToast, useToastState } from '../../../../app/providers/toast';
 import { Icon } from '../../icons';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const Toast = () => {
 	const { isOpen, type, message } = useToastState();

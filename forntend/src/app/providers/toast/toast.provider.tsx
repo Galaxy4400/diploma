@@ -1,7 +1,7 @@
 import { PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { ToastFunctionContext, ToastStateContext } from './toast.context';
-import { ToastType } from '@/shared/types';
-import { Toast } from '@/shared/ui/components';
+import { ToastType } from 'shared/types';
+import { Toast } from 'shared/ui/components';
 import { ToastOptions } from './toast.types';
 
 export const ToastProvider = ({ children }: PropsWithChildren) => {

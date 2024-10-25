@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
-import { request } from '@/shared/api';
-import { AuthResponse, resetAuth, setAuth } from '@/entities/auth';
+import { request } from 'shared/api';
+import { AuthResponse, resetAuth, setAuth } from 'entities/auth';
 import { AuthContext } from './auth.context';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {

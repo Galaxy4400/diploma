@@ -1,4 +1,4 @@
-import { ID, Nullable } from '@/shared/types';
+import { ID, Nullable } from 'shared/types';
 
 export interface AuthData {
 	login: string;

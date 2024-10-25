@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ToastType } from '@/shared/types';
+import { ToastType } from 'shared/types';
 
 export interface ToastOptions {
 	readonly message: string;

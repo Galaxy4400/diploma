@@ -1,23 +1,23 @@
-import { path } from '@/shared/lib/router';
+import { path } from 'shared/lib/router';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { AuthenticationRoute, ProtectedRoute } from './router.hocs';
 import { AuthLayout, MainLayout } from '../layouts';
-import { ErrorPage } from '@/pages/error';
-import { MainPage, mainPageLoader } from '@/pages/main';
-import { UserEditPage } from '@/pages/user-edit';
-import { HistoryPage, historyPageLoader } from '@/pages/history';
-import { AnalyticsPage } from '@/pages/analytics';
-import { AccountPage, accountPageLoader } from '@/pages/account';
-import { AccountCreatePage } from '@/pages/account-create';
-import { AccountEditPage, accountEditPageLoader } from '@/pages/account-edit';
-import { OperationPage, operationPageLoader } from '@/pages/operation';
-import { OperationCreatePage } from '@/pages/operation-create';
-import { CategoryPage, categoryPageLoader } from '@/pages/category';
-import { CategoryCreatePage } from '@/pages/category-create';
-import { CategoryEditPage, categoryEditPageLoader } from '@/pages/category-edit';
-import { Page404 } from '@/pages/page-404';
-import { LoginPage } from '@/pages/login';
-import { RegisterPage } from '@/pages/register';
+import { ErrorPage } from 'pages/error';
+import { MainPage, mainPageLoader } from 'pages/main';
+import { UserEditPage } from 'pages/user-edit';
+import { HistoryPage, historyPageLoader } from 'pages/history';
+import { AnalyticsPage } from 'pages/analytics';
+import { AccountPage, accountPageLoader } from 'pages/account';
+import { AccountCreatePage } from 'pages/account-create';
+import { AccountEditPage, accountEditPageLoader } from 'pages/account-edit';
+import { OperationPage, operationPageLoader } from 'pages/operation';
+import { OperationCreatePage } from 'pages/operation-create';
+import { CategoryPage, categoryPageLoader } from 'pages/category';
+import { CategoryCreatePage } from 'pages/category-create';
+import { CategoryEditPage, categoryEditPageLoader } from 'pages/category-edit';
+import { Page404 } from 'pages/page-404';
+import { LoginPage } from 'pages/login';
+import { RegisterPage } from 'pages/register';
 
 export const routerConfig = createBrowserRouter([
 	{

@@ -17,7 +17,12 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, 'src'),
+			app: '/src/app',
+			entities: '/src/entities',
+			features: '/src/features',
+			pages: '/src/pages',
+			shared: '/src/shared',
+			widgets: '/src/widgets',
 		},
 	},
 	css: {
@@ -26,10 +31,10 @@ export default defineConfig({
 				additionalData: (content, filename) => {
 					if (filename.endsWith('.module.scss')) {
 						return `
-							@import '@/shared/assets/styles/abstracts/functions.scss';
-							@import '@/shared/assets/styles/abstracts/variables.scss';
-							@import '@/shared/assets/styles/abstracts/mixins.scss';
-							@import '@/shared/assets/styles/abstracts/extenders.scss';
+							@import 'shared/assets/styles/abstracts/functions.scss';
+							@import 'shared/assets/styles/abstracts/variables.scss';
+							@import 'shared/assets/styles/abstracts/mixins.scss';
+							@import 'shared/assets/styles/abstracts/extenders.scss';
 							${content}
 						`;
 					}

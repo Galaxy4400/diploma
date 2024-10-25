@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode, useCallback, useMemo, useState } from 'react';
 import { ModalFunctionContext, ModalStateContext } from './modal.context';
-import { Modal } from '@/shared/ui/components';
+import { Modal } from 'shared/ui/components';
 
 export const ModalProvider = ({ children }: PropsWithChildren) => {
 	const [isOpen, setIsOpen] = useState(false);

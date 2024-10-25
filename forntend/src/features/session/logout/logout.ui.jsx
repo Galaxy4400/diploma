@@ -3,7 +3,7 @@ import { useAuth } from '../../../app/providers/auth';
 import { Icon } from '../../../shared/ui/icons';
 import { useModal } from '../../../app/providers/modal';
 import { Confirm } from '../../../shared/ui/components';
-import { Icons } from '@/shared/types';
+import { Icons } from 'shared/types';
 
 export const LogoutButton = () => {
 	const { logout } = useAuth();
