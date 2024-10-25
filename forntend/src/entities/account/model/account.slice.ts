@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AccountState, AccountType } from './account.types';
 
 const name = 'account';
 
-const initialState = {
+const initialState: AccountState = {
 	id: null,
 	typeId: null,
 	name: null,
@@ -11,7 +12,7 @@ const initialState = {
 };
 
 const reducers = {
-	setAccount: (state, { payload }) => Object.assign(state, payload),
+	setAccount: (state: AccountState, { payload }: PayloadAction<AccountType>) => Object.assign(state, payload),
 
 	resetAccount: () => initialState,
 };
