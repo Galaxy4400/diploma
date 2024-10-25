@@ -1,15 +1,15 @@
 import css from './account-view.module.scss';
-import { Link } from 'react-router-dom';
-import { path } from '../../../shared/lib/router';
-import { getAccountType } from '../lib/get-account-type';
-import { Block } from '../../../shared/ui/components';
-import { Icon } from '../../../shared/ui/icons';
-import { priceFormat } from '../../../shared/lib/utils';
-import { format } from 'date-fns';
-import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
-import { Icons } from '@/shared/types';
-import { AccountType } from '../model';
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+import { AccountType } from '../model';
+import { getAccountType } from '../lib/get-account-type';
+import { Icons } from '@/shared/types';
+import { DATETIME_FORMAT } from '@/shared/constants';
+import { Block } from '@/shared/ui/components';
+import { priceFormat } from '@/shared/lib/utils';
+import { path } from '@/shared/lib/router';
+import { Icon } from '@/shared/ui/icons';
 
 interface AccountViewProps {
 	account: AccountType;
