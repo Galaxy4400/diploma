@@ -1,14 +1,21 @@
 import css from './category-view.module.scss';
 import { Link } from 'react-router-dom';
-import { path } from '../../../shared/lib/router';
 import { getCategoryType } from '../lib';
-import { Icon, IconCategory } from '../../../shared/ui/icons';
-import { Block } from '../../../shared/ui/components';
 import { format } from 'date-fns';
-import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
 import { Icons } from '@/shared/types';
+import { CategoryType } from '../model';
+import { ReactNode } from 'react';
+import { Block } from '@/shared/ui/components';
+import { DATETIME_FORMAT } from '@/shared/constants';
+import { Icon, IconCategory } from '@/shared/ui/icons';
+import { path } from '@/shared/lib/router';
 
-export const CategoryView = ({ category, deleteSlot }) => {
+interface CategoryViewPropts {
+	category: CategoryType;
+	deleteSlot: ReactNode;
+}
+
+export const CategoryView = ({ category, deleteSlot }: CategoryViewPropts) => {
 	return (
 		<Block className={css['view']}>
 			<h4>Категория №{category.id}</h4>
