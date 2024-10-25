@@ -1,4 +1,4 @@
-import { Nullable } from '@/shared/types';
+import { ID, Nullable } from '@/shared/types';
 
 export interface AuthData {
 	login: string;
@@ -6,7 +6,7 @@ export interface AuthData {
 }
 
 export interface UserType {
-	id: string | number;
+	id: ID;
 	login: string;
 	email?: string;
 	name?: string;
