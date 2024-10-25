@@ -9,4 +9,9 @@ export interface AccountType {
 	comment?: string;
 }
 
+export interface AccountResponse {
+	readonly error: string | null;
+	readonly account: AccountType | null;
+}
+
 export type AccountState = Nullable<AccountType>;

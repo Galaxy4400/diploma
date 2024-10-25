@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { authReducer } from '../../entities/auth';
-import { accountReducer } from '../../entities/account';
-import { operationReducer } from '../../entities/operation';
-import { categoryReducer } from '../../entities/category';
-import { operationsReducer } from '../../entities/operations';
-import { applicationReducer } from '../../entities/application';
+import { accountReducer } from 'entities/account';
+import { applicationReducer } from 'entities/application';
+import { authReducer } from 'entities/auth';
+import { categoryReducer } from 'entities/category';
+import { operationReducer } from 'entities/operation';
+import { operationsReducer } from 'entities/operations';
 
 const rootReducer = combineReducers({
 	app: applicationReducer,

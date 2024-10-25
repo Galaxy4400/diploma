@@ -1,10 +1,10 @@
-import { Methods } from '../types';
+import { Methods, QueryData, RequestData } from '../types';
 
 interface requestProps {
 	url: string;
 	method?: Methods;
-	data?: Record<string, string | number>;
-	query?: Record<string, string>;
+	data?: RequestData;
+	query?: QueryData;
 }
 
 export const request = async <T>({

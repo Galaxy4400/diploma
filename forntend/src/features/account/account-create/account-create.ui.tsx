@@ -3,22 +3,28 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { accountCreateFormRules } from './account-create.rules';
-import { path } from '../../../shared/lib/router';
-import { Button, Form, Input, Radio, Textarea } from '../../../shared/ui/form-components';
-import { ACCOUNT_TYPES } from '../../../entities/account/lib/account-types';
-import { Block, Fieldset } from '../../../shared/ui/components';
-import { useToast } from '../../../app/providers/toast';
-import { request } from '../../../shared/api';
+import { path } from 'shared/lib/router';
+import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components';
+import { ACCOUNT_TYPES } from 'entities/account/lib/account-types';
+import { Block, Fieldset } from 'shared/ui/components';
+import { useToast } from 'app/providers/toast';
+import { request } from 'shared/api';
+import { AccountResponse } from 'entities/account';
+import { RequestData } from 'shared/types';
 
 export const AccountCreateForm = () => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const submitHandler = async (submittedData) => {
+	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { account, error } = await request({ url: '/accounts', method: 'POST', data: submittedData });
+		const { account, error } = await request<AccountResponse>({
+			url: '/accounts',
+			method: 'POST',
+			data: submittedData,
+		});
 
 		setIsLoading(false);
 
@@ -27,7 +33,7 @@ export const AccountCreateForm = () => {
 			return;
 		}
 
-		navigate(path.account.id(account.id), { replace: true });
+		navigate(path.account.id(account?.id), { replace: true });
 
 		showToast({ message: 'Счет создан', type: 'success' });
 	};
