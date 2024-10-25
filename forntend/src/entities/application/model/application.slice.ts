@@ -11,6 +11,7 @@ const reducers = {
 	setFilter: (state: ApplicationState, { payload }: PayloadAction<FilterProps>) => {
 		state.filter = payload;
 	},
+
 	resetApp: () => initialState,
 };
 

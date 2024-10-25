@@ -17,7 +17,7 @@ const initialState: OperationState = {
 
 const reducers = {
 	setOperation: (state: OperationState, { payload }: PayloadAction<OperationType>) => {
-		return Object.assign(state, payload);
+		Object.assign(state, payload);
 	},
 
 	resetOperation: () => initialState,

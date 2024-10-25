@@ -12,7 +12,9 @@ const initialState: AccountState = {
 };
 
 const reducers = {
-	setAccount: (state: AccountState, { payload }: PayloadAction<AccountType>) => Object.assign(state, payload),
+	setAccount: (state: AccountState, { payload }: PayloadAction<AccountType>) => {
+		Object.assign(state, payload);
+	},
 
 	resetAccount: () => initialState,
 };

@@ -13,7 +13,9 @@ const initialState: AuthState = {
 };
 
 const reducers = {
-	setAuth: (state: AuthState, { payload }: PayloadAction<UserType>) => Object.assign(state, payload),
+	setAuth: (state: AuthState, { payload }: PayloadAction<UserType>) => {
+		Object.assign(state, payload);
+	},
 
 	resetAuth: () => initialState,
 };

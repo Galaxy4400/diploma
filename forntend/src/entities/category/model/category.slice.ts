@@ -6,13 +6,14 @@ const name = 'category';
 const initialState: CategoryState = {
 	id: null,
 	name: null,
+	icon: null,
 	type: null,
 	createdAt: null,
 };
 
 const reducers = {
 	setCategory: (state: CategoryState, { payload }: PayloadAction<CategoryType>) => {
-		return Object.assign(state, payload);
+		Object.assign(state, payload);
 	},
 
 	resetCategory: () => initialState,
