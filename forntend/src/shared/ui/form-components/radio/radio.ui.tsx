@@ -1,8 +1,17 @@
+import { InputHTMLAttributes } from 'react';
 import css from './radio.module.scss';
 import { useFormContext } from 'react-hook-form';
 
-export const Radio = ({ name, value, label, ...rest }) => {
+interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+	label?: string;
+}
+
+export const Radio = ({ name, value, label, ...rest }: RadioProps) => {
 	const { register } = useFormContext();
+
+	if (!name) {
+		throw new Error("The 'name' prop is required for Hidden component.");
+	}
 
 	return (
 		<label className={css['wrapper']}>

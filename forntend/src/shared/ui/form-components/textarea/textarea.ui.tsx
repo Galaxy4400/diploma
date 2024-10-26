@@ -1,8 +1,17 @@
 import { useFormContext } from 'react-hook-form';
 import css from './textarea.module.scss';
+import { TextareaHTMLAttributes } from 'react';
 
-export const Textarea = ({ name, label, ...rest }) => {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+	label?: string;
+}
+
+export const Textarea = ({ name, label, ...rest }: TextareaProps) => {
 	const { register } = useFormContext();
+
+	if (!name) {
+		throw new Error("The 'name' prop is required for Hidden component.");
+	}
 
 	return (
 		<label className={css['wraper']}>

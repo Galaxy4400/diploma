@@ -1,8 +1,15 @@
+import { HTMLAttributes } from 'react';
 import css from './select.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReactSelect from 'react-select';
 
-export const Select = ({ name, options, label, defaultValue, ...rest }) => {
+interface SelectProps extends HTMLAttributes<HTMLElement> {
+	name: string;
+	label?: string;
+	defaultValue?: string | number;
+}
+
+export const Select = ({ name, options, label, defaultValue, ...rest }: SelectProps) => {
 	const {
 		control,
 		formState: { errors },
