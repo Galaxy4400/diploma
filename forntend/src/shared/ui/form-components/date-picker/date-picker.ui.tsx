@@ -4,10 +4,21 @@ import { Controller, useFormContext } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import { forwardRef } from 'react';
 
-export const DatePicker = ({ name, label, defaultValue }) => {
+interface DatePickerProps {
+	name: string;
+	label?: string;
+	defaultValue: [Date | string, Date | string];
+}
+
+interface DatePickerInputProps {
+	value?: string;
+	onClick?: () => void;
+}
+
+export const DatePicker = ({ name, label, defaultValue }: DatePickerProps) => {
 	const { control } = useFormContext();
 
-	const DatePickerInput = forwardRef(({ value, onClick }, ref) => (
+	const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>(({ value, onClick }, ref) => (
 		<input className={css['input']} onClick={onClick} value={value} readOnly ref={ref} />
 	));
 
