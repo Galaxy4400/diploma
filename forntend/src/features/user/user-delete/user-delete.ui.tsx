@@ -1,11 +1,11 @@
 import css from './user-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useModal } from '../../../app/providers/modal';
-import { Button, Confirm } from '../../../shared/ui/components';
-import { useToast } from '../../../app/providers/toast';
-import { request } from '../../../shared/api';
-import { path } from '../../../shared/lib/router';
-import { useAuth } from '../../../app/providers/auth';
+import { useModal } from 'app/providers/modal';
+import { Button, Confirm } from 'shared/ui/components';
+import { useToast } from 'app/providers/toast';
+import { request } from 'shared/api';
+import { path } from 'shared/lib/router';
+import { useAuth } from 'app/providers/auth';
 import { ID } from 'shared/types';
 
 interface UserDeleteProps {

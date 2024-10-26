@@ -1,23 +1,24 @@
 import css from './register.module.scss';
+import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormRules } from './register.rules';
-import { useAuth } from '../../../app/providers/auth';
-import { Button, Form, Input } from '../../../shared/ui/form-components';
-import { useState } from 'react';
-import { Block } from '../../../shared/ui/components';
+import { useAuth } from 'app/providers/auth';
+import { Button, Form, Input } from 'shared/ui/form-components';
+import { Block } from 'shared/ui/components';
 import { Link } from 'react-router-dom';
-import { path } from '../../../shared/lib/router';
-import { useToast } from '../../../app/providers/toast';
+import { path } from 'shared/lib/router';
+import { useToast } from 'app/providers/toast';
+import { RequestData } from 'shared/types';
 
 export const RegisterForm = () => {
-	const { registration, registrationError } = useAuth();
+	const { registration } = useAuth();
 	const [isLoading, setIsLoading] = useState(false);
 	const { showToast } = useToast();
 
-	const submitHandler = async ({ login, password }) => {
+	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { error } = await registration(login, password);
+		const { error } = await registration(submittedData.login as string, submittedData.password as string);
 
 		setIsLoading(false);
 
@@ -44,7 +45,6 @@ export const RegisterForm = () => {
 			<Link className={css['link']} to={path.login()}>
 				Авторизация
 			</Link>
-			{registrationError && <div>{registrationError}</div>}
 		</Block>
 	);
 };

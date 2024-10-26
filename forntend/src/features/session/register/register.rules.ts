@@ -1,4 +1,4 @@
-import { yup } from '../../../shared/lib/yup';
+import { yup } from 'shared/lib/yup';
 
 export const registerFormRules = yup.object().shape({
 	login: yup.string().required().min(3).max(30),
@@ -6,5 +6,5 @@ export const registerFormRules = yup.object().shape({
 	passcheck: yup
 		.string()
 		.required()
-		.oneOf([yup.ref('password'), null]),
+		.oneOf([yup.ref('password')]),
 });
