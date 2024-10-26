@@ -1,13 +1,15 @@
+import { HTMLAttributes } from 'react';
 import css from './select.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
-import ReactSelect, { Props } from 'react-select';
+import ReactSelect from 'react-select';
 import { OptionProps } from 'shared/types';
 
-interface SelectProps extends Props<OptionProps> {
+interface SelectProps extends HTMLAttributes<HTMLElement> {
 	name: string;
 	label?: string;
-	defaultValue?: OptionProps | null;
+	defaultValue?: string | number;
 	options: OptionProps[];
+	placeholder?: string;
 }
 
 export const Select = ({ name, options, label, defaultValue, ...rest }: SelectProps) => {
@@ -15,8 +17,6 @@ export const Select = ({ name, options, label, defaultValue, ...rest }: SelectPr
 		control,
 		formState: { errors },
 	} = useFormContext();
-
-	console.log(defaultValue);
 
 	return (
 		<label className={css['wraper']}>
@@ -29,7 +29,7 @@ export const Select = ({ name, options, label, defaultValue, ...rest }: SelectPr
 					<ReactSelect
 						options={options}
 						value={options.find((option) => option.value === field.value) || null}
-						// @ts-expect-error: Property 'value' does not exist on type 'OptionProps | MultiValue<OptionProps>'
+						// @ts-expect-error: Ignore type error for onChange
 						onChange={(selectedOption) => field.onChange(selectedOption?.value || null)}
 						onBlur={field.onBlur}
 						{...rest}

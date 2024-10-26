@@ -48,14 +48,14 @@ export const OperationCreateForm = () => {
 				<Select
 					name="account"
 					options={accountOptions}
-					defaultValue={accountOptions.find((option) => option.value === from?.accountId)}
+					defaultValue={from?.accountId || ''}
 					label="Счет операции"
 					placeholder=""
 				/>
 				<Select
 					name="category"
 					options={categoryOptions}
-					defaultValue={null}
+					defaultValue=""
 					label="Категория операции"
 					placeholder=""
 				/>
