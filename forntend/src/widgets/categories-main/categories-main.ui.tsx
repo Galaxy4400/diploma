@@ -1,11 +1,11 @@
 import css from './categories-main.module.scss';
 import { useAsyncValue } from 'react-router-dom';
-import { CategoryItem } from '../../entities/category';
-import { CategoryDelete } from '../../features/category';
-import { Block } from '../../shared/ui/components';
+import { CategoryItem, CategoryType } from 'entities/category';
+import { CategoryDelete } from 'features/category';
+import { Block } from 'shared/ui/components';
 
 export const CategoriesMain = () => {
-	const categories = useAsyncValue();
+	const categories = useAsyncValue() as CategoryType[];
 
 	return (
 		<Block className={css['main']}>

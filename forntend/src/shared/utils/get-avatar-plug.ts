@@ -1,7 +1,11 @@
 import { URL } from 'shared/types';
 
-export const getAvatarPlug = (string: string, color = 'ffffff', background = '9b5de5'): URL | null => {
-	if (!string) return null;
+export const getAvatarPlug = (
+	string: string | null,
+	color = 'ffffff',
+	background = '9b5de5',
+): URL | undefined => {
+	if (!string) return undefined;
 
 	const firstLetter = [...string][0].toUpperCase();
 
