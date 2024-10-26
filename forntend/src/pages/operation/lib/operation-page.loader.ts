@@ -4,10 +4,10 @@ import { HasParams, ID } from 'shared/types';
 import { OperationResponse } from 'entities/operation';
 
 const getOperation = async (opeartionId: ID) => {
-	const { operation } = await request<OperationResponse>({ url: `/operations/${opeartionId}` });
+	const { operation, error } = await request<OperationResponse>({ url: `/operations/${opeartionId}` });
 
 	if (!operation) {
-		throw new Error('Error loading data: operation information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return operation;

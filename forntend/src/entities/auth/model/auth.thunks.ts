@@ -4,7 +4,8 @@ import { AuthResponse, UserType } from './auth.types';
 import { ID } from 'shared/types';
 
 export const updateAuthAsync =
-	(userId: ID, updatingData: Partial<UserType>) => async (dispatch: AppDispatch) => {
+	(userId: ID, updatingData: Partial<UserType>) =>
+	async (dispatch: AppDispatch): Promise<AuthResponse> => {
 		const { user, error } = await request<AuthResponse>({
 			url: `/users/${userId}`,
 			method: 'PATCH',
@@ -16,4 +17,6 @@ export const updateAuthAsync =
 		}
 
 		dispatch(setAuth(user));
+
+		return { user, error };
 	};

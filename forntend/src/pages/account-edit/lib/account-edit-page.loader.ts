@@ -4,10 +4,10 @@ import { request } from 'shared/api';
 import { HasParams, ID } from 'shared/types';
 
 const getAccount = async (accountId: ID) => {
-	const { account } = await request<AccountResponse>({ url: `/accounts/${accountId}` });
+	const { account, error } = await request<AccountResponse>({ url: `/accounts/${accountId}` });
 
 	if (!account) {
-		throw new Error('Error loading data: account information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return account;

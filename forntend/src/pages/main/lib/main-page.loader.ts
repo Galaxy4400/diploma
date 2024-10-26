@@ -5,33 +5,33 @@ import { AccountsResponse } from 'entities/account';
 import { CategoriesResponse } from 'entities/category';
 
 const getAccounts = async () => {
-	const { accounts } = await request<AccountsResponse>({ url: '/accounts' });
+	const { accounts, error } = await request<AccountsResponse>({ url: '/accounts' });
 
 	if (!accounts) {
-		throw new Error('Error loading data: accounts information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return accounts;
 };
 
 const getOperations = async () => {
-	const { pagingData } = await request<OperationsResponse>({
+	const { pagingData, error } = await request<OperationsResponse>({
 		url: '/operations',
 		query: { limit: OPERATIONS_PER_LOAD },
 	});
 
 	if (!pagingData) {
-		throw new Error('Error loading data: pagingData information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return pagingData.items;
 };
 
 const getCategories = async () => {
-	const { categories } = await request<CategoriesResponse>({ url: '/categories' });
+	const { categories, error } = await request<CategoriesResponse>({ url: '/categories' });
 
 	if (!categories) {
-		throw new Error('Error loading data: categories information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return categories;

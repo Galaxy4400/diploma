@@ -4,10 +4,10 @@ import { HasParams, ID } from 'shared/types';
 import { CategoryResponse } from 'entities/category';
 
 const getCategory = async (categoryId: ID) => {
-	const { category } = await request<CategoryResponse>({ url: `/categories/${categoryId}` });
+	const { category, error } = await request<CategoryResponse>({ url: `/categories/${categoryId}` });
 
 	if (!category) {
-		throw new Error('Error loading data: category information not found.');
+		throw new Error(error || 'Unknown error');
 	}
 
 	return category;

@@ -5,7 +5,7 @@ import { HasParams, ID } from 'shared/types';
 import { AccountResponse } from 'entities/account';
 
 const getAccount = async (accountId: ID) => {
-	const [{ account }, { pagingData }] = await Promise.all([
+	const [accountResponse, operationsResponse] = await Promise.all([
 		request<AccountResponse>({ url: `/accounts/${accountId}` }),
 		request<OperationsResponse>({
 			url: `/operations/account/${accountId}`,
@@ -13,15 +13,16 @@ const getAccount = async (accountId: ID) => {
 		}),
 	]);
 
-	if (!account) {
-		throw new Error('Error loading data: account information not found.');
+	if (!accountResponse.account) {
+		throw new Error(accountResponse.error || 'Unknown error');
 	}
 
-	if (!pagingData) {
-		throw new Error('Error loading data: pagingData information not found.');
+	if (!operationsResponse.pagingData) {
+		throw new Error(operationsResponse.error || 'Unknown error');
 	}
 
-	account.operations = pagingData.items;
+	const account = accountResponse.account;
+	account.operations = operationsResponse.pagingData.items;
 
 	return account;
 };

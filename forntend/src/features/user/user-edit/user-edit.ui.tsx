@@ -1,31 +1,38 @@
 import css from './user-edit.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateAuthAsync } from '../../../entities/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editUserFormRules } from './user-edit.rules';
 import { useNavigate } from 'react-router-dom';
-import { path } from '../../../shared/lib/router/path';
-import { Button, Form, Input } from '../../../shared/ui/form-components';
-import { Block } from '../../../shared/ui/components';
-import { useToast } from '../../../app/providers/toast';
+import { path } from 'shared/lib/router/path';
+import { Button, Form, Input } from 'shared/ui/form-components';
+import { updateAuthAsync, UserType } from 'entities/auth';
+import { Block } from 'shared/ui/components';
+import { useToast } from 'app/providers/toast';
+import { RequestData } from 'shared/types';
 
-export const EditUserForm = ({ userData }) => {
-	const dispatch = useDispatch();
+interface EditUserFormProps {
+	userData: UserType;
+}
+
+export const EditUserForm = ({ userData }: EditUserFormProps) => {
+	const dispatch = useDispatch<AppDispatch>();
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const submitHandler = (submittedData) => {
+	const submitHandler = async (submittedData: RequestData) => {
 		delete submittedData.passcheck;
 
 		setIsLoading(true);
 
-		dispatch(updateAuthAsync(userData.id, submittedData)).then(() => {
-			setIsLoading(false);
-			navigate(path.home());
-			showToast({ message: 'Изменения внесены', type: 'success' });
-		});
+		await dispatch(updateAuthAsync(userData.id, submittedData));
+
+		setIsLoading(false);
+
+		navigate(path.home());
+
+		showToast({ message: 'Изменения внесены', type: 'success' });
 	};
 
 	return (
