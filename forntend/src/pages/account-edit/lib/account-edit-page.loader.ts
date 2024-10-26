@@ -17,6 +17,7 @@ export const accountEditPageLoader = async ({ params }: HasParams<{ id: string }
 	}
 
 	return defer({
+		id,
 		account: getAccount(id),
 	});
 };
