@@ -22,9 +22,7 @@ export const EditUserForm = ({ userData }: EditUserFormProps) => {
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const submitHandler = async (submittedData: RequestData) => {
-		delete submittedData.passcheck;
-
+	const submitHandler = async (submittedData: Omit<RequestData, 'passcheck'>) => {
 		setIsLoading(true);
 
 		const { user, error } = await request<AuthResponse>({

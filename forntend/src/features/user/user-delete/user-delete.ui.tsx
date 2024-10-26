@@ -6,20 +6,20 @@ import { useToast } from '../../../app/providers/toast';
 import { request } from '../../../shared/api';
 import { path } from '../../../shared/lib/router';
 import { useAuth } from '../../../app/providers/auth';
+import { ID } from 'shared/types';
 
-export const UserDelete = ({ userId }) => {
+interface UserDeleteProps {
+	userId: ID;
+}
+
+export const UserDelete = ({ userId }: UserDeleteProps) => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const { logout } = useAuth();
 	const { openModal, closeModal } = useModal();
 
 	const deleteUser = async () => {
-		const { error } = await request({ url: `/users/${userId}`, method: 'DELETE' });
-
-		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
+		await request({ url: `/users/${userId}`, method: 'DELETE' });
 
 		logout();
 
