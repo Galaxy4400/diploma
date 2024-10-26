@@ -9,6 +9,8 @@ const initialState: AccountState = {
 	name: null,
 	createdAt: null,
 	amount: null,
+	comment: null,
+	operations: null,
 };
 
 const reducers = {

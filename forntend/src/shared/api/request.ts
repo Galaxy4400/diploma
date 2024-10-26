@@ -15,7 +15,9 @@ export const request = async <T>({
 }: requestProps): Promise<T> => {
 	const endpoint = `/api/${url.replace(/^\/+/, '')}`;
 
-	const queryString = Object.keys(query).length ? `?${new URLSearchParams(query).toString()}` : '';
+	const queryString = Object.keys(query).length
+		? `?${new URLSearchParams(query as Record<string, string>).toString()}`
+		: '';
 
 	const response = await fetch(endpoint + queryString, {
 		method,

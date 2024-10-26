@@ -1,8 +1,13 @@
 import css from './operations-pagination.module.scss';
-import { Button } from '../../../../shared/ui/components';
+import { Button } from 'shared/ui/components';
 import { useOperationsPagination } from '../model';
+import { ID } from 'shared/types';
 
-export const OperationsPagination = ({ accountId = null }) => {
+interface OperationsPaginationProps {
+	accountId: ID | null;
+}
+
+export const OperationsPagination = ({ accountId }: OperationsPaginationProps) => {
 	const { loadHandler, isLoading, isLoadedAll } = useOperationsPagination(accountId);
 
 	return (

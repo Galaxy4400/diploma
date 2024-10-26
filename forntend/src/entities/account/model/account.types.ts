@@ -1,3 +1,4 @@
+import { OperationType } from 'entities/operation';
 import { ID, Nullable } from 'shared/types';
 
 export interface AccountType {
@@ -7,6 +8,7 @@ export interface AccountType {
 	createdAt: string;
 	amount: number;
 	comment?: string;
+	operations?: OperationType[];
 }
 
 export interface AccountResponse {

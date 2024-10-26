@@ -1,6 +1,6 @@
 import { AccountType } from 'entities/account';
 import { CategoryType } from 'entities/category';
-import { ID, Nullable } from 'shared/types';
+import { ID, Nullable, PagingData } from 'shared/types';
 
 export interface OperationType {
 	id: ID;
@@ -12,6 +12,16 @@ export interface OperationType {
 	comment: string;
 	status: boolean;
 	createdAt: string;
+}
+
+export interface OperationResponse {
+	readonly error: string | null;
+	readonly operation: OperationType | null;
+}
+
+export interface OperationsResponse {
+	readonly error: string | null;
+	readonly pagingData: PagingData<OperationType> | null;
 }
 
 export type OperationState = Nullable<OperationType>;
