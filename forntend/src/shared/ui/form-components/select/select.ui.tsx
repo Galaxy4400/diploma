@@ -2,11 +2,13 @@ import { HTMLAttributes } from 'react';
 import css from './select.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import ReactSelect from 'react-select';
+import { OptionProps } from 'shared/types';
 
 interface SelectProps extends HTMLAttributes<HTMLElement> {
 	name: string;
 	label?: string;
 	defaultValue?: string | number;
+	options: OptionProps[];
 }
 
 export const Select = ({ name, options, label, defaultValue, ...rest }: SelectProps) => {
@@ -26,13 +28,14 @@ export const Select = ({ name, options, label, defaultValue, ...rest }: SelectPr
 					<ReactSelect
 						options={options}
 						value={options.find((option) => option.value === field.value) || null}
+						// @ts-expect-error: Ignore type error for onChange
 						onChange={(selectedOption) => field.onChange(selectedOption?.value || null)}
 						onBlur={field.onBlur}
 						{...rest}
 					/>
 				)}
 			/>
-			{!!errors[name] && <p className={css['error']}>{errors[name]?.message}</p>}
+			{!!errors[name] && <p className={css['error']}>{String(errors[name]?.message)}</p>}
 		</label>
 	);
 };
