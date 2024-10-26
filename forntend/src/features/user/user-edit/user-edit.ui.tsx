@@ -6,10 +6,11 @@ import { editUserFormRules } from './user-edit.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router/path';
 import { Button, Form, Input } from 'shared/ui/form-components';
-import { updateAuthAsync, UserType } from 'entities/auth';
+import { AuthResponse, setAuth, UserType } from 'entities/auth';
 import { Block } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/types';
+import { request } from 'shared/api';
 
 interface EditUserFormProps {
 	userData: UserType;
@@ -26,7 +27,17 @@ export const EditUserForm = ({ userData }: EditUserFormProps) => {
 
 		setIsLoading(true);
 
-		await dispatch(updateAuthAsync(userData.id, submittedData));
+		const { user, error } = await request<AuthResponse>({
+			url: `/users/${userData.id}`,
+			method: 'PATCH',
+			data: submittedData,
+		});
+
+		if (!user) {
+			throw new Error(error || 'Unknown error');
+		}
+
+		dispatch(setAuth(user));
 
 		setIsLoading(false);
 
