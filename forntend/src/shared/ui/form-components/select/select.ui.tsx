@@ -16,6 +16,8 @@ export const Select = ({ name, options, label, defaultValue, ...rest }: SelectPr
 		formState: { errors },
 	} = useFormContext();
 
+	console.log(defaultValue);
+
 	return (
 		<label className={css['wraper']}>
 			{label && <span className={css['label']}>{label}</span>}
