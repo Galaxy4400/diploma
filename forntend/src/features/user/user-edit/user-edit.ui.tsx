@@ -9,11 +9,11 @@ import { Button, Form, Input } from 'shared/ui/form-components';
 import { AuthResponse, setAuth, UserType } from 'entities/auth';
 import { Block } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
-import { RequestData } from 'shared/types';
+import { Nullable, RequestData } from 'shared/types';
 import { request } from 'shared/api';
 
 interface EditUserFormProps {
-	userData: UserType;
+	userData: Nullable<UserType>;
 }
 
 export const EditUserForm = ({ userData }: EditUserFormProps) => {
@@ -47,11 +47,11 @@ export const EditUserForm = ({ userData }: EditUserFormProps) => {
 	return (
 		<Block className={css['block']}>
 			<Form className={css['form']} onSubmit={submitHandler} resolver={yupResolver(editUserFormRules)}>
-				<Input type="text" name="login" defaultValue={userData.login} label="Логин" />
-				<Input type="email" name="email" defaultValue={userData.email} label="E-mail" />
-				<Input type="text" name="name" defaultValue={userData.name} label="Имя" />
-				<Input type="text" name="surname" defaultValue={userData.surname} label="Фамилия" />
-				<Input type="text" name="address" defaultValue={userData.address} label="Адрес" />
+				<Input type="text" name="login" defaultValue={userData.login || ''} label="Логин" />
+				<Input type="email" name="email" defaultValue={userData.email || ''} label="E-mail" />
+				<Input type="text" name="name" defaultValue={userData.name || ''} label="Имя" />
+				<Input type="text" name="surname" defaultValue={userData.surname || ''} label="Фамилия" />
+				<Input type="text" name="address" defaultValue={userData.address || ''} label="Адрес" />
 				<Input type="password" name="password" label="Пароль" />
 				<Input type="password" name="passcheck" label="Повторите пароль" />
 				<Button type="submit" disabled={isLoading} loading={isLoading}>

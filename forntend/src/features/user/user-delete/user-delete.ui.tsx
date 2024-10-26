@@ -9,7 +9,7 @@ import { useAuth } from 'app/providers/auth';
 import { ID } from 'shared/types';
 
 interface UserDeleteProps {
-	userId: ID;
+	userId: ID | null;
 }
 
 export const UserDelete = ({ userId }: UserDeleteProps) => {
