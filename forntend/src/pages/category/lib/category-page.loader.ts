@@ -1,7 +1,17 @@
 import { defer } from 'react-router-dom';
-import { request } from '../../../shared/api';
-import { HasParams } from 'shared/types';
+import { request } from 'shared/api';
+import { HasParams, ID } from 'shared/types';
 import { CategoryResponse } from 'entities/category';
+
+const getCategory = async (categoryId: ID) => {
+	const { category } = await request<CategoryResponse>({ url: `/categories/${categoryId}` });
+
+	if (!category) {
+		throw new Error('Error loading data: category information not found.');
+	}
+
+	return category;
+};
 
 export const categoryPageLoader = async ({ params }: HasParams<{ id: string }>) => {
 	const id = params.id;
@@ -11,6 +21,6 @@ export const categoryPageLoader = async ({ params }: HasParams<{ id: string }>) 
 	}
 
 	return defer({
-		category: await request<CategoryResponse>({ url: `/categories/${id}` }),
+		category: getCategory(id),
 	});
 };

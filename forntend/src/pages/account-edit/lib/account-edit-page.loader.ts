@@ -6,6 +6,10 @@ import { HasParams, ID } from 'shared/types';
 const getAccount = async (accountId: ID) => {
 	const { account } = await request<AccountResponse>({ url: `/accounts/${accountId}` });
 
+	if (!account) {
+		throw new Error('Error loading data: account information not found.');
+	}
+
 	return account;
 };
 
