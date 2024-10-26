@@ -1,26 +1,25 @@
 import css from './category-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useFrom } from '../../../shared/lib/location';
-import { Icon } from '../../../shared/ui/icons';
-import { useModal } from '../../../app/providers/modal';
-import { Confirm } from '../../../shared/ui/components';
-import { request } from '../../../shared/api';
-import { useToast } from '../../../app/providers/toast';
-import { Icons } from 'shared/types';
+import { useFrom } from 'shared/lib/location';
+import { Icon } from 'shared/ui/icons';
+import { useModal } from 'app/providers/modal';
+import { Confirm } from 'shared/ui/components';
+import { request } from 'shared/api';
+import { useToast } from 'app/providers/toast';
+import { Icons, ID } from 'shared/types';
 
-export const CategoryDelete = ({ categoryId }) => {
+interface CategoryDeleteProps {
+	categoryId: ID;
+}
+
+export const CategoryDelete = ({ categoryId }: CategoryDeleteProps) => {
 	const navigate = useNavigate();
 	const from = useFrom();
 	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 
 	const deleteCategory = async () => {
-		const { error } = await request({ url: `/categories/${categoryId}`, method: 'DELETE' });
-
-		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
+		await request({ url: `/categories/${categoryId}`, method: 'DELETE' });
 
 		navigate(from?.pathname || false, { replace: true });
 

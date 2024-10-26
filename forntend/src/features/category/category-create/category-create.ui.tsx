@@ -2,29 +2,33 @@ import css from './category-create.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
-import { CATEGORY_TYPES } from '../../../entities/category';
-import { Button, Form, Input, Radio, RadioComponent } from '../../../shared/ui/form-components';
-import { path } from '../../../shared/lib/router';
+import { CATEGORY_TYPES, CategoryResponse } from 'entities/category';
+import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
+import { path } from 'shared/lib/router';
 import { useState } from 'react';
-import { Block, Fieldset } from '../../../shared/ui/components';
-import { IconCategory } from '../../../shared/ui/icons';
-import { request } from '../../../shared/api';
-import { useToast } from '../../../app/providers/toast';
-import { CategoryIcons } from 'shared/types';
+import { Block, Fieldset } from 'shared/ui/components';
+import { IconCategory } from 'shared/ui/icons';
+import { request } from 'shared/api';
+import { useToast } from 'app/providers/toast';
+import { CategoryIcons, RequestData } from 'shared/types';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const submitHandler = async (submittedData) => {
+	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { category, error } = await request({ url: '/categories', method: 'POST', data: submittedData });
+		const { category } = await request<CategoryResponse>({
+			url: '/categories',
+			method: 'POST',
+			data: submittedData,
+		});
 
 		setIsLoading(false);
 
-		if (error) {
+		if (!category) {
 			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
@@ -47,7 +51,7 @@ export const CategoryCreateForm = () => {
 				</Fieldset>
 				<Fieldset label="Иконка категории">
 					<div className={css['icons']}>
-						{Object.keys(CategoryIcons).map((icon, i) => (
+						{Object.values(CategoryIcons).map((icon, i) => (
 							<RadioComponent key={icon} name="icon" value={icon} defaultChecked={!i}>
 								<IconCategory className={css['icon']} name={icon} />
 							</RadioComponent>
