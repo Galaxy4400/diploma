@@ -1,8 +1,15 @@
 import css from './action.module.scss';
 import { Link } from 'react-router-dom';
 import { Icon } from '../../../../shared/ui/icons';
+import { Icons } from 'shared/types';
 
-export const Action = ({ to, title, icon }) => {
+interface ActionProps {
+	to: string;
+	title: string;
+	icon: Icons;
+}
+
+export const Action = ({ to, title, icon }: ActionProps) => {
 	return (
 		<Link className={css['action']} to={to}>
 			<figure className={css['image']}>

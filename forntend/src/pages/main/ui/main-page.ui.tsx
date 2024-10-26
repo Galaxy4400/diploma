@@ -1,17 +1,26 @@
 import css from './main-page.module.scss';
-import { AccountsMain } from '../../../widgets/accounts-main';
+import { AccountsMain } from 'widgets/accounts-main';
 import { useLoaderData } from 'react-router-dom';
-import { path } from '../../../shared/lib/router';
-import { CategoriesMain } from '../../../widgets/categories-main';
-import { AsyncComponent, Loading } from '../../../shared/ui/components';
-import { Container } from '../../../shared/ui/components';
+import { path } from 'shared/lib/router';
+import { CategoriesMain } from 'widgets/categories-main';
+import { AsyncComponent, Loading } from 'shared/ui/components';
+import { Container } from 'shared/ui/components';
 import { Action } from './components';
-import { OperationsMain } from '../../../widgets/operations-main';
-import { OperationsList } from '../../../widgets/operations-list';
+import { OperationsMain } from 'widgets/operations-main';
+import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
+import { OperationType } from 'entities/operation';
+import { CategoryType } from 'entities/category';
+import { AccountType } from 'entities/account';
+
+interface MainPageLoaderData {
+	accounts: Promise<AccountType[]>;
+	operations: Promise<OperationType[]>;
+	categories: Promise<CategoryType[]>;
+}
 
 export const MainPage = () => {
-	const { accounts, operations, categories } = useLoaderData();
+	const { accounts, operations, categories } = useLoaderData() as MainPageLoaderData;
 
 	return (
 		<Container className={css['main']}>
