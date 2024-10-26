@@ -1,9 +1,9 @@
 import css from './user.module.scss';
-import { path } from '../../../../shared/lib/router';
-import { getAvatarPlug } from '../../../../shared/lib/utils';
 import { Link } from 'react-router-dom';
-import { selectAuth } from '../../../../entities/auth';
 import { useSelector } from 'react-redux';
+import { getAvatarPlug } from 'shared/utils';
+import { path } from 'shared/lib/router';
+import { selectAuth } from 'entities/auth';
 
 export const User = () => {
 	const authUser = useSelector(selectAuth);

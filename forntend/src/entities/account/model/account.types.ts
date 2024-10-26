@@ -14,4 +14,9 @@ export interface AccountResponse {
 	readonly account: AccountType | null;
 }
 
+export interface AccountsResponse {
+	readonly error: string | null;
+	readonly accounts: AccountType[] | null;
+}
+
 export type AccountState = Nullable<AccountType>;

@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { AccountType } from '../model';
 import { path } from 'shared/lib/router';
 import { Icon } from 'shared/ui/icons';
-import { priceFormat } from 'shared/lib/utils';
+import { priceFormat } from 'shared/utils';
 
 interface AccountItemProps {
 	account: AccountType;

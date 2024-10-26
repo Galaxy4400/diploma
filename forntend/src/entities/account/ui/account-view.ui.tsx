@@ -7,7 +7,7 @@ import { getAccountType } from '../lib/get-account-type';
 import { Icons } from 'shared/types';
 import { DATETIME_FORMAT } from 'shared/constants';
 import { Block } from 'shared/ui/components';
-import { priceFormat } from 'shared/lib/utils';
+import { priceFormat } from 'shared/utils';
 import { path } from 'shared/lib/router';
 import { Icon } from 'shared/ui/icons';
 

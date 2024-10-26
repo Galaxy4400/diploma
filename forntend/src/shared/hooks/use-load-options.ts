@@ -1,30 +1,28 @@
 import { useEffect, useState } from 'react';
 import { request } from '../api/request';
+import { AccountsResponse } from 'entities/account';
+import { CategoriesResponse } from 'entities/category';
+import { buildSelectOptions } from 'shared/utils';
+import { OptionProps } from 'shared/types';
 
 export const useLoadOptions = () => {
-	const [accountOptions, setAccountOptions] = useState([]);
-	const [categoryOptions, setCategoryOptions] = useState([]);
+	const [accountOptions, setAccountOptions] = useState<OptionProps[]>([]);
+	const [categoryOptions, setCategoryOptions] = useState<OptionProps[]>([]);
 
 	useEffect(() => {
 		const loadOptions = async () => {
-			const [accountsResponse, categoriesResponse] = await Promise.all([
-				request<>({ url: '/accounts' }),
-				request<>({ url: '/categories' }),
+			const [{ accounts }, { categories }] = await Promise.all([
+				request<AccountsResponse>({ url: '/accounts' }),
+				request<CategoriesResponse>({ url: '/categories' }),
 			]);
 
-			setAccountOptions(
-				accountsResponse.accounts.map((account) => ({
-					value: account.id,
-					label: account.name,
-				})),
-			);
+			if (!accounts || !categories) return;
 
-			setCategoryOptions(
-				categoriesResponse.categories.map((category) => ({
-					value: category.id,
-					label: category.name,
-				})),
-			);
+			const accountsOptions = buildSelectOptions(accounts, 'name', 'id');
+			const categoriesOptions = buildSelectOptions(categories, 'name', 'id');
+
+			setAccountOptions(accountsOptions);
+			setCategoryOptions(categoriesOptions);
 		};
 
 		loadOptions();

@@ -3,7 +3,7 @@ import css from './price-range.module.scss';
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useClickAway } from '@uidotdev/usehooks';
-import { priceFormat } from 'shared/lib/utils';
+import { priceFormat } from 'shared/utils';
 
 interface PriceRangeProps {
 	lowPrice: number;

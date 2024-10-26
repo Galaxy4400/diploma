@@ -1,7 +1,7 @@
 import css from './operation-view.module.scss';
 import cn from 'classnames';
 import { Block } from '../../../shared/ui/components';
-import { priceFormat } from '../../../shared/lib/utils';
+import { priceFormat } from '../../../shared/utils';
 import { Icon, IconCategory } from '../../../shared/ui/icons';
 import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { format } from 'date-fns';
