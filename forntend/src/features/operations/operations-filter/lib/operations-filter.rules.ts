@@ -1,5 +1,5 @@
 import { endOfDay, startOfDay } from 'date-fns';
-import { yup } from '../../../../shared/lib/yup';
+import { yup } from 'shared/lib/yup';
 
 const accountRules = yup
 	.string()

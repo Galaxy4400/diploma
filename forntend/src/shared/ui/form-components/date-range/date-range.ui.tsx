@@ -7,8 +7,8 @@ import { forwardRef } from 'react';
 interface DateRangeProps {
 	name: string;
 	label: string;
-	from: Date | string;
-	to: Date | string;
+	from?: Date | string;
+	to?: Date | string;
 }
 
 interface DatePickerInputProps {
