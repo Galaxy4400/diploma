@@ -1,25 +1,24 @@
 import css from './account-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from '../../../shared/ui/icons';
-import { useModal } from '../../../app/providers/modal';
-import { Confirm } from '../../../shared/ui/components';
-import { useToast } from '../../../app/providers/toast';
-import { request } from '../../../shared/api';
-import { path } from '../../../shared/lib/router';
-import { Icons } from 'shared/types';
+import { Icon } from 'shared/ui/icons';
+import { useModal } from 'app/providers/modal';
+import { Confirm } from 'shared/ui/components';
+import { useToast } from 'app/providers/toast';
+import { request } from 'shared/api';
+import { path } from 'shared/lib/router';
+import { Icons, ID } from 'shared/types';
 
-export const AccountDelete = ({ accountId }) => {
+interface AccountDeleteProps {
+	accountId: ID;
+}
+
+export const AccountDelete = ({ accountId }: AccountDeleteProps) => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 
 	const deleteAccount = async () => {
-		const { error } = await request({ url: `/accounts/${accountId}`, method: 'DELETE' });
-
-		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
+		await request({ url: `/accounts/${accountId}`, method: 'DELETE' });
 
 		navigate(path.home(), { replace: true });
 
