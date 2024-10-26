@@ -1,3 +1,3 @@
 export interface HasParams<T> {
-	params: T;
+	params: Partial<T>;
 }

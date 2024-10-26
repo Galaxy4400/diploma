@@ -7,7 +7,6 @@ import { MainPage, mainPageLoader } from 'pages/main';
 import { UserEditPage } from 'pages/user-edit';
 import { HistoryPage, historyPageLoader } from 'pages/history';
 import { AnalyticsPage } from 'pages/analytics';
-import { AccountPage, accountPageLoader } from 'pages/account';
 import { AccountCreatePage } from 'pages/account-create';
 import { AccountEditPage, accountEditPageLoader } from 'pages/account-edit';
 import { OperationPage, operationPageLoader } from 'pages/operation';
@@ -18,6 +17,7 @@ import { CategoryEditPage, categoryEditPageLoader } from 'pages/category-edit';
 import { Page404 } from 'pages/page-404';
 import { LoginPage } from 'pages/login';
 import { RegisterPage } from 'pages/register';
+import { AccountPage, accountPageLoader } from 'pages/account';
 
 export const routerConfig = createBrowserRouter([
 	{

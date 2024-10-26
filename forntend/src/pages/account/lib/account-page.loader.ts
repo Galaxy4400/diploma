@@ -1,4 +1,4 @@
-import { defer, Params } from 'react-router-dom';
+import { defer } from 'react-router-dom';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
 import { request } from 'shared/api';
 import { HasParams, ID } from 'shared/types';
@@ -28,6 +28,10 @@ const getAccount = async (accountId: ID) => {
 
 export const accountPageLoader = async ({ params }: HasParams<{ id: string }>) => {
 	const id = params.id;
+
+	if (!id) {
+		throw new Error('Account ID is missing in route parameters.');
+	}
 
 	return defer({
 		id,
