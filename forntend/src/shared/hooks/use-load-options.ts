@@ -8,8 +8,8 @@ export const useLoadOptions = () => {
 	useEffect(() => {
 		const loadOptions = async () => {
 			const [accountsResponse, categoriesResponse] = await Promise.all([
-				request({ url: '/accounts' }),
-				request({ url: '/categories' }),
+				request<>({ url: '/accounts' }),
+				request<>({ url: '/categories' }),
 			]);
 
 			setAccountOptions(

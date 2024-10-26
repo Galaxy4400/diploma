@@ -23,14 +23,14 @@ export const RadioComponent = ({ className, name, value, children, defaultChecke
 
 		const isChecked = selectedValue ? selectedValue === value : defaultChecked;
 
+		if (!(input?.nextSibling instanceof Element)) {
+			throw new Error("Expected input's next sibling to be an Element.");
+		}
+
 		if (isChecked) {
-			if (input?.nextSibling instanceof Element) {
-				input.nextSibling.classList.add('checked');
-			}
+			input.nextSibling.classList.add('checked');
 		} else {
-			if (input?.nextSibling instanceof Element) {
-				input.nextSibling.classList.remove('checked');
-			}
+			input.nextSibling.classList.remove('checked');
 		}
 
 		const clickHandler = () => {
