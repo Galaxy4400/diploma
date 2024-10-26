@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginFormRules } from './login.rules';
-import { useAuth } from '../../../app/providers/auth';
-import { Form, Input } from '../../../shared/ui/form-components';
-import { Block } from '../../../shared/ui/components';
-import { useFrom } from '../../../shared/lib/location';
-import { path } from '../../../shared/lib/router';
-import { Button } from '../../../shared/ui/form-components';
-import { useToast } from '../../../app/providers/toast';
-import { AuthData } from 'shared/types';
+import { useAuth } from 'app/providers/auth';
+import { Form, Input } from 'shared/ui/form-components';
+import { Block } from 'shared/ui/components';
+import { useFrom } from 'shared/lib/location';
+import { path } from 'shared/lib/router';
+import { Button } from 'shared/ui/form-components';
+import { useToast } from 'app/providers/toast';
+import { RequestData } from 'shared/types';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
@@ -20,10 +20,10 @@ export const LoginForm = () => {
 
 	const { authorize } = useAuth();
 
-	const loginHandler = async ({ login, password }: AuthData) => {
+	const loginHandler = async ({ login, password }: RequestData) => {
 		setIsLoading(true);
 
-		const { error } = await authorize(login, password);
+		const { error } = await authorize(login as string, password as string);
 
 		setIsLoading(false);
 

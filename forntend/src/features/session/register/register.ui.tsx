@@ -15,10 +15,10 @@ export const RegisterForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { showToast } = useToast();
 
-	const submitHandler = async (submittedData: RequestData) => {
+	const submitHandler = async ({ login, password }: RequestData) => {
 		setIsLoading(true);
 
-		const { error } = await registration(submittedData.login as string, submittedData.password as string);
+		const { error } = await registration(login as string, password as string);
 
 		setIsLoading(false);
 

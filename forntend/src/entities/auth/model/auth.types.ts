@@ -1,10 +1,5 @@
 import { ID, Nullable } from 'shared/types';
 
-export interface AuthData {
-	login: string;
-	password: string;
-}
-
 export interface UserType {
 	id: ID;
 	login: string;
