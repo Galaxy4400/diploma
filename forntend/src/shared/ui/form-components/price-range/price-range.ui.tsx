@@ -2,7 +2,14 @@ import css from './price-range.module.scss';
 import { Controller, useFormContext } from 'react-hook-form';
 import { PriceRange as PriceRangeComponent } from './components';
 
-export const PriceRange = ({ name, label, lowPrice, highPrice }) => {
+interface PriceRangeProps {
+	name: string;
+	label?: string;
+	lowPrice?: number;
+	highPrice?: number;
+}
+
+export const PriceRange = ({ name, label, lowPrice, highPrice }: PriceRangeProps) => {
 	const { control } = useFormContext();
 
 	return (

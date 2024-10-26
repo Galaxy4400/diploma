@@ -1,14 +1,21 @@
+/* eslint-disable no-unused-vars */
 import css from './price-range.module.scss';
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { priceFormat } from '../../../../lib/utils/price-format';
 import { useClickAway } from '@uidotdev/usehooks';
+import { priceFormat } from 'shared/lib/utils';
 
-export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
+interface PriceRangeProps {
+	lowPrice: number;
+	highPrice: number;
+	onChange: (value: [number | string, number | string]) => void;
+}
+
+export const PriceRange = ({ lowPrice, highPrice, onChange }: PriceRangeProps) => {
 	const [display, setDisplay] = useState('');
 	const [isActive, setIsActive] = useState(false);
-	const clickAwayRef = useClickAway(() => setIsActive(false));
-	const lowInputRef = useRef(null);
+	const clickAwayRef = useClickAway<HTMLDivElement>(() => setIsActive(false));
+	const lowInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		const formatDisplay = [
@@ -20,7 +27,9 @@ export const PriceRange = ({ lowPrice, highPrice, onChange }) => {
 	}, [lowPrice, highPrice]);
 
 	useEffect(() => {
-		isActive && lowInputRef.current.focus();
+		if (isActive) {
+			lowInputRef.current?.focus();
+		}
 	}, [isActive]);
 
 	return (
