@@ -1,15 +1,17 @@
 import css from './operation-create.module.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { operationCreateFormRules } from './operation-create.rules';
-import { path } from '../../../shared/lib/router';
-import { useFrom } from '../../../shared/lib/location';
-import { Button, Form, Input, Select } from '../../../shared/ui/form-components';
-import { Block } from '../../../shared/ui/components';
-import { useState } from 'react';
-import { useLoadOptions } from '../../../shared/hooks';
-import { request } from '../../../shared/api';
-import { useToast } from '../../../app/providers/toast';
+import { path } from 'shared/lib/router';
+import { useFrom } from 'shared/lib/location';
+import { Button, Form, Input, Select } from 'shared/ui/form-components';
+import { Block } from 'shared/ui/components';
+import { useLoadOptions } from 'shared/hooks';
+import { request } from 'shared/api';
+import { useToast } from 'app/providers/toast';
+import { RequestData } from 'shared/types';
+import { OperationResponse } from 'entities/operation';
 
 export const OperationCreateForm = () => {
 	const navigate = useNavigate();
@@ -18,14 +20,18 @@ export const OperationCreateForm = () => {
 	const { accountOptions, categoryOptions } = useLoadOptions();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const submitHandler = async (submittedData) => {
+	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { operation, error } = await request({ url: '/operations', method: 'POST', data: submittedData });
+		const { operation } = await request<OperationResponse>({
+			url: '/operations',
+			method: 'POST',
+			data: submittedData,
+		});
 
 		setIsLoading(false);
 
-		if (error) {
+		if (!operation) {
 			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
 			return;
 		}
@@ -42,14 +48,14 @@ export const OperationCreateForm = () => {
 				<Select
 					name="account"
 					options={accountOptions}
-					defaultValue={from?.accountId || ''}
+					defaultValue={accountOptions.find((option) => option.value === from?.accountId)}
 					label="Счет операции"
 					placeholder=""
 				/>
 				<Select
 					name="category"
 					options={categoryOptions}
-					defaultValue=""
+					defaultValue={null}
 					label="Категория операции"
 					placeholder=""
 				/>
