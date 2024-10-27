@@ -2,7 +2,7 @@ import css from './category-edit.module.scss';
 import { useState } from 'react';
 import { categoryEditFormRules } from './category-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useAsyncValue, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { Block, Fieldset } from 'shared/ui/components';
@@ -10,12 +10,13 @@ import { IconCategory } from 'shared/ui/icons';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
-import { CategoryType, editCategory } from 'shared/api/category';
-import { CATEGORY_TYPES } from 'entities/category/category-data';
+import { editCategory } from 'shared/api/category';
+import { CATEGORY_TYPES, selectCategoryData } from 'entities/category/category-data';
+import { useAppSelector } from 'shared/lib/store';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();
-	const category = useAsyncValue() as CategoryType;
+	const category = useAppSelector(selectCategoryData);
 	const { showToast } = useToast();
 	const [isLoading, setIsLoading] = useState(false);
 
