@@ -4,7 +4,7 @@ import { AsyncComponent, Loading } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { ID } from 'shared/types';
-import { AccountType } from 'entities/account';
+import { AccountType } from 'shared/api/account';
 
 interface AccountEditPageLoaderData {
 	id: ID;

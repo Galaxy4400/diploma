@@ -7,7 +7,7 @@ import { path } from 'shared/lib/router';
 import { OperationsPagination } from 'features/operations';
 import { OperationsList } from 'widgets/operations-list';
 import { setOperations } from 'entities/operations';
-import { AccountType } from 'entities/account';
+import { AccountType } from 'shared/api/account';
 
 export const OperationsSection = () => {
 	const account = useAsyncValue() as AccountType;

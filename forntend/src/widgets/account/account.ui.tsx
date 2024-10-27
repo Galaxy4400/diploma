@@ -1,6 +1,7 @@
 import { useAsyncValue } from 'react-router-dom';
-import { AccountType, AccountView } from 'entities/account';
+import { AccountView } from 'entities/account';
 import { AccountDelete } from 'features/account';
+import { AccountType } from 'shared/api/account';
 
 export const Account = () => {
 	const account = useAsyncValue() as AccountType;

@@ -2,7 +2,6 @@ import css from './account-view.module.scss';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
-import { AccountType } from '../model';
 import { getAccountType } from '../lib/get-account-type';
 import { Icons } from 'shared/types';
 import { DATETIME_FORMAT } from 'shared/constants';
@@ -10,6 +9,7 @@ import { Block } from 'shared/ui/components';
 import { priceFormat } from 'shared/utils';
 import { path } from 'shared/lib/router';
 import { Icon } from 'shared/ui/icons';
+import { AccountType } from 'shared/api/account';
 
 interface AccountViewProps {
 	account: AccountType;

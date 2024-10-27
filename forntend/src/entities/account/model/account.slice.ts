@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AccountState, AccountType } from './account.types';
+import { AccountState } from './account.types';
+import { AccountType } from 'shared/api/account';
 
 const name = 'account';
 

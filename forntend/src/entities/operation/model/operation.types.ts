@@ -1,6 +1,7 @@
-import { AccountType } from 'entities/account';
 import { CategoryType } from 'entities/category';
-import { ID, Nullable, PagingData } from 'shared/types';
+import { PagingData } from 'shared/api';
+import { AccountType } from 'shared/api/account';
+import { ID, Nullable } from 'shared/types';
 
 export interface OperationType {
 	id: ID;
