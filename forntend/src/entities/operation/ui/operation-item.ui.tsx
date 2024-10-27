@@ -9,7 +9,7 @@ import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
 import { ReactNode } from 'react';
 import { OperationType } from 'shared/api/operation';
-import { CATEGORY_TYPE } from 'entities/category/category-view';
+import { CATEGORY_TYPE } from 'entities/category/category-data';
 
 interface OperationItemProps {
 	operation: OperationType;
@@ -26,7 +26,7 @@ export const OperationItem = ({ operation, deleteSlot }: OperationItemProps) => 
 			<Link className={css['main']} to={path.operation.id(operation.id)} state={{ from: location }}>
 				<figure className={css['figure']}>
 					{operation.status ? (
-						<IconCategory className={css['icon']} name={operation?.category.icon} />
+						<IconCategory className={css['icon']} name={operation?.category.icon ?? undefined} />
 					) : (
 						<Icon className={css['abort-icon']} name={Icons.abort} />
 					)}

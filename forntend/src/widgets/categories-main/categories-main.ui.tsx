@@ -3,7 +3,7 @@ import { useAsyncValue } from 'react-router-dom';
 import { CategoryDelete } from 'features/category';
 import { Block } from 'shared/ui/components';
 import { CategoryType } from 'shared/api/category';
-import { CategoryItem } from 'entities/category/category-view';
+import { CategoryItem } from 'entities/category/category-data';
 
 export const CategoriesMain = () => {
 	const categories = useAsyncValue() as CategoryType[];

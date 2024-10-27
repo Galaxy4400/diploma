@@ -8,7 +8,7 @@ import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
 import { ReactNode } from 'react';
 import { OperationType } from 'shared/api/operation';
-import { CATEGORY_TYPE } from 'entities/category/category-view';
+import { CATEGORY_TYPE } from 'entities/category/category-data';
 
 interface OperationViewProps {
 	operation: OperationType;
@@ -22,7 +22,7 @@ export const OperationView = ({ operation, deleteSlot }: OperationViewProps) => 
 		<Block className={css['view']}>
 			<h4>Операция №{operation.id}</h4>
 			{operation.status ? (
-				<IconCategory className={css['icon']} name={operation?.category.icon} />
+				<IconCategory className={css['icon']} name={operation?.category.icon ?? undefined} />
 			) : (
 				<Icon className={css['abort-icon']} name={Icons.abort} />
 			)}

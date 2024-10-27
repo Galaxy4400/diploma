@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AccountViewState } from './account-view.types';
-import { fetchAccountView } from './account-view.thunks';
+import { AccountDataState } from './account-data.types';
+import { fetchAccountData } from './account-data.thunks';
 
-const initialState: AccountViewState = {
+const initialState: AccountDataState = {
 	account: {
 		id: '',
 		type: '',
@@ -22,19 +22,19 @@ export const accountSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
-			.addCase(fetchAccountView.pending, (state) => {
+			.addCase(fetchAccountData.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchAccountView.fulfilled, (state, { payload }) => {
+			.addCase(fetchAccountData.fulfilled, (state, { payload }) => {
 				state.account = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchAccountView.rejected, (state, { payload }) => {
+			.addCase(fetchAccountData.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),
 });
 
-export const accountViewReducer = accountSlice.reducer;
+export const accountDataReducer = accountSlice.reducer;

@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { CategoryType, getCategory } from 'shared/api/category';
+import { AccountType, getAccount } from 'shared/api/account';
 import { ErrorType, ID } from 'shared/types';
 
-export const fetchCategoryView = createAsyncThunk<CategoryType, ID, { rejectValue: ErrorType }>(
-	'account/fetchCategoryView',
+export const fetchAccountData = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
+	'account/fetchAccountData',
 	async (id, { rejectWithValue }) => {
 		try {
-			const { category, error } = await getCategory(id);
+			const { account, error } = await getAccount(id);
 
-			if (!category) {
+			if (!account) {
 				throw new Error(error as string);
 			}
 
-			return category;
+			return account;
 		} catch (error: unknown) {
 			const knownError = error as ErrorType;
 

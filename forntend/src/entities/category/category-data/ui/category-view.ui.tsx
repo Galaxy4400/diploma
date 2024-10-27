@@ -22,7 +22,7 @@ export const CategoryView = ({ category, deleteSlot }: CategoryViewPropts) => {
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{format(category.createdAt, DATETIME_FORMAT)}</dd>
+					<dd>{category.createdAt ? format(category.createdAt, DATETIME_FORMAT) : ''}</dd>
 				</div>
 				<div>
 					<dt>Название:</dt>
@@ -35,7 +35,7 @@ export const CategoryView = ({ category, deleteSlot }: CategoryViewPropts) => {
 				<div>
 					<dt>Иконка:</dt>
 					<dd>
-						<IconCategory name={category.icon} />
+						<IconCategory name={category.icon ?? undefined} />
 					</dd>
 				</div>
 			</dl>

@@ -18,7 +18,7 @@ export const CategoryItem = ({ category, deleteSlot }: CategoryItemPropts) => {
 		<div className={css['category']}>
 			<Link className={css['main']} to={path.category.id(category.id)} state={{ from: location }}>
 				<figure className={css['figure']}>
-					<IconCategory className={css['icon']} name={category.icon} />
+					<IconCategory className={css['icon']} name={category.icon ?? undefined} />
 				</figure>
 				<div className={css['info']}>
 					<span className={css['name']}>{category.name}</span>

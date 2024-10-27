@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CategoryViewState } from './category-view.types';
-import { fetchCategoryView } from './category-view.thunks';
+import { CategoryDataState } from './category-data.types';
+import { fetchCategoryData } from './category-data.thunks';
 
-const initialState: CategoryViewState = {
+const initialState: CategoryDataState = {
 	category: {
 		id: '',
 		name: '',
@@ -20,19 +20,19 @@ export const categorySlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
-			.addCase(fetchCategoryView.pending, (state) => {
+			.addCase(fetchCategoryData.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchCategoryView.fulfilled, (state, { payload }) => {
+			.addCase(fetchCategoryData.fulfilled, (state, { payload }) => {
 				state.category = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchCategoryView.rejected, (state, { payload }) => {
+			.addCase(fetchCategoryData.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),
 });
 
-export const categoryViewReducer = categorySlice.reducer;
+export const categoryDataReducer = categorySlice.reducer;

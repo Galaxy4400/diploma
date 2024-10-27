@@ -1,10 +1,9 @@
-import { useAsyncValue } from 'react-router-dom';
 import { CategoryDelete } from 'features/category';
-import { CategoryType } from 'shared/api/category';
-import { CategoryView } from 'entities/category/category-view';
+import { CategoryView, selectCategoryData } from 'entities/category/category-data';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Category = () => {
-	const category = useAsyncValue() as CategoryType;
+	const category = useAppSelector(selectCategoryData);
 
 	return <CategoryView category={category} deleteSlot={<CategoryDelete categoryId={category.id} />} />;
 };
