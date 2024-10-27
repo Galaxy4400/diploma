@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { CategoryEditForm } from 'features/category';
-import { AsyncComponent, Loading, LoadingComponent } from 'shared/ui/components';
+import { Loading, LoadingComponent } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';

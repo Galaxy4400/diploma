@@ -4,7 +4,6 @@ import { useFrom } from 'shared/lib/location';
 import { Icon } from 'shared/ui/icons';
 import { useModal } from 'app/providers/modal';
 import { Confirm } from 'shared/ui/components';
-import { request } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { Icons, ID } from 'shared/types';
 import { deleteOperation } from 'shared/api/operation';

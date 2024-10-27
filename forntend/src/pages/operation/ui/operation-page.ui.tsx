@@ -1,11 +1,11 @@
-import { useLoaderData, useParams } from 'react-router-dom';
-import { AsyncComponent, Loading, LoadingComponent } from 'shared/ui/components';
+import { useParams } from 'react-router-dom';
+import { Loading, LoadingComponent } from 'shared/ui/components';
 import { Operation } from 'widgets/operation';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchOperationData, selectOperationDataLoading } from 'shared/constants';
 import { useEffect } from 'react';
+import { fetchOperationData, selectOperationDataLoading } from 'entities/operation/operation-data';
 
 export const OperationPage = () => {
 	const { id } = useParams();

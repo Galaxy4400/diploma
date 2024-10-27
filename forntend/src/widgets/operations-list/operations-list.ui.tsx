@@ -2,7 +2,7 @@ import css from './operations-list.module.scss';
 import { OperationDelete } from 'features/operation';
 import { selectOperations } from 'entities/operations';
 import { useSelector } from 'react-redux';
-import { OperationItem } from 'shared/constants';
+import { OperationItem } from 'entities/operation/operation-data';
 
 export const OperationsList = () => {
 	const operations = useSelector(selectOperations);
