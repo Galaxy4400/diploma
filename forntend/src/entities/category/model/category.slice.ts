@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CategoryState, CategoryType } from './category.types';
+import { CategoryState } from './category.types';
+import { CategoryType } from 'shared/api/category';
 
 const name = 'category';
 

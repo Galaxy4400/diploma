@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { request } from '../api/request';
-import { CategoriesResponse } from 'entities/category';
 import { buildSelectOptions } from 'shared/utils';
 import { OptionProps } from 'shared/types';
 import { getAccounts } from 'shared/api/account';
+import { CategoriesResponse } from 'shared/api/category';
 
 export const useLoadOptions = () => {
 	const [accountOptions, setAccountOptions] = useState<OptionProps[]>([]);

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { getCategoryType } from '../lib';
 import { format } from 'date-fns';
 import { Icons } from 'shared/types';
-import { CategoryType } from '../model';
 import { ReactNode } from 'react';
 import { Block } from 'shared/ui/components';
 import { DATETIME_FORMAT } from 'shared/constants';
 import { Icon, IconCategory } from 'shared/ui/icons';
 import { path } from 'shared/lib/router';
+import { CategoryType } from 'shared/api/category';
 
 interface CategoryViewPropts {
 	category: CategoryType;

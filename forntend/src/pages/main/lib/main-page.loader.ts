@@ -1,8 +1,8 @@
 import { defer } from 'react-router-dom';
 import { request } from 'shared/api';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { CategoriesResponse } from 'entities/category';
 import { getAccounts } from 'shared/api/account';
+import { CategoriesResponse } from 'shared/api/category';
 
 const processGetAccounts = async () => {
 	const { accounts, error } = await getAccounts();

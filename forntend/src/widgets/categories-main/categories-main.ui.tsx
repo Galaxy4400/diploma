@@ -1,8 +1,9 @@
 import css from './categories-main.module.scss';
 import { useAsyncValue } from 'react-router-dom';
-import { CategoryItem, CategoryType } from 'entities/category';
+import { CategoryItem } from 'entities/category';
 import { CategoryDelete } from 'features/category';
 import { Block } from 'shared/ui/components';
+import { CategoryType } from 'shared/api/category';
 
 export const CategoriesMain = () => {
 	const categories = useAsyncValue() as CategoryType[];

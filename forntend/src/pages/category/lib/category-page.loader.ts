@@ -1,7 +1,7 @@
 import { defer } from 'react-router-dom';
 import { request } from 'shared/api';
+import { CategoryResponse } from 'shared/api/category';
 import { HasParams, ID } from 'shared/types';
-import { CategoryResponse } from 'entities/category';
 
 const getCategory = async (categoryId: ID) => {
 	const { category, error } = await request<CategoryResponse>({ url: `/categories/${categoryId}` });

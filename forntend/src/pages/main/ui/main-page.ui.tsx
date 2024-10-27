@@ -10,8 +10,8 @@ import { OperationsMain } from 'widgets/operations-main';
 import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
 import { OperationType } from 'entities/operation';
-import { CategoryType } from 'entities/category';
 import { AccountType } from 'shared/api/account';
+import { CategoryType } from 'shared/api/category';
 
 interface MainPageLoaderData {
 	accounts: Promise<AccountType[]>;
