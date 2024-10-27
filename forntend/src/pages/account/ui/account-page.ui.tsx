@@ -21,7 +21,7 @@ export const AccountPage = () => {
 		<Container>
 			<PageHeader title="Информация о счете" />
 			<div className={css['main']}>
-				<LoadingComponent loading={loading} element={<Account />} fallback={<Loading />} />
+				<LoadingComponent element={<Account />} fallback={<Loading />} loading={loading} />
 				{/* <AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} /> */}
 			</div>
 		</Container>

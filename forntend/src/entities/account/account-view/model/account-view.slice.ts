@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AccountState } from './account.types';
-import { fetchAccountView } from './account.thunks';
+import { AccountViewState } from './account-view.types';
+import { fetchAccountView } from './account-view.thunks';
 
-const initialState: AccountState = {
+const initialState: AccountViewState = {
 	account: {
 		id: '',
 		type: '',
@@ -37,4 +37,4 @@ export const accountSlice = createSlice({
 			}),
 });
 
-export const accountReducer = accountSlice.reducer;
+export const accountViewReducer = accountSlice.reducer;

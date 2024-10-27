@@ -1,6 +1,6 @@
 import { AccountType } from 'shared/api/account';
 
-export interface AccountState {
+export interface AccountViewState {
 	account: AccountType;
 	loading: boolean;
 	error: string | null;
