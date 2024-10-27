@@ -8,7 +8,7 @@ import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
 import { ReactNode } from 'react';
 import { OperationType } from 'shared/api/operation';
-import { CATEGORY_TYPE } from 'shared/lib/category';
+import { categoryType } from 'shared/lib/category';
 
 interface OperationViewProps {
 	operation: OperationType;
@@ -16,7 +16,7 @@ interface OperationViewProps {
 }
 
 export const OperationView = ({ operation, deleteSlot }: OperationViewProps) => {
-	const amountTypeClass = operation?.category.type === CATEGORY_TYPE.INCOME ? 'income' : 'expense';
+	const amountTypeClass = operation?.category.type === categoryType.income ? 'income' : 'expense';
 
 	return (
 		<Block className={css['view']}>
