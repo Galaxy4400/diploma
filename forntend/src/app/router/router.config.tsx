@@ -17,7 +17,7 @@ import { CategoryEditPage, categoryEditPageLoader } from 'pages/category-edit';
 import { Page404 } from 'pages/page-404';
 import { LoginPage } from 'pages/login';
 import { RegisterPage } from 'pages/register';
-import { AccountPage, accountPageLoader } from 'pages/account';
+import { AccountPage } from 'pages/account';
 
 export const routerConfig = createBrowserRouter([
 	{
@@ -54,7 +54,6 @@ export const routerConfig = createBrowserRouter([
 			{
 				path: path.account.id(),
 				element: <AccountPage />,
-				loader: accountPageLoader,
 			},
 			{
 				path: path.account.create(),

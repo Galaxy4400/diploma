@@ -1,10 +1,9 @@
-import { useAsyncValue } from 'react-router-dom';
 import { AccountDelete } from 'features/account';
-import { AccountType } from 'shared/api/account';
-import { AccountView } from 'entities/account/account-view';
+import { AccountView, selectAccount } from 'entities/account/account-view';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Account = () => {
-	const account = useAsyncValue() as AccountType;
+	const account = useAppSelector(selectAccount);
 
 	return <AccountView account={account} deleteSlot={<AccountDelete accountId={account.id} />} />;
 };

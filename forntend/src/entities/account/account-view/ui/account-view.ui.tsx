@@ -23,7 +23,7 @@ export const AccountView = ({ account, deleteSlot }: AccountViewProps) => {
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{format(account.createdAt, DATETIME_FORMAT)}</dd>
+					<dd>{account.createdAt ? format(account.createdAt, DATETIME_FORMAT) : ''}</dd>
 				</div>
 				<div>
 					<dt>Название:</dt>

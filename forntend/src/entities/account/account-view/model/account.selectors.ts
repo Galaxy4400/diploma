@@ -1,5 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectAccount = (state: RootState) => state.account;
+const selectAccountState = (state: RootState) => state.account;
 
-export const selectAccountId = createSelector(selectAccount, (account) => account.id);
+export const selectAccount = createSelector(selectAccountState, (state) => state.account);
+
+export const selectAccountLoading = createSelector(selectAccountState, (state) => state.loading);
+
+export const selectAccountError = createSelector(selectAccountState, (state) => state.error);

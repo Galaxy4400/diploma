@@ -12,3 +12,4 @@ export * from './typography';
 export * from './confirm';
 export * from './modal';
 export * from './toast';
+export * from './loading-component';

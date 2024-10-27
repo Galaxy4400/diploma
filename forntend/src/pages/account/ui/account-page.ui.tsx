@@ -1,27 +1,28 @@
 import css from './account-page.module.scss';
-import { useLoaderData } from 'react-router-dom';
 import { Account } from 'widgets/account';
-import { AsyncComponent, Loading } from 'shared/ui/components';
+import { Loading, LoadingComponent } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
-import { OperationsSection } from './components';
-import { ID } from 'shared/types';
-import { AccountType } from 'shared/api/account';
-
-interface AccountPageLoaderData {
-	id: ID;
-	account: Promise<AccountType>;
-}
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { fetchAccountView, selectAccountLoading } from 'entities/account/account-view';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const AccountPage = () => {
-	const { account } = useLoaderData() as AccountPageLoaderData;
+	const { id } = useParams();
+	const loading = useAppSelector(selectAccountLoading);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		if (id) dispatch(fetchAccountView(id));
+	}, [dispatch, id]);
 
 	return (
 		<Container>
 			<PageHeader title="Информация о счете" />
 			<div className={css['main']}>
-				<AsyncComponent resolve={account} element={<Account />} fallback={<Loading />} />
-				<AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} />
+				<LoadingComponent loading={loading} element={<Account />} fallback={<Loading />} />
+				{/* <AsyncComponent resolve={account} element={<OperationsSection />} fallback={<Loading />} /> */}
 			</div>
 		</Container>
 	);
