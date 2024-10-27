@@ -4,12 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { Icon, IconCategory } from 'shared/ui/icons';
 import { priceFormat } from 'shared/utils';
-import { CATEGORY_TYPE } from '../../category';
 import { format } from 'date-fns';
 import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
 import { ReactNode } from 'react';
 import { OperationType } from 'shared/api/operation';
+import { CATEGORY_TYPE } from 'entities/category/category-view';
 
 interface OperationItemProps {
 	operation: OperationType;

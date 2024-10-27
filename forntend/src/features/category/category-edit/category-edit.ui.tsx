@@ -2,7 +2,6 @@ import css from './category-edit.module.scss';
 import { useState } from 'react';
 import { categoryEditFormRules } from './category-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { CATEGORY_TYPES } from 'entities/category';
 import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
@@ -12,6 +11,7 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
 import { CategoryType, editCategory } from 'shared/api/category';
+import { CATEGORY_TYPES } from 'entities/category/category-view';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();

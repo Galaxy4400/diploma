@@ -2,7 +2,6 @@ import css from './category-create.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
-import { CATEGORY_TYPES } from 'entities/category';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { path } from 'shared/lib/router';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
 import { createCategory } from 'shared/api/category';
+import { CATEGORY_TYPES } from 'entities/category/category-view';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();

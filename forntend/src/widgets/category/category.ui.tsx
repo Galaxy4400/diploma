@@ -1,7 +1,7 @@
 import { useAsyncValue } from 'react-router-dom';
-import { CategoryView } from 'entities/category';
 import { CategoryDelete } from 'features/category';
 import { CategoryType } from 'shared/api/category';
+import { CategoryView } from 'entities/category/category-view';
 
 export const Category = () => {
 	const category = useAsyncValue() as CategoryType;
