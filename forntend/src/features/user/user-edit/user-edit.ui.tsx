@@ -10,6 +10,7 @@ import { Block } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { Nullable, RequestData } from 'shared/types';
 import { request } from 'shared/api';
+import { useAuth } from 'app/providers/auth';
 
 interface EditUserFormProps {
 	userData: Nullable<UserType>;
@@ -18,6 +19,7 @@ interface EditUserFormProps {
 export const EditUserForm = ({ userData }: EditUserFormProps) => {
 	const navigate = useNavigate();
 	const { showToast } = useToast();
+	const { authCheck } = useAuth();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData: Omit<RequestData, 'passcheck'>) => {
@@ -32,6 +34,8 @@ export const EditUserForm = ({ userData }: EditUserFormProps) => {
 		if (!user) {
 			throw new Error(error || 'Unknown error');
 		}
+
+		authCheck();
 
 		setIsLoading(false);
 

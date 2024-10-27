@@ -5,5 +5,6 @@ export interface AuthContextType {
 	authorize: (login: string, password: string) => Promise<AuthResponse>;
 	registration: (login: string, password: string) => Promise<AuthResponse>;
 	logout: () => void;
+	authCheck: () => void;
 	authUser: UserType | null;
 }
