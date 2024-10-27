@@ -1,12 +1,15 @@
 import { EditUserForm } from 'features/user';
 import { Container, Grid } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
-import { selectAuth } from 'entities/auth';
-import { useSelector } from 'react-redux';
 import { UserDelete } from 'features/user/user-delete/user-delete.ui';
+import { useAuth } from 'app/providers/auth';
 
 export const UserEditPage = () => {
-	const authUser = useSelector(selectAuth);
+	const { authUser } = useAuth();
+
+	if (!authUser) {
+		throw new Error('You are not authenticated');
+	}
 
 	return (
 		<Container>

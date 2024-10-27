@@ -1,4 +1,4 @@
-import { ID, Nullable } from 'shared/types';
+import { ID } from 'shared/types';
 
 export interface UserType {
 	id: ID;
@@ -13,5 +13,3 @@ export interface AuthResponse {
 	readonly error?: string | null;
 	readonly user?: UserType | null;
 }
-
-export type AuthState = Nullable<UserType>;

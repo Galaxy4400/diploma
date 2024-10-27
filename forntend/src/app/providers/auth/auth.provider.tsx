@@ -1,32 +1,25 @@
-import { useDispatch } from 'react-redux';
 import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
 import { request } from 'shared/api';
-import { AuthResponse, resetAuth, setAuth, UserType } from 'entities/auth';
+import { AuthResponse, UserType } from 'entities/auth';
 import { AuthContext } from './auth.context';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [authUser, setAuthUser] = useState<UserType | null>(null);
 
-	const authorize = useCallback(
-		async (login: string, password: string): Promise<AuthResponse> => {
-			const { user, error } = await request<AuthResponse>({
-				url: '/login',
-				method: 'POST',
-				data: { login, password },
-			});
+	const authorize = useCallback(async (login: string, password: string): Promise<AuthResponse> => {
+		const { user, error } = await request<AuthResponse>({
+			url: '/login',
+			method: 'POST',
+			data: { login, password },
+		});
 
-			if (!user) return { error };
+		if (!user) return { error };
 
-			dispatch(setAuth(user));
+		setAuthUser(user);
 
-			setAuthUser(user);
-
-			return { user };
-		},
-		[dispatch],
-	);
+		return { user };
+	}, []);
 
 	const registration = useCallback(
 		async (login: string, password: string): Promise<AuthResponse> => {
@@ -46,14 +39,10 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	);
 
 	const logout = useCallback(async () => {
-		const { user } = await request<AuthResponse>({ url: '/logout', method: 'POST' });
+		await request<AuthResponse>({ url: '/logout', method: 'POST' });
 
-		if (!user) return;
-
-		dispatch(resetAuth());
-
-		setAuthUser(user);
-	}, [dispatch]);
+		setAuthUser(null);
+	}, []);
 
 	const authCheck = useCallback(async () => {
 		const { user } = await request<AuthResponse>({ url: '/me' });
@@ -64,10 +53,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 			return;
 		}
 
-		dispatch(setAuth(user));
 		setIsAuthInitialize(true);
 		setAuthUser(user);
-	}, [dispatch, logout]);
+	}, [logout]);
 
 	useLayoutEffect(() => {
 		authCheck();

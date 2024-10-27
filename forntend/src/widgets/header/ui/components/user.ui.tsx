@@ -1,12 +1,15 @@
 import css from './user.module.scss';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { getAvatarPlug } from 'shared/utils';
 import { path } from 'shared/lib/router';
-import { selectAuth } from 'entities/auth';
+import { useAuth } from 'app/providers/auth';
 
 export const User = () => {
-	const authUser = useSelector(selectAuth);
+	const { authUser } = useAuth();
+
+	if (!authUser) {
+		throw new Error('You are not authenticated');
+	}
 
 	return (
 		<Link className={css['user']} to={path.settings()}>
