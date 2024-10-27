@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { accountListReducer } from 'entities/account/account-list';
 import { accountViewReducer } from 'entities/account/account-view';
 import { applicationReducer } from 'entities/application';
-import { categoryReducer } from 'entities/category/category-view';
+import { categoryViewReducer } from 'entities/category/category-view';
 import { operationReducer } from 'entities/operation';
 import { operationsReducer } from 'entities/operations';
 
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 	accountView: accountViewReducer,
 	accountList: accountListReducer,
 	operation: operationReducer,
-	category: categoryReducer,
+	categoryView: categoryViewReducer,
 	operations: operationsReducer,
 });
 
