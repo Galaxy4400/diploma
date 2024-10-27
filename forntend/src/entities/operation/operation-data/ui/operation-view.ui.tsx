@@ -16,24 +16,24 @@ interface OperationViewProps {
 }
 
 export const OperationView = ({ operation, deleteSlot }: OperationViewProps) => {
-	const amountTypeClass = operation?.category.type === categoryType.income ? 'income' : 'expense';
+	const amountTypeClass = operation.category?.type === categoryType.income ? 'income' : 'expense';
 
 	return (
 		<Block className={css['view']}>
 			<h4>Операция №{operation.id}</h4>
 			{operation.status ? (
-				<IconCategory className={css['icon']} name={operation?.category.icon ?? undefined} />
+				<IconCategory className={css['icon']} name={operation.category?.icon ?? undefined} />
 			) : (
 				<Icon className={css['abort-icon']} name={Icons.abort} />
 			)}
 			<dl>
 				<div>
 					<dt>Дата:</dt>
-					<dd>{format(operation.createdAt, DATETIME_FORMAT)}</dd>
+					<dd>{operation.createdAt ? format(operation.createdAt, DATETIME_FORMAT) : ''}</dd>
 				</div>
 				<div>
 					<dt>Тип:</dt>
-					<dd>{operation.category.name}</dd>
+					<dd>{operation.category?.name}</dd>
 				</div>
 				<div>
 					<dt>Сумма:</dt>
@@ -43,7 +43,7 @@ export const OperationView = ({ operation, deleteSlot }: OperationViewProps) => 
 				</div>
 				<div>
 					<dt>Счет:</dt>
-					<dd>{operation.account.name}</dd>
+					<dd>{operation.account?.name}</dd>
 				</div>
 				<div>
 					<dt>Комментарий:</dt>

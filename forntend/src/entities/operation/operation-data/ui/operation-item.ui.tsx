@@ -19,23 +19,23 @@ interface OperationItemProps {
 export const OperationItem = ({ operation, deleteSlot }: OperationItemProps) => {
 	const location = useLocation();
 
-	const amountTypeClass = operation?.category.type === categoryType.income ? 'income' : 'expense';
+	const amountTypeClass = operation.category?.type === categoryType.income ? 'income' : 'expense';
 
 	return (
 		<div className={css['operation']}>
 			<Link className={css['main']} to={path.operation.id(operation.id)} state={{ from: location }}>
 				<figure className={css['figure']}>
 					{operation.status ? (
-						<IconCategory className={css['icon']} name={operation?.category.icon ?? undefined} />
+						<IconCategory className={css['icon']} name={operation.category?.icon ?? undefined} />
 					) : (
 						<Icon className={css['abort-icon']} name={Icons.abort} />
 					)}
 				</figure>
 				<div className={css['info']}>
-					<span>{operation?.category.name}</span>
+					<span>{operation.category?.name}</span>
 					<span className={css['datetime']}>{format(operation.createdAt, DATETIME_FORMAT)}</span>
 					<span className={cn(css['amount'], amountTypeClass)}>{priceFormat(operation.amount)}</span>
-					<span>Счет: {operation?.account.name}</span>
+					<span>Счет: {operation.account?.name}</span>
 				</div>
 			</Link>
 			<div className={css['delete']}>{deleteSlot}</div>

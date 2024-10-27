@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { setFilter } from 'entities/application';
 import { setOperations } from 'entities/operations';
 import { RequestData } from 'shared/api';
 import { getOperations } from 'shared/api/operation';
+import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
 
 export const useOperationsFilter = () => {
 	const dispatch = useDispatch();

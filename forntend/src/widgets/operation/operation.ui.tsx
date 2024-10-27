@@ -1,10 +1,9 @@
-import { useAsyncValue } from 'react-router-dom';
-import { OperationView } from 'entities/operation';
 import { OperationDelete } from 'features/operation';
-import { OperationType } from 'shared/api/operation';
+import { OperationView, selectOperationData } from 'entities/operation/operation-data';
+import { useAppSelector } from 'shared/lib/store';
 
 export const Operation = () => {
-	const operation = useAsyncValue() as OperationType;
+	const operation = useAppSelector(selectOperationData);
 
 	return <OperationView operation={operation} deleteSlot={<OperationDelete operationId={operation.id} />} />;
 };

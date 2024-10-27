@@ -1,5 +1,5 @@
+import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
 import { defer } from 'react-router-dom';
-import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { getAccounts } from 'shared/api/account';
 import { getCategories } from 'shared/api/category';
 import { getOperations } from 'shared/api/operation';

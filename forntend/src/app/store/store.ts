@@ -3,15 +3,15 @@ import { accountListReducer } from 'entities/account/account-list';
 import { accountDataReducer } from 'entities/account/account-data';
 import { applicationReducer } from 'entities/application';
 import { categoryDataReducer } from 'entities/category/category-data';
-import { operationReducer } from 'entities/operation';
 import { operationsReducer } from 'entities/operations';
 import { categoryListReducer } from 'entities/category/category-list';
+import { operationDataReducer } from 'entities/operation/operation-data';
 
 const rootReducer = combineReducers({
 	app: applicationReducer,
 	accountData: accountDataReducer,
 	accountList: accountListReducer,
-	operation: operationReducer,
+	operationData: operationDataReducer,
 	categoryData: categoryDataReducer,
 	categoryList: categoryListReducer,
 	operations: operationsReducer,

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addOperations, selectOperations } from 'entities/operations';
 import { selectFilter, useResetFilter } from 'entities/application';
-import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { ID } from 'shared/types';
 import { getOperationsByAccount } from 'shared/api/operation';
+import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
 
 export const useOperationsPagination = (accountId: ID | null) => {
 	const dispatch = useDispatch();

@@ -6,8 +6,8 @@ import { PagingData } from '../types';
 export interface OperationType {
 	id: ID;
 	user: ID;
-	account: Pick<AccountType, 'name' | 'type'>;
-	category: Pick<CategoryType, 'name' | 'icon' | 'type'>;
+	account: Pick<AccountType, 'name' | 'type'> | null;
+	category: Pick<CategoryType, 'name' | 'icon' | 'type'> | null;
 	name: string;
 	amount: number;
 	comment: string;

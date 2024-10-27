@@ -1,23 +1,25 @@
-import { useLoaderData } from 'react-router-dom';
-import { AsyncComponent, Loading } from 'shared/ui/components';
+import { useLoaderData, useParams } from 'react-router-dom';
+import { AsyncComponent, Loading, LoadingComponent } from 'shared/ui/components';
 import { Operation } from 'widgets/operation';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
-import { ID } from 'shared/types';
-import { OperationType } from 'shared/api/operation';
-
-interface OperationPageLoaderData {
-	id: ID;
-	operation: Promise<OperationType>;
-}
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { fetchOperationData, selectOperationDataLoading } from 'entities/operation/operation-data';
+import { useEffect } from 'react';
 
 export const OperationPage = () => {
-	const { operation } = useLoaderData() as OperationPageLoaderData;
+	const { id } = useParams();
+	const loading = useAppSelector(selectOperationDataLoading);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		if (id) dispatch(fetchOperationData(id));
+	}, [dispatch, id]);
 
 	return (
 		<Container>
 			<PageHeader title="Информация об операции" />
-			<AsyncComponent resolve={operation} element={<Operation />} fallback={<Loading />} />
+			<LoadingComponent element={<Operation />} fallback={<Loading />} loading={loading} />
 		</Container>
 	);
 };
