@@ -1,1 +1,1 @@
-export * from './operations-section.ui';
+export * from './account-operations-section.ui';

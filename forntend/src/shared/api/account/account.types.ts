@@ -8,7 +8,6 @@ export interface AccountType {
 	createdAt: string;
 	amount: number;
 	comment?: string;
-	operations?: OperationType[];
 }
 
 export interface AccountResponse {
