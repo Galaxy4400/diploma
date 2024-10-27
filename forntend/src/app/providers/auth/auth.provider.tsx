@@ -1,18 +1,13 @@
 import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
-import { request } from 'shared/api/request';
 import { AuthContext } from './auth.context';
-import { UserResponse, UserType } from 'shared/api/user';
+import { signCheck, signIn, signOut, signUp, UserResponse, UserType } from 'shared/api/user';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
 	const [authUser, setAuthUser] = useState<UserType | null>(null);
 
 	const authorize = useCallback(async (login: string, password: string): Promise<UserResponse> => {
-		const { user, error } = await request<UserResponse>({
-			url: '/login',
-			method: 'POST',
-			data: { login, password },
-		});
+		const { user, error } = await signIn(login, password);
 
 		if (!user) return { error };
 
@@ -23,11 +18,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 	const registration = useCallback(
 		async (login: string, password: string): Promise<UserResponse> => {
-			const { error } = await request<UserResponse>({
-				url: '/register',
-				method: 'POST',
-				data: { login, password },
-			});
+			const { error } = await signUp(login, password);
 
 			if (error) return { error };
 
@@ -39,13 +30,13 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	);
 
 	const logout = useCallback(async () => {
-		await request<UserResponse>({ url: '/logout', method: 'POST' });
+		await signOut();
 
 		setAuthUser(null);
 	}, []);
 
 	const authCheck = useCallback(async () => {
-		const { user } = await request<UserResponse>({ url: '/me' });
+		const { user } = await signCheck();
 
 		if (!user) {
 			logout();
