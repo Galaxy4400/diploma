@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { PropsWithChildren, useCallback, useLayoutEffect, useState } from 'react';
 import { request } from 'shared/api';
-import { AuthResponse, resetAuth, setAuth } from 'entities/auth';
+import { AuthResponse, resetAuth, setAuth, UserType } from 'entities/auth';
 import { AuthContext } from './auth.context';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
 	const dispatch = useDispatch();
 	const [isAuthInitialize, setIsAuthInitialize] = useState(false);
-	const [isAuth, setIsAuth] = useState(false);
+	const [authUser, setAuthUser] = useState<UserType | null>(null);
 
 	const authorize = useCallback(
 		async (login: string, password: string): Promise<AuthResponse> => {
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 			dispatch(setAuth(user));
 
-			setIsAuth(true);
+			setAuthUser(user);
 
 			return { user };
 		},
@@ -46,13 +46,13 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 	);
 
 	const logout = useCallback(async () => {
-		const { error } = await request<AuthResponse>({ url: '/logout', method: 'POST' });
+		const { user } = await request<AuthResponse>({ url: '/logout', method: 'POST' });
 
-		if (error) return;
+		if (!user) return;
 
 		dispatch(resetAuth());
 
-		setIsAuth(false);
+		setAuthUser(user);
 	}, [dispatch]);
 
 	const authCheck = useCallback(async () => {
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
 		dispatch(setAuth(user));
 		setIsAuthInitialize(true);
-		setIsAuth(true);
+		setAuthUser(user);
 	}, [dispatch, logout]);
 
 	useLayoutEffect(() => {
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 				authorize,
 				registration,
 				logout,
-				isAuth,
+				authUser,
 			}}
 		>
 			{isAuthInitialize && children}
