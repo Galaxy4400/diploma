@@ -1,14 +1,14 @@
 import css from './operation-view.module.scss';
 import cn from 'classnames';
-import { Block } from '../../../shared/ui/components';
-import { priceFormat } from '../../../shared/utils';
-import { Icon, IconCategory } from '../../../shared/ui/icons';
+import { Block } from 'shared/ui/components';
+import { priceFormat } from 'shared/utils';
+import { Icon, IconCategory } from 'shared/ui/icons';
 import { CATEGORY_TYPE } from '../../category/lib/category-type';
 import { format } from 'date-fns';
-import { DATETIME_FORMAT } from '../../../shared/constants/datetime-format';
+import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
-import { OperationType } from '../model';
 import { ReactNode } from 'react';
+import { OperationType } from 'shared/api/operation';
 
 interface OperationViewProps {
 	operation: OperationType;

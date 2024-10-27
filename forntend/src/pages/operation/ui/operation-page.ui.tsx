@@ -3,8 +3,8 @@ import { AsyncComponent, Loading } from 'shared/ui/components';
 import { Operation } from 'widgets/operation';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
-import { OperationType } from 'entities/operation';
 import { ID } from 'shared/types';
+import { OperationType } from 'shared/api/operation';
 
 interface OperationPageLoaderData {
 	id: ID;

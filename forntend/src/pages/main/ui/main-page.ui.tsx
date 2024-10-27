@@ -9,9 +9,9 @@ import { Action } from './components';
 import { OperationsMain } from 'widgets/operations-main';
 import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
-import { OperationType } from 'entities/operation';
 import { AccountType } from 'shared/api/account';
 import { CategoryType } from 'shared/api/category';
+import { OperationType } from 'shared/api/operation';
 
 interface MainPageLoaderData {
 	accounts: Promise<AccountType[]>;

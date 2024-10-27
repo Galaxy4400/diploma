@@ -1,10 +1,9 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api';
+import { getOperation } from 'shared/api/operation';
 import { HasParams, ID } from 'shared/types';
-import { OperationResponse } from 'entities/operation';
 
-const getOperation = async (opeartionId: ID) => {
-	const { operation, error } = await request<OperationResponse>({ url: `/operations/${opeartionId}` });
+const processGetOperation = async (opeartionId: ID) => {
+	const { operation, error } = await getOperation(opeartionId);
 
 	if (!operation) {
 		throw new Error(error || 'Unknown error');
@@ -22,6 +21,6 @@ export const operationPageLoader = async ({ params }: HasParams<{ id: string }>)
 
 	return defer({
 		id,
-		operation: getOperation(id),
+		operation: processGetOperation(id),
 	});
 };

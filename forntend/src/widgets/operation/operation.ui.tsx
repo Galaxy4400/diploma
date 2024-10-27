@@ -1,6 +1,7 @@
 import { useAsyncValue } from 'react-router-dom';
-import { OperationType, OperationView } from 'entities/operation';
+import { OperationView } from 'entities/operation';
 import { OperationDelete } from 'features/operation';
+import { OperationType } from 'shared/api/operation';
 
 export const Operation = () => {
 	const operation = useAsyncValue() as OperationType;

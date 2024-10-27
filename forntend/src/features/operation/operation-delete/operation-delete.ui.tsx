@@ -7,6 +7,7 @@ import { Confirm } from 'shared/ui/components';
 import { request } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { Icons, ID } from 'shared/types';
+import { deleteOperation } from 'shared/api/operation';
 
 interface OperationDeleteProps {
 	operationId: ID;
@@ -18,8 +19,8 @@ export const OperationDelete = ({ operationId }: OperationDeleteProps) => {
 	const from = useFrom();
 	const { openModal, closeModal } = useModal();
 
-	const deleteOperation = async () => {
-		await request({ url: `/operations/${operationId}`, method: 'DELETE' });
+	const processDeleteOperation = async () => {
+		await deleteOperation(operationId);
 
 		navigate(from?.pathname || false, { replace: true });
 
@@ -29,7 +30,9 @@ export const OperationDelete = ({ operationId }: OperationDeleteProps) => {
 	};
 
 	const deleteHandler = () => {
-		openModal(<Confirm title="Хотите удалить операцию?" onConfirm={deleteOperation} onReject={closeModal} />);
+		openModal(
+			<Confirm title="Хотите удалить операцию?" onConfirm={processDeleteOperation} onReject={closeModal} />,
+		);
 	};
 
 	return (

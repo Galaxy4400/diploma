@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { OperationState, OperationType } from './operation.types';
+import { OperationState } from './operation.types';
+import { OperationType } from 'shared/api/operation';
 
 const name = 'operation';
 

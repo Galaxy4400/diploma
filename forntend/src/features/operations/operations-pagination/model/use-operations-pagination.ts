@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addOperations, selectOperations } from 'entities/operations';
 import { selectFilter, useResetFilter } from 'entities/application';
-import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { request } from 'shared/api';
+import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { ID } from 'shared/types';
+import { getOperationsByAccount } from 'shared/api/operation';
 
 export const useOperationsPagination = (accountId: ID | null) => {
 	const dispatch = useDispatch();
@@ -22,13 +22,10 @@ export const useOperationsPagination = (accountId: ID | null) => {
 	const loadHandler = async () => {
 		setIsLoading(true);
 
-		const { pagingData } = await request<OperationsResponse>({
-			url: `/operations${accountId ? `/account/${accountId}` : ''}`,
-			query: {
-				limit: OPERATIONS_PER_LOAD,
-				page: Math.ceil(operations.length / OPERATIONS_PER_LOAD) + 1,
-				...filterParams,
-			},
+		const { pagingData } = await getOperationsByAccount(accountId, {
+			limit: OPERATIONS_PER_LOAD,
+			page: Math.ceil(operations.length / OPERATIONS_PER_LOAD) + 1,
+			...filterParams,
 		});
 
 		if (!pagingData) {

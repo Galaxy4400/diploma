@@ -5,7 +5,7 @@ import { path } from 'shared/lib/router';
 import { useDispatch } from 'react-redux';
 import { setOperations } from 'entities/operations';
 import { ReactNode, useEffect } from 'react';
-import { OperationType } from 'entities/operation';
+import { OperationType } from 'shared/api/operation';
 
 interface OperationsMainProps {
 	operationsListSlot: ReactNode;

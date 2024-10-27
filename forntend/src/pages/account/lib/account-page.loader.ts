@@ -1,16 +1,13 @@
 import { defer } from 'react-router-dom';
-import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { request } from 'shared/api';
+import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { HasParams, ID } from 'shared/types';
 import { getAccount } from 'shared/api/account';
+import { getOperationsByAccount } from 'shared/api/operation';
 
 const processGetAccount = async (accountId: ID) => {
 	const [accountResponse, operationsResponse] = await Promise.all([
 		getAccount(accountId),
-		request<OperationsResponse>({
-			url: `/operations/account/${accountId}`,
-			query: { limit: OPERATIONS_PER_LOAD },
-		}),
+		getOperationsByAccount(accountId, { limit: OPERATIONS_PER_LOAD }),
 	]);
 
 	if (!accountResponse.account) {

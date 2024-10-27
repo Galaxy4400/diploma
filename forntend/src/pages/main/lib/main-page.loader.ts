@@ -1,8 +1,8 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api';
-import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
+import { OPERATIONS_PER_LOAD } from 'entities/operation';
 import { getAccounts } from 'shared/api/account';
 import { getCategories } from 'shared/api/category';
+import { getOperations } from 'shared/api/operation';
 
 const processGetAccounts = async () => {
 	const { accounts, error } = await getAccounts();
@@ -14,11 +14,8 @@ const processGetAccounts = async () => {
 	return accounts;
 };
 
-const getOperations = async () => {
-	const { pagingData, error } = await request<OperationsResponse>({
-		url: '/operations',
-		query: { limit: OPERATIONS_PER_LOAD },
-	});
+const processGetOperations = async () => {
+	const { pagingData, error } = await getOperations({ limit: OPERATIONS_PER_LOAD });
 
 	if (!pagingData) {
 		throw new Error(error || 'Unknown error');
@@ -40,7 +37,7 @@ const processGetCategories = async () => {
 export const mainPageLoader = async () => {
 	return defer({
 		accounts: processGetAccounts(),
-		operations: getOperations(),
+		operations: processGetOperations(),
 		categories: processGetCategories(),
 	});
 };
