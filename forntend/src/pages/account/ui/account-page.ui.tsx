@@ -4,13 +4,13 @@ import { Loading, LoadingComponent } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchAccountView, selectAccountLoading } from 'entities/account/account-view';
+import { fetchAccountView, selectAccountViewLoading } from 'entities/account/account-view';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export const AccountPage = () => {
 	const { id } = useParams();
-	const loading = useAppSelector(selectAccountLoading);
+	const loading = useAppSelector(selectAccountViewLoading);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
