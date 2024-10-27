@@ -9,7 +9,7 @@ export interface UserType {
 	address?: string;
 }
 
-export interface AuthResponse {
+export interface UserResponse {
 	readonly error?: string | null;
 	readonly user?: UserType | null;
 }

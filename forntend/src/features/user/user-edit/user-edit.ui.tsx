@@ -5,12 +5,12 @@ import { editUserFormRules } from './user-edit.rules';
 import { useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router/path';
 import { Button, Form, Input } from 'shared/ui/form-components';
-import { AuthResponse, UserType } from 'entities/auth';
 import { Block } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { Nullable, RequestData } from 'shared/types';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { useAuth } from 'app/providers/auth';
+import { UserResponse, UserType } from 'shared/api/user';
 
 interface EditUserFormProps {
 	userData: Nullable<UserType>;
@@ -25,7 +25,7 @@ export const EditUserForm = ({ userData }: EditUserFormProps) => {
 	const submitHandler = async (submittedData: Omit<RequestData, 'passcheck'>) => {
 		setIsLoading(true);
 
-		const { user, error } = await request<AuthResponse>({
+		const { user, error } = await request<UserResponse>({
 			url: `/users/${userData.id}`,
 			method: 'PATCH',
 			data: submittedData,

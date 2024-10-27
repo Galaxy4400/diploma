@@ -1,6 +1,6 @@
 import { AccountResponse } from 'entities/account';
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { HasParams, ID } from 'shared/types';
 
 const getAccount = async (accountId: ID) => {

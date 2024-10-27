@@ -1,5 +1,5 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
 import { AccountsResponse } from 'entities/account';
 import { CategoriesResponse } from 'entities/category';

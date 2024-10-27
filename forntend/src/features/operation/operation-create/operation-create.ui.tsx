@@ -8,7 +8,7 @@ import { useFrom } from 'shared/lib/location';
 import { Button, Form, Input, Select } from 'shared/ui/form-components';
 import { Block } from 'shared/ui/components';
 import { useLoadOptions } from 'shared/hooks';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/types';
 import { OperationResponse } from 'entities/operation';

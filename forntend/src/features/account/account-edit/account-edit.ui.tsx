@@ -7,7 +7,7 @@ import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components';
 import { useState } from 'react';
 import { Block, Fieldset } from 'shared/ui/components';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/types';
 

@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { AuthResponse, UserType } from 'entities/auth';
+import { UserResponse, UserType } from 'shared/api/user';
 
 export interface AuthContextType {
-	authorize: (login: string, password: string) => Promise<AuthResponse>;
-	registration: (login: string, password: string) => Promise<AuthResponse>;
+	authorize: (login: string, password: string) => Promise<UserResponse>;
+	registration: (login: string, password: string) => Promise<UserResponse>;
 	logout: () => void;
 	authCheck: () => void;
 	authUser: UserType | null;

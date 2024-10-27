@@ -8,7 +8,7 @@ import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components'
 import { ACCOUNT_TYPES } from 'entities/account/lib/account-types';
 import { Block, Fieldset } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { AccountResponse } from 'entities/account';
 import { RequestData } from 'shared/types';
 

@@ -1,6 +1,6 @@
 import { defer } from 'react-router-dom';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { HasParams, ID } from 'shared/types';
 import { AccountResponse } from 'entities/account';
 

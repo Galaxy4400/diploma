@@ -8,7 +8,7 @@ import { path } from 'shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
-import { request } from 'shared/api';
+import { request } from 'shared/api/request';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons, RequestData } from 'shared/types';
 
