@@ -11,7 +11,7 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
 import { createCategory } from 'shared/api/category';
-import { CATEGORY_TYPES } from 'entities/category/category-data';
+import { CATEGORY_TYPES } from 'shared/lib/category';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();

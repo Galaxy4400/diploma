@@ -1,10 +1,10 @@
 import css from './category-item.module.scss';
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { getCategoryTypeName } from '../lib';
 import { IconCategory } from 'shared/ui/icons';
 import { path } from 'shared/lib/router';
 import { CategoryType } from 'shared/api/category';
+import { getCategoryTypeName } from 'shared/lib/category';
 
 interface CategoryItemPropts {
 	category: CategoryType;

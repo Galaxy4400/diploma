@@ -9,7 +9,7 @@ import { DATETIME_FORMAT } from 'shared/constants/datetime-format';
 import { Icons } from 'shared/types';
 import { ReactNode } from 'react';
 import { OperationType } from 'shared/api/operation';
-import { CATEGORY_TYPE } from 'entities/category/category-data';
+import { CATEGORY_TYPE } from 'shared/lib/category';
 
 interface OperationItemProps {
 	operation: OperationType;

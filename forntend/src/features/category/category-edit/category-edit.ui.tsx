@@ -11,8 +11,9 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
 import { editCategory } from 'shared/api/category';
-import { CATEGORY_TYPES, selectCategoryData } from 'entities/category/category-data';
+import { selectCategoryData } from 'entities/category/category-data';
 import { useAppSelector } from 'shared/lib/store';
+import { CATEGORY_TYPES } from 'shared/lib/category';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();
