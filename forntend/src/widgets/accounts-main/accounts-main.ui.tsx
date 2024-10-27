@@ -1,12 +1,12 @@
 import css from './accounts-main.module.scss';
-import { useAsyncValue } from 'react-router-dom';
 import { AccountDelete } from 'features/account';
 import { Block } from 'shared/ui/components';
-import { AccountType } from 'shared/api/account';
 import { AccountItem } from 'entities/account/account-view';
+import { selectAccountList } from 'entities/account/account-list';
+import { useAppSelector } from 'shared/lib/store';
 
 export const AccountsMain = () => {
-	const accounts = useAsyncValue() as AccountType[];
+	const accounts = useAppSelector(selectAccountList);
 
 	return (
 		<Block className={css['main']}>
