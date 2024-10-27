@@ -1,8 +1,9 @@
 import css from './accounts-main.module.scss';
 import { useAsyncValue } from 'react-router-dom';
-import { AccountItem, AccountType } from 'entities/account';
+import { AccountItem } from 'entities/account';
 import { AccountDelete } from 'features/account';
 import { Block } from 'shared/ui/components';
+import { AccountType } from 'shared/api/account';
 
 export const AccountsMain = () => {
 	const accounts = useAsyncValue() as AccountType[];

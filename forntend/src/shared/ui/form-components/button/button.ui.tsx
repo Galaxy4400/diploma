@@ -2,7 +2,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import { Button as ButtonComponent } from '../../components/button';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
-import { RequestData } from 'shared/types';
+import { RequestData } from 'shared/api';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	label?: string;

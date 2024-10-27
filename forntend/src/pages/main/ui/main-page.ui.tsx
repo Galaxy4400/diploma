@@ -11,7 +11,7 @@ import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
 import { OperationType } from 'entities/operation';
 import { CategoryType } from 'entities/category';
-import { AccountType } from 'entities/account';
+import { AccountType } from 'shared/api/account';
 
 interface MainPageLoaderData {
 	accounts: Promise<AccountType[]>;

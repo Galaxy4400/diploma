@@ -8,9 +8,8 @@ import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components'
 import { ACCOUNT_TYPES } from 'entities/account/lib/account-types';
 import { Block, Fieldset } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
-import { request } from 'shared/api/request';
-import { AccountResponse } from 'entities/account';
-import { RequestData } from 'shared/types';
+import { RequestData } from 'shared/api';
+import { createAccount } from 'shared/api/account';
 
 export const AccountCreateForm = () => {
 	const navigate = useNavigate();
@@ -20,11 +19,7 @@ export const AccountCreateForm = () => {
 	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { account, error } = await request<AccountResponse>({
-			url: '/accounts',
-			method: 'POST',
-			data: submittedData,
-		});
+		const { account, error } = await createAccount(submittedData);
 
 		setIsLoading(false);
 

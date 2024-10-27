@@ -10,7 +10,7 @@ import { useFrom } from 'shared/lib/location';
 import { path } from 'shared/lib/router';
 import { Button } from 'shared/ui/form-components';
 import { useToast } from 'app/providers/toast';
-import { RequestData } from 'shared/types';
+import { RequestData } from 'shared/api';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();

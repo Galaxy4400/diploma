@@ -1,11 +1,11 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api/request';
+import { request } from 'shared/api';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { AccountsResponse } from 'entities/account';
 import { CategoriesResponse } from 'entities/category';
+import { getAccounts } from 'shared/api/account';
 
-const getAccounts = async () => {
-	const { accounts, error } = await request<AccountsResponse>({ url: '/accounts' });
+const processGetAccounts = async () => {
+	const { accounts, error } = await getAccounts();
 
 	if (!accounts) {
 		throw new Error(error || 'Unknown error');
@@ -39,7 +39,7 @@ const getCategories = async () => {
 
 export const mainPageLoader = async () => {
 	return defer({
-		accounts: getAccounts(),
+		accounts: processGetAccounts(),
 		operations: getOperations(),
 		categories: getCategories(),
 	});

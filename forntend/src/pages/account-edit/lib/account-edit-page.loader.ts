@@ -1,10 +1,9 @@
-import { AccountResponse } from 'entities/account';
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api/request';
+import { getAccount } from 'shared/api/account';
 import { HasParams, ID } from 'shared/types';
 
-const getAccount = async (accountId: ID) => {
-	const { account, error } = await request<AccountResponse>({ url: `/accounts/${accountId}` });
+const processGetAccount = async (accountId: ID) => {
+	const { account, error } = await getAccount(accountId);
 
 	if (!account) {
 		throw new Error(error || 'Unknown error');
@@ -22,6 +21,6 @@ export const accountEditPageLoader = async ({ params }: HasParams<{ id: string }
 
 	return defer({
 		id,
-		account: getAccount(id),
+		account: processGetAccount(id),
 	});
 };

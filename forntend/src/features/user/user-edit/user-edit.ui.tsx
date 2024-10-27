@@ -7,8 +7,8 @@ import { path } from 'shared/lib/router/path';
 import { Button, Form, Input } from 'shared/ui/form-components';
 import { Block } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
-import { Nullable, RequestData } from 'shared/types';
-import { request } from 'shared/api/request';
+import { Nullable } from 'shared/types';
+import { request, RequestData } from 'shared/api';
 import { useAuth } from 'app/providers/auth';
 import { UserResponse, UserType } from 'shared/api/user';
 

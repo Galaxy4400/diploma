@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addOperations, selectOperations } from 'entities/operations';
 import { selectFilter, useResetFilter } from 'entities/application';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { request } from 'shared/api/request';
+import { request } from 'shared/api';
 import { ID } from 'shared/types';
 
 export const useOperationsPagination = (accountId: ID | null) => {

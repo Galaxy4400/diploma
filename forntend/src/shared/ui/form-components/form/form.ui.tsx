@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { PropsWithChildren } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { RequestData } from 'shared/types';
+import { RequestData } from 'shared/api';
 
 interface FormProps extends PropsWithChildren {
 	className?: string;

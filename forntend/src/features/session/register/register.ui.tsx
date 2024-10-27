@@ -8,7 +8,7 @@ import { Block } from 'shared/ui/components';
 import { Link } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { useToast } from 'app/providers/toast';
-import { RequestData } from 'shared/types';
+import { RequestData } from 'shared/api';
 
 export const RegisterForm = () => {
 	const { registration } = useAuth();

@@ -1,4 +1,4 @@
-import { URL } from 'shared/types';
+import { URL } from 'shared/api';
 
 export const getAvatarPlug = (
 	string: string | null,

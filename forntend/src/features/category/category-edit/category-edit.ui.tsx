@@ -8,9 +8,9 @@ import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { Block, Fieldset } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
-import { request } from 'shared/api/request';
+import { request, RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
-import { CategoryIcons, RequestData } from 'shared/types';
+import { CategoryIcons } from 'shared/types';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();

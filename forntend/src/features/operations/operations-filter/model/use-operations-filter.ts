@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
 import { setFilter } from 'entities/application';
 import { setOperations } from 'entities/operations';
-import { request } from 'shared/api/request';
-import { RequestData } from 'shared/types';
+import { request, RequestData } from 'shared/api';
 
 export const useOperationsFilter = () => {
 	const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api/request';
+import { request } from 'shared/api';
 import { HasParams, ID } from 'shared/types';
 import { CategoryResponse } from 'entities/category';
 

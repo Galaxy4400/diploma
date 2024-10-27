@@ -1,4 +1,4 @@
-import { Methods, QueryData, RequestData } from '../types';
+import { Methods, QueryData, RequestData } from './types';
 
 interface requestProps {
 	url: string;

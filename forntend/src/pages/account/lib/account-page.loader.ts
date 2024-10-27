@@ -1,12 +1,12 @@
 import { defer } from 'react-router-dom';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
-import { request } from 'shared/api/request';
+import { request } from 'shared/api';
 import { HasParams, ID } from 'shared/types';
-import { AccountResponse } from 'entities/account';
+import { getAccount } from 'shared/api/account';
 
-const getAccount = async (accountId: ID) => {
+const processGetAccount = async (accountId: ID) => {
 	const [accountResponse, operationsResponse] = await Promise.all([
-		request<AccountResponse>({ url: `/accounts/${accountId}` }),
+		getAccount(accountId),
 		request<OperationsResponse>({
 			url: `/operations/account/${accountId}`,
 			query: { limit: OPERATIONS_PER_LOAD },
@@ -36,6 +36,6 @@ export const accountPageLoader = async ({ params }: HasParams<{ id: string }>) =
 
 	return defer({
 		id,
-		account: getAccount(id),
+		account: processGetAccount(id),
 	});
 };
