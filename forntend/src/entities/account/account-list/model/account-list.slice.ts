@@ -8,8 +8,8 @@ const initialState: AccountListState = {
 	error: null,
 };
 
-export const accountSlice = createSlice({
-	name: 'account',
+export const accountListSlice = createSlice({
+	name: 'accounts',
 	initialState,
 	reducers: {
 		clearAccountListStore: (store) => {
@@ -33,6 +33,6 @@ export const accountSlice = createSlice({
 			}),
 });
 
-export const { clearAccountListStore } = accountSlice.actions;
+export const { clearAccountListStore } = accountListSlice.actions;
 
-export const accountListReducer = accountSlice.reducer;
+export const accountListReducer = accountListSlice.reducer;

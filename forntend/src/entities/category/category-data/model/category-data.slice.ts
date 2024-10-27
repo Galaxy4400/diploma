@@ -14,7 +14,7 @@ const initialState: CategoryDataState = {
 	error: null,
 };
 
-export const categorySlice = createSlice({
+export const categoryDataSlice = createSlice({
 	name: 'category',
 	initialState,
 	reducers: {},
@@ -35,4 +35,4 @@ export const categorySlice = createSlice({
 			}),
 });
 
-export const categoryDataReducer = categorySlice.reducer;
+export const categoryDataReducer = categoryDataSlice.reducer;

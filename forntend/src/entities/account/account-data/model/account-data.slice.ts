@@ -16,7 +16,7 @@ const initialState: AccountDataState = {
 	error: null,
 };
 
-export const accountSlice = createSlice({
+export const accountDataSlice = createSlice({
 	name: 'account',
 	initialState,
 	reducers: {},
@@ -37,4 +37,4 @@ export const accountSlice = createSlice({
 			}),
 });
 
-export const accountDataReducer = accountSlice.reducer;
+export const accountDataReducer = accountDataSlice.reducer;
