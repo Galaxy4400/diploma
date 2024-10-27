@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OperationType, getOperation } from 'shared/api/operation';
 import { ErrorType, ID } from 'shared/types';
 
-export const fetchOperationData = createAsyncThunk<OperationType, ID, { rejectValue: ErrorType }>(
-	'operation/fetchOperationData',
+export const getOperationData = createAsyncThunk<OperationType, ID, { rejectValue: ErrorType }>(
+	'operation/getOperationData',
 	async (id, { rejectWithValue }) => {
 		try {
 			const { operation, error } = await getOperation(id);

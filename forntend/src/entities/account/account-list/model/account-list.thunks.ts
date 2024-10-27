@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ErrorType } from 'shared/types';
 
-export const fetchAccountList = createAsyncThunk<AccountType[], void, { rejectValue: ErrorType }>(
-	'account/fetchAccountList',
+export const getAccountList = createAsyncThunk<AccountType[], void, { rejectValue: ErrorType }>(
+	'account/getAccountList',
 	async (_, { rejectWithValue }) => {
 		try {
 			const { accounts, error } = await getAccounts();

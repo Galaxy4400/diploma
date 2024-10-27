@@ -5,7 +5,7 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
-	fetchAccountData,
+	getAccountData,
 	selectAccountDataId,
 	selectAccountDataLoading,
 } from 'entities/account/account-data';
@@ -18,7 +18,7 @@ export const AccountEditPage = () => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (id && id !== currentAccountId) dispatch(fetchAccountData(id));
+		if (id && id !== currentAccountId) dispatch(getAccountData(id));
 	}, [dispatch, id, currentAccountId]);
 
 	return (

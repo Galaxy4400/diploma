@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CategoryDataState } from './category-data.types';
-import { fetchCategoryData } from './category-data.thunks';
+import { getCategoryData } from './category-data.thunks';
 
 const initialState: CategoryDataState = {
 	category: {
@@ -20,16 +20,16 @@ export const categoryDataSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
-			.addCase(fetchCategoryData.pending, (state) => {
+			.addCase(getCategoryData.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchCategoryData.fulfilled, (state, { payload }) => {
+			.addCase(getCategoryData.fulfilled, (state, { payload }) => {
 				state.category = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchCategoryData.rejected, (state, { payload }) => {
+			.addCase(getCategoryData.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),

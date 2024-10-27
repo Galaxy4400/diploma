@@ -5,7 +5,7 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
-	fetchCategoryData,
+	getCategoryData,
 	selectCategoryDataId,
 	selectCategoryDataLoading,
 } from 'entities/category/category-data';
@@ -18,7 +18,7 @@ export const CategoryEditPage = () => {
 	const loading = useAppSelector(selectCategoryDataLoading);
 
 	useEffect(() => {
-		if (id && id !== currentCategoryId) dispatch(fetchCategoryData(id));
+		if (id && id !== currentCategoryId) dispatch(getCategoryData(id));
 	}, [currentCategoryId, dispatch, id]);
 
 	return (

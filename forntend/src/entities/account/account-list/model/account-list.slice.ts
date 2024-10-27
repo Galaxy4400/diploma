@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AccountListState } from './account-list.types';
-import { fetchAccountList } from './account-list.thunks';
+import { getAccountList } from './account-list.thunks';
 
 const initialState: AccountListState = {
 	accounts: [],
@@ -18,16 +18,16 @@ export const accountListSlice = createSlice({
 	},
 	extraReducers: (builder) =>
 		builder
-			.addCase(fetchAccountList.pending, (state) => {
+			.addCase(getAccountList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchAccountList.fulfilled, (state, { payload }) => {
+			.addCase(getAccountList.fulfilled, (state, { payload }) => {
 				state.accounts = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchAccountList.rejected, (state, { payload }) => {
+			.addCase(getAccountList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),

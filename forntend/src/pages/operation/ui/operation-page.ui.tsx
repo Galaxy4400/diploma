@@ -5,7 +5,7 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { useEffect } from 'react';
-import { fetchOperationData, selectOperationDataLoading } from 'entities/operation/operation-data';
+import { getOperationData, selectOperationDataLoading } from 'entities/operation/operation-data';
 
 export const OperationPage = () => {
 	const { id } = useParams();
@@ -13,7 +13,7 @@ export const OperationPage = () => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (id) dispatch(fetchOperationData(id));
+		if (id) dispatch(getOperationData(id));
 	}, [dispatch, id]);
 
 	return (

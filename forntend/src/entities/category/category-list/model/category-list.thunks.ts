@@ -2,8 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { CategoryType, getCategories } from 'shared/api/category';
 import { ErrorType } from 'shared/types';
 
-export const fetchCategoryList = createAsyncThunk<CategoryType[], void, { rejectValue: ErrorType }>(
-	'account/fetchCategoryList',
+export const getCategoryList = createAsyncThunk<CategoryType[], void, { rejectValue: ErrorType }>(
+	'account/getCategoryList',
 	async (_, { rejectWithValue }) => {
 		try {
 			const { categories, error } = await getCategories();
