@@ -8,10 +8,10 @@ import { path } from 'shared/lib/router';
 import { useState } from 'react';
 import { Block, Fieldset } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
-import { request, RequestData } from 'shared/api';
+import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
-import { CategoryResponse } from 'shared/api/category';
+import { createCategory } from 'shared/api/category';
 
 export const CategoryCreateForm = () => {
 	const navigate = useNavigate();
@@ -21,11 +21,7 @@ export const CategoryCreateForm = () => {
 	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { category } = await request<CategoryResponse>({
-			url: '/categories',
-			method: 'POST',
-			data: submittedData,
-		});
+		const { category } = await createCategory(submittedData);
 
 		setIsLoading(false);
 

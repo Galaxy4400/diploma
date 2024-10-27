@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { request } from '../api/request';
 import { buildSelectOptions } from 'shared/utils';
 import { OptionProps } from 'shared/types';
 import { getAccounts } from 'shared/api/account';
-import { CategoriesResponse } from 'shared/api/category';
+import { getCategories } from 'shared/api/category';
 
 export const useLoadOptions = () => {
 	const [accountOptions, setAccountOptions] = useState<OptionProps[]>([]);
@@ -11,10 +10,7 @@ export const useLoadOptions = () => {
 
 	useEffect(() => {
 		const loadOptions = async () => {
-			const [{ accounts }, { categories }] = await Promise.all([
-				getAccounts(),
-				request<CategoriesResponse>({ url: '/categories' }),
-			]);
+			const [{ accounts }, { categories }] = await Promise.all([getAccounts(), getCategories()]);
 
 			if (!accounts || !categories) return;
 

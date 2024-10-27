@@ -2,7 +2,7 @@ import { defer } from 'react-router-dom';
 import { request } from 'shared/api';
 import { OPERATIONS_PER_LOAD, OperationsResponse } from 'entities/operation';
 import { getAccounts } from 'shared/api/account';
-import { CategoriesResponse } from 'shared/api/category';
+import { getCategories } from 'shared/api/category';
 
 const processGetAccounts = async () => {
 	const { accounts, error } = await getAccounts();
@@ -27,8 +27,8 @@ const getOperations = async () => {
 	return pagingData.items;
 };
 
-const getCategories = async () => {
-	const { categories, error } = await request<CategoriesResponse>({ url: '/categories' });
+const processGetCategories = async () => {
+	const { categories, error } = await getCategories();
 
 	if (!categories) {
 		throw new Error(error || 'Unknown error');
@@ -41,6 +41,6 @@ export const mainPageLoader = async () => {
 	return defer({
 		accounts: processGetAccounts(),
 		operations: getOperations(),
-		categories: getCategories(),
+		categories: processGetCategories(),
 	});
 };

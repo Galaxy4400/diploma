@@ -1,10 +1,9 @@
 import { defer } from 'react-router-dom';
-import { request } from 'shared/api';
-import { CategoryResponse } from 'shared/api/category';
+import { getCategory } from 'shared/api/category';
 import { HasParams, ID } from 'shared/types';
 
-const getCategory = async (categoryId: ID) => {
-	const { category, error } = await request<CategoryResponse>({ url: `/categories/${categoryId}` });
+const processGetCategory = async (categoryId: ID) => {
+	const { category, error } = await getCategory(categoryId);
 
 	if (!category) {
 		throw new Error(error || 'Unknown error');
@@ -21,6 +20,6 @@ export const categoryEditPageLoader = async ({ params }: HasParams<{ id: string 
 	}
 
 	return defer({
-		category: getCategory(id),
+		category: processGetCategory(id),
 	});
 };

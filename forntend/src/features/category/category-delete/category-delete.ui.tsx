@@ -4,9 +4,9 @@ import { useFrom } from 'shared/lib/location';
 import { Icon } from 'shared/ui/icons';
 import { useModal } from 'app/providers/modal';
 import { Confirm } from 'shared/ui/components';
-import { request } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { Icons, ID } from 'shared/types';
+import { deleteCategory } from 'shared/api/category';
 
 interface CategoryDeleteProps {
 	categoryId: ID;
@@ -18,8 +18,8 @@ export const CategoryDelete = ({ categoryId }: CategoryDeleteProps) => {
 	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 
-	const deleteCategory = async () => {
-		await request({ url: `/categories/${categoryId}`, method: 'DELETE' });
+	const processDeleteCategory = async () => {
+		await deleteCategory(categoryId);
 
 		navigate(from?.pathname || false, { replace: true });
 
@@ -33,7 +33,7 @@ export const CategoryDelete = ({ categoryId }: CategoryDeleteProps) => {
 			<Confirm
 				title="Хотите удалить категорию?"
 				text="Все операции категории так же будут удалены!"
-				onConfirm={deleteCategory}
+				onConfirm={processDeleteCategory}
 				onReject={closeModal}
 			/>,
 		);

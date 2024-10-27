@@ -8,10 +8,10 @@ import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { Block, Fieldset } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
-import { request, RequestData } from 'shared/api';
+import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
-import { CategoryResponse, CategoryType } from 'shared/api/category';
+import { CategoryType, editCategory } from 'shared/api/category';
 
 export const CategoryEditForm = () => {
 	const navigate = useNavigate();
@@ -22,11 +22,7 @@ export const CategoryEditForm = () => {
 	const submitHandler = async (submittedData: RequestData) => {
 		setIsLoading(true);
 
-		const { error } = await request<CategoryResponse>({
-			url: `/categories/${category.id}`,
-			method: 'PATCH',
-			data: submittedData,
-		});
+		const { error } = await editCategory(category.id, submittedData);
 
 		setIsLoading(false);
 
