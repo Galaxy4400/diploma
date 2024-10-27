@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { accountCreateFormRules } from './account-create.rules';
 import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components';
-import { ACCOUNT_TYPES } from 'entities/account/lib/account-types';
 import { Block, Fieldset } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/api';
 import { createAccount } from 'shared/api/account';
+import { ACCOUNT_TYPES } from 'entities/account/account-view';
 
 export const AccountCreateForm = () => {
 	const navigate = useNavigate();

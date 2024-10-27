@@ -1,7 +1,6 @@
 import css from './account-edit.module.scss';
 import { accountEditFormRules } from './account-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ACCOUNT_TYPES } from 'entities/account';
 import { useAsyncValue, useNavigate } from 'react-router-dom';
 import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components';
@@ -10,6 +9,7 @@ import { Block, Fieldset } from 'shared/ui/components';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { AccountType, editAccount } from 'shared/api/account';
+import { ACCOUNT_TYPES } from 'entities/account/account-view';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue() as AccountType;

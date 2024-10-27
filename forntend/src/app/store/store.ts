@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { accountReducer } from 'entities/account';
+import { accountReducer } from 'entities/account/account-view';
 import { applicationReducer } from 'entities/application';
 import { categoryReducer } from 'entities/category';
 import { operationReducer } from 'entities/operation';
