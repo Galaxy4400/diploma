@@ -1,6 +1,1 @@
-import { createSelector } from '@reduxjs/toolkit';
-
-export const selectOperations = createSelector(
-	(state: RootState) => state.operations,
-	(operations) => operations,
-);
+export const selectOperations = (state: RootState) => state.operations;
