@@ -9,7 +9,7 @@ import { Block, Fieldset } from 'shared/ui/components';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { AccountType, editAccount } from 'shared/api/account';
-import { ACCOUNT_TYPES } from 'entities/account/account-view';
+import { ACCOUNT_TYPES } from 'shared/lib/account';
 
 export const AccountEditForm = () => {
 	const account = useAsyncValue() as AccountType;

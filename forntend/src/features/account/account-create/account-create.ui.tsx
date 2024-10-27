@@ -9,7 +9,7 @@ import { Block, Fieldset } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/api';
 import { createAccount } from 'shared/api/account';
-import { ACCOUNT_TYPES } from 'entities/account/account-view';
+import { ACCOUNT_TYPES } from 'shared/lib/account';
 
 export const AccountCreateForm = () => {
 	const navigate = useNavigate();

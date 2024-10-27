@@ -1,8 +1,7 @@
 import css from './accounts-main.module.scss';
 import { AccountDelete } from 'features/account';
 import { Block } from 'shared/ui/components';
-import { AccountItem } from 'entities/account/account-view';
-import { selectAccountList } from 'entities/account/account-list';
+import { AccountItem, selectAccountList } from 'entities/account/account-list';
 import { useAppSelector } from 'shared/lib/store';
 
 export const AccountsMain = () => {
