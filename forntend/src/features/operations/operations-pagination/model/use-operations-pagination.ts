@@ -4,7 +4,7 @@ import { addOperations, selectOperations } from 'entities/operations';
 import { selectFilter, useResetFilter } from 'entities/application';
 import { ID } from 'shared/types';
 import { getOperationsByAccount } from 'shared/api/operation';
-import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
+import { OPERATIONS_PER_LOAD } from 'shared/constants';
 
 export const useOperationsPagination = (accountId: ID | null) => {
 	const dispatch = useDispatch();

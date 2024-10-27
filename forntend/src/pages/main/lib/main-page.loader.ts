@@ -1,4 +1,4 @@
-import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
+import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { defer } from 'react-router-dom';
 import { getAccounts } from 'shared/api/account';
 import { getCategories } from 'shared/api/category';

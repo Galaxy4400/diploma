@@ -5,7 +5,7 @@ import { applicationReducer } from 'entities/application';
 import { categoryDataReducer } from 'entities/category/category-data';
 import { operationsReducer } from 'entities/operations';
 import { categoryListReducer } from 'entities/category/category-list';
-import { operationDataReducer } from 'entities/operation/operation-data';
+import { operationDataReducer } from 'shared/constants';
 
 const rootReducer = combineReducers({
 	app: applicationReducer,

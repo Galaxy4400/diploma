@@ -1,5 +1,5 @@
 import { OperationDelete } from 'features/operation';
-import { OperationView, selectOperationData } from 'entities/operation/operation-data';
+import { OperationView, selectOperationData } from 'shared/constants';
 import { useAppSelector } from 'shared/lib/store';
 
 export const Operation = () => {

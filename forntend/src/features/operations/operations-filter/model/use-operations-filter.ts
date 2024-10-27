@@ -4,7 +4,7 @@ import { setFilter } from 'entities/application';
 import { setOperations } from 'entities/operations';
 import { RequestData } from 'shared/api';
 import { getOperations } from 'shared/api/operation';
-import { OPERATIONS_PER_LOAD } from 'entities/operation/operation-data';
+import { OPERATIONS_PER_LOAD } from 'shared/constants';
 
 export const useOperationsFilter = () => {
 	const dispatch = useDispatch();

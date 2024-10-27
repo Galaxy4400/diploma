@@ -4,7 +4,7 @@ import { Operation } from 'widgets/operation';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchOperationData, selectOperationDataLoading } from 'entities/operation/operation-data';
+import { fetchOperationData, selectOperationDataLoading } from 'shared/constants';
 import { useEffect } from 'react';
 
 export const OperationPage = () => {
