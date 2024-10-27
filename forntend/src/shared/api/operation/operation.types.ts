@@ -15,6 +15,15 @@ export interface OperationType {
 	createdAt: string;
 }
 
+export interface OperationQueryParams {
+	limit?: number;
+	page?: number;
+	account?: string;
+	category?: string;
+	daterange?: string;
+	amountrange?: string;
+}
+
 export interface OperationResponse {
 	readonly error: string | null;
 	readonly operation: OperationType | null;

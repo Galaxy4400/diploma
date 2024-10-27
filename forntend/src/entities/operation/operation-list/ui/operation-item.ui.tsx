@@ -33,9 +33,7 @@ export const OperationItem = ({ operation, deleteSlot }: OperationItemProps) => 
 				</figure>
 				<div className={css['info']}>
 					<span>{operation.category?.name}</span>
-					<span className={css['datetime']}>
-						{operation.createdAt ? format(operation.createdAt, DATETIME_FORMAT) : ''}
-					</span>
+					<span className={css['datetime']}>{format(operation.createdAt, DATETIME_FORMAT)}</span>
 					<span className={cn(css['amount'], amountTypeClass)}>{priceFormat(operation.amount)}</span>
 					<span>Счет: {operation.account?.name}</span>
 				</div>

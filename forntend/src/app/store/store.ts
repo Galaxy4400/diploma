@@ -6,12 +6,14 @@ import { categoryDataReducer } from 'entities/category/category-data';
 import { operationsReducer } from 'entities/operations';
 import { categoryListReducer } from 'entities/category/category-list';
 import { operationDataReducer } from 'entities/operation/operation-data';
+import { operationListReducer } from 'entities/operation/operation-list';
 
 const rootReducer = combineReducers({
 	app: applicationReducer,
 	accountData: accountDataReducer,
 	accountList: accountListReducer,
 	operationData: operationDataReducer,
+	operationList: operationListReducer,
 	categoryData: categoryDataReducer,
 	categoryList: categoryListReducer,
 	operations: operationsReducer,

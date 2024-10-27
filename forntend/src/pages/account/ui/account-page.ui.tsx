@@ -4,18 +4,23 @@ import { Loading, LoadingComponent } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchAccountData, selectAccountDataLoading } from 'entities/account/account-data';
+import {
+	fetchAccountData,
+	selectAccountDataId,
+	selectAccountDataLoading,
+} from 'entities/account/account-data';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export const AccountPage = () => {
 	const { id } = useParams();
+	const currentAccountId = useAppSelector(selectAccountDataId);
 	const loading = useAppSelector(selectAccountDataLoading);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		if (id) dispatch(fetchAccountData(id));
-	}, [dispatch, id]);
+		if (id && id !== currentAccountId) dispatch(fetchAccountData(id));
+	}, [currentAccountId, dispatch, id]);
 
 	return (
 		<Container>

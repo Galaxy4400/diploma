@@ -1,11 +1,11 @@
 import css from './operations-list.module.scss';
 import { OperationDelete } from 'features/operation';
-import { selectOperations } from 'entities/operations';
-import { useSelector } from 'react-redux';
 import { OperationItem } from 'entities/operation/operation-data';
+import { selectOperationList } from 'entities/operation/operation-list';
+import { useAppSelector } from 'shared/lib/store';
 
 export const OperationsList = () => {
-	const operations = useSelector(selectOperations);
+	const operations = useAppSelector(selectOperationList);
 
 	return (
 		<div className={css['list']}>
