@@ -5,16 +5,19 @@ import { useState } from 'react';
 interface ConfirmProps {
 	title: string;
 	text?: string;
-	onConfirm: () => void;
+	onConfirm: () => Promise<void>;
 	onReject: () => void;
 }
 
 export const Confirm = ({ title, text, onConfirm, onReject }: ConfirmProps) => {
-	const [loading, setLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-	const confirmHandler = () => {
-		setLoading(true);
-		onConfirm();
+	const confirmHandler = async () => {
+		setIsLoading(true);
+
+		await onConfirm();
+
+		setIsLoading(false);
 	};
 
 	return (
@@ -25,7 +28,7 @@ export const Confirm = ({ title, text, onConfirm, onReject }: ConfirmProps) => {
 				<Button className={css['reject']} onClick={onReject}>
 					Отмена
 				</Button>
-				<Button className={css['confirm']} onClick={confirmHandler} loading={loading}>
+				<Button className={css['confirm']} onClick={confirmHandler} loading={isLoading}>
 					Подтвердить
 				</Button>
 			</div>
