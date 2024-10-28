@@ -19,6 +19,7 @@ export const accountListSlice = createSlice({
 	},
 	extraReducers: (builder) =>
 		builder
+			// Get account list process
 			.addCase(getAccountList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
@@ -33,7 +34,7 @@ export const accountListSlice = createSlice({
 				state.error = payload?.message ?? null;
 			})
 
-			// Delete account
+			// Delete account process
 			.addCase(fetchDeleteAccount.fulfilled, (state, { payload }) => {
 				state.accounts = state.accounts.filter((account) => account.id !== payload);
 			}),
