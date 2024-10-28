@@ -29,7 +29,7 @@ export const CategoryCreateForm = () => {
 
 		showToast({ message: 'Счет создан', type: 'success' });
 
-		navigate(path.account.id(newCategory.id), { replace: true });
+		navigate(path.category.id(newCategory.id), { replace: true });
 	};
 
 	if (error) {

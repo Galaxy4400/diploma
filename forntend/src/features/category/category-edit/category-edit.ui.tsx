@@ -1,16 +1,14 @@
 import css from './category-edit.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { categoryEditFormRules } from './category-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate, useParams } from 'react-router-dom';
-import { path } from 'shared/lib/router';
+import { useParams } from 'react-router-dom';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { Block, Fieldset, Loading } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
-import { editCategory } from 'shared/api/category';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { CATEGORY_TYPES } from 'shared/lib/category';
 import {
