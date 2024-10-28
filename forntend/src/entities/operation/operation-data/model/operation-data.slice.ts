@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { OperationDataState } from './operation-data.types';
-import { fetchGetOperationData } from './operation-data.thunks';
+import { fetchCreateOperation, fetchDeleteOperation, fetchGetOperationData } from './operation-data.thunks';
 
 const initialState: OperationDataState = {
 	operation: {
@@ -26,6 +26,7 @@ export const operationDataSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
+			// Get operation process
 			.addCase(fetchGetOperationData.pending, (state) => {
 				state.loading = true;
 				state.error = null;
@@ -37,6 +38,35 @@ export const operationDataSlice = createSlice({
 			})
 			.addCase(fetchGetOperationData.rejected, (state, { payload }) => {
 				state.loading = false;
+				state.error = payload?.message ?? null;
+			})
+
+			// Create operation process
+			.addCase(fetchCreateOperation.pending, (state) => {
+				state.creating = true;
+				state.error = null;
+			})
+			.addCase(fetchCreateOperation.fulfilled, (state, { payload }) => {
+				state.operation = payload;
+				state.creating = false;
+				state.error = null;
+			})
+			.addCase(fetchCreateOperation.rejected, (state, { payload }) => {
+				state.creating = false;
+				state.error = payload?.message ?? null;
+			})
+
+			// Delete operation process
+			.addCase(fetchDeleteOperation.pending, (state) => {
+				state.deleting = true;
+				state.error = null;
+			})
+			.addCase(fetchDeleteOperation.fulfilled, (state) => {
+				state.deleting = false;
+				state.error = null;
+			})
+			.addCase(fetchDeleteOperation.rejected, (state, { payload }) => {
+				state.deleting = false;
 				state.error = payload?.message ?? null;
 			}),
 });

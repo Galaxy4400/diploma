@@ -1,40 +1,44 @@
 import css from './operation-create.module.scss';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { operationCreateFormRules } from './operation-create.rules';
 import { path } from 'shared/lib/router';
-import { useFrom } from 'shared/lib/location';
 import { Button, Form, Input, Select } from 'shared/ui/form-components';
 import { Block } from 'shared/ui/components';
-import { useLoadOptions } from 'shared/hooks';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
-import { createOperation } from 'shared/api/operation';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { LocationFromAccount } from 'shared/types/helpers';
+import { selectCategoryList } from 'entities/category/category-list';
+import { selectAccountList } from 'entities/account/account-list';
+import {
+	fetchCreateOperation,
+	selectOperationDataCreating,
+	selectOperationDataError,
+} from 'entities/operation/operation-data';
+import { buildSelectOptions } from 'shared/utils';
 
 export const OperationCreateForm = () => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const from = useFrom();
+	const accounts = useAppSelector(selectAccountList);
+	const categories = useAppSelector(selectCategoryList);
+	const isCreating = useAppSelector(selectOperationDataCreating);
+	const error = useAppSelector(selectOperationDataError);
+	const location = useLocation() as LocationFromAccount;
 	const { showToast } = useToast();
-	const { accountOptions, categoryOptions } = useLoadOptions();
-	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (submittedData: RequestData) => {
-		setIsLoading(true);
+		const newOperation = await dispatch(fetchCreateOperation(submittedData)).unwrap();
 
-		const { operation } = await createOperation(submittedData);
+		showToast({ message: 'Счет создан', type: 'success' });
 
-		setIsLoading(false);
-
-		if (!operation) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
-
-		navigate(path.operation.id(operation.id), { replace: true });
-
-		showToast({ message: 'Операция создана', type: 'success' });
+		navigate(path.account.id(newOperation.id), { replace: true });
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	return (
 		<Block className={css['block']}>
@@ -42,20 +46,20 @@ export const OperationCreateForm = () => {
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Select
 					name="account"
-					options={accountOptions}
-					defaultValue={from?.accountId || ''}
+					options={buildSelectOptions(accounts, 'name', 'id')}
+					defaultValue={location.state.from.accountId || ''}
 					label="Счет операции"
 					placeholder=""
 				/>
 				<Select
 					name="category"
-					options={categoryOptions}
+					options={buildSelectOptions(categories, 'name', 'id')}
 					defaultValue=""
 					label="Категория операции"
 					placeholder=""
 				/>
 				<Input type="text" name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isCreating} loading={isCreating}>
 					Создать операцию
 				</Button>
 			</Form>
