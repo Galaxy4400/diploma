@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { AccountDelete } from 'features/account';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { useParams } from 'react-router-dom';
@@ -10,12 +11,13 @@ import {
 	selectAccountDataId,
 	selectAccountDataLoading,
 } from 'entities/account/account-data';
+import { AccountType } from 'shared/api/account';
 
 interface AccountProps {
-	operationSectionSlot: ReactNode;
+	operationSectionRender: (account: AccountType) => ReactNode;
 }
 
-export const Account = ({ operationSectionSlot }: AccountProps) => {
+export const Account = ({ operationSectionRender }: AccountProps) => {
 	const { id } = useParams();
 	const dispatch = useAppDispatch();
 	const account = useAppSelector(selectAccountData);
@@ -33,7 +35,7 @@ export const Account = ({ operationSectionSlot }: AccountProps) => {
 			) : (
 				<Loading />
 			)}
-			{operationSectionSlot}
+			{operationSectionRender(account)}
 		</>
 	);
 };

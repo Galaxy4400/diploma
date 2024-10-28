@@ -9,7 +9,7 @@ export const AccountPage = () => {
 		<Container>
 			<PageHeader title="Информация о счете" />
 			<div className={css['main']}>
-				<Account operationSectionSlot={<OperationsSection />} />
+				<Account operationSectionRender={(account) => <OperationsSection account={account} />} />
 			</div>
 		</Container>
 	);
