@@ -3,11 +3,11 @@ import { QueryData } from 'shared/api';
 import { getOperations, OperationQueryParams, OperationType } from 'shared/api/operation';
 import { ErrorType } from 'shared/types';
 
-export const getOperationList = createAsyncThunk<
+export const fetchGetOperationList = createAsyncThunk<
 	OperationType[],
 	OperationQueryParams & QueryData,
 	{ rejectValue: ErrorType }
->('account/getOperationList', async (queryData, { rejectWithValue }) => {
+>('account/fetchGetOperationList', async (queryData, { rejectWithValue }) => {
 	try {
 		const { pagingData, error } = await getOperations(queryData);
 

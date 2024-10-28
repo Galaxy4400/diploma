@@ -4,7 +4,7 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
-	getCategoryData,
+	fetchGetCategoryData,
 	selectCategoryDataId,
 	selectCategoryDataLoading,
 } from 'entities/category/category-data';
@@ -18,7 +18,7 @@ export const CategoryPage = () => {
 	const loading = useAppSelector(selectCategoryDataLoading);
 
 	useEffect(() => {
-		if (id && id !== currentCategoryId) dispatch(getCategoryData(id));
+		if (id && id !== currentCategoryId) dispatch(fetchGetCategoryData(id));
 	}, [currentCategoryId, dispatch, id]);
 
 	return (

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AccountListState } from './account-list.types';
-import { getAccountList } from './account-list.thunks';
+import { fetchGetAccountList } from './account-list.thunks';
 import { fetchDeleteAccount } from 'entities/account/account-data';
 
 const initialState: AccountListState = {
@@ -20,16 +20,16 @@ export const accountListSlice = createSlice({
 	extraReducers: (builder) =>
 		builder
 			// Get account list process
-			.addCase(getAccountList.pending, (state) => {
+			.addCase(fetchGetAccountList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(getAccountList.fulfilled, (state, { payload }) => {
+			.addCase(fetchGetAccountList.fulfilled, (state, { payload }) => {
 				state.accounts = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(getAccountList.rejected, (state, { payload }) => {
+			.addCase(fetchGetAccountList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			})

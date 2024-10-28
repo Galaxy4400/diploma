@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CategoryListState } from './category-list.types';
-import { getCategoryList } from './category-list.thunks';
+import { fetchGetCategoryList } from './category-list.thunks';
 
 const initialState: CategoryListState = {
 	categories: [],
@@ -18,16 +18,16 @@ export const categoryListSlice = createSlice({
 	},
 	extraReducers: (builder) =>
 		builder
-			.addCase(getCategoryList.pending, (state) => {
+			.addCase(fetchGetCategoryList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(getCategoryList.fulfilled, (state, { payload }) => {
+			.addCase(fetchGetCategoryList.fulfilled, (state, { payload }) => {
 				state.categories = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(getCategoryList.rejected, (state, { payload }) => {
+			.addCase(fetchGetCategoryList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),

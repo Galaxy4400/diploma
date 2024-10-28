@@ -10,9 +10,9 @@ import { OperationsMain } from 'widgets/operations-main';
 import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { getAccountList, selectAccountListLoading } from 'entities/account/account-list';
-import { getOperationList, selectOperationListLoading } from 'entities/operation/operation-list';
-import { getCategoryList, selectCategoryListLoading } from 'entities/category/category-list';
+import { fetchGetAccountList, selectAccountListLoading } from 'entities/account/account-list';
+import { fetchGetOperationList, selectOperationListLoading } from 'entities/operation/operation-list';
+import { fetchGetCategoryList, selectCategoryListLoading } from 'entities/category/category-list';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
 
 export const MainPage = () => {
@@ -22,9 +22,9 @@ export const MainPage = () => {
 	const categoryListLoading = useAppSelector(selectCategoryListLoading);
 
 	useEffect(() => {
-		dispatch(getAccountList());
-		dispatch(getOperationList({ limit: OPERATIONS_PER_LOAD }));
-		dispatch(getCategoryList());
+		dispatch(fetchGetAccountList());
+		dispatch(fetchGetOperationList({ limit: OPERATIONS_PER_LOAD }));
+		dispatch(fetchGetCategoryList());
 	}, [dispatch]);
 
 	return (

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { OperationDataState } from './operation-data.types';
-import { getOperationData } from './operation-data.thunks';
+import { fetchGetOperationData } from './operation-data.thunks';
 
 const initialState: OperationDataState = {
 	operation: {
@@ -24,16 +24,16 @@ export const operationDataSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) =>
 		builder
-			.addCase(getOperationData.pending, (state) => {
+			.addCase(fetchGetOperationData.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(getOperationData.fulfilled, (state, { payload }) => {
+			.addCase(fetchGetOperationData.fulfilled, (state, { payload }) => {
 				state.operation = payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(getOperationData.rejected, (state, { payload }) => {
+			.addCase(fetchGetOperationData.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
 			}),

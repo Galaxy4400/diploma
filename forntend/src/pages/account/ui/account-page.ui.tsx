@@ -5,13 +5,13 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
-	getAccountData,
+	fetchGetAccountData,
 	selectAccountDataId,
 	selectAccountDataLoading,
 } from 'entities/account/account-data';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOperationList, selectOperationListLoading } from 'entities/operation/operation-list';
+import { fetchGetOperationList, selectOperationListLoading } from 'entities/operation/operation-list';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { AccountOperationsSection } from './components';
 
@@ -24,8 +24,8 @@ export const AccountPage = () => {
 
 	useEffect(() => {
 		if (id && id !== currentAccountId) {
-			dispatch(getAccountData(id));
-			dispatch(getOperationList({ account: id, limit: OPERATIONS_PER_LOAD }));
+			dispatch(fetchGetAccountData(id));
+			dispatch(fetchGetOperationList({ account: id, limit: OPERATIONS_PER_LOAD }));
 		}
 	}, [currentAccountId, dispatch, id]);
 
