@@ -39,7 +39,7 @@ export const OperationCreateForm = () => {
 
 		showToast({ message: 'Счет создан', type: 'success' });
 
-		navigate(path.account.id(newOperation.id), { replace: true });
+		navigate(path.operation.id(newOperation.id), { replace: true });
 	};
 
 	if (error) {

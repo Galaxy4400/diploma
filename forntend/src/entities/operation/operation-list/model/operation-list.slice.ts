@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchGetOperationList } from './operation-list.thunks';
 import { OperationListState } from './operation-list.types';
+import { fetchDeleteOperation } from 'entities/operation/operation-data';
 
 const initialState: OperationListState = {
 	operations: [],
@@ -18,6 +19,7 @@ export const operationListSlice = createSlice({
 	},
 	extraReducers: (builder) =>
 		builder
+			// Get operation list process
 			.addCase(fetchGetOperationList.pending, (state) => {
 				state.loading = true;
 				state.error = null;
@@ -30,6 +32,11 @@ export const operationListSlice = createSlice({
 			.addCase(fetchGetOperationList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
+			})
+
+			// Delete operation process
+			.addCase(fetchDeleteOperation.fulfilled, (state, { payload }) => {
+				state.operations = state.operations.filter((operation) => operation.id !== payload);
 			}),
 });
 

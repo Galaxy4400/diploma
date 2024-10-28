@@ -8,6 +8,8 @@ import { path } from 'shared/lib/router';
 import { Icons, ID } from 'shared/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { fetchDeleteAccount, selectAccountDataError } from 'entities/account/account-data';
+import { fetchGetOperationList } from 'entities/operation/operation-list';
+import { OPERATIONS_PER_LOAD } from 'shared/constants';
 
 interface AccountDeleteProps {
 	accountId: ID;
@@ -22,6 +24,7 @@ export const AccountDelete = ({ accountId }: AccountDeleteProps) => {
 
 	const deleteAccount = async () => {
 		await dispatch(fetchDeleteAccount(accountId)).unwrap();
+		await dispatch(fetchGetOperationList({ limit: OPERATIONS_PER_LOAD }));
 
 		showToast({ message: 'Счет удален', type: 'success' });
 
