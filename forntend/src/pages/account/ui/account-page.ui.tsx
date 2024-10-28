@@ -5,7 +5,7 @@ import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
-	fetchGetAccountData,
+	fetchGetAccount,
 	selectAccountDataId,
 	selectAccountDataLoading,
 } from 'entities/account/account-data';
@@ -24,7 +24,7 @@ export const AccountPage = () => {
 
 	useEffect(() => {
 		if (id && id !== currentAccountId) {
-			dispatch(fetchGetAccountData(id));
+			dispatch(fetchGetAccount(id));
 			dispatch(fetchGetOperationList({ account: id, limit: OPERATIONS_PER_LOAD }));
 		}
 	}, [currentAccountId, dispatch, id]);

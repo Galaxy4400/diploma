@@ -3,8 +3,8 @@ import { RequestData } from 'shared/api';
 import { AccountType, createAccount, deleteAccount, editAccount, getAccount } from 'shared/api/account';
 import { ErrorType, ID } from 'shared/types';
 
-export const fetchGetAccountData = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
-	'account/fetchGetAccountData',
+export const fetchGetAccount = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
+	'account/fetchGetAccount',
 	async (id, { rejectWithValue }) => {
 		try {
 			const { account, error } = await getAccount(id);

@@ -11,15 +11,15 @@ import { ACCOUNT_TYPES } from 'shared/lib/account';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import {
 	fetchCreateAccount,
+	selectAccountDataCreating,
 	selectAccountDataError,
-	selectAccountDataLoading,
 } from 'entities/account/account-data';
 
 export const AccountCreateForm = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { showToast } = useToast();
-	const isLoading = useAppSelector(selectAccountDataLoading);
+	const isCreating = useAppSelector(selectAccountDataCreating);
 	const error = useAppSelector(selectAccountDataError);
 
 	const submitHandler = async (submittedData: RequestData) => {
@@ -47,7 +47,7 @@ export const AccountCreateForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" label="Сумма" />
 				<Textarea name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isCreating} loading={isCreating}>
 					Создать счет
 				</Button>
 			</Form>

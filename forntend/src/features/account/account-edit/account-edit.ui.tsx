@@ -11,12 +11,12 @@ import {
 	fetchEditAccount,
 	selectAccountData,
 	selectAccountDataError,
-	selectAccountDataLoading,
+	selectAccountDataUpdating,
 } from 'entities/account/account-data';
 
 export const AccountEditForm = () => {
 	const account = useAppSelector(selectAccountData);
-	const isLoading = useAppSelector(selectAccountDataLoading);
+	const isUpdating = useAppSelector(selectAccountDataUpdating);
 	const error = useAppSelector(selectAccountDataError);
 	const dispatch = useAppDispatch();
 	const { showToast } = useToast();
@@ -50,7 +50,7 @@ export const AccountEditForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" defaultValue={account.amount} label="Сумма" />
 				<Textarea name="comment" label="Комментарий" defaultValue={account.comment} />
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isUpdating} loading={isUpdating}>
 					Внести изменения
 				</Button>
 			</Form>
