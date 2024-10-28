@@ -13,7 +13,7 @@ export const LogoutButton = () => {
 		openModal(
 			<Confirm
 				title="Хотите выйти?"
-				onConfirm={() => {
+				onConfirm={async () => {
 					logout();
 					closeModal();
 				}}

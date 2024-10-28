@@ -22,25 +22,24 @@ export const fetchGetCategoryData = createAsyncThunk<CategoryType, ID, { rejectV
 	},
 );
 
-export const fetchCreateCategory = createAsyncThunk<
-	CategoryType,
-	Partial<CategoryType>,
-	{ rejectValue: ErrorType }
->('category/fetchCreateCategory', async (submittedData, { rejectWithValue }) => {
-	try {
-		const { category, error } = await createCategory(submittedData);
+export const fetchCreateCategory = createAsyncThunk<CategoryType, RequestData, { rejectValue: ErrorType }>(
+	'category/fetchCreateCategory',
+	async (submittedData, { rejectWithValue }) => {
+		try {
+			const { category, error } = await createCategory(submittedData);
 
-		if (!category) {
-			throw new Error(error as string);
+			if (!category) {
+				throw new Error(error as string);
+			}
+
+			return category;
+		} catch (error: unknown) {
+			const knownError = error as ErrorType;
+
+			return rejectWithValue(knownError);
 		}
-
-		return category;
-	} catch (error: unknown) {
-		const knownError = error as ErrorType;
-
-		return rejectWithValue(knownError);
-	}
-});
+	},
+);
 
 export const fetchDeleteCategory = createAsyncThunk<ID, ID, { rejectValue: ErrorType }>(
 	'category/fetchDeleteCategory',

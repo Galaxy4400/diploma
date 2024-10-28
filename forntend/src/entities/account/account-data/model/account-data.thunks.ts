@@ -22,25 +22,24 @@ export const fetchGetAccount = createAsyncThunk<AccountType, ID, { rejectValue: 
 	},
 );
 
-export const fetchCreateAccount = createAsyncThunk<
-	AccountType,
-	Partial<AccountType>,
-	{ rejectValue: ErrorType }
->('account/fetchCreateAccount', async (submittedData, { rejectWithValue }) => {
-	try {
-		const { account, error } = await createAccount(submittedData);
+export const fetchCreateAccount = createAsyncThunk<AccountType, RequestData, { rejectValue: ErrorType }>(
+	'account/fetchCreateAccount',
+	async (submittedData, { rejectWithValue }) => {
+		try {
+			const { account, error } = await createAccount(submittedData);
 
-		if (!account) {
-			throw new Error(error as string);
+			if (!account) {
+				throw new Error(error as string);
+			}
+
+			return account;
+		} catch (error: unknown) {
+			const knownError = error as ErrorType;
+
+			return rejectWithValue(knownError);
 		}
-
-		return account;
-	} catch (error: unknown) {
-		const knownError = error as ErrorType;
-
-		return rejectWithValue(knownError);
-	}
-});
+	},
+);
 
 export const fetchDeleteAccount = createAsyncThunk<ID, ID, { rejectValue: ErrorType }>(
 	'account/fetchDeleteAccount',

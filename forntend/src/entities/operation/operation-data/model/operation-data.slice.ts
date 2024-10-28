@@ -15,6 +15,8 @@ const initialState: OperationDataState = {
 		createdAt: '',
 	},
 	loading: false,
+	creating: false,
+	deleting: false,
 	error: null,
 };
 

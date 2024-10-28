@@ -8,4 +8,14 @@ export const selectOperationDataId = createSelector(selectOperationData, (state)
 
 export const selectOperationDataLoading = createSelector(selectOperationDataState, (state) => state.loading);
 
+export const selectOperationDataCreating = createSelector(
+	selectOperationDataState,
+	(state) => state.creating,
+);
+
+export const selectOperationDataDeleting = createSelector(
+	selectOperationDataState,
+	(state) => state.deleting,
+);
+
 export const selectOperationDataError = createSelector(selectOperationDataState, (state) => state.error);
