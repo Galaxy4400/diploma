@@ -1,11 +1,28 @@
 import css from './categories-main.module.scss';
 import { CategoryDelete } from 'features/category';
-import { Block } from 'shared/ui/components';
-import { CategoryItem, selectCategoryList } from 'entities/category/category-list';
-import { useAppSelector } from 'shared/lib/store';
+import { Block, Loading } from 'shared/ui/components';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { useEffect } from 'react';
+import {
+	CategoryItem,
+	fetchGetCategoryList,
+	selectCategoryList,
+	selectCategoryListLoading,
+} from 'entities/category/category-list';
 
 export const CategoriesMain = () => {
 	const categories = useAppSelector(selectCategoryList);
+
+	const dispatch = useAppDispatch();
+	const isLoading = useAppSelector(selectCategoryListLoading);
+
+	useEffect(() => {
+		dispatch(fetchGetCategoryList());
+	}, [dispatch]);
+
+	if (isLoading) {
+		return <Loading />;
+	}
 
 	return (
 		<Block className={css['main']}>

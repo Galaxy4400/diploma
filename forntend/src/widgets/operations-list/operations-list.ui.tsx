@@ -1,12 +1,13 @@
 import css from './operations-list.module.scss';
 import { OperationDelete } from 'features/operation';
 import { OperationItem } from 'entities/operation/operation-data';
-import { selectOperationList } from 'entities/operation/operation-list';
-import { useAppSelector } from 'shared/lib/store';
+import { OperationType } from 'shared/api/operation';
 
-export const OperationsList = () => {
-	const operations = useAppSelector(selectOperationList);
+interface OperationsListProps {
+	operations: OperationType[];
+}
 
+export const OperationsList = ({ operations }: OperationsListProps) => {
 	return (
 		<div className={css['list']}>
 			{operations.length ? (
