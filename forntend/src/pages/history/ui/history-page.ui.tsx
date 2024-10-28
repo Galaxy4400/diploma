@@ -4,8 +4,8 @@ import { AsyncComponent, Loading } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
 import { OperationsFilter } from 'features/operations';
-import { OperationsSection } from './components';
 import { OperationType } from 'shared/api/operation';
+import { OperationsSection } from 'widgets/operations';
 
 interface HistoryPageLoaderData {
 	operations: Promise<OperationType[]>;

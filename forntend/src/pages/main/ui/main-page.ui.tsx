@@ -5,8 +5,8 @@ import { CategoriesMain } from 'widgets/categories-main';
 import { Container } from 'shared/ui/components';
 import { Action } from './components';
 import { OperationsMain } from 'widgets/operations-main';
-import { OperationsList } from 'widgets/operations-list';
 import { Icons } from 'shared/types';
+import { OperationsList } from 'widgets/operations';
 
 export const MainPage = () => {
 	return (

@@ -18,8 +18,8 @@ export interface OperationType {
 export interface OperationQueryParams {
 	limit?: number;
 	page?: number;
-	account?: string;
-	category?: string;
+	account?: ID;
+	category?: ID;
 	daterange?: string;
 	amountrange?: string;
 }
