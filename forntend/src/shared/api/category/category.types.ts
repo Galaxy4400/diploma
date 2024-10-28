@@ -3,7 +3,7 @@ import { CategoryIcons, ID } from 'shared/types';
 export interface CategoryType {
 	id: ID;
 	name: string;
-	icon: CategoryIcons | null;
+	icon: CategoryIcons;
 	type: ID;
 	createdAt: string;
 }

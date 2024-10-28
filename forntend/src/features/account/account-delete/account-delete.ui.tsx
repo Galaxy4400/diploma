@@ -20,7 +20,7 @@ export const AccountDelete = ({ accountId }: AccountDeleteProps) => {
 	const dispatch = useAppDispatch();
 	const error = useAppSelector(selectAccountDataError);
 
-	const processDeleteAccount = async () => {
+	const deleteAccount = async () => {
 		await dispatch(fetchDeleteAccount(accountId)).unwrap();
 
 		showToast({ message: 'Счет удален', type: 'success' });
@@ -39,7 +39,7 @@ export const AccountDelete = ({ accountId }: AccountDeleteProps) => {
 			<Confirm
 				title="Хотите удалить счет?"
 				text="Все операции счета так же будут удалены!"
-				onConfirm={processDeleteAccount}
+				onConfirm={deleteAccount}
 				onReject={closeModal}
 			/>,
 		);

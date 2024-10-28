@@ -8,4 +8,10 @@ export const selectCategoryDataId = createSelector(selectCategoryData, (state) =
 
 export const selectCategoryDataLoading = createSelector(selectCategoryDataState, (state) => state.loading);
 
+export const selectCategoryDataCreating = createSelector(selectCategoryDataState, (state) => state.creating);
+
+export const selectCategoryDataDeleting = createSelector(selectCategoryDataState, (state) => state.deleting);
+
+export const selectCategoryDataUpdating = createSelector(selectCategoryDataState, (state) => state.updating);
+
 export const selectCategoryDataError = createSelector(selectCategoryDataState, (state) => state.error);

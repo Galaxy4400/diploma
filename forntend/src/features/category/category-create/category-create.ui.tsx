@@ -4,36 +4,37 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { categoryCreateFormRules } from './category-create.rules';
 import { Button, Form, Input, Radio, RadioComponent } from 'shared/ui/form-components';
 import { path } from 'shared/lib/router';
-import { useState } from 'react';
 import { Block, Fieldset } from 'shared/ui/components';
 import { IconCategory } from 'shared/ui/icons';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { CategoryIcons } from 'shared/types';
-import { createCategory } from 'shared/api/category';
 import { CATEGORY_TYPES } from 'shared/lib/category';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import {
+	fetchCreateCategory,
+	selectCategoryDataCreating,
+	selectCategoryDataError,
+} from 'entities/category/category-data';
 
 export const CategoryCreateForm = () => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { showToast } = useToast();
-	const [isLoading, setIsLoading] = useState(false);
+	const isCreating = useAppSelector(selectCategoryDataCreating);
+	const error = useAppSelector(selectCategoryDataError);
 
 	const submitHandler = async (submittedData: RequestData) => {
-		setIsLoading(true);
+		const newCategory = await dispatch(fetchCreateCategory(submittedData)).unwrap();
 
-		const { category } = await createCategory(submittedData);
+		showToast({ message: 'Счет создан', type: 'success' });
 
-		setIsLoading(false);
-
-		if (!category) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
-
-		navigate(path.category.id(category.id), { replace: true });
-
-		showToast({ message: 'Категория создана', type: 'success' });
+		navigate(path.account.id(newCategory.id), { replace: true });
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	return (
 		<Block className={css['block']}>
@@ -55,7 +56,7 @@ export const CategoryCreateForm = () => {
 						))}
 					</div>
 				</Fieldset>
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isCreating} loading={isCreating}>
 					Создать категорию
 				</Button>
 			</Form>

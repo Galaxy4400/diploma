@@ -1,12 +1,13 @@
 import css from './category-delete.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { useFrom } from 'shared/lib/location';
 import { Icon } from 'shared/ui/icons';
 import { useModal } from 'app/providers/modal';
 import { Confirm } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { Icons, ID } from 'shared/types';
-import { deleteCategory } from 'shared/api/category';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { fetchDeleteCategory, selectCategoryDataError } from 'entities/category/category-data';
+import { path } from 'shared/lib/router';
 
 interface CategoryDeleteProps {
 	categoryId: ID;
@@ -14,26 +15,31 @@ interface CategoryDeleteProps {
 
 export const CategoryDelete = ({ categoryId }: CategoryDeleteProps) => {
 	const navigate = useNavigate();
-	const from = useFrom();
 	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
+	const dispatch = useAppDispatch();
+	const error = useAppSelector(selectCategoryDataError);
 
-	const processDeleteCategory = async () => {
-		await deleteCategory(categoryId);
+	const deleteCategory = async () => {
+		await dispatch(fetchDeleteCategory(categoryId)).unwrap();
 
-		navigate(from?.pathname || false, { replace: true });
+		showToast({ message: 'Счет удален', type: 'success' });
+
+		navigate(path.home(), { replace: true });
 
 		closeModal();
-
-		showToast({ message: 'Категория удалена', type: 'success' });
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	const deleteHandler = () => {
 		openModal(
 			<Confirm
 				title="Хотите удалить категорию?"
 				text="Все операции категории так же будут удалены!"
-				onConfirm={processDeleteCategory}
+				onConfirm={deleteCategory}
 				onReject={closeModal}
 			/>,
 		);
