@@ -12,19 +12,10 @@ import {
 import { useEffect } from 'react';
 
 export const AccountEditPage = () => {
-	const { id } = useParams();
-	const currentAccountId = useAppSelector(selectAccountDataId);
-	const loading = useAppSelector(selectAccountDataLoading);
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		if (id && id !== currentAccountId) dispatch(fetchGetAccount(id));
-	}, [dispatch, id, currentAccountId]);
-
 	return (
 		<Container>
 			<PageHeader title="Редактирование счета" />
-			<LoadingComponent element={<AccountEditForm />} fallback={<Loading />} loading={loading} />
+			<AccountEditForm />
 		</Container>
 	);
 };
