@@ -9,24 +9,30 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { LocationFromAccount } from 'shared/types/helpers';
-import { selectCategoryList } from 'entities/category/category-list';
-import { selectAccountList } from 'entities/account/account-list';
 import {
 	fetchCreateOperation,
 	selectOperationDataCreating,
 	selectOperationDataError,
 } from 'entities/operation/operation-data';
 import { buildSelectOptions } from 'shared/utils';
+import { AccountType, getAccounts } from 'shared/api/account';
+import { useEffect, useState } from 'react';
+import { CategoryType, getCategories } from 'shared/api/category';
 
 export const OperationCreateForm = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const accounts = useAppSelector(selectAccountList);
-	const categories = useAppSelector(selectCategoryList);
+	const [accounts, setAccounts] = useState<AccountType[]>([]);
+	const [categories, setCategories] = useState<CategoryType[]>([]);
 	const isCreating = useAppSelector(selectOperationDataCreating);
 	const error = useAppSelector(selectOperationDataError);
 	const location = useLocation() as LocationFromAccount;
 	const { showToast } = useToast();
+
+	useEffect(() => {
+		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
+		getCategories().then(({ categories }) => setCategories(categories ?? []));
+	}, []);
 
 	const submitHandler = async (submittedData: RequestData) => {
 		const newOperation = await dispatch(fetchCreateOperation(submittedData)).unwrap();
@@ -47,7 +53,7 @@ export const OperationCreateForm = () => {
 				<Select
 					name="account"
 					options={buildSelectOptions(accounts, 'name', 'id')}
-					defaultValue={location.state.from.accountId || ''}
+					defaultValue={location.state?.from.accountId || ''}
 					label="Счет операции"
 					placeholder=""
 				/>
