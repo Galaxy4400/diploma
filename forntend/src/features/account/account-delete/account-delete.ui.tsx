@@ -6,10 +6,8 @@ import { Confirm } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { path } from 'shared/lib/router';
 import { Icons, ID } from 'shared/types';
-import { deleteAccount } from 'shared/api/account';
-import { useAppDispatch } from 'shared/lib/store';
-import { fetchDeleteAccount } from 'entities/account/account-data';
-import { getAccountList } from 'entities/account/account-list';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { fetchDeleteAccount, selectAccountDataDeleting } from 'entities/account/account-data';
 
 interface AccountDeleteProps {
 	accountId: ID;
