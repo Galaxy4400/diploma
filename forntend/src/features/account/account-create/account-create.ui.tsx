@@ -1,5 +1,4 @@
 import css from './account-create.module.scss';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { accountCreateFormRules } from './account-create.rules';
@@ -8,29 +7,28 @@ import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components'
 import { Block, Fieldset } from 'shared/ui/components';
 import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/api';
-import { createAccount } from 'shared/api/account';
 import { ACCOUNT_TYPES } from 'shared/lib/account';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import { fetchCreateAccount, selectAccountDataCreating } from 'entities/account/account-data';
 
 export const AccountCreateForm = () => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { showToast } = useToast();
-	const [isLoading, setIsLoading] = useState(false);
+	const isCreating = useAppSelector(selectAccountDataCreating);
 
 	const submitHandler = async (submittedData: RequestData) => {
-		setIsLoading(true);
+		try {
+			const newAccount = await dispatch(fetchCreateAccount(submittedData)).unwrap();
 
-		const { account, error } = await createAccount(submittedData);
+			showToast({ message: 'Счет создан', type: 'success' });
 
-		setIsLoading(false);
+			navigate(path.account.id(newAccount.id), { replace: true });
+		} catch (error: unknown) {
+			const errorMessage = error as string;
 
-		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
+			showToast({ message: errorMessage, type: 'error' });
 		}
-
-		navigate(path.account.id(account?.id), { replace: true });
-
-		showToast({ message: 'Счет создан', type: 'success' });
 	};
 
 	return (
@@ -46,7 +44,7 @@ export const AccountCreateForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" label="Сумма" />
 				<Textarea name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isLoading} loading={isLoading}>
+				<Button type="submit" disabled={isCreating} loading={isCreating}>
 					Создать счет
 				</Button>
 			</Form>

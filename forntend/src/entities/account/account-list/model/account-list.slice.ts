@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AccountListState } from './account-list.types';
 import { getAccountList } from './account-list.thunks';
+import { fetchDeleteAccount } from 'entities/account/account-data';
 
 const initialState: AccountListState = {
 	accounts: [],
@@ -30,6 +31,11 @@ export const accountListSlice = createSlice({
 			.addCase(getAccountList.rejected, (state, { payload }) => {
 				state.loading = false;
 				state.error = payload?.message ?? null;
+			})
+
+			// Delete account
+			.addCase(fetchDeleteAccount.fulfilled, (state, { payload }) => {
+				state.accounts = state.accounts.filter((account) => account.id !== payload);
 			}),
 });
 

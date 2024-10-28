@@ -19,7 +19,6 @@ const processGetAccount = async (accountId: ID) => {
 	}
 
 	const account = accountResponse.account;
-	account.operations = operationsResponse.pagingData.items;
 
 	return account;
 };

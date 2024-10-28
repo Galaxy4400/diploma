@@ -39,7 +39,7 @@ const updateAccount = async (id, accountData) => {
 };
 
 const deleteAccount = async (id) => {
-	await Account.findByIdAndDelete(id);
+	return await Account.findByIdAndDelete(id);
 };
 
 module.exports = { getAccount, getAccounts, createAccount, updateAccount, deleteAccount };

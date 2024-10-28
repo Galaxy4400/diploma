@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AccountType, getAccount } from 'shared/api/account';
+import { AccountType, createAccount, deleteAccount, getAccount } from 'shared/api/account';
 import { ErrorType, ID } from 'shared/types';
 
 export const getAccountData = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
@@ -13,6 +13,45 @@ export const getAccountData = createAsyncThunk<AccountType, ID, { rejectValue: E
 			}
 
 			return account;
+		} catch (error: unknown) {
+			const knownError = error as ErrorType;
+
+			return rejectWithValue(knownError);
+		}
+	},
+);
+
+export const fetchCreateAccount = createAsyncThunk<
+	AccountType,
+	Partial<AccountType>,
+	{ rejectValue: ErrorType }
+>('account/fetchCreateAccount', async (submittedData, { rejectWithValue }) => {
+	try {
+		const { account, error } = await createAccount(submittedData);
+
+		if (!account) {
+			throw new Error(error as string);
+		}
+
+		return account;
+	} catch (error: unknown) {
+		const knownError = error as ErrorType;
+
+		return rejectWithValue(knownError);
+	}
+});
+
+export const fetchDeleteAccount = createAsyncThunk<ID, ID, { rejectValue: ErrorType }>(
+	'account/fetchDeleteAccount',
+	async (id, { rejectWithValue }) => {
+		try {
+			const { error } = await deleteAccount(id);
+
+			if (error) {
+				throw new Error(error as string);
+			}
+
+			return id;
 		} catch (error: unknown) {
 			const knownError = error as ErrorType;
 
