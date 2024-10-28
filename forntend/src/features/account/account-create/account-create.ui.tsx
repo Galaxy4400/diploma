@@ -9,27 +9,30 @@ import { useToast } from 'app/providers/toast';
 import { RequestData } from 'shared/api';
 import { ACCOUNT_TYPES } from 'shared/lib/account';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchCreateAccount, selectAccountDataCreating } from 'entities/account/account-data';
+import {
+	fetchCreateAccount,
+	selectAccountDataError,
+	selectAccountDataLoading,
+} from 'entities/account/account-data';
 
 export const AccountCreateForm = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { showToast } = useToast();
-	const isCreating = useAppSelector(selectAccountDataCreating);
+	const isLoading = useAppSelector(selectAccountDataLoading);
+	const error = useAppSelector(selectAccountDataError);
 
 	const submitHandler = async (submittedData: RequestData) => {
-		try {
-			const newAccount = await dispatch(fetchCreateAccount(submittedData)).unwrap();
+		const newAccount = await dispatch(fetchCreateAccount(submittedData)).unwrap();
 
-			showToast({ message: 'Счет создан', type: 'success' });
+		showToast({ message: 'Счет создан', type: 'success' });
 
-			navigate(path.account.id(newAccount.id), { replace: true });
-		} catch (error: unknown) {
-			const errorMessage = error as string;
-
-			showToast({ message: errorMessage, type: 'error' });
-		}
+		navigate(path.account.id(newAccount.id), { replace: true });
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	return (
 		<Block className={css['block']}>
@@ -44,7 +47,7 @@ export const AccountCreateForm = () => {
 				</Fieldset>
 				<Input type="number" name="amount" label="Сумма" />
 				<Textarea name="comment" label="Комментарий" />
-				<Button type="submit" disabled={isCreating} loading={isCreating}>
+				<Button type="submit" disabled={isLoading} loading={isLoading}>
 					Создать счет
 				</Button>
 			</Form>

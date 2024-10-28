@@ -1,40 +1,35 @@
 import css from './account-edit.module.scss';
 import { accountEditFormRules } from './account-edit.rules';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
-import { path } from 'shared/lib/router';
 import { Button, Form, Input, Radio, Textarea } from 'shared/ui/form-components';
-import { useState } from 'react';
 import { Block, Fieldset } from 'shared/ui/components';
 import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
-import { editAccount } from 'shared/api/account';
 import { ACCOUNT_TYPES } from 'shared/lib/account';
-import { useAppSelector } from 'shared/lib/store';
-import { selectAccountData } from 'entities/account/account-data';
+import { useAppDispatch, useAppSelector } from 'shared/lib/store';
+import {
+	fetchEditAccount,
+	selectAccountData,
+	selectAccountDataError,
+	selectAccountDataLoading,
+} from 'entities/account/account-data';
 
 export const AccountEditForm = () => {
 	const account = useAppSelector(selectAccountData);
-	const navigate = useNavigate();
+	const isLoading = useAppSelector(selectAccountDataLoading);
+	const error = useAppSelector(selectAccountDataError);
+	const dispatch = useAppDispatch();
 	const { showToast } = useToast();
-	const [isLoading, setIsLoading] = useState(false);
 
 	const submitHandler = async (editData: RequestData) => {
-		setIsLoading(true);
-
-		const { error } = await editAccount(account.id, editData);
-
-		setIsLoading(false);
-
-		if (error) {
-			showToast({ message: 'Ошибка! Попробуйте ещё раз', type: 'error' });
-			return;
-		}
-
-		navigate(path.account.id(account.id));
+		await dispatch(fetchEditAccount({ id: account.id, submittedData: editData }));
 
 		showToast({ message: 'Изменения внесены', type: 'success' });
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	return (
 		<Block className={css['block']}>

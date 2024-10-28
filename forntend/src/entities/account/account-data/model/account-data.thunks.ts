@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AccountType, createAccount, deleteAccount, getAccount } from 'shared/api/account';
+import { RequestData } from 'shared/api';
+import { AccountType, createAccount, deleteAccount, editAccount, getAccount } from 'shared/api/account';
 import { ErrorType, ID } from 'shared/types';
 
 export const fetchGetAccountData = createAsyncThunk<AccountType, ID, { rejectValue: ErrorType }>(
@@ -59,3 +60,23 @@ export const fetchDeleteAccount = createAsyncThunk<ID, ID, { rejectValue: ErrorT
 		}
 	},
 );
+
+export const fetchEditAccount = createAsyncThunk<
+	AccountType,
+	{ id: ID; submittedData: RequestData },
+	{ rejectValue: ErrorType }
+>('account/fetchEditAccount', async ({ id, submittedData }, { rejectWithValue }) => {
+	try {
+		const { account, error } = await editAccount(id, submittedData);
+
+		if (!account) {
+			throw new Error(error as string);
+		}
+
+		return account;
+	} catch (error: unknown) {
+		const knownError = error as ErrorType;
+
+		return rejectWithValue(knownError);
+	}
+});

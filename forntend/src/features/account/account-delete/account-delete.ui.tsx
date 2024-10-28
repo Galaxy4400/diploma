@@ -7,7 +7,7 @@ import { useToast } from 'app/providers/toast';
 import { path } from 'shared/lib/router';
 import { Icons, ID } from 'shared/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { fetchDeleteAccount, selectAccountDataDeleting } from 'entities/account/account-data';
+import { fetchDeleteAccount, selectAccountDataError } from 'entities/account/account-data';
 
 interface AccountDeleteProps {
 	accountId: ID;
@@ -18,22 +18,21 @@ export const AccountDelete = ({ accountId }: AccountDeleteProps) => {
 	const { showToast } = useToast();
 	const { openModal, closeModal } = useModal();
 	const dispatch = useAppDispatch();
+	const error = useAppSelector(selectAccountDataError);
 
 	const processDeleteAccount = async () => {
-		try {
-			await dispatch(fetchDeleteAccount(accountId));
+		await dispatch(fetchDeleteAccount(accountId)).unwrap();
 
-			showToast({ message: 'Счет удален', type: 'success' });
+		showToast({ message: 'Счет удален', type: 'success' });
 
-			navigate(path.home(), { replace: true });
-		} catch (error: unknown) {
-			const errorMessage = error as string;
-
-			showToast({ message: errorMessage, type: 'error' });
-		}
+		navigate(path.home(), { replace: true });
 
 		closeModal();
 	};
+
+	if (error) {
+		showToast({ message: error, type: 'error' });
+	}
 
 	const deleteHandler = () => {
 		openModal(
