@@ -23,7 +23,10 @@ export const RegisterForm = () => {
 		setIsLoading(false);
 
 		if (error) {
-			showToast({ message: error, type: 'error' });
+			showToast({
+				message: error.includes('E11000') ? 'Такой пользователь уже существует' : error,
+				type: 'error',
+			});
 
 			return;
 		}
