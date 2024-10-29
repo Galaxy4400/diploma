@@ -1,5 +1,4 @@
 import { ID } from 'shared/types';
-import { OperationType } from '../operation';
 
 export interface AccountType {
 	id: ID;

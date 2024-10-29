@@ -5,7 +5,6 @@ import { Block, Loading } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
 import { ReactNode, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { OperationType } from 'shared/api/operation';
 import {
 	fetchGetOperationList,

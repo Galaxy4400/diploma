@@ -3,7 +3,6 @@ import { Button } from 'shared/ui/components';
 import { ID } from 'shared/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { calcPage } from 'shared/utils';
-import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { useToast } from 'app/providers/toast';
 import {
 	fetchAddOperationList,
