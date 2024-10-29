@@ -25,11 +25,11 @@ export const Account = ({ operationSectionRender }: AccountProps) => {
 	const isLoading = useAppSelector(selectAccountDataLoading);
 
 	useEffect(() => {
-		if (id && id !== currentAccountId) dispatch(fetchGetAccount(id));
+		if (id) dispatch(fetchGetAccount(id));
 	}, [currentAccountId, dispatch, id]);
 
 	if (isLoading) {
-		<Loading />;
+		return <Loading />;
 	}
 
 	return (

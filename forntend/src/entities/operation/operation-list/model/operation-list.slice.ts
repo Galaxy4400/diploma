@@ -17,7 +17,7 @@ export const operationListSlice = createSlice({
 	name: 'operations',
 	initialState,
 	reducers: {
-		clearOperationListStore: () => initialState,
+		operationListStoreClear: () => initialState,
 	},
 	extraReducers: (builder) =>
 		builder
@@ -46,6 +46,6 @@ export const operationListSlice = createSlice({
 			}),
 });
 
-export const { clearOperationListStore } = operationListSlice.actions;
+export const { operationListStoreClear } = operationListSlice.actions;
 
 export const operationListReducer = operationListSlice.reducer;

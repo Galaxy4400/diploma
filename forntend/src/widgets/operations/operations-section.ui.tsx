@@ -29,8 +29,6 @@ export const OperationsSection = ({ account, isHistory }: OperationsSectionProps
 	useEffect(() => {
 		if (!account?.id && !isHistory) return;
 
-		console.log(account);
-
 		dispatch(
 			fetchGetOperationList({
 				...(account ? { account: account.id } : {}),
