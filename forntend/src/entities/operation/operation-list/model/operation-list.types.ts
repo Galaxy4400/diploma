@@ -1,4 +1,4 @@
-import { OperationType } from 'shared/api/operation';
+import { OperationQueryParams, OperationType } from 'shared/api/operation';
 
 export interface OperationListState {
 	operations: OperationType[];
@@ -7,7 +7,9 @@ export interface OperationListState {
 	limit: number;
 	totalPages: number;
 	loading: boolean;
+	filtering: boolean;
 	adding: boolean;
 	isAll: boolean;
+	filter: OperationQueryParams;
 	error: string | null;
 }

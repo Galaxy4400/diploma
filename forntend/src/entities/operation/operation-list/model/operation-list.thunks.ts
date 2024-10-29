@@ -23,11 +23,11 @@ export const fetchGetOperationList = createAsyncThunk<
 	}
 });
 
-export const fetchGetOperationListAdd = createAsyncThunk<
+export const fetchAddOperationList = createAsyncThunk<
 	PagingData<OperationType>,
 	OperationQueryParams & QueryData,
 	{ rejectValue: ErrorType }
->('operations/fetchGetOperationListAdd', async (queryData, { rejectWithValue }) => {
+>('operations/fetchAddOperationList', async (queryData, { rejectWithValue }) => {
 	try {
 		const { pagingData, error } = await getOperations(queryData);
 
@@ -36,6 +36,26 @@ export const fetchGetOperationListAdd = createAsyncThunk<
 		}
 
 		return pagingData;
+	} catch (error: unknown) {
+		const knownError = error as ErrorType;
+
+		return rejectWithValue(knownError);
+	}
+});
+
+export const fetchFilterOperationList = createAsyncThunk<
+	{ pagingData: PagingData<OperationType>; filterData: OperationQueryParams },
+	OperationQueryParams & QueryData,
+	{ rejectValue: ErrorType }
+>('operations/fetchFilterOperationList', async (filterData, { rejectWithValue }) => {
+	try {
+		const { pagingData, error } = await getOperations(filterData);
+
+		if (!pagingData) {
+			throw new Error(error as string);
+		}
+
+		return { pagingData, filterData };
 	} catch (error: unknown) {
 		const knownError = error as ErrorType;
 

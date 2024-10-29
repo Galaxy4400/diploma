@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import css from './operations-section.module.scss';
 import { Link } from 'react-router-dom';
 import { Block, Loading } from 'shared/ui/components';
@@ -8,7 +7,7 @@ import { useEffect } from 'react';
 import { OperationsList } from './operations-list.ui';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
-import { OperationsPagination } from 'features/operation';
+import { OperationsPagination } from 'features/operation/operation-pagination';
 import { ID } from 'shared/types';
 import {
 	fetchGetOperationList,
@@ -18,16 +17,16 @@ import {
 
 interface OperationsSectionProps {
 	account?: AccountType;
-	isHistory?: boolean;
+	history?: boolean;
 }
 
-export const OperationsSection = ({ account, isHistory }: OperationsSectionProps) => {
+export const OperationsSection = ({ account, history }: OperationsSectionProps) => {
 	const dispatch = useAppDispatch();
 	const operations = useAppSelector(selectOperationList);
 	const isLoading = useAppSelector(selectOperationListLoading);
 
 	useEffect(() => {
-		if (!account?.id && !isHistory) return;
+		if (!account?.id && !history) return;
 
 		dispatch(
 			fetchGetOperationList({
@@ -35,7 +34,7 @@ export const OperationsSection = ({ account, isHistory }: OperationsSectionProps
 				limit: OPERATIONS_PER_LOAD,
 			}),
 		);
-	}, [account, dispatch, isHistory]);
+	}, [account, dispatch, history]);
 
 	if (isLoading) {
 		return <Loading />;

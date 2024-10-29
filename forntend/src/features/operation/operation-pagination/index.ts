@@ -1,1 +1,1 @@
-export * from './ui';
+export * from './operations-pagination.ui';

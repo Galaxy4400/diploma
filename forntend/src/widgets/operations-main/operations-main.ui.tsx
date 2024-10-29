@@ -10,6 +10,7 @@ import { OperationType } from 'shared/api/operation';
 import {
 	fetchGetOperationList,
 	selectOperationList,
+	selectOperationListLimit,
 	selectOperationListLoading,
 } from 'entities/operation/operation-list';
 
@@ -21,10 +22,11 @@ export const OperationsMain = ({ renderOperationList }: OperationsMainProps) => 
 	const dispatch = useAppDispatch();
 	const operations = useAppSelector(selectOperationList);
 	const isLoading = useAppSelector(selectOperationListLoading);
+	const limit = useAppSelector(selectOperationListLimit);
 
 	useEffect(() => {
-		dispatch(fetchGetOperationList({ limit: OPERATIONS_PER_LOAD }));
-	}, [dispatch]);
+		dispatch(fetchGetOperationList({ limit }));
+	}, [dispatch, limit]);
 
 	if (isLoading) {
 		return <Loading />;

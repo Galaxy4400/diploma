@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchGetOperationList, fetchGetOperationListAdd } from './operation-list.thunks';
 import { OperationListState } from './operation-list.types';
 import { fetchDeleteOperation } from 'entities/operation/operation-data';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
+import {
+	fetchGetOperationList,
+	fetchAddOperationList,
+	fetchFilterOperationList,
+} from './operation-list.thunks';
 
 const initialState: OperationListState = {
 	operations: [],
@@ -11,8 +15,10 @@ const initialState: OperationListState = {
 	limit: OPERATIONS_PER_LOAD,
 	totalPages: 0,
 	loading: false,
+	filtering: false,
 	adding: false,
 	isAll: false,
+	filter: {},
 	error: null,
 };
 
@@ -43,20 +49,40 @@ export const operationListSlice = createSlice({
 				state.error = payload?.message ?? null;
 			})
 
-			// Get operation list to add process
-			.addCase(fetchGetOperationListAdd.pending, (state) => {
+			// Add operation list process
+			.addCase(fetchAddOperationList.pending, (state) => {
 				state.adding = true;
 				state.error = null;
 			})
-			.addCase(fetchGetOperationListAdd.fulfilled, (state, { payload }) => {
+			.addCase(fetchAddOperationList.fulfilled, (state, { payload }) => {
 				state.operations = [...state.operations, ...payload.items];
 				state.page = payload.page;
 				state.isAll = payload.page >= payload.totalPages;
 				state.adding = false;
 				state.error = null;
 			})
-			.addCase(fetchGetOperationListAdd.rejected, (state, { payload }) => {
+			.addCase(fetchAddOperationList.rejected, (state, { payload }) => {
 				state.adding = false;
+				state.error = payload?.message ?? null;
+			})
+
+			// Filter operation list process
+			.addCase(fetchFilterOperationList.pending, (state) => {
+				state.filtering = true;
+				state.error = null;
+			})
+			.addCase(fetchFilterOperationList.fulfilled, (state, { payload }) => {
+				state.operations = payload.pagingData.items;
+				state.page = payload.pagingData.page;
+				state.total = payload.pagingData.total;
+				state.totalPages = payload.pagingData.totalPages;
+				state.isAll = payload.pagingData.page >= payload.pagingData.totalPages;
+				state.filter = payload.filterData;
+				state.filtering = false;
+				state.error = null;
+			})
+			.addCase(fetchFilterOperationList.rejected, (state, { payload }) => {
+				state.filtering = false;
 				state.error = payload?.message ?? null;
 			})
 

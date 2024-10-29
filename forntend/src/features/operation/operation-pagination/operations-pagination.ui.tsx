@@ -6,10 +6,11 @@ import { calcPage } from 'shared/utils';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { useToast } from 'app/providers/toast';
 import {
-	fetchGetOperationListAdd,
+	fetchAddOperationList,
 	selectOperationList,
 	selectOperationListAdding,
 	selectOperationListError,
+	selectOperationListFilter,
 	selectOperationListIsAll,
 	selectOperationListLimit,
 } from 'entities/operation/operation-list';
@@ -24,15 +25,17 @@ export const OperationsPagination = ({ accountId }: OperationsPaginationProps) =
 	const limit = useAppSelector(selectOperationListLimit);
 	const isAdding = useAppSelector(selectOperationListAdding);
 	const isAll = useAppSelector(selectOperationListIsAll);
+	const filterParams = useAppSelector(selectOperationListFilter);
 	const error = useAppSelector(selectOperationListError);
 	const { showToast } = useToast();
 
 	const loadHandler = async () => {
 		await dispatch(
-			fetchGetOperationListAdd({
-				account: accountId,
+			fetchAddOperationList({
+				...(accountId ? { account: accountId } : {}),
 				page: calcPage(operations.length, limit),
 				limit: limit,
+				...filterParams,
 			}),
 		).unwrap();
 	};

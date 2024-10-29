@@ -2,7 +2,7 @@ export type URL = `http${'s' | ''}://${string}`;
 
 export type Methods = 'GET' | 'POST' | 'UPDATE' | 'PATCH' | 'PUT' | 'DELETE';
 
-export type QueryData = Record<string, string | number>;
+export type QueryData = Record<string, string | number | boolean>;
 
 export type RequestData = Record<string, string | number | boolean>;
 
