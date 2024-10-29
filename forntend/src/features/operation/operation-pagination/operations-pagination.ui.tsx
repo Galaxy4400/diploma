@@ -2,11 +2,9 @@ import css from './operations-pagination.module.scss';
 import { Button } from 'shared/ui/components';
 import { ID } from 'shared/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
-import { calcPage } from 'shared/utils';
 import { useToast } from 'app/providers/toast';
 import {
 	fetchAddOperationList,
-	selectOperationList,
 	selectOperationListAdding,
 	selectOperationListError,
 	selectOperationListFilter,
