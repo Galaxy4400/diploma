@@ -12,6 +12,7 @@ import {
 	selectOperationListFilter,
 	selectOperationListIsAll,
 	selectOperationListLimit,
+	selectOperationListPage,
 } from 'entities/operation/operation-list';
 
 interface OperationsPaginationProps {
@@ -20,7 +21,7 @@ interface OperationsPaginationProps {
 
 export const OperationsPagination = ({ accountId }: OperationsPaginationProps) => {
 	const dispatch = useAppDispatch();
-	const operations = useAppSelector(selectOperationList);
+	const page = useAppSelector(selectOperationListPage);
 	const limit = useAppSelector(selectOperationListLimit);
 	const isAdding = useAppSelector(selectOperationListAdding);
 	const isAll = useAppSelector(selectOperationListIsAll);
@@ -32,7 +33,7 @@ export const OperationsPagination = ({ accountId }: OperationsPaginationProps) =
 		await dispatch(
 			fetchAddOperationList({
 				...(accountId ? { account: accountId } : {}),
-				page: calcPage(operations.length, limit),
+				page: page + 1,
 				limit: limit,
 				...filterParams,
 			}),
