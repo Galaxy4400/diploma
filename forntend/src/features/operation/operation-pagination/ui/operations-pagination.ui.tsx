@@ -6,11 +6,12 @@ import { calcPage } from 'shared/utils';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { useToast } from 'app/providers/toast';
 import {
-	fetchGetOperationList,
+	fetchGetOperationListAdd,
 	selectOperationList,
+	selectOperationListAdding,
 	selectOperationListError,
 	selectOperationListIsAll,
-	selectOperationListLoading,
+	selectOperationListLimit,
 } from 'entities/operation/operation-list';
 
 interface OperationsPaginationProps {
@@ -20,14 +21,19 @@ interface OperationsPaginationProps {
 export const OperationsPagination = ({ accountId }: OperationsPaginationProps) => {
 	const dispatch = useAppDispatch();
 	const operations = useAppSelector(selectOperationList);
-	const isLoading = useAppSelector(selectOperationListLoading);
+	const limit = useAppSelector(selectOperationListLimit);
+	const isAdding = useAppSelector(selectOperationListAdding);
 	const isAll = useAppSelector(selectOperationListIsAll);
 	const error = useAppSelector(selectOperationListError);
 	const { showToast } = useToast();
 
 	const loadHandler = async () => {
 		await dispatch(
-			fetchGetOperationList({ account: accountId, page: calcPage(operations.length, OPERATIONS_PER_LOAD) }),
+			fetchGetOperationListAdd({
+				account: accountId,
+				page: calcPage(operations.length, limit),
+				limit: limit,
+			}),
 		).unwrap();
 	};
 
@@ -38,7 +44,7 @@ export const OperationsPagination = ({ accountId }: OperationsPaginationProps) =
 	return (
 		<div className={css['block']}>
 			{!isAll ? (
-				<Button className={css['button']} onClick={loadHandler} disabled={isLoading} loading={isLoading}>
+				<Button className={css['button']} onClick={loadHandler} disabled={isAdding} loading={isAdding}>
 					Загрузить ещё
 				</Button>
 			) : (

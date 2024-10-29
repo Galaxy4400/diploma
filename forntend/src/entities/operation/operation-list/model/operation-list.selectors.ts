@@ -6,9 +6,13 @@ export const selectOperationList = createSelector(selectOperationListState, (sta
 
 export const selectOperationListLoading = createSelector(selectOperationListState, (state) => state.loading);
 
+export const selectOperationListAdding = createSelector(selectOperationListState, (state) => state.adding);
+
 export const selectOperationListError = createSelector(selectOperationListState, (state) => state.error);
 
 export const selectOperationListPage = createSelector(selectOperationListState, (state) => state.page);
+
+export const selectOperationListLimit = createSelector(selectOperationListState, (state) => state.limit);
 
 export const selectOperationListTotal = createSelector(selectOperationListState, (state) => state.total);
 

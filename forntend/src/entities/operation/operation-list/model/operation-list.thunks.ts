@@ -22,3 +22,23 @@ export const fetchGetOperationList = createAsyncThunk<
 		return rejectWithValue(knownError);
 	}
 });
+
+export const fetchGetOperationListAdd = createAsyncThunk<
+	PagingData<OperationType>,
+	OperationQueryParams & QueryData,
+	{ rejectValue: ErrorType }
+>('operations/fetchGetOperationListAdd', async (queryData, { rejectWithValue }) => {
+	try {
+		const { pagingData, error } = await getOperations(queryData);
+
+		if (!pagingData) {
+			throw new Error(error as string);
+		}
+
+		return pagingData;
+	} catch (error: unknown) {
+		const knownError = error as ErrorType;
+
+		return rejectWithValue(knownError);
+	}
+});
