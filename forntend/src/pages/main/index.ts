@@ -1,2 +1,1 @@
-export * from './ui';
-export * from './lib';
+export * from './main-page.ui';

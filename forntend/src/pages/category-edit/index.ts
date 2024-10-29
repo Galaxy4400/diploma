@@ -1,2 +1,1 @@
-export * from './ui';
-export * from './lib';
+export * from './category-edit-page.ui';
