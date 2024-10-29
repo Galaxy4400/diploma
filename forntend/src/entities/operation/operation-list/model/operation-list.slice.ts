@@ -32,6 +32,7 @@ export const operationListSlice = createSlice({
 		builder
 			// Get operation list process
 			.addCase(fetchGetOperationList.pending, (state) => {
+				state.filter = {};
 				state.loading = true;
 				state.error = null;
 			})
