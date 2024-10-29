@@ -1,6 +1,6 @@
 import css from './action.module.scss';
 import { Link } from 'react-router-dom';
-import { Icon } from '../../../../shared/ui/icons';
+import { Icon } from 'shared/ui/icons';
 import { Icons } from 'shared/types';
 
 interface ActionProps {
