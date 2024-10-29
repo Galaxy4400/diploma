@@ -17,9 +17,7 @@ export const operationListSlice = createSlice({
 	name: 'operations',
 	initialState,
 	reducers: {
-		clearOperationListStore: (state) => {
-			Object.assign(state, initialState);
-		},
+		clearOperationListStore: () => initialState,
 	},
 	extraReducers: (builder) =>
 		builder
@@ -29,7 +27,7 @@ export const operationListSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(fetchGetOperationList.fulfilled, (state, { payload }) => {
-				state.operations = [...state.operations, ...payload.items];
+				state.operations = payload.items;
 				state.page = payload.page;
 				state.total = payload.total;
 				state.totalPages = payload.totalPages;

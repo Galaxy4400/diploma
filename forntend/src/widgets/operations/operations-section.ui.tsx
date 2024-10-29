@@ -18,21 +18,26 @@ import {
 
 interface OperationsSectionProps {
 	account?: AccountType;
+	isHistory?: boolean;
 }
 
-export const OperationsSection = ({ account }: OperationsSectionProps) => {
+export const OperationsSection = ({ account, isHistory }: OperationsSectionProps) => {
 	const dispatch = useAppDispatch();
 	const operations = useAppSelector(selectOperationList);
 	const isLoading = useAppSelector(selectOperationListLoading);
 
 	useEffect(() => {
+		if (!account?.id && !isHistory) return;
+
+		console.log(account);
+
 		dispatch(
 			fetchGetOperationList({
 				...(account ? { account: account.id } : {}),
 				limit: OPERATIONS_PER_LOAD,
 			}),
 		);
-	}, [dispatch]);
+	}, [account, dispatch, isHistory]);
 
 	if (isLoading) {
 		return <Loading />;
