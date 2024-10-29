@@ -28,13 +28,13 @@ export const Account = ({ operationSectionRender }: AccountProps) => {
 		if (id && id !== currentAccountId) dispatch(fetchGetAccount(id));
 	}, [currentAccountId, dispatch, id]);
 
+	if (isLoading) {
+		<Loading />;
+	}
+
 	return (
 		<>
-			{!isLoading ? (
-				<AccountView account={account} deleteSlot={<AccountDelete accountId={account.id} />} />
-			) : (
-				<Loading />
-			)}
+			<AccountView account={account} deleteSlot={<AccountDelete accountId={account.id} />} />
 			{operationSectionRender(account)}
 		</>
 	);

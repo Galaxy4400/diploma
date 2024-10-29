@@ -5,7 +5,11 @@ import { fetchDeleteOperation } from 'entities/operation/operation-data';
 
 const initialState: OperationListState = {
 	operations: [],
+	page: 0,
+	total: 0,
+	totalPages: 0,
 	loading: false,
+	isAll: false,
 	error: null,
 };
 
@@ -13,8 +17,8 @@ export const operationListSlice = createSlice({
 	name: 'operations',
 	initialState,
 	reducers: {
-		clearOperationListStore: (store) => {
-			store.operations = [];
+		clearOperationListStore: (state) => {
+			Object.assign(state, initialState);
 		},
 	},
 	extraReducers: (builder) =>
@@ -25,7 +29,11 @@ export const operationListSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(fetchGetOperationList.fulfilled, (state, { payload }) => {
-				state.operations = payload;
+				state.operations = [...state.operations, ...payload.items];
+				state.page = payload.page;
+				state.total = payload.total;
+				state.totalPages = payload.totalPages;
+				state.isAll = payload.page >= payload.totalPages;
 				state.loading = false;
 				state.error = null;
 			})

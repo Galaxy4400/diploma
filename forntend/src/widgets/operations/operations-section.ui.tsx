@@ -3,12 +3,13 @@ import css from './operations-section.module.scss';
 import { Link } from 'react-router-dom';
 import { Block, Loading } from 'shared/ui/components';
 import { path } from 'shared/lib/router';
-import { OperationsPagination } from 'features/operations';
 import { AccountType } from 'shared/api/account';
 import { useEffect } from 'react';
 import { OperationsList } from './operations-list.ui';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { OPERATIONS_PER_LOAD } from 'shared/constants';
+import { OperationsPagination } from 'features/operation';
+import { ID } from 'shared/types';
 import {
 	fetchGetOperationList,
 	selectOperationList,
@@ -31,7 +32,7 @@ export const OperationsSection = ({ account }: OperationsSectionProps) => {
 				limit: OPERATIONS_PER_LOAD,
 			}),
 		);
-	}, [account, dispatch]);
+	}, [dispatch]);
 
 	if (isLoading) {
 		return <Loading />;
@@ -50,7 +51,7 @@ export const OperationsSection = ({ account }: OperationsSectionProps) => {
 				</Link>
 			</header>
 			<OperationsList operations={operations} />
-			<OperationsPagination accountId={account?.id ?? null} />
+			<OperationsPagination accountId={account?.id as ID} />
 		</Block>
 	);
 };

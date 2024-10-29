@@ -25,7 +25,7 @@ export const accountListSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(fetchGetAccountList.fulfilled, (state, { payload }) => {
-				state.accounts = payload;
+				state.accounts = [...state.accounts, ...payload];
 				state.loading = false;
 				state.error = null;
 			})

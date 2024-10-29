@@ -25,7 +25,7 @@ export const categoryListSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(fetchGetCategoryList.fulfilled, (state, { payload }) => {
-				state.categories = payload;
+				state.categories = [...state.categories, ...payload];
 				state.loading = false;
 				state.error = null;
 			})

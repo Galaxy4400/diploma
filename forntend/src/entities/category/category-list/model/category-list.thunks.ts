@@ -3,7 +3,7 @@ import { CategoryType, getCategories } from 'shared/api/category';
 import { ErrorType } from 'shared/types';
 
 export const fetchGetCategoryList = createAsyncThunk<CategoryType[], void, { rejectValue: ErrorType }>(
-	'account/fetchGetCategoryList',
+	'categories/fetchGetCategoryList',
 	async (_, { rejectWithValue }) => {
 		try {
 			const { categories, error } = await getCategories();

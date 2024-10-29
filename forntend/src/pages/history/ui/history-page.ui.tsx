@@ -3,9 +3,9 @@ import { useLoaderData } from 'react-router-dom';
 import { AsyncComponent, Loading } from 'shared/ui/components';
 import { Container } from 'shared/ui/components';
 import { PageHeader } from 'widgets/page-header';
-import { OperationsFilter } from 'features/operations';
 import { OperationType } from 'shared/api/operation';
 import { OperationsSection } from 'widgets/operations';
+import { OperationsFilter } from 'features/operation';
 
 interface HistoryPageLoaderData {
 	operations: Promise<OperationType[]>;
