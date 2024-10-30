@@ -2,31 +2,12 @@ import css from './analytics.module.scss';
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
 import { Block, Loading } from 'shared/ui/components';
-import { getChartData } from './lib/get-chart-data';
-import { ChartData, ChartOptions } from 'chart.js';
-import ReactSelect from 'react-select';
+import { getChartData, options } from './lib/get-chart-data';
+import { ChartData } from 'chart.js';
 import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ID } from 'shared/types';
-
-const selectOptions = [
-	{ value: 1, label: 'За неделю' },
-	{ value: 2, label: 'За месяц' },
-	{ value: 3, label: 'За год' },
-];
-
-const chartOptions: ChartOptions<'bar'> = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: 'top' as const,
-		},
-		title: {
-			display: true,
-			text: 'Аналитика по счетам',
-		},
-	},
-};
+import ReactSelect from 'react-select';
 
 export const Analytics = () => {
 	const [data, setData] = useState<ChartData<'bar'>>();
@@ -52,7 +33,7 @@ export const Analytics = () => {
 			</Block>
 			{data ? (
 				<Block>
-					<Bar data={data} options={chartOptions} />
+					<Bar data={data} options={options} />
 				</Block>
 			) : (
 				<Loading />
