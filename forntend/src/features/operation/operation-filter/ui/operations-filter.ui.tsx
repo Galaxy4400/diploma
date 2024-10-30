@@ -3,7 +3,7 @@ import { Block, Loading } from 'shared/ui/components';
 import { Button, DateRange, Form, PriceRange, Select } from 'shared/ui/form-components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { operationsFilterRules } from '../lib';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { CategoryType, getCategories } from 'shared/api/category';
 import { buildSelectOptions } from 'shared/utils';
@@ -25,6 +25,9 @@ export const OperationsFilter = () => {
 	const [categories, setCategories] = useState<CategoryType[]>([]);
 	const error = useAppSelector(selectOperationListError);
 	const { showToast } = useToast();
+
+	const accountOptions = useMemo(() => buildSelectOptions(accounts, 'name', 'id'), [accounts]);
+	const categoryOptions = useMemo(() => buildSelectOptions(categories, 'name', 'id'), [categories]);
 
 	useEffect(() => {
 		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
@@ -48,18 +51,8 @@ export const OperationsFilter = () => {
 			<h4>Фильтр</h4>
 			<Form className={css['form']} onSubmit={filterHandler} resolver={yupResolver(operationsFilterRules)}>
 				<div className={css['section']}>
-					<Select
-						name="account"
-						options={buildSelectOptions(accounts, 'name', 'id')}
-						label="По счету"
-						placeholder=""
-					/>
-					<Select
-						name="category"
-						options={buildSelectOptions(categories, 'name', 'id')}
-						label="По категории"
-						placeholder=""
-					/>
+					<Select name="account" options={accountOptions} label="По счету" placeholder="" />
+					<Select name="category" options={categoryOptions} label="По категории" placeholder="" />
 					<DateRange name="daterange" label="По дате" />
 					<PriceRange name="amountrange" label="По цене" />
 				</div>

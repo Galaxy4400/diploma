@@ -9,15 +9,15 @@ import { RequestData } from 'shared/api';
 import { useToast } from 'app/providers/toast';
 import { useAppDispatch, useAppSelector } from 'shared/lib/store';
 import { LocationFromAccount } from 'shared/types/helpers';
+import { buildSelectOptions } from 'shared/utils';
+import { AccountType, getAccounts } from 'shared/api/account';
+import { useEffect, useMemo, useState } from 'react';
+import { CategoryType, getCategories } from 'shared/api/category';
 import {
 	fetchCreateOperation,
 	selectOperationDataCreating,
 	selectOperationDataError,
 } from 'entities/operation/operation-data';
-import { buildSelectOptions } from 'shared/utils';
-import { AccountType, getAccounts } from 'shared/api/account';
-import { useEffect, useState } from 'react';
-import { CategoryType, getCategories } from 'shared/api/category';
 
 export const OperationCreateForm = () => {
 	const dispatch = useAppDispatch();
@@ -28,6 +28,9 @@ export const OperationCreateForm = () => {
 	const error = useAppSelector(selectOperationDataError);
 	const location = useLocation() as LocationFromAccount;
 	const { showToast } = useToast();
+
+	const accountOptions = useMemo(() => buildSelectOptions(accounts, 'name', 'id'), [accounts]);
+	const categoryOptions = useMemo(() => buildSelectOptions(categories, 'name', 'id'), [categories]);
 
 	useEffect(() => {
 		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
@@ -52,18 +55,12 @@ export const OperationCreateForm = () => {
 				<Input type="number" name="amount" label="Сумма операции" />
 				<Select
 					name="account"
-					options={buildSelectOptions(accounts, 'name', 'id')}
+					options={accountOptions}
 					defaultValue={location.state?.from.accountId || ''}
 					label="Счет операции"
 					placeholder=""
 				/>
-				<Select
-					name="category"
-					options={buildSelectOptions(categories, 'name', 'id')}
-					defaultValue=""
-					label="Категория операции"
-					placeholder=""
-				/>
+				<Select name="category" options={categoryOptions} label="Категория операции" placeholder="" />
 				<Input type="text" name="comment" label="Комментарий" />
 				<Button type="submit" disabled={isCreating} loading={isCreating}>
 					Создать операцию

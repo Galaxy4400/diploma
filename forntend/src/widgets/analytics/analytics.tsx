@@ -1,11 +1,13 @@
 import css from './analytics.module.scss';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 import { useEffect, useState } from 'react';
-import { Block } from 'shared/ui/components';
+import { Block, Loading } from 'shared/ui/components';
+import { getChartData } from './lib/get-chart-data';
+import { ChartData, ChartOptions } from 'chart.js';
 import ReactSelect from 'react-select';
-import { AccountType, getAccounts } from 'shared/api/account';
 import { buildSelectOptions } from 'shared/utils';
+import { AccountType, getAccounts } from 'shared/api/account';
+import { ID } from 'shared/types';
 
 const selectOptions = [
 	{ value: 1, label: 'За неделю' },
@@ -13,7 +15,7 @@ const selectOptions = [
 	{ value: 3, label: 'За год' },
 ];
 
-const chartOptions = {
+const chartOptions: ChartOptions<'bar'> = {
 	responsive: true,
 	plugins: {
 		legend: {
@@ -26,64 +28,35 @@ const chartOptions = {
 	},
 };
 
-// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const labels = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-
-const generateData = () => {
-	return labels.map(() => faker.number.int({ min: 0, max: 1000 }));
-};
-
 export const Analytics = () => {
+	const [data, setData] = useState<ChartData<'bar'>>();
+	const [isLoading, setisLoading] = useState(false);
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
+	const [selectedAccount, setSelectedAccount] = useState<ID | null>(null);
 
 	useEffect(() => {
+		setisLoading(true);
 		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
-	}, []);
-
-	const [data, setData] = useState({
-		labels,
-		datasets: [
-			{
-				label: 'Dataset 1',
-				data: generateData(),
-				backgroundColor: 'rgba(255, 99, 132, 0.5)',
-			},
-			{
-				label: 'Dataset 2',
-				data: generateData(),
-				backgroundColor: 'rgba(53, 162, 235, 0.5)',
-			},
-		],
-	});
-
-	const handleUpdateData = () => {
-		setData({
-			labels,
-			datasets: [
-				{
-					label: 'Dataset 1',
-					data: generateData(),
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-				},
-				{
-					label: 'Dataset 2',
-					data: generateData(),
-					backgroundColor: 'rgba(53, 162, 235, 0.5)',
-				},
-			],
-		});
-	};
+		getChartData(selectedAccount)
+			.then((data) => setData(data))
+			.finally(() => setisLoading(false));
+	}, [selectedAccount]);
 
 	return (
 		<div className={css['main']}>
 			<Block className={css['selectors']}>
-				<ReactSelect options={selectOptions} onChange={handleUpdateData} />
-				<ReactSelect options={buildSelectOptions(accounts, 'name', 'id')} onChange={handleUpdateData} />
+				<ReactSelect
+					options={buildSelectOptions(accounts, 'name', 'id')}
+					onChange={(event) => setSelectedAccount(event!.value)}
+				/>
 			</Block>
-			<Block>
-				<Bar options={chartOptions} data={data} />
-			</Block>
-			<button onClick={handleUpdateData}>Обновить данные</button>
+			{data ? (
+				<Block>
+					<Bar data={data} options={chartOptions} />
+				</Block>
+			) : (
+				<Loading />
+			)}
 		</div>
 	);
 };

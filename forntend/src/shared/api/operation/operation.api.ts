@@ -1,11 +1,11 @@
 import { ID } from 'shared/types';
 import { request } from '../request';
-import { OperationResponse, OperationsResponse } from './operation.types';
+import { OperationQueryParams, OperationResponse, OperationsResponse } from './operation.types';
 import { QueryData, RequestData } from '../types';
 
 const BASE_URL = 'operations';
 
-export const getOperations = (queryData?: QueryData): Promise<OperationsResponse> => {
+export const getOperations = (queryData?: QueryData & OperationQueryParams): Promise<OperationsResponse> => {
 	return request({ url: BASE_URL, query: queryData });
 };
 
