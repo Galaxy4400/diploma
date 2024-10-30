@@ -7,6 +7,6 @@ export const buildSelectOptions = <T>(
 ): OptionProps[] => {
 	return source.map((item) => ({
 		label: item[labelFieldName] as string,
-		value: item[valueFieldName] as string | number,
+		value: item[valueFieldName] as string,
 	}));
 };

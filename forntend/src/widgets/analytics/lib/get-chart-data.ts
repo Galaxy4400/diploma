@@ -1,8 +1,21 @@
-import { ChartData } from 'chart.js';
-import { addDays, endOfDay, format, isAfter, isBefore, startOfDay, subMonths } from 'date-fns';
+import { ChartData, ChartOptions } from 'chart.js';
+import { addDays, endOfDay, endOfMonth, format, isAfter, isBefore, startOfDay, startOfMonth } from 'date-fns';
 import { getOperations, OperationType } from 'shared/api/operation';
 import { categoryType } from 'shared/lib/category';
 import { ID } from 'shared/types';
+
+export const options: ChartOptions<'bar'> = {
+	responsive: true,
+	plugins: {
+		legend: {
+			position: 'top' as const,
+		},
+		title: {
+			display: true,
+			text: 'Аналитика по счетам',
+		},
+	},
+};
 
 const incomeExpenseSum = (operations: OperationType[]): [number, number] => {
 	return operations.reduce(
@@ -18,26 +31,26 @@ const incomeExpenseSum = (operations: OperationType[]): [number, number] => {
 	);
 };
 
-export const getChartData = async (account: ID | null): Promise<ChartData<'bar'>> => {
-	const dateNow = new Date().toISOString();
-	const dateOneMonthAgo = startOfDay(subMonths(new Date(), 1)).toISOString();
+export const getChartData = async (account: ID | null, date: Date): Promise<ChartData<'bar'>> => {
+	const labels: string[] = [];
+	const incomeData: number[] = [];
+	const expenseData: number[] = [];
+
+	const monthStart = startOfMonth(date);
+	const monthEnd = endOfMonth(date);
 
 	const response = await getOperations({
-		daterange: `${dateOneMonthAgo},${dateNow}`,
+		daterange: `${monthStart.toISOString()},${monthEnd.toISOString()}`,
 		...(account && { account }),
 	});
 
 	const operations = response.pagingData?.items || [];
 
-	const labels: string[] = [];
-	const incomeData: number[] = [];
-	const expenseData: number[] = [];
+	let currentDate = monthStart;
 
-	let currentDate = dateOneMonthAgo;
-
-	while (isBefore(currentDate, dateNow)) {
-		const startDay = startOfDay(currentDate).toISOString();
-		const endDay = endOfDay(currentDate).toISOString();
+	while (isBefore(currentDate, monthEnd)) {
+		const startDay = startOfDay(currentDate);
+		const endDay = endOfDay(currentDate);
 
 		labels.push(format(currentDate, 'dd.MM.yyyy'));
 
@@ -50,7 +63,7 @@ export const getChartData = async (account: ID | null): Promise<ChartData<'bar'>
 		incomeData.push(incomeExpense[0]);
 		expenseData.push(incomeExpense[1]);
 
-		currentDate = addDays(currentDate, 1).toISOString();
+		currentDate = addDays(currentDate, 1);
 	}
 
 	return {

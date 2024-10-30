@@ -1,4 +1,4 @@
 export interface OptionProps {
-	value: string | number;
+	value: string;
 	label: string;
 }
