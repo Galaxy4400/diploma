@@ -9,8 +9,7 @@ import { ID, OptionProps } from 'shared/types';
 import { useToast } from 'app/providers/toast';
 import { ChartData } from 'chart.js';
 import { addWeeks, startOfWeek, subWeeks } from 'date-fns';
-import { ChartRangeType, getWeekName, options, rangeTypeOptions } from '../lib';
-import { buildChartData } from '../lib/get-chart-data';
+import { buildChartData, ChartRangeType, getWeekName, options, rangeTypeOptions } from '../lib';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);

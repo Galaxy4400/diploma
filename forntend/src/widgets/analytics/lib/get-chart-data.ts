@@ -58,11 +58,11 @@ export const buildChartData = async (
 
 		labels.push(format(dateCounter, 'dd.MM.yyyy'));
 
-		const dayOperatins = operations?.filter(
+		const operatinsPart = operations?.filter(
 			(operation) => isAfter(operation.createdAt, startDay) && isBefore(operation.createdAt, endDay),
 		);
 
-		const incomeExpense = operationsTotalSum(dayOperatins);
+		const incomeExpense = operationsTotalSum(operatinsPart);
 
 		incomeData.push(incomeExpense.income);
 		expenseData.push(incomeExpense.expense);
