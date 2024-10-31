@@ -1,52 +1,57 @@
 import css from './analytics.module.scss';
+import ReactSelect from 'react-select';
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useMemo, useState } from 'react';
-import { Block, Loading } from 'shared/ui/components';
-import { getChartData, options } from './lib/get-chart-data';
-import { ChartData } from 'chart.js';
+import { Block, Button, Loading } from 'shared/ui/components';
+import { buildChartData } from './lib/get-chart-data';
 import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
-import ReactSelect from 'react-select';
 import { useToast } from 'app/providers/toast';
+import { ChartRangeType, options, rangeTypeOptions } from './lib';
+import { ChartData } from 'chart.js';
+import { getWeekName } from './lib/get-week-name';
+import { addWeeks, startOfWeek, subWeeks } from 'date-fns';
 
 export const Analytics = () => {
-	const [data, setData] = useState<ChartData<'bar'>>();
-	const [isLoading, setisLoading] = useState(false);
-	const [date, setDate] = useState(new Date());
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
+	const [chartData, setChartData] = useState<ChartData<'bar'>>();
 	const [selectedAccount, setSelectedAccount] = useState<ID | null>(null);
+	const [selectedRangeType, setSelectedRangeType] = useState<ChartRangeType>(ChartRangeType.week);
+	const [currentDate, setCurrentDate] = useState(new Date());
+	const [rangeLabel, setRangeLabel] = useState(getWeekName());
 	const { showToast } = useToast();
-
-	useEffect(() => {
-		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
-	}, []);
 
 	const accountOptions: OptionProps[] = useMemo(
 		() => [{ label: 'Все операции', value: '' }, ...buildSelectOptions(accounts, 'name', 'id')],
 		[accounts],
 	);
 
-	const timeOptions: OptionProps[] = [
-		{ label: 'По неделям', value: '1' },
-		{ label: 'По месяцам', value: '2' },
-		{ label: 'По годам', value: '3' },
-	];
+	useEffect(() => {
+		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
+	}, []);
 
 	useEffect(() => {
 		const loadDataHandler = async () => {
-			setisLoading(true);
+			const data = await buildChartData(selectedAccount, currentDate, selectedRangeType);
 
-			const chartData = await getChartData(selectedAccount, date);
+			if (!data) showToast({ message: 'Что-то пошло не так', type: 'error' });
 
-			if (!chartData) showToast({ message: 'Что-то пошло не так', type: 'error' });
-
-			setData(chartData);
-
-			setisLoading(false);
+			setChartData(data);
 		};
+
 		loadDataHandler();
-	}, [date, selectedAccount, showToast]);
+
+		setRangeLabel(getWeekName(currentDate));
+	}, [currentDate, selectedAccount, selectedRangeType, showToast]);
+
+	const prevHandler = () => {
+		setCurrentDate(startOfWeek(subWeeks(currentDate, 1)));
+	};
+
+	const nextHandler = () => {
+		setCurrentDate(startOfWeek(addWeeks(currentDate, 1)));
+	};
 
 	return (
 		<div className={css['main']}>
@@ -55,13 +60,23 @@ export const Analytics = () => {
 					name="account"
 					options={accountOptions}
 					onChange={(event) => setSelectedAccount(event!.value)}
-					defaultValue={{ label: 'Все операции', value: 'test' }}
+					defaultValue={accountOptions[0]}
 				/>
-				<ReactSelect name="time" options={timeOptions} onChange={() => {}} defaultValue={timeOptions[0]} />
+				<ReactSelect
+					name="rangeType"
+					options={rangeTypeOptions}
+					onChange={(event) => setSelectedRangeType(event!.value as ChartRangeType)}
+					defaultValue={rangeTypeOptions[0]}
+				/>
 			</Block>
-			{data ? (
+			{chartData ? (
 				<Block>
-					<Bar data={data} options={options} />
+					<div className={css['head']}>
+						<Button onClick={prevHandler}>Назад</Button>
+						<h3>{rangeLabel}</h3>
+						<Button onClick={nextHandler}>Вперед</Button>
+					</div>
+					<Bar options={options} data={chartData} />
 				</Block>
 			) : (
 				<Loading />

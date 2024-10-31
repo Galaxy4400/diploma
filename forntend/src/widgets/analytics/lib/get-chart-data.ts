@@ -1,67 +1,62 @@
-import { ChartData, ChartOptions } from 'chart.js';
-import { addDays, endOfDay, endOfMonth, format, isAfter, isBefore, startOfDay, startOfMonth } from 'date-fns';
-import { getOperations, OperationType } from 'shared/api/operation';
-import { CategoryType } from 'shared/lib/category';
+import { ChartData } from 'chart.js';
+import { getOperations } from 'shared/api/operation';
 import { ID } from 'shared/types';
+import { operationsTotalSum } from './operation-total-sum';
+import { ChartRangeType } from './chart.types';
+import {
+	addDays,
+	endOfDay,
+	endOfMonth,
+	endOfWeek,
+	endOfYear,
+	format,
+	isAfter,
+	isBefore,
+	startOfDay,
+	startOfMonth,
+	startOfWeek,
+	startOfYear,
+} from 'date-fns';
 
-export const options: ChartOptions<'bar'> = {
-	responsive: true,
-	aspectRatio: 3,
-	plugins: {
-		legend: {
-			position: 'top' as const,
-		},
-		title: {
-			display: true,
-			text: 'Аналитика по счетам',
-		},
-	},
-	scales: {
-		y: {
-			beginAtZero: true,
-			ticks: {
-				stepSize: 10000,
-			},
-		},
-	},
+const getTimeRange = (currentDate: Date, rangeType: ChartRangeType) => {
+	switch (rangeType) {
+		case ChartRangeType.week: {
+			return { start: startOfWeek(currentDate), end: endOfWeek(currentDate) };
+		}
+		case ChartRangeType.month: {
+			return { start: startOfMonth(currentDate), end: endOfMonth(currentDate) };
+		}
+		case ChartRangeType.year: {
+			return { start: startOfYear(currentDate), end: endOfYear(currentDate) };
+		}
+	}
 };
 
-const operationsTotalSum = (operations: OperationType[]): [number, number] => {
-	return operations.reduce(
-		(sum, operation) => {
-			if (operation.category?.type === CategoryType.income) {
-				sum[0] += operation.amount;
-			} else {
-				sum[1] += operation.amount;
-			}
-			return sum;
-		},
-		[0, 0],
-	);
-};
-
-export const getChartData = async (account: ID | null, date: Date): Promise<ChartData<'bar'>> => {
+export const buildChartData = async (
+	account: ID | null,
+	date: Date,
+	rangeType: ChartRangeType,
+): Promise<ChartData<'bar'>> => {
 	const labels: string[] = [];
 	const incomeData: number[] = [];
 	const expenseData: number[] = [];
 
-	const monthStart = startOfMonth(date);
-	const monthEnd = endOfMonth(date);
+	const timeRange = getTimeRange(date, rangeType);
 
 	const response = await getOperations({
-		daterange: `${monthStart.toISOString()},${monthEnd.toISOString()}`,
+		daterange: `${timeRange.start.toISOString()},${timeRange.end.toISOString()}`,
 		...(account && { account }),
 	});
 
 	const operations = response.pagingData?.items || [];
 
-	let currentDate = monthStart;
+	let dateCounter = timeRange.start;
 
-	while (isBefore(currentDate, monthEnd)) {
-		const startDay = startOfDay(currentDate);
-		const endDay = endOfDay(currentDate);
+	while (isBefore(dateCounter, timeRange.end)) {
+		const startDay = startOfDay(dateCounter);
+		const endDay = endOfDay(dateCounter);
 
-		labels.push(format(currentDate, 'dd.MM.yyyy'));
+		labels.push(format(dateCounter, 'dd.MM.yyyy'));
 
 		const dayOperatins = operations?.filter(
 			(operation) => isAfter(operation.createdAt, startDay) && isBefore(operation.createdAt, endDay),
@@ -69,10 +64,10 @@ export const getChartData = async (account: ID | null, date: Date): Promise<Char
 
 		const incomeExpense = operationsTotalSum(dayOperatins);
 
-		incomeData.push(incomeExpense[0]);
-		expenseData.push(incomeExpense[1]);
+		incomeData.push(incomeExpense.income);
+		expenseData.push(incomeExpense.expense);
 
-		currentDate = addDays(currentDate, 1);
+		dateCounter = addDays(dateCounter, 1);
 	}
 
 	return {

@@ -8,3 +8,10 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: rem(20);
 }
+
+.head {
+	display: flex;
+	justify-content: space-between;
+	gap: rem(20);
+	margin: 0px 0px rem(20) 0px;
+}

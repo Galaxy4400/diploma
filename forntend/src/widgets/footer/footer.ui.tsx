@@ -4,7 +4,9 @@ import { Container } from 'shared/ui/components';
 export const Footer = () => {
 	return (
 		<footer className={css['footer']}>
-			<Container>Footer</Container>
+			<Container className={css['container']}>
+				<span>Дипломный проект</span> <span>Моисеев Евгений</span>
+			</Container>
 		</footer>
 	);
 };
