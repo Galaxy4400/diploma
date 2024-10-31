@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-export enum categoryType {
+export enum CategoryType {
 	expense = 1,
 	income = 2,
 }

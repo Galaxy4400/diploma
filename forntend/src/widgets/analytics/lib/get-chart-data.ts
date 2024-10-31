@@ -1,11 +1,12 @@
 import { ChartData, ChartOptions } from 'chart.js';
 import { addDays, endOfDay, endOfMonth, format, isAfter, isBefore, startOfDay, startOfMonth } from 'date-fns';
 import { getOperations, OperationType } from 'shared/api/operation';
-import { categoryType } from 'shared/lib/category';
+import { CategoryType } from 'shared/lib/category';
 import { ID } from 'shared/types';
 
 export const options: ChartOptions<'bar'> = {
 	responsive: true,
+	aspectRatio: 3,
 	plugins: {
 		legend: {
 			position: 'top' as const,
@@ -15,12 +16,20 @@ export const options: ChartOptions<'bar'> = {
 			text: 'Аналитика по счетам',
 		},
 	},
+	scales: {
+		y: {
+			beginAtZero: true,
+			ticks: {
+				stepSize: 10000,
+			},
+		},
+	},
 };
 
-const incomeExpenseSum = (operations: OperationType[]): [number, number] => {
+const operationsTotalSum = (operations: OperationType[]): [number, number] => {
 	return operations.reduce(
 		(sum, operation) => {
-			if (operation.category?.type === categoryType.income) {
+			if (operation.category?.type === CategoryType.income) {
 				sum[0] += operation.amount;
 			} else {
 				sum[1] += operation.amount;
@@ -58,7 +67,7 @@ export const getChartData = async (account: ID | null, date: Date): Promise<Char
 			(operation) => isAfter(operation.createdAt, startDay) && isBefore(operation.createdAt, endDay),
 		);
 
-		const incomeExpense = incomeExpenseSum(dayOperatins);
+		const incomeExpense = operationsTotalSum(dayOperatins);
 
 		incomeData.push(incomeExpense[0]);
 		expenseData.push(incomeExpense[1]);

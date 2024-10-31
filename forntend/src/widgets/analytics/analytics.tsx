@@ -27,6 +27,12 @@ export const Analytics = () => {
 		[accounts],
 	);
 
+	const timeOptions: OptionProps[] = [
+		{ label: 'По неделям', value: '1' },
+		{ label: 'По месяцам', value: '2' },
+		{ label: 'По годам', value: '3' },
+	];
+
 	useEffect(() => {
 		const loadDataHandler = async () => {
 			setisLoading(true);
@@ -46,10 +52,12 @@ export const Analytics = () => {
 		<div className={css['main']}>
 			<Block className={css['selectors']}>
 				<ReactSelect
+					name="account"
 					options={accountOptions}
 					onChange={(event) => setSelectedAccount(event!.value)}
 					defaultValue={{ label: 'Все операции', value: 'test' }}
 				/>
+				<ReactSelect name="time" options={timeOptions} onChange={() => {}} defaultValue={timeOptions[0]} />
 			</Block>
 			{data ? (
 				<Block>
