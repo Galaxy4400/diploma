@@ -3,15 +3,14 @@ import ReactSelect from 'react-select';
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useMemo, useState } from 'react';
 import { Block, Button, Loading } from 'shared/ui/components';
-import { buildChartData } from './lib/get-chart-data';
 import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { useToast } from 'app/providers/toast';
-import { ChartRangeType, options, rangeTypeOptions } from './lib';
 import { ChartData } from 'chart.js';
-import { getWeekName } from './lib/get-week-name';
 import { addWeeks, startOfWeek, subWeeks } from 'date-fns';
+import { ChartRangeType, getWeekName, options, rangeTypeOptions } from '../lib';
+import { buildChartData } from '../lib/get-chart-data';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
