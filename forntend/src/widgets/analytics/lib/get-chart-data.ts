@@ -5,7 +5,7 @@ import { operationsTotalSum } from './operation-total-sum';
 import { ChartRangeType } from './chart.types';
 import { getTimeRange } from './get-time-range';
 import { getColumnLabel } from './get-column-lagel';
-import { addDays, addMonths, endOfDay, isAfter, isBefore, startOfDay } from 'date-fns';
+import { addDays, addMonths, isAfter, isBefore } from 'date-fns';
 import { getRangePart } from './get-range-part';
 
 export const buildChartData = async (

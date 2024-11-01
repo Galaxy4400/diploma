@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { PagingData, QueryData } from 'shared/api';
 import { getOperations, OperationQueryParams, OperationType } from 'shared/api/operation';
+import { OPERATIONS_PER_LOAD } from 'shared/constants';
 import { ErrorType } from 'shared/types';
+import { isObjEmpty } from 'shared/utils';
 
 export const fetchGetOperationList = createAsyncThunk<
 	PagingData<OperationType>,
@@ -48,6 +50,8 @@ export const fetchFilterOperationList = createAsyncThunk<
 	OperationQueryParams & QueryData,
 	{ rejectValue: ErrorType }
 >('operations/fetchFilterOperationList', async (filterData, { rejectWithValue }) => {
+	if (isObjEmpty(filterData)) filterData.limit = OPERATIONS_PER_LOAD;
+
 	try {
 		const { pagingData, error } = await getOperations(filterData);
 
