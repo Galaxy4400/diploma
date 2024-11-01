@@ -8,10 +8,12 @@ import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { useToast } from 'app/providers/toast';
 import { ChartData } from 'chart.js';
-import { changeCurrentData } from '../lib/change-current-data';
 import {
+	AnalyticsDataGenerator,
 	buildChartData,
+	changeCurrentData,
 	ChartRangeType,
+	DataGeneratorFactory,
 	getRangeLabel,
 	getWeekName,
 	options,
@@ -19,13 +21,13 @@ import {
 } from '../lib';
 
 export const Analytics = () => {
+	const [dataGenerator, setDataGenerator] = useState<AnalyticsDataGenerator | null>(null);
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
-	const [chartData, setChartData] = useState<ChartData<'bar'>>();
+	const [chartData, setChartData] = useState<ChartData<'bar'> | null>(null);
 	const [selectedAccount, setSelectedAccount] = useState<ID | null>(null);
 	const [selectedRangeType, setSelectedRangeType] = useState<ChartRangeType>(ChartRangeType.week);
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [rangeLabel, setRangeLabel] = useState(getWeekName());
-	const { showToast } = useToast();
 
 	const accountOptions: OptionProps[] = useMemo(
 		() => [{ label: 'Все операции', value: '' }, ...buildSelectOptions(accounts, 'name', 'id')],
@@ -37,10 +39,14 @@ export const Analytics = () => {
 	}, []);
 
 	useEffect(() => {
-		const loadDataHandler = async () => {
-			const data = await buildChartData(selectedAccount, currentDate, selectedRangeType);
+		setDataGenerator(DataGeneratorFactory.create(selectedRangeType));
+	}, [selectedRangeType]);
 
-			if (!data) showToast({ message: 'Что-то пошло не так', type: 'error' });
+	useEffect(() => {
+		if (!dataGenerator) return;
+
+		const loadDataHandler = async () => {
+			const data = await dataGenerator.getData();
 
 			setChartData(data);
 		};
@@ -48,7 +54,7 @@ export const Analytics = () => {
 		loadDataHandler();
 
 		setRangeLabel(getRangeLabel(currentDate, selectedRangeType));
-	}, [currentDate, selectedAccount, selectedRangeType, showToast]);
+	}, [dataGenerator, currentDate, selectedAccount]);
 
 	return (
 		<div className={css['main']}>

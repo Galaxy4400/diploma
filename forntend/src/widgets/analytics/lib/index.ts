@@ -6,3 +6,5 @@ export * from './get-week-name';
 export * from './get-range-label';
 export * from './get-column-lagel';
 export * from './get-range-part';
+export * from './change-current-data';
+export * from './classes';

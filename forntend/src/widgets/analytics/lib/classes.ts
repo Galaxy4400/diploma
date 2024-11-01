@@ -11,6 +11,7 @@ import {
 	endOfWeek,
 	endOfYear,
 	format,
+	getWeek,
 	isAfter,
 	isBefore,
 	startOfDay,
@@ -19,7 +20,7 @@ import {
 	startOfYear,
 } from 'date-fns';
 
-abstract class AnalyticsDataGenerator {
+export abstract class AnalyticsDataGenerator {
 	protected date: Date = new Date();
 	protected account: ID | null = null;
 
@@ -34,6 +35,8 @@ abstract class AnalyticsDataGenerator {
 	protected abstract getLabelOfStep(date: Date): string[];
 
 	protected abstract getNextDateOfStep(date: Date): Date;
+
+	abstract getRangeLabel(): string;
 
 	setDate(date: Date): this {
 		this.date = date;
@@ -124,7 +127,7 @@ abstract class AnalyticsDataGenerator {
 	}
 }
 
-class WeekDataGenerator extends AnalyticsDataGenerator {
+export class WeekDataGenerator extends AnalyticsDataGenerator {
 	protected totalRange = { start: addDays(startOfWeek(new Date()), 1), end: addDays(endOfWeek(new Date()), 1) };
 
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
@@ -138,9 +141,13 @@ class WeekDataGenerator extends AnalyticsDataGenerator {
 	protected getNextDateOfStep(date: Date): Date {
 		return addDays(date, 1);
 	}
+
+	getRangeLabel(): string {
+		return `Неделя ${getWeek(startOfWeek(this.date))}`;
+	}
 }
 
-class MonthDataGenerator extends AnalyticsDataGenerator {
+export class MonthDataGenerator extends AnalyticsDataGenerator {
 	protected totalRange = { start: startOfMonth(new Date()), end: endOfMonth(new Date()) };
 
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
@@ -154,9 +161,13 @@ class MonthDataGenerator extends AnalyticsDataGenerator {
 	protected getNextDateOfStep(date: Date): Date {
 		return addDays(date, 1);
 	}
+
+	getRangeLabel(): string {
+		return format(this.date, 'LLLL', { locale: ru });
+	}
 }
 
-class YearDataGenerator extends AnalyticsDataGenerator {
+export class YearDataGenerator extends AnalyticsDataGenerator {
 	protected totalRange = { start: startOfYear(new Date()), end: endOfYear(new Date()) };
 
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
@@ -169,6 +180,10 @@ class YearDataGenerator extends AnalyticsDataGenerator {
 
 	protected getNextDateOfStep(date: Date): Date {
 		return addMonths(date, 1);
+	}
+
+	getRangeLabel(): string {
+		return format(this.date, 'yyyy');
 	}
 }
 
