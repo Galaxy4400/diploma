@@ -27,16 +27,17 @@ export const buildChartData = async (
 	let dateCounter = timeRange.start;
 
 	while (isBefore(dateCounter, timeRange.end)) {
-		const startDay = startOfDay(dateCounter);
-		const endDay = endOfDay(dateCounter);
+		const startOfRangePart = startOfDay(dateCounter);
+		const endOfRangePart = endOfDay(dateCounter);
 
 		labels.push(format(dateCounter, 'dd.MM.yyyy'));
 
-		const dayOfPart = operations?.filter(
-			(operation) => isAfter(operation.createdAt, startDay) && isBefore(operation.createdAt, endDay),
+		const operationsOfPart = operations?.filter(
+			(operation) =>
+				isAfter(operation.createdAt, startOfRangePart) && isBefore(operation.createdAt, endOfRangePart),
 		);
 
-		const incomeExpense = operationsTotalSum(dayOfPart);
+		const incomeExpense = operationsTotalSum(operationsOfPart);
 
 		incomeData.push(incomeExpense.income);
 		expenseData.push(incomeExpense.expense);

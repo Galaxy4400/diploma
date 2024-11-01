@@ -8,6 +8,7 @@ import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { useToast } from 'app/providers/toast';
 import { ChartData } from 'chart.js';
+import { changeCurrentData } from '../lib/change-current-data';
 import {
 	buildChartData,
 	ChartRangeType,
@@ -16,17 +17,6 @@ import {
 	options,
 	rangeTypeOptions,
 } from '../lib';
-import {
-	addMonths,
-	addWeeks,
-	addYears,
-	startOfMonth,
-	startOfWeek,
-	startOfYear,
-	subMonths,
-	subWeeks,
-	subYears,
-} from 'date-fns';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
@@ -60,40 +50,6 @@ export const Analytics = () => {
 		setRangeLabel(getRangeLabel(currentDate, selectedRangeType));
 	}, [currentDate, selectedAccount, selectedRangeType, showToast]);
 
-	const prevHandler = () => {
-		switch (selectedRangeType) {
-			case ChartRangeType.week: {
-				setCurrentDate(startOfWeek(subWeeks(currentDate, 1)));
-				break;
-			}
-			case ChartRangeType.month: {
-				setCurrentDate(startOfMonth(subMonths(currentDate, 1)));
-				break;
-			}
-			case ChartRangeType.year: {
-				setCurrentDate(startOfYear(subYears(currentDate, 1)));
-				break;
-			}
-		}
-	};
-
-	const nextHandler = () => {
-		switch (selectedRangeType) {
-			case ChartRangeType.week: {
-				setCurrentDate(startOfWeek(addWeeks(currentDate, 1)));
-				break;
-			}
-			case ChartRangeType.month: {
-				setCurrentDate(startOfMonth(addMonths(currentDate, 1)));
-				break;
-			}
-			case ChartRangeType.year: {
-				setCurrentDate(startOfYear(addYears(currentDate, 1)));
-				break;
-			}
-		}
-	};
-
 	return (
 		<div className={css['main']}>
 			<Block className={css['selectors']}>
@@ -113,9 +69,13 @@ export const Analytics = () => {
 			{chartData ? (
 				<Block>
 					<div className={css['head']}>
-						<Button onClick={prevHandler}>Назад</Button>
+						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'sub'))}>
+							Назад
+						</Button>
 						<h3>{rangeLabel}</h3>
-						<Button onClick={nextHandler}>Вперед</Button>
+						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'add'))}>
+							Вперед
+						</Button>
 					</div>
 					<Bar options={options} data={chartData} />
 				</Block>
