@@ -3,34 +3,8 @@ import { getOperations } from 'shared/api/operation';
 import { ID } from 'shared/types';
 import { operationsTotalSum } from './operation-total-sum';
 import { ChartRangeType } from './chart.types';
-import {
-	addDays,
-	endOfDay,
-	endOfMonth,
-	endOfWeek,
-	endOfYear,
-	format,
-	isAfter,
-	isBefore,
-	startOfDay,
-	startOfMonth,
-	startOfWeek,
-	startOfYear,
-} from 'date-fns';
-
-const getTimeRange = (currentDate: Date, rangeType: ChartRangeType) => {
-	switch (rangeType) {
-		case ChartRangeType.week: {
-			return { start: startOfWeek(currentDate), end: endOfWeek(currentDate) };
-		}
-		case ChartRangeType.month: {
-			return { start: startOfMonth(currentDate), end: endOfMonth(currentDate) };
-		}
-		case ChartRangeType.year: {
-			return { start: startOfYear(currentDate), end: endOfYear(currentDate) };
-		}
-	}
-};
+import { getTimeRange } from './get-time-range';
+import { addDays, endOfDay, format, isAfter, isBefore, startOfDay } from 'date-fns';
 
 export const buildChartData = async (
 	account: ID | null,
@@ -58,11 +32,11 @@ export const buildChartData = async (
 
 		labels.push(format(dateCounter, 'dd.MM.yyyy'));
 
-		const dayOperatins = operations?.filter(
+		const dayOfPart = operations?.filter(
 			(operation) => isAfter(operation.createdAt, startDay) && isBefore(operation.createdAt, endDay),
 		);
 
-		const incomeExpense = operationsTotalSum(dayOperatins);
+		const incomeExpense = operationsTotalSum(dayOfPart);
 
 		incomeData.push(incomeExpense.income);
 		expenseData.push(incomeExpense.expense);

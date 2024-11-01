@@ -8,8 +8,25 @@ import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { useToast } from 'app/providers/toast';
 import { ChartData } from 'chart.js';
-import { addWeeks, startOfWeek, subWeeks } from 'date-fns';
-import { buildChartData, ChartRangeType, getWeekName, options, rangeTypeOptions } from '../lib';
+import {
+	buildChartData,
+	ChartRangeType,
+	getRangeLabel,
+	getWeekName,
+	options,
+	rangeTypeOptions,
+} from '../lib';
+import {
+	addMonths,
+	addWeeks,
+	addYears,
+	startOfMonth,
+	startOfWeek,
+	startOfYear,
+	subMonths,
+	subWeeks,
+	subYears,
+} from 'date-fns';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
@@ -40,15 +57,41 @@ export const Analytics = () => {
 
 		loadDataHandler();
 
-		setRangeLabel(getWeekName(currentDate));
+		setRangeLabel(getRangeLabel(currentDate, selectedRangeType));
 	}, [currentDate, selectedAccount, selectedRangeType, showToast]);
 
 	const prevHandler = () => {
-		setCurrentDate(startOfWeek(subWeeks(currentDate, 1)));
+		switch (selectedRangeType) {
+			case ChartRangeType.week: {
+				setCurrentDate(startOfWeek(subWeeks(currentDate, 1)));
+				break;
+			}
+			case ChartRangeType.month: {
+				setCurrentDate(startOfMonth(subMonths(currentDate, 1)));
+				break;
+			}
+			case ChartRangeType.year: {
+				setCurrentDate(startOfYear(subYears(currentDate, 1)));
+				break;
+			}
+		}
 	};
 
 	const nextHandler = () => {
-		setCurrentDate(startOfWeek(addWeeks(currentDate, 1)));
+		switch (selectedRangeType) {
+			case ChartRangeType.week: {
+				setCurrentDate(startOfWeek(addWeeks(currentDate, 1)));
+				break;
+			}
+			case ChartRangeType.month: {
+				setCurrentDate(startOfMonth(addMonths(currentDate, 1)));
+				break;
+			}
+			case ChartRangeType.year: {
+				setCurrentDate(startOfYear(addYears(currentDate, 1)));
+				break;
+			}
+		}
 	};
 
 	return (

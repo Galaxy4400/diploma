@@ -1,7 +1,7 @@
 import { OperationType } from 'shared/api/operation';
 import { CategoryType } from 'shared/lib/category';
 
-export const operationsTotalSum = (operations: OperationType[]): { income: number; expense: number } => {
+export const operationsTotalSum = (operations: OperationType[]) => {
 	return operations.reduce(
 		(sum, operation) => {
 			if (operation.category?.type === CategoryType.income) {
