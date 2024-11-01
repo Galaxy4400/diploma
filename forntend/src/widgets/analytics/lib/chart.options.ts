@@ -13,6 +13,7 @@ export const options: ChartOptions<'bar'> = {
 			beginAtZero: true,
 			ticks: {
 				stepSize: 10000,
+				callback: (value) => value.toLocaleString('ru-RU') + ' ₽',
 			},
 		},
 	},

@@ -4,3 +4,5 @@ export * from './get-chart-data';
 export * from './range-type-options';
 export * from './get-week-name';
 export * from './get-range-label';
+export * from './get-column-lagel';
+export * from './get-range-part';

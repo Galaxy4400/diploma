@@ -4,17 +4,18 @@ import { ID } from 'shared/types';
 import { operationsTotalSum } from './operation-total-sum';
 import { ChartRangeType } from './chart.types';
 import { getTimeRange } from './get-time-range';
-import { addDays, endOfDay, format, isAfter, isBefore, startOfDay } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import { getColumnLabel } from './get-column-lagel';
+import { addDays, addMonths, endOfDay, isAfter, isBefore, startOfDay } from 'date-fns';
+import { getRangePart } from './get-range-part';
 
 export const buildChartData = async (
 	account: ID | null,
 	date: Date,
 	rangeType: ChartRangeType,
 ): Promise<ChartData<'bar'>> => {
-	const labels: string[] = [];
-	const incomeData: number[] = [];
-	const expenseData: number[] = [];
+	const labels = [];
+	const incomeData = [];
+	const expenseData = [];
 
 	const timeRange = getTimeRange(date, rangeType);
 
@@ -28,14 +29,13 @@ export const buildChartData = async (
 	let dateCounter = timeRange.start;
 
 	while (isBefore(dateCounter, timeRange.end)) {
-		const startOfRangePart = startOfDay(dateCounter);
-		const endOfRangePart = endOfDay(dateCounter);
+		const partRange = getRangePart(dateCounter, rangeType);
 
-		labels.push(format(dateCounter, 'dd.MM.yyyy, EEEE', { locale: ru }));
+		labels.push(getColumnLabel(dateCounter, rangeType));
 
 		const operationsOfPart = operations?.filter(
 			(operation) =>
-				isAfter(operation.createdAt, startOfRangePart) && isBefore(operation.createdAt, endOfRangePart),
+				isAfter(operation.createdAt, partRange.start) && isBefore(operation.createdAt, partRange.end),
 		);
 
 		const incomeExpense = operationsTotalSum(operationsOfPart);
@@ -43,7 +43,11 @@ export const buildChartData = async (
 		incomeData.push(incomeExpense.income);
 		expenseData.push(incomeExpense.expense);
 
-		dateCounter = addDays(dateCounter, 1);
+		if (rangeType === ChartRangeType.year) {
+			dateCounter = addMonths(dateCounter, 1);
+		} else {
+			dateCounter = addDays(dateCounter, 1);
+		}
 	}
 
 	return {

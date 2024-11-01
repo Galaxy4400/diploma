@@ -51,8 +51,8 @@ export const OperationsFilter = () => {
 			<h4>Фильтр</h4>
 			<Form className={css['form']} onSubmit={filterHandler} resolver={yupResolver(operationsFilterRules)}>
 				<div className={css['section']}>
-					<Select name="account" options={accountOptions} label="По счету" placeholder="" />
-					<Select name="category" options={categoryOptions} label="По категории" placeholder="" />
+					<Select name="account" options={accountOptions} label="По счету" />
+					<Select name="category" options={categoryOptions} label="По категории" />
 					<DateRange name="daterange" label="По дате" />
 					<PriceRange name="amountrange" label="По цене" />
 				</div>
