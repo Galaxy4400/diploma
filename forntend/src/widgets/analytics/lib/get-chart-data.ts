@@ -5,6 +5,7 @@ import { operationsTotalSum } from './operation-total-sum';
 import { ChartRangeType } from './chart.types';
 import { getTimeRange } from './get-time-range';
 import { addDays, endOfDay, format, isAfter, isBefore, startOfDay } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 export const buildChartData = async (
 	account: ID | null,
@@ -30,7 +31,7 @@ export const buildChartData = async (
 		const startOfRangePart = startOfDay(dateCounter);
 		const endOfRangePart = endOfDay(dateCounter);
 
-		labels.push(format(dateCounter, 'dd.MM.yyyy'));
+		labels.push(format(dateCounter, 'dd.MM.yyyy, EEEE', { locale: ru }));
 
 		const operationsOfPart = operations?.filter(
 			(operation) =>

@@ -72,7 +72,7 @@ export const Analytics = () => {
 						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'sub'))}>
 							Назад
 						</Button>
-						<h3>{rangeLabel}</h3>
+						<h3 className={css['range-label']}>{rangeLabel}</h3>
 						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'add'))}>
 							Вперед
 						</Button>

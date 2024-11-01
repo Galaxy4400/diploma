@@ -1,4 +1,5 @@
 import {
+	addDays,
 	addMonths,
 	addWeeks,
 	addYears,
@@ -14,7 +15,9 @@ import { ChartRangeType } from './chart.types';
 export const changeCurrentData = (date: Date, rangeType: ChartRangeType, operationType: 'add' | 'sub') => {
 	switch (rangeType) {
 		case ChartRangeType.week: {
-			return operationType === 'add' ? startOfWeek(addWeeks(date, 1)) : startOfWeek(subWeeks(date, 1));
+			return operationType === 'add'
+				? addDays(startOfWeek(addWeeks(date, 1)), 1)
+				: addDays(startOfWeek(subWeeks(date, 1)), 1);
 		}
 		case ChartRangeType.month: {
 			return operationType === 'add' ? startOfMonth(addMonths(date, 1)) : startOfMonth(subMonths(date, 1));
