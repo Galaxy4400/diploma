@@ -1,20 +1,17 @@
 import css from './analytics.module.scss';
+import loadingGif from 'shared/assets/img/loading.gif';
 import ReactSelect from 'react-select';
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useMemo, useState } from 'react';
 import { Block, Button, Loading } from 'shared/ui/components';
 import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
-import { ID, OptionProps } from 'shared/types';
-import { ChartData } from 'chart.js';
-import { ChartRangeType, DataGeneratorFactory, options, rangeTypeOptions } from '../lib';
+import { OptionProps } from 'shared/types';
+import { ChartRangeType, options, rangeTypeOptions, useDataGenerator } from '../lib';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
-	const [chartData, setChartData] = useState<ChartData<'bar'> | null>(null);
-	const [selectedAccount, setSelectedAccount] = useState<ID | null>(null);
-	const [selectedRangeType, setSelectedRangeType] = useState<ChartRangeType>(ChartRangeType.week);
-	const dataGenerator = useMemo(() => DataGeneratorFactory.create(selectedRangeType), [selectedRangeType]);
+	const { data, rangeLabel, isLoading, setAccount, setRangeType, prev, next } = useDataGenerator();
 
 	const accountOptions: OptionProps[] = useMemo(
 		() => [{ label: 'Все операции', value: '' }, ...buildSelectOptions(accounts, 'name', 'id')],
@@ -25,42 +22,34 @@ export const Analytics = () => {
 		getAccounts().then(({ accounts }) => setAccounts(accounts ?? []));
 	}, []);
 
-	useEffect(() => {
-		if (dataGenerator) dataGenerator.setAccount(selectedAccount).getData().then(setChartData);
-	}, [dataGenerator, selectedAccount]);
-
-	const prevHandler = () => {
-		dataGenerator.getPrevData().then(setChartData);
-	};
-
-	const nextHandler = () => {
-		dataGenerator.getNextData().then(setChartData);
-	};
-
 	return (
 		<div className={css['main']}>
 			<Block className={css['selectors']}>
 				<ReactSelect
 					name="account"
 					options={accountOptions}
-					onChange={(event) => setSelectedAccount(event!.value)}
+					onChange={(event) => setAccount(event?.value ?? null)}
 					defaultValue={accountOptions[0]}
 				/>
 				<ReactSelect
 					name="rangeType"
 					options={rangeTypeOptions}
-					onChange={(event) => setSelectedRangeType(event!.value as ChartRangeType)}
+					onChange={(event) => setRangeType(event?.value as ChartRangeType)}
 					defaultValue={rangeTypeOptions[0]}
 				/>
 			</Block>
-			{chartData ? (
+			{data ? (
 				<Block>
 					<div className={css['head']}>
-						<Button onClick={prevHandler}>Назад</Button>
-						<h3 className={css['range-label']}>{dataGenerator.getRangeLabel()}</h3>
-						<Button onClick={nextHandler}>Вперед</Button>
+						<Button onClick={prev}>Назад</Button>
+						{isLoading ? (
+							<img className={css['loading']} src={loadingGif} alt="loading" />
+						) : (
+							<h3 className={css['range-label']}>{rangeLabel}</h3>
+						)}
+						<Button onClick={next}>Вперед</Button>
 					</div>
-					<Bar options={options} data={chartData} />
+					<Bar options={options} data={data} />
 				</Block>
 			) : (
 				<Loading />
