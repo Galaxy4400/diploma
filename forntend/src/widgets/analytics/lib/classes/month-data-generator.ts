@@ -1,6 +1,7 @@
 import { ChartData } from 'chart.js';
 import { ru } from 'date-fns/locale';
 import { AnalyticsDataGenerator } from './analytics-data-generator';
+import { TimeRange } from '../types';
 import {
 	addDays,
 	addMonths,
@@ -11,7 +12,6 @@ import {
 	startOfMonth,
 	subMonths,
 } from 'date-fns';
-import { TimeRange } from '../types';
 
 export class MonthDataGenerator extends AnalyticsDataGenerator {
 	protected getRangeOfStep(date: Date): TimeRange {

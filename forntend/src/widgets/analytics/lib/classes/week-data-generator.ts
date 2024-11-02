@@ -1,8 +1,8 @@
 import { ChartData } from 'chart.js';
 import { ru } from 'date-fns/locale';
 import { AnalyticsDataGenerator } from './analytics-data-generator';
-import { addDays, addWeeks, endOfDay, endOfWeek, format, startOfDay, startOfWeek, subWeeks } from 'date-fns';
 import { TimeRange } from '../types';
+import { addDays, addWeeks, endOfDay, endOfWeek, format, startOfDay, startOfWeek, subWeeks } from 'date-fns';
 
 export class WeekDataGenerator extends AnalyticsDataGenerator {
 	protected getRangeOfStep(date: Date): TimeRange {
