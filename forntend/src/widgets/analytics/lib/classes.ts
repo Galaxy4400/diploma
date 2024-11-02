@@ -24,11 +24,7 @@ import {
 	subWeeks,
 	subYears,
 } from 'date-fns';
-
-interface TimeRange {
-	start: Date;
-	end: Date;
-}
+import { TimeRange } from './types';
 
 export abstract class AnalyticsDataGenerator {
 	private labels: string[][] = [];
@@ -169,7 +165,7 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 	}
 
 	getRangeLabel(): string {
-		return `Неделя ${getWeek(startOfWeek(this.date))}`;
+		return `${format(addDays(startOfWeek(this.date), 1), 'dd.MM.yyyy')} / ${format(addDays(endOfWeek(this.date), 1), 'dd.MM.yyyy')}`;
 	}
 
 	async getData(): Promise<ChartData<'bar'>> {

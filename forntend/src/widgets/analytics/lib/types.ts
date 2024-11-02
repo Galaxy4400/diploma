@@ -5,3 +5,8 @@ export enum ChartRangeType {
 	month = 'month',
 	year = 'year',
 }
+
+export interface TimeRange {
+	start: Date;
+	end: Date;
+}

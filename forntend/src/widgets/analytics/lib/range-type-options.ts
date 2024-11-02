@@ -1,5 +1,5 @@
 import { OptionProps } from 'shared/types';
-import { ChartRangeType } from './chart.types';
+import { ChartRangeType } from './types';
 
 export const rangeTypeOptions: OptionProps[] = [
 	{ label: 'По неделям', value: ChartRangeType.week },

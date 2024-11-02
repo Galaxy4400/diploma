@@ -31,7 +31,7 @@ export const Analytics = () => {
 	}, []);
 
 	useEffect(() => {
-		if (dataGenerator) dataGenerator.getData().then(setChartData);
+		if (dataGenerator) dataGenerator.setAccount(selectedAccount).getData().then(setChartData);
 	}, [dataGenerator, selectedAccount]);
 
 	const prevHandler = () => {
