@@ -25,17 +25,21 @@ import {
 	subYears,
 } from 'date-fns';
 
+interface TimeRange {
+	start: Date;
+	end: Date;
+}
+
 export abstract class AnalyticsDataGenerator {
+	private labels: string[][] = [];
+	private incomeData: number[] = [];
+	private expenseData: number[] = [];
+	
 	protected date: Date = new Date();
 	protected account: ID | null = null;
+	protected totalRange: TimeRange = { start: new Date(), end: new Date() };
 
-	protected labels: string[][] = [];
-	protected incomeData: number[] = [];
-	protected expenseData: number[] = [];
-
-	protected abstract totalRange: { start: Date; end: Date };
-
-	protected abstract getRangeOfStep(date: Date): { start: Date; end: Date };
+	protected abstract getRangeOfStep(date: Date): TimeRange;
 
 	protected abstract getLabelOfStep(date: Date): string[];
 
@@ -47,7 +51,12 @@ export abstract class AnalyticsDataGenerator {
 
 	abstract getNextData(): Promise<ChartData<'bar'>>;
 
-	setDate(date: Date): this {
+	protected setTotalRange(totalRange: TimeRange): this {
+		this.totalRange = totalRange;
+		return this;
+	}
+
+	protected setDate(date: Date): this {
 		this.date = date;
 		return this;
 	}
@@ -87,7 +96,7 @@ export abstract class AnalyticsDataGenerator {
 
 	private findOperationsOfStep(
 		operations: OperationType[],
-		rangeOfStep: { start: Date; end: Date },
+		rangeOfStep: TimeRange,
 	): OperationType[] {
 		return operations?.filter(
 			(operation) =>
@@ -95,7 +104,17 @@ export abstract class AnalyticsDataGenerator {
 		);
 	}
 
+	private clear(): this {
+		this.labels = [];
+		this.incomeData = [];
+		this.expenseData = [];
+
+		return this;
+	}
+
 	private async fillData(): Promise<void> {
+		this.clear();
+
 		const operations = await this.getOperations();
 
 		let startDateOfStep = this.totalRange.start;
@@ -137,8 +156,6 @@ export abstract class AnalyticsDataGenerator {
 }
 
 export class WeekDataGenerator extends AnalyticsDataGenerator {
-	protected totalRange = { start: addDays(startOfWeek(new Date()), 1), end: addDays(endOfWeek(new Date()), 1) };
-
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
 		return { start: startOfDay(date), end: endOfDay(date) };
 	}
@@ -155,6 +172,12 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 		return `Неделя ${getWeek(startOfWeek(this.date))}`;
 	}
 
+	async getData(): Promise<ChartData<'bar'>> {
+		this.setTotalRange({ start: addDays(startOfWeek(this.date), 1), end: addDays(endOfWeek(this.date), 1) });
+
+		return super.getData()
+	}
+
 	async getPrevData(): Promise<ChartData<'bar'>> {
 		this.setDate(addDays(startOfWeek(subWeeks(this.date, 1)), 1));
 
@@ -163,14 +186,12 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 
 	async getNextData(): Promise<ChartData<'bar'>> {
 		this.setDate(addDays(startOfWeek(addWeeks(this.date, 1)), 1));
-		
+
 		return await this.getData();
 	}
 }
 
 export class MonthDataGenerator extends AnalyticsDataGenerator {
-	protected totalRange = { start: startOfMonth(new Date()), end: endOfMonth(new Date()) };
-
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
 		return { start: startOfDay(date), end: endOfDay(date) };
 	}
@@ -187,6 +208,12 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 		return format(this.date, 'LLLL', { locale: ru });
 	}
 
+	async getData(): Promise<ChartData<'bar'>> {
+		this.setTotalRange({ start: startOfMonth(this.date), end: endOfMonth(this.date) });
+
+		return super.getData()
+	}
+
 	async getPrevData(): Promise<ChartData<'bar'>> {
 		this.setDate(startOfMonth(subMonths(this.date, 1)));
 
@@ -201,8 +228,6 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 }
 
 export class YearDataGenerator extends AnalyticsDataGenerator {
-	protected totalRange = { start: startOfYear(new Date()), end: endOfYear(new Date()) };
-
 	protected getRangeOfStep(date: Date): { start: Date; end: Date; } {
 		return { start: startOfMonth(date), end: endOfMonth(date) };
 	}
@@ -217,6 +242,12 @@ export class YearDataGenerator extends AnalyticsDataGenerator {
 
 	getRangeLabel(): string {
 		return format(this.date, 'yyyy');
+	}
+
+	async getData(): Promise<ChartData<'bar'>> {
+		this.setTotalRange({ start: startOfYear(this.date), end: endOfYear(this.date) });
+
+		return super.getData()
 	}
 
 	async getPrevData(): Promise<ChartData<'bar'>> {

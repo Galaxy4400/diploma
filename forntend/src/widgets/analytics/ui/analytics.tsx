@@ -8,7 +8,6 @@ import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { ChartData } from 'chart.js';
 import {
-	changeCurrentData,
 	ChartRangeType,
 	DataGeneratorFactory,
 	options,
