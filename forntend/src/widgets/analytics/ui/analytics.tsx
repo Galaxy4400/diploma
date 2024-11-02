@@ -7,12 +7,7 @@ import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
 import { ChartData } from 'chart.js';
-import {
-	ChartRangeType,
-	DataGeneratorFactory,
-	options,
-	rangeTypeOptions,
-} from '../lib';
+import { ChartRangeType, DataGeneratorFactory, options, rangeTypeOptions } from '../lib';
 
 export const Analytics = () => {
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
@@ -36,11 +31,11 @@ export const Analytics = () => {
 
 	const prevHandler = () => {
 		dataGenerator.getPrevData().then(setChartData);
-	}
+	};
 
 	const nextHandler = () => {
 		dataGenerator.getNextData().then(setChartData);
-	}
+	};
 
 	return (
 		<div className={css['main']}>
@@ -61,13 +56,9 @@ export const Analytics = () => {
 			{chartData ? (
 				<Block>
 					<div className={css['head']}>
-						<Button onClick={prevHandler}>
-							Назад
-						</Button>
+						<Button onClick={prevHandler}>Назад</Button>
 						<h3 className={css['range-label']}>{dataGenerator.getRangeLabel()}</h3>
-						<Button onClick={nextHandler}>
-							Вперед
-						</Button>
+						<Button onClick={nextHandler}>Вперед</Button>
 					</div>
 					<Bar options={options} data={chartData} />
 				</Block>
