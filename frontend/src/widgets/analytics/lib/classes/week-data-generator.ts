@@ -2,7 +2,17 @@ import { ChartData } from 'chart.js';
 import { ru } from 'date-fns/locale';
 import { AnalyticsDataGenerator } from './analytics-data-generator';
 import { TimeRange } from '../types';
-import { addDays, addWeeks, endOfDay, endOfWeek, format, startOfDay, startOfWeek, subWeeks } from 'date-fns';
+import {
+	addDays,
+	addWeeks,
+	endOfDay,
+	endOfWeek,
+	format,
+	startOfDay,
+	startOfWeek,
+	subDays,
+	subWeeks,
+} from 'date-fns';
 
 export class WeekDataGenerator extends AnalyticsDataGenerator {
 	protected getRangeOfStep(date: Date): TimeRange {
@@ -18,23 +28,29 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 	}
 
 	getRangeLabel(): string {
-		return `${format(addDays(startOfWeek(this.date), 1), 'dd.MM.yyyy')} / ${format(addDays(endOfWeek(this.date), 1), 'dd.MM.yyyy')}`;
+		return [
+			format(addDays(startOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
+			format(addDays(endOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
+		].join(' / ');
 	}
 
 	async getData(): Promise<ChartData<'bar'>> {
-		this.setTotalRange({ start: addDays(startOfWeek(this.date), 1), end: addDays(endOfWeek(this.date), 1) });
+		this.setTotalRange({
+			start: addDays(startOfWeek(subDays(this.date, 1)), 1),
+			end: addDays(endOfWeek(subDays(this.date, 1)), 1),
+		});
 
 		return super.getData();
 	}
 
 	async getPrevData(): Promise<ChartData<'bar'>> {
-		this.setDate(addDays(startOfWeek(subWeeks(this.date, 1)), 1));
+		this.setDate(addDays(startOfWeek(subWeeks(subDays(this.date, 1), 1)), 1));
 
 		return await this.getData();
 	}
 
 	async getNextData(): Promise<ChartData<'bar'>> {
-		this.setDate(addDays(startOfWeek(addWeeks(this.date, 1)), 1));
+		this.setDate(addDays(startOfWeek(addWeeks(subDays(this.date, 1), 1)), 1));
 
 		return await this.getData();
 	}
