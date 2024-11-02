@@ -8,7 +8,7 @@ const routes = require('./routes');
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.static('../frontend/build'));
+app.use(express.static('../forntend/dist'));
 app.use(cookieParser());
 app.use(express.json());
 
