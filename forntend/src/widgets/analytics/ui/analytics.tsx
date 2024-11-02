@@ -6,28 +6,21 @@ import { Block, Button, Loading } from 'shared/ui/components';
 import { buildSelectOptions } from 'shared/utils';
 import { AccountType, getAccounts } from 'shared/api/account';
 import { ID, OptionProps } from 'shared/types';
-import { useToast } from 'app/providers/toast';
 import { ChartData } from 'chart.js';
 import {
-	AnalyticsDataGenerator,
-	buildChartData,
 	changeCurrentData,
 	ChartRangeType,
 	DataGeneratorFactory,
-	getRangeLabel,
-	getWeekName,
 	options,
 	rangeTypeOptions,
 } from '../lib';
 
 export const Analytics = () => {
-	const [dataGenerator, setDataGenerator] = useState<AnalyticsDataGenerator | null>(null);
 	const [accounts, setAccounts] = useState<AccountType[]>([]);
 	const [chartData, setChartData] = useState<ChartData<'bar'> | null>(null);
 	const [selectedAccount, setSelectedAccount] = useState<ID | null>(null);
 	const [selectedRangeType, setSelectedRangeType] = useState<ChartRangeType>(ChartRangeType.week);
-	const [currentDate, setCurrentDate] = useState(new Date());
-	const [rangeLabel, setRangeLabel] = useState(getWeekName());
+	const dataGenerator = useMemo(() => DataGeneratorFactory.create(selectedRangeType), [selectedRangeType]);
 
 	const accountOptions: OptionProps[] = useMemo(
 		() => [{ label: 'Все операции', value: '' }, ...buildSelectOptions(accounts, 'name', 'id')],
@@ -39,22 +32,16 @@ export const Analytics = () => {
 	}, []);
 
 	useEffect(() => {
-		setDataGenerator(DataGeneratorFactory.create(selectedRangeType));
-	}, [selectedRangeType]);
+		if (dataGenerator) dataGenerator.getData().then(setChartData);
+	}, [dataGenerator, selectedAccount]);
 
-	useEffect(() => {
-		if (!dataGenerator) return;
+	const prevHandler = () => {
+		dataGenerator.getPrevData().then(setChartData);
+	}
 
-		const loadDataHandler = async () => {
-			const data = await dataGenerator.getData();
-
-			setChartData(data);
-		};
-
-		loadDataHandler();
-
-		setRangeLabel(getRangeLabel(currentDate, selectedRangeType));
-	}, [dataGenerator, currentDate, selectedAccount]);
+	const nextHandler = () => {
+		dataGenerator.getNextData().then(setChartData);
+	}
 
 	return (
 		<div className={css['main']}>
@@ -75,11 +62,11 @@ export const Analytics = () => {
 			{chartData ? (
 				<Block>
 					<div className={css['head']}>
-						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'sub'))}>
+						<Button onClick={prevHandler}>
 							Назад
 						</Button>
-						<h3 className={css['range-label']}>{rangeLabel}</h3>
-						<Button onClick={() => setCurrentDate(changeCurrentData(currentDate, selectedRangeType, 'add'))}>
+						<h3 className={css['range-label']}>{dataGenerator.getRangeLabel()}</h3>
+						<Button onClick={nextHandler}>
 							Вперед
 						</Button>
 					</div>

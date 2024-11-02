@@ -6,6 +6,8 @@ import { ru } from 'date-fns/locale';
 import {
 	addDays,
 	addMonths,
+	addWeeks,
+	addYears,
 	endOfDay,
 	endOfMonth,
 	endOfWeek,
@@ -18,6 +20,9 @@ import {
 	startOfMonth,
 	startOfWeek,
 	startOfYear,
+	subMonths,
+	subWeeks,
+	subYears,
 } from 'date-fns';
 
 export abstract class AnalyticsDataGenerator {
@@ -37,6 +42,10 @@ export abstract class AnalyticsDataGenerator {
 	protected abstract getNextDateOfStep(date: Date): Date;
 
 	abstract getRangeLabel(): string;
+
+	abstract getPrevData(): Promise<ChartData<'bar'>>;
+
+	abstract getNextData(): Promise<ChartData<'bar'>>;
 
 	setDate(date: Date): this {
 		this.date = date;
@@ -145,6 +154,18 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 	getRangeLabel(): string {
 		return `Неделя ${getWeek(startOfWeek(this.date))}`;
 	}
+
+	async getPrevData(): Promise<ChartData<'bar'>> {
+		this.setDate(addDays(startOfWeek(subWeeks(this.date, 1)), 1));
+
+		return await this.getData();
+	}
+
+	async getNextData(): Promise<ChartData<'bar'>> {
+		this.setDate(addDays(startOfWeek(addWeeks(this.date, 1)), 1));
+		
+		return await this.getData();
+	}
 }
 
 export class MonthDataGenerator extends AnalyticsDataGenerator {
@@ -165,6 +186,18 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 	getRangeLabel(): string {
 		return format(this.date, 'LLLL', { locale: ru });
 	}
+
+	async getPrevData(): Promise<ChartData<'bar'>> {
+		this.setDate(startOfMonth(subMonths(this.date, 1)));
+
+		return await this.getData();
+	}
+
+	async getNextData(): Promise<ChartData<'bar'>> {
+		this.setDate(startOfMonth(addMonths(this.date, 1)));
+
+		return await this.getData();
+	}
 }
 
 export class YearDataGenerator extends AnalyticsDataGenerator {
@@ -184,6 +217,18 @@ export class YearDataGenerator extends AnalyticsDataGenerator {
 
 	getRangeLabel(): string {
 		return format(this.date, 'yyyy');
+	}
+
+	async getPrevData(): Promise<ChartData<'bar'>> {
+		this.setDate(startOfYear(subYears(this.date, 1)));
+
+		return await this.getData();
+	}
+
+	async getNextData(): Promise<ChartData<'bar'>> {
+		this.setDate(startOfYear(addYears(this.date, 1)));
+
+		return await this.getData();
 	}
 }
 
