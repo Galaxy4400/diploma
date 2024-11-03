@@ -34,7 +34,7 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 		].join(' / ');
 	}
 
-	async getData(): Promise<ChartData<'bar'>> {
+	override async getData(): Promise<ChartData<'bar'>> {
 		this.setTotalRange({
 			start: addDays(startOfWeek(subDays(this.date, 1)), 1),
 			end: addDays(endOfWeek(subDays(this.date, 1)), 1),

@@ -30,7 +30,7 @@ export class YearDataGenerator extends AnalyticsDataGenerator {
 		return format(this.date, 'yyyy');
 	}
 
-	async getData(): Promise<ChartData<'bar'>> {
+	override async getData(): Promise<ChartData<'bar'>> {
 		this.setTotalRange({ start: startOfYear(this.date), end: endOfYear(this.date) });
 
 		return super.getData();

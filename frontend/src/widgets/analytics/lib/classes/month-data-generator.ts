@@ -30,7 +30,7 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 		return format(this.date, 'LLLL', { locale: ru });
 	}
 
-	async getData(): Promise<ChartData<'bar'>> {
+	override async getData(): Promise<ChartData<'bar'>> {
 		this.setTotalRange({ start: startOfMonth(this.date), end: endOfMonth(this.date) });
 
 		return super.getData();
