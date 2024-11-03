@@ -30,10 +30,6 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 		return { start: startOfMonth(this.date), end: endOfMonth(this.date) };
 	}
 
-	getRangeLabel(): string {
-		return format(this.date, 'LLLL', { locale: ru });
-	}
-
 	async getPrevData(): Promise<ChartData<'bar'>> {
 		this.setDate(startOfMonth(subMonths(this.date, 1)));
 
@@ -44,5 +40,9 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 		this.setDate(startOfMonth(addMonths(this.date, 1)));
 
 		return await this.getData();
+	}
+
+	getRangeLabel(): string {
+		return format(this.date, 'LLLL', { locale: ru });
 	}
 }
