@@ -26,14 +26,12 @@ export class MonthDataGenerator extends AnalyticsDataGenerator {
 		return addDays(date, 1);
 	}
 
-	getRangeLabel(): string {
-		return format(this.date, 'LLLL', { locale: ru });
+	protected getTotalRange(): TimeRange {
+		return { start: startOfMonth(this.date), end: endOfMonth(this.date) };
 	}
 
-	override async getData(): Promise<ChartData<'bar'>> {
-		this.setTotalRange({ start: startOfMonth(this.date), end: endOfMonth(this.date) });
-
-		return super.getData();
+	getRangeLabel(): string {
+		return format(this.date, 'LLLL', { locale: ru });
 	}
 
 	async getPrevData(): Promise<ChartData<'bar'>> {

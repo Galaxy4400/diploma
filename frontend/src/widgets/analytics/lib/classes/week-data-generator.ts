@@ -27,20 +27,11 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 		return addDays(date, 1);
 	}
 
-	getRangeLabel(): string {
-		return [
-			format(addDays(startOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
-			format(addDays(endOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
-		].join(' / ');
-	}
-
-	override async getData(): Promise<ChartData<'bar'>> {
-		this.setTotalRange({
+	protected getTotalRange(): TimeRange {
+		return {
 			start: addDays(startOfWeek(subDays(this.date, 1)), 1),
 			end: addDays(endOfWeek(subDays(this.date, 1)), 1),
-		});
-
-		return super.getData();
+		};
 	}
 
 	async getPrevData(): Promise<ChartData<'bar'>> {
@@ -53,5 +44,12 @@ export class WeekDataGenerator extends AnalyticsDataGenerator {
 		this.setDate(addDays(startOfWeek(addWeeks(subDays(this.date, 1), 1)), 1));
 
 		return await this.getData();
+	}
+
+	getRangeLabel(): string {
+		return [
+			format(addDays(startOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
+			format(addDays(endOfWeek(subDays(this.date, 1)), 1), 'dd.MM.yyyy'),
+		].join(' / ');
 	}
 }

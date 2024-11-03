@@ -21,16 +21,13 @@ export abstract class AnalyticsDataGenerator {
 
 	protected abstract getNextDateOfStep(date: Date): Date;
 
+	protected abstract getTotalRange(): TimeRange;
+
 	abstract getRangeLabel(): string;
 
 	abstract getPrevData(): Promise<ChartData<'bar'>>;
 
 	abstract getNextData(): Promise<ChartData<'bar'>>;
-
-	protected setTotalRange(totalRange: TimeRange): this {
-		this.totalRange = totalRange;
-		return this;
-	}
 
 	protected setDate(date: Date): this {
 		this.date = date;
@@ -39,6 +36,11 @@ export abstract class AnalyticsDataGenerator {
 
 	setAccount(account: ID | null): this {
 		this.account = account;
+		return this;
+	}
+
+	private setTotalRange(): this {
+		this.totalRange = this.getTotalRange();
 		return this;
 	}
 
@@ -107,6 +109,8 @@ export abstract class AnalyticsDataGenerator {
 	}
 
 	async getData(): Promise<ChartData<'bar'>> {
+		this.setTotalRange();
+
 		await this.fillData();
 
 		return {

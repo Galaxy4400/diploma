@@ -26,14 +26,8 @@ export class YearDataGenerator extends AnalyticsDataGenerator {
 		return addMonths(date, 1);
 	}
 
-	getRangeLabel(): string {
-		return format(this.date, 'yyyy');
-	}
-
-	override async getData(): Promise<ChartData<'bar'>> {
-		this.setTotalRange({ start: startOfYear(this.date), end: endOfYear(this.date) });
-
-		return super.getData();
+	protected getTotalRange(): TimeRange {
+		return { start: startOfYear(this.date), end: endOfYear(this.date) };
 	}
 
 	async getPrevData(): Promise<ChartData<'bar'>> {
@@ -46,5 +40,9 @@ export class YearDataGenerator extends AnalyticsDataGenerator {
 		this.setDate(startOfYear(addYears(this.date, 1)));
 
 		return await this.getData();
+	}
+
+	getRangeLabel(): string {
+		return format(this.date, 'yyyy');
 	}
 }
