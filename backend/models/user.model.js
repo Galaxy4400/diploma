@@ -31,8 +31,8 @@ const UserSchema = new Schema({
 	},
 }, { timestamps: true });
 
-UserSchema.index({ login: 1 });
-UserSchema.index({ email: 1 }, { unique: true, sparse: true });
+// UserSchema.index({ login: 1 });
+// UserSchema.index({ email: 1 }, { unique: true, sparse: true });
 
 UserSchema.pre('findOneAndDelete', async function (next) {
 	const { _id: id } = this.getQuery();

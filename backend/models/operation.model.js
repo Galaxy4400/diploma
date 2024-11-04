@@ -30,9 +30,9 @@ const OperationSchema = new Schema({
 	},
 }, { timestamps: true });
 
-OperationSchema.index({ account: 1 });
-OperationSchema.index({ category: 1 });
-OperationSchema.index({ user: 1 });
+// OperationSchema.index({ account: 1 });
+// OperationSchema.index({ category: 1 });
+// OperationSchema.index({ user: 1 });
 
 const Operation = mongoose.model('Operation', OperationSchema);
 
