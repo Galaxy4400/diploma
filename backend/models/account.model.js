@@ -26,7 +26,6 @@ const AccountSchema = new Schema({
 	},
 }, { timestamps: true });
 
-AccountSchema.index({ name: 1 });
 AccountSchema.index({ user: 1 });
 
 AccountSchema.pre('findOneAndDelete', async function (next) {
