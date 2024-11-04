@@ -27,7 +27,7 @@ export const CategoryCreateForm = () => {
 	const submitHandler = async (submittedData: RequestData) => {
 		const newCategory = await dispatch(fetchCreateCategory(submittedData)).unwrap();
 
-		showToast({ message: 'Счет создан', type: 'success' });
+		showToast({ message: 'Категория создана', type: 'success' });
 
 		navigate(path.category.id(newCategory.id), { replace: true });
 	};

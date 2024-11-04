@@ -24,7 +24,6 @@ const CategorySchema = new Schema({
 }, { timestamps: true });
 
 CategorySchema.index({ user: 1 });
-CategorySchema.index({ name: 1 });
 
 CategorySchema.pre('findOneAndDelete', async function (next) {
 	const { _id: id } = this.getQuery();
