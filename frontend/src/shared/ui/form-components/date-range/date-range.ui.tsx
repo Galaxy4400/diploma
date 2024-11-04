@@ -42,6 +42,7 @@ export const DateRange = ({ name, label, from, to }: DateRangeProps) => {
 						onBlur={onBlur}
 						customInput={<DatePickerInput />}
 						locale="ru"
+						dateFormat="dd.MM.yyyy"
 						ref={ref}
 					/>
 				)}
