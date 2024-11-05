@@ -50,7 +50,7 @@ export const fetchFilterOperationList = createAsyncThunk<
 	OperationQueryParams & QueryData,
 	{ rejectValue: ErrorType }
 >('operations/fetchFilterOperationList', async (filterData, { rejectWithValue }) => {
-	if (isObjEmpty(filterData)) filterData.limit = OPERATIONS_PER_LOAD;
+	filterData.limit = OPERATIONS_PER_LOAD;
 
 	try {
 		const { pagingData, error } = await getOperations(filterData);
