@@ -88,6 +88,7 @@ export abstract class AnalyticsDataGenerator {
 
 	private async fillData(): Promise<void> {
 		this.clear();
+		this.setTotalRange();
 
 		const operations = await this.getOperations();
 
@@ -109,8 +110,6 @@ export abstract class AnalyticsDataGenerator {
 	}
 
 	async getData(): Promise<ChartData<'bar'>> {
-		this.setTotalRange();
-
 		await this.fillData();
 
 		return {
